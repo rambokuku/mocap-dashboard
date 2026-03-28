@@ -25,6 +25,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .hd-logo::before{content:'';position:absolute;inset:-3px;border-radius:17px;background:linear-gradient(135deg,rgba(0,102,204,.5),rgba(0,163,224,.3));z-index:-1;filter:blur(10px)}
 .hd h1{font-size:18px;background:linear-gradient(90deg,#fff,rgba(255,255,255,.7));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hd-r{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--txt2)}
+.hd-user-block{display:flex;flex-direction:column;align-items:flex-end}
 .hd-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(0,102,204,.12);border:1px solid rgba(0,102,204,.2);color:var(--acc2);border-radius:20px;font-size:12px}
 .hd-tag svg{width:12px;height:12px}
 .ubadge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;font-size:12px;cursor:pointer;transition:var(--tr)}
@@ -177,7 +178,8 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 /* S-curve milestone layout */
 .milestone-scurve{position:relative;padding:40px 20px 20px;min-height:400px}
 .milestone-scurve .ms-path{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.milestone-scurve .ms-path svg{width:100%;height:100%}
+.milestone-scurve .ms-path svg{width:100%;height:100%;overflow:visible}
+.milestone-scurve .ms-path-mobile{display:none}
 .ms-node{position:absolute;z-index:2;width:260px;transition:transform .3s ease,box-shadow .3s ease}
 .ms-node:hover{transform:translateY(-4px)!important}
 .ms-dot{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;position:absolute;left:50%;top:-20px;transform:translateX(-50%);z-index:3;box-shadow:0 4px 20px rgba(0,0,0,.4)}
@@ -197,7 +199,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .ms-node.ms-visible{animation:msNodeIn .6s cubic-bezier(.25,.46,.45,.94) forwards}
 @keyframes msNodeIn{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
 /* Path draw animation */
-.ms-path-line{stroke-dasharray:2000;stroke-dashoffset:2000;animation:msPathDraw 2s cubic-bezier(.4,0,.2,1) .5s forwards}
+.ms-path-line{stroke-dasharray:5000;stroke-dashoffset:5000;animation:msPathDraw 2.5s cubic-bezier(.4,0,.2,1) .5s forwards}
 @keyframes msPathDraw{to{stroke-dashoffset:0}}
 /* S-curve arrow markers */
 .ms-arrow-group{opacity:0;animation:msArrowIn .5s ease forwards}
@@ -314,26 +316,34 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 @media(max-width:1200px){.sg{grid-template-columns:1fr}.dg{grid-template-columns:1fr}.mst{display:none}}
 /* === Tablet === */
 @media(max-width:768px){
-.hd{padding:0 16px;height:60px}.hd h1{font-size:15px}.hd-logo{width:36px;height:36px;border-radius:11px}.hd-r{gap:8px;font-size:11px;flex-wrap:wrap;justify-content:flex-end}.hd-tag{padding:3px 10px;font-size:11px}.ubadge{padding:3px 10px;font-size:11px}
-.ct{padding:24px 16px}.hero{margin-bottom:36px}.hero h2{font-size:26px!important}.hero p{font-size:13px}.hero-line{width:120px}
+.hd{padding:0 16px;height:auto;min-height:60px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.hd h1{font-size:14px;white-space:nowrap}.hd-logo{width:36px;height:36px;border-radius:11px}.hd-r{gap:6px;font-size:11px;flex-wrap:wrap;justify-content:flex-end}.hd-tag{padding:3px 10px;font-size:10px}.ubadge{padding:3px 10px;font-size:10px}
+.hd-user-block{align-items:flex-end}
+#teamInfoBar{font-size:9px!important;gap:3px!important}
+#teamInfoBar span{font-size:9px!important;padding:1px 6px!important}
+.ct{padding:24px 16px}.hero{margin-bottom:36px}.hero h2{font-size:24px!important;white-space:nowrap}.hero p{font-size:13px;white-space:nowrap}.hero-line{width:120px}
 .sg{grid-template-columns:1fr}
 .i3d{width:100px;height:100px;border-radius:20px}.i3d .ie{font-size:22px}.ct-t{font-size:20px}.ct-s{font-size:13px}.pm{width:120px;height:120px}.pm svg{width:120px;height:120px}.pm .pp .pn{font-size:28px}.pm .pp .pl2{font-size:10px}
 .gs{padding:20px 16px;margin-bottom:40px}.gs-ta h3{font-size:18px}.gs-ta p{font-size:12px}.gcl{font-size:15px;letter-spacing:.5px;padding:8px 0 10px}.grl{width:180px;font-size:14px;padding-left:10px;padding-right:12px}.grl .sl{font-size:11px}
 .mhc{padding:16px 20px}.mi{gap:14px}.mn{width:44px;height:44px;border-radius:12px}.mn span{font-size:20px!important}.mm h3{font-size:18px}.mm p{font-size:13px}.mst-v{font-size:22px}
 .dc{padding:20px}.dc h4{font-size:16px}
-.sh2 h2{font-size:18px}.ms-node{width:220px}.ms-card{padding:22px 16px 16px}.ms-title{font-size:14px}.ms-date{font-size:11px}.ms-desc{font-size:11px}.ms-dot{width:34px;height:34px;font-size:14px;top:-17px}.milestone-scurve{padding:30px 10px 10px}
+.sh2 h2{font-size:18px;white-space:nowrap}.ms-node{width:220px}.ms-card{padding:22px 16px 16px}.ms-title{font-size:14px}.ms-date{font-size:11px}.ms-desc{font-size:11px}.ms-dot{width:34px;height:34px;font-size:14px;top:-17px}.milestone-scurve{padding:30px 10px 10px}
 .cp{width:100%;right:-100%}.cpH h3{font-size:17px}
 }
 /* === Mobile === */
 @media(max-width:480px){
-.hd{padding:0 12px;height:54px}.hd h1{font-size:14px}.hd-logo{width:32px;height:32px;border-radius:10px}.hd-r{gap:6px;font-size:10px}.hd-tag{padding:2px 8px;font-size:10px}.hd-tag svg{width:10px;height:10px}.ubadge{padding:2px 8px;font-size:10px}
-.ct{padding:16px 12px}.hero{margin-bottom:28px}.hero h2{font-size:22px!important}.hero p{font-size:12px}.hero-line{width:80px}.hero h2::before{inset:-15px -30px}
-.i3d{width:80px;height:80px;border-radius:16px}.i3d .ie{font-size:18px}.ct-t{font-size:17px}.ct-s{font-size:12px;margin-bottom:16px}.pm{width:96px;height:96px}.pm svg{width:96px;height:96px}.pm .pp .pn{font-size:22px}.pm .pp .pl2{font-size:9px}
-.gs{padding:16px 10px;margin-bottom:28px;border-radius:16px}.gs-ta h3{font-size:16px;gap:6px}.gs-ta p{font-size:11px}.gl{gap:12px}.gli{font-size:10px;gap:4px}.gld{width:8px;height:8px;border-radius:3px}.gcl{font-size:13px;letter-spacing:0;padding:6px 0 8px;gap:6px}.grl{width:130px;font-size:12px;padding-left:6px;padding-right:8px}.grl .sl{font-size:10px;margin-top:2px}.gb .bt{font-size:9px}.gb .bd{font-size:8px}
-.ms{margin-bottom:32px}.mhc{padding:14px 16px;border-radius:14px}.mi{gap:10px;flex-wrap:wrap}.mn{width:38px;height:38px;border-radius:10px}.mn span{font-size:17px!important}.mm h3{font-size:16px}.mm p{font-size:12px;margin-top:2px}.mst-v{font-size:18px}.mst-l{font-size:10px}.mst{gap:18px}
+.hd{padding:0 10px;height:auto;min-height:50px;padding-top:6px;padding-bottom:6px}.hd h1{font-size:12px;white-space:nowrap}.hd-logo{width:30px;height:30px;border-radius:9px}.hd-r{gap:4px;font-size:9px}.hd-tag{padding:2px 6px;font-size:9px}.hd-tag svg{width:9px;height:9px}.ubadge{padding:2px 7px;font-size:9px}
+.hd-user-block{align-items:flex-end}
+#teamInfoBar{font-size:8px!important;gap:2px!important}
+#teamInfoBar span{font-size:8px!important;padding:1px 5px!important}
+.ct{padding:16px 12px}.hero{margin-bottom:28px}.hero h2{font-size:18px!important;white-space:nowrap}.hero p{font-size:11px;white-space:nowrap}.hero-line{width:80px}.hero h2::before{inset:-15px -30px}
+.i3d{width:80px;height:80px;border-radius:16px}.i3d .ie{font-size:18px}.ct-t{font-size:15px;white-space:nowrap}.ct-s{font-size:11px;margin-bottom:16px}.pm{width:96px;height:96px}.pm svg{width:96px;height:96px}.pm .pp .pn{font-size:22px}.pm .pp .pl2{font-size:9px}
+.gs{padding:16px 10px;margin-bottom:28px;border-radius:16px}.gs-ta h3{font-size:14px;gap:6px;white-space:nowrap}.gs-ta p{font-size:11px}.gl{gap:12px}.gli{font-size:10px;gap:4px}.gld{width:8px;height:8px;border-radius:3px}.gcl{font-size:13px;letter-spacing:0;padding:6px 0 8px;gap:6px}.grl{width:130px;font-size:12px;padding-left:6px;padding-right:8px}.grl .sl{font-size:10px;margin-top:2px}.gb .bt{font-size:9px}.gb .bd{font-size:8px}
+.ms{margin-bottom:32px}.mhc{padding:14px 16px;border-radius:14px}.mi{gap:10px;flex-wrap:wrap}.mn{width:38px;height:38px;border-radius:10px}.mn span{font-size:17px!important}.mm h3{font-size:14px;white-space:nowrap}.mm p{font-size:11px;margin-top:2px}.mst-v{font-size:18px}.mst-l{font-size:10px}.mst{gap:18px}
 .dg{gap:14px}.dc{padding:16px;border-radius:14px}.dc h4{font-size:14px;gap:6px}.dc h4 span{font-size:10px!important}.dch{margin-bottom:10px}.dc p{font-size:12px}.pla{font-size:11px}
-.sh2 h2{font-size:16px;gap:8px}.sh2 h2 span{font-size:13px!important}
-.milestone-scurve{height:auto!important;min-height:auto;padding:20px 0 10px}.milestone-scurve .ms-path{display:none}
+.sh2 h2{font-size:14px;gap:8px;white-space:nowrap}.sh2 h2 span{font-size:12px!important}
+.milestone-scurve{height:auto!important;min-height:auto;padding:20px 10px 10px;overflow:visible}
+.milestone-scurve .ms-path{display:none}
+.milestone-scurve .ms-path-mobile{display:block;position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .ms-node{position:relative!important;left:auto!important;top:auto!important;width:100%!important;opacity:1!important;transform:none!important;margin-bottom:16px}.ms-node.ms-visible{animation:none}
 .ms-card{padding:18px 16px 14px;border-radius:12px}.ms-dot{width:30px;height:30px;font-size:12px;top:-15px}.ms-title{font-size:13px;margin-bottom:4px}.ms-date{font-size:10px;margin-top:6px}.ms-desc{font-size:11px;line-height:1.5}
 .cp{width:100%;right:-100%}.cpH{margin-bottom:16px;padding-bottom:14px}.cpH h3{font-size:16px}
@@ -385,7 +395,7 @@ onkeydown="if(event.key==='Enter')doNameLogin()">
 <div id="ioaAction"></div>
 </div>
 </div></div></div>
-<header class="hd"><div class="hd-c"><div class="hd-l"><div class="hd-logo"><span style="font-size:22px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))">🎬</span></div><h1>动捕专项整体进展</h1></div><div class="hd-r"><span class="hd-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span id="updateDate"></span></span><span style="color:var(--txt2)">PM 负责：<strong id="reporter" style="color:var(--txt)"></strong></span><span id="teamInfoBar" style="color:var(--txt2);font-size:12px"></span><span class="ubadge" id="userBadge" onclick="toggleCfg()" title="点击打开配置"></span></div></div></header>
+<header class="hd"><div class="hd-c"><div class="hd-l"><div class="hd-logo"><span style="font-size:22px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))">🎬</span></div><h1>动捕专项整体进展</h1></div><div class="hd-r"><span class="hd-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span id="updateDate"></span></span><span style="color:var(--txt2)">PM 负责：<strong id="reporter" style="color:var(--txt)"></strong></span><div class="hd-user-block"><span class="ubadge" id="userBadge" onclick="toggleCfg()" title="点击打开配置"></span><div id="teamInfoBar" style="color:var(--txt2);font-size:11px;display:flex;flex-wrap:wrap;gap:4px;margin-top:4px"></div></div></div></div></header>
 <main class="ct" id="main"></main>
 <footer class="ft"><p>动捕专项整体进展梳理 · 更新于 <span id="footerDate"></span></p><p style="opacity:.5">LightSpeed Mocap · Project Dashboard</p></footer>
 <button class="cb" id="cfgBtn" onclick="toggleCfg()"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg></button>
@@ -1398,12 +1408,12 @@ if(it.extraProgress)it.extraProgress.forEach(ep=>{h+=`<div class="pc" style="mar
 h+=`<div class="ts ain d4"><div class="sh2"><div class="shl" style="background:linear-gradient(180deg,var(--pri),var(--acc))"></div><h2><span style="font-size:15px">🏁</span> 关键里程碑</h2></div>`;
 /* S-curve milestone layout */
 const msLen=D.milestones.length;const msRows=Math.ceil(msLen/2);const rowH=160;const totalH=msRows*rowH+80;const containerW=1328;/* 1400-36*2 padding */
-h+=`<div class="milestone-scurve" style="height:${totalH}px"><div class="ms-path"><svg viewBox="0 0 ${containerW} ${totalH}" preserveAspectRatio="none">`;
+h+=`<div class="milestone-scurve" style="height:${totalH}px"><div class="ms-path"><svg viewBox="0 0 ${containerW} ${totalH}" preserveAspectRatio="xMidYMid meet" style="overflow:visible">`;
 /* Draw S-curve path */
 let pathD='';const nodePositions=[];const colW=containerW*0.35;const centerX=containerW/2;
-D.milestones.forEach((ms,idx)=>{const row=Math.floor(idx/2);const isLeft=idx%2===0;const x=isLeft?containerW*0.18:containerW*0.68;const y=60+row*rowH;nodePositions.push({x,y,isLeft});});
+D.milestones.forEach((ms,idx)=>{const row=Math.floor(idx/2);const isLeft=idx%2===0;const x=isLeft?containerW*0.18:containerW*0.82;const y=60+row*rowH;nodePositions.push({x,y,isLeft});});
 /* Generate smooth S-curve connecting ALL adjacent nodes */
-if(nodePositions.length>1){pathD='M'+nodePositions[0].x+' '+(nodePositions[0].y+20);for(let i=1;i<nodePositions.length;i++){const prev=nodePositions[i-1],curr=nodePositions[i];const py=prev.y+20,cy=curr.y+20;const dy=cy-py;if(prev.isLeft!==curr.isLeft){/* Left-to-right or right-to-left: horizontal S-curve */const cpOff=Math.max(Math.abs(dy)*0.5,40);pathD+=` C${prev.x} ${py+cpOff},${curr.x} ${cy-cpOff},${curr.x} ${cy}`}else{/* Same side (down): route through center then back */const cpx=centerX;const cpOff=Math.max(Math.abs(dy)*0.4,30);pathD+=` C${cpx} ${py+cpOff},${cpx} ${cy-cpOff},${curr.x} ${cy}`}}}
+if(nodePositions.length>1){pathD='M'+nodePositions[0].x+' '+(nodePositions[0].y+20);for(let i=1;i<nodePositions.length;i++){const prev=nodePositions[i-1],curr=nodePositions[i];const py=prev.y+20,cy=curr.y+20;const dy=cy-py;if(prev.isLeft!==curr.isLeft){/* Left-to-right or right-to-left: horizontal S-curve */const cpOff=Math.max(Math.abs(dy)*0.55,50);pathD+=` C${prev.x} ${py+cpOff},${curr.x} ${cy-cpOff},${curr.x} ${cy}`}else{/* Same side (down): route through center then back */const cpx=centerX;const cpOff=Math.max(Math.abs(dy)*0.45,40);pathD+=` C${cpx} ${py+cpOff},${cpx} ${cy-cpOff},${curr.x} ${cy}`}}}
 h+=`<path d="${pathD}" fill="none" stroke="url(#msGrad)" stroke-width="3" stroke-linecap="round" class="ms-path-line" opacity="0.6"/>`;
 /* Add arrow markers along the S-curve path between node pairs */
 if(nodePositions.length>1){for(let i=0;i<nodePositions.length-1;i++){const p0=nodePositions[i],p1=nodePositions[i+1];
@@ -1437,7 +1447,7 @@ h+=`<div class="ms-node ${ms.status}" style="left:${pos.x-130}px;top:${pos.y}px"
 h+='</div></div>';
 c.innerHTML=h;document.getElementById('updateDate').textContent=fdf(D.project.updateDate);document.getElementById('footerDate').textContent=fdf(D.project.updateDate);document.getElementById('reporter').textContent=D.project.reporter;
 /* Render team info bar */
-const tib=document.getElementById('teamInfoBar');if(tib){const parts=[];if(D.project.animLead)parts.push('动画负责人：'+D.project.animLead);if(D.project.po)parts.push('PO：'+D.project.po);if(D.project.tl)parts.push('TL：'+D.project.tl);tib.innerHTML=parts.length?parts.map(p=>'<span style="margin-left:10px;padding:4px 10px;background:rgba(255,255,255,.04);border:1px solid var(--bdr);border-radius:12px;font-size:11px;color:var(--txt2)">'+p+'</span>').join(''):''}
+const tib=document.getElementById('teamInfoBar');if(tib){const parts=[];if(D.project.animLead)parts.push('动画负责人：'+D.project.animLead);if(D.project.po)parts.push('PO：'+D.project.po);if(D.project.tl)parts.push('TL：'+D.project.tl);tib.innerHTML=parts.length?parts.map(p=>'<span style="padding:2px 8px;background:rgba(255,255,255,.04);border:1px solid var(--bdr);border-radius:10px;font-size:10px;color:var(--txt2);white-space:nowrap">'+p+'</span>').join(''):''}
 document.getElementById('cfgBtn').classList[canE()?'remove':'add']('hidden');
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('ain')}),{threshold:.1});document.querySelectorAll('.ms,.dc,.ts').forEach(el=>obs.observe(el));
 /* === Card sequential reveal + arrow animation === */
@@ -1491,7 +1501,83 @@ function initMilestoneAnimation(){
 const nodes=document.querySelectorAll('.ms-node');
 if(!nodes.length)return;
 const msObs=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target;const idx=parseInt(el.dataset.msIdx)||0;el.style.animationDelay=(idx*0.15)+'s';el.classList.add('ms-visible');msObs.unobserve(el)}})},{threshold:.1});
-nodes.forEach(n=>msObs.observe(n))}
+nodes.forEach(n=>msObs.observe(n));
+/* Generate mobile vertical S-curve if on narrow screen */
+if(window.innerWidth<=480){initMobileMilestoneArrows()}}
+
+function initMobileMilestoneArrows(){
+const container=document.querySelector('.milestone-scurve');
+if(!container)return;
+const nodes=container.querySelectorAll('.ms-node');
+if(nodes.length<2)return;
+/* Remove old mobile svg if exists */
+const oldSvg=container.querySelector('.ms-path-mobile');
+if(oldSvg)oldSvg.remove();
+/* Wait for DOM layout */
+requestAnimationFrame(()=>{
+const containerRect=container.getBoundingClientRect();
+const svgNS='http://www.w3.org/2000/svg';
+const svg=document.createElementNS(svgNS,'svg');
+svg.classList.add('ms-path-mobile');
+svg.setAttribute('width','100%');
+svg.setAttribute('height','100%');
+svg.style.position='absolute';svg.style.top='0';svg.style.left='0';
+svg.style.width='100%';svg.style.height='100%';
+svg.style.zIndex='0';svg.style.pointerEvents='none';svg.style.overflow='visible';
+const totalW=containerRect.width;const totalH=containerRect.height;
+svg.setAttribute('viewBox',`0 0 ${totalW} ${totalH}`);
+svg.setAttribute('preserveAspectRatio','none');
+/* Build path connecting each node pair */
+let pathD='';
+const nodePositions=[];
+nodes.forEach(n=>{
+const r=n.getBoundingClientRect();
+const cx=r.left-containerRect.left+r.width/2;
+const cy=r.top-containerRect.top+15;/* near dot center */
+nodePositions.push({x:cx,y:cy})});
+if(nodePositions.length>1){
+pathD='M'+nodePositions[0].x+' '+nodePositions[0].y;
+for(let i=1;i<nodePositions.length;i++){
+const p=nodePositions[i-1],c=nodePositions[i];
+const midY=(p.y+c.y)/2;
+/* Subtle S-curve: wiggle left-right */
+const off=(i%2===0)?-30:30;
+pathD+=` C${p.x+off} ${midY},${c.x-off} ${midY},${c.x} ${c.y}`}}
+/* Draw gradient path */
+const defs=document.createElementNS(svgNS,'defs');
+const grad=document.createElementNS(svgNS,'linearGradient');
+grad.id='msMobileGrad';grad.setAttribute('x1','0%');grad.setAttribute('y1','0%');
+grad.setAttribute('x2','0%');grad.setAttribute('y2','100%');
+['#00C48C','#0066CC','#6C5CE7','#FF8C00'].forEach((c,i)=>{
+const s=document.createElementNS(svgNS,'stop');
+s.setAttribute('offset',(i*33)+'%');s.setAttribute('stop-color',c);grad.appendChild(s)});
+defs.appendChild(grad);svg.appendChild(defs);
+const path=document.createElementNS(svgNS,'path');
+path.setAttribute('d',pathD);path.setAttribute('fill','none');
+path.setAttribute('stroke','url(#msMobileGrad)');
+path.setAttribute('stroke-width','2.5');path.setAttribute('stroke-linecap','round');
+path.setAttribute('opacity','0.5');
+/* Animate path drawing */
+const pathLen=path.getTotalLength?path.getTotalLength():2000;
+path.style.strokeDasharray=pathLen;path.style.strokeDashoffset=pathLen;
+path.style.animation=`msPathDraw 2s cubic-bezier(.4,0,.2,1) .5s forwards`;
+svg.appendChild(path);
+/* Add small arrow markers between nodes */
+for(let i=0;i<nodePositions.length-1;i++){
+const p0=nodePositions[i],p1=nodePositions[i+1];
+const mx=(p0.x+p1.x)/2,my=(p0.y+p1.y)/2;
+const dx=p1.x-p0.x,dy=p1.y-p0.y;
+const ang=Math.atan2(dy,dx)*180/Math.PI;
+const g=document.createElementNS(svgNS,'g');
+g.setAttribute('transform',`translate(${mx},${my}) rotate(${ang})`);
+g.style.opacity='0';g.style.animation=`msArrowIn .5s ease ${(0.5+i*0.3).toFixed(1)}s forwards`;
+const arrow=document.createElementNS(svgNS,'path');
+arrow.setAttribute('d','M-6,-4 L2,0 L-6,4');
+arrow.setAttribute('fill','none');arrow.setAttribute('stroke','rgba(0,163,224,.5)');
+arrow.setAttribute('stroke-width','2');arrow.setAttribute('stroke-linecap','round');
+arrow.setAttribute('stroke-linejoin','round');
+g.appendChild(arrow);svg.appendChild(g)}
+container.appendChild(svg)})}
 
 function scrollToMod(id){const el=document.getElementById('mod-'+id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
 
