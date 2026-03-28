@@ -1289,7 +1289,7 @@ function doLogin(){ioaLogin()}
 function logout(){AU.cur=null;localStorage.removeItem('mocap_cur');IOA_CUR_ID=null;localStorage.removeItem('mocap_ioa_id');document.getElementById('loginOv').style.display='flex';document.getElementById('ioaLoginForm').style.display='block';document.getElementById('ioaResult').style.display='none';document.getElementById('loginNameInput').value='';document.getElementById('loginError').style.display='none';setTimeout(()=>{document.getElementById('loginNameInput').focus()},300)}
 function uBadge(){const b=document.getElementById('userBadge');if(!AU.cur){b.textContent='';b.className='ubadge';return}const r=gR(AU.cur);const dn=getDisplayName(AU.cur);b.className='ubadge '+r;b.innerHTML=RI[r]+' '+dn+' <span class="rtag '+r+'">'+RL[r].l+'</span>'}
 /* Auto-login on page load */
-(async function(){let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){AU.cur=s;document.getElementById('loginOv').style.display='none';uBadge()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
+(async function(){let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){AU.cur=s;document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
 
 /* ===== ICONS ===== */
 const IC={hardware:{card:'🏗️',sec:'🏗️',items:{hw1:'🏢',hw2:'📡',def:'⚙️'}},software:{card:'💻',sec:'💻',items:{sw1:'🖥️',sw2:'📅',def:'🔧'}},operations:{card:'🎬',sec:'🎬',items:{ops1:'🎥',def:'📢'}}};
