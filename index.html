@@ -380,7 +380,8 @@ let AR=[];
 try{const s=localStorage.getItem('mocap_access_req');if(s)AR=JSON.parse(s)}catch(e){}
 function sAuth(){localStorage.setItem('mocap_auth_v2',JSON.stringify({users:AU.users}))}
 function sReq(){localStorage.setItem('mocap_access_req',JSON.stringify(AR))}
-function gR(n){return AU.users[n]?.role||null}
+let _hashCache={};async function _cacheHash(n){if(!_hashCache[n])_hashCache[n]=await sha256(n.toLowerCase());return _hashCache[n]}
+function gR(n){if(AU.users[n]?.role)return AU.users[n].role;if(_hashCache[n]&&IOA_USERS_HASH[_hashCache[n]])return'viewer';return null}
 function gRL(n){const r=gR(n);return r?RL[r].lv:0}
 function canE(){return gRL(AU.cur)>=2}
 function canM(){return gRL(AU.cur)>=3}
@@ -1177,7 +1178,7 @@ const savedIOA=localStorage.getItem('mocap_ioa_id');
 const loginForm=document.getElementById('ioaLoginForm');
 const ioaResult=document.getElementById('ioaResult');
 if(savedIOA){
-const hash=await sha256(savedIOA);
+const hash=await sha256(savedIOA);_hashCache[savedIOA]=hash;
 if(IOA_USERS_HASH[hash]){
 const info=decryptUser(IOA_USERS_HASH[hash],savedIOA);
 if(info){RESOLVED_USER={...info,_uid:savedIOA};IOA_CUR_ID=savedIOA;loginForm.style.display='none';ioaResult.style.display='block';showIOAResult();if(savedIOA==='rambokou'){setTimeout(()=>ioaLogin(),600)}return}}}
@@ -1191,7 +1192,7 @@ const loginForm=document.getElementById('ioaLoginForm');
 const ioaResult=document.getElementById('ioaResult');
 const name=inp.value.trim().toLowerCase();
 if(!name){errEl.style.display='block';errEl.textContent='请输入您的企业微信英文名';inp.focus();return}
-const hash=await sha256(name);
+const hash=await sha256(name);_hashCache[name]=hash;
 if(!IOA_USERS_HASH[hash]){
 errEl.style.display='block';
 errEl.innerHTML='❌ 未在企业微信通讯录中找到「'+inp.value.trim()+'」<br>请确认您输入的是正确的企业微信英文名（如 rambokou）';
@@ -1288,7 +1289,7 @@ function doLogin(){ioaLogin()}
 function logout(){AU.cur=null;localStorage.removeItem('mocap_cur');IOA_CUR_ID=null;localStorage.removeItem('mocap_ioa_id');document.getElementById('loginOv').style.display='flex';document.getElementById('ioaLoginForm').style.display='block';document.getElementById('ioaResult').style.display='none';document.getElementById('loginNameInput').value='';document.getElementById('loginError').style.display='none';setTimeout(()=>{document.getElementById('loginNameInput').focus()},300)}
 function uBadge(){const b=document.getElementById('userBadge');if(!AU.cur){b.textContent='';b.className='ubadge';return}const r=gR(AU.cur);const dn=getDisplayName(AU.cur);b.className='ubadge '+r;b.innerHTML=RI[r]+' '+dn+' <span class="rtag '+r+'">'+RL[r].l+'</span>'}
 /* Auto-login on page load */
-(async function(){let s=localStorage.getItem('mocap_cur');if(s){if(gR(s)){AU.cur=s;document.getElementById('loginOv').style.display='none';uBadge()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
+(async function(){let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){AU.cur=s;document.getElementById('loginOv').style.display='none';uBadge()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
 
 /* ===== ICONS ===== */
 const IC={hardware:{card:'🏗️',sec:'🏗️',items:{hw1:'🏢',hw2:'📡',def:'⚙️'}},software:{card:'💻',sec:'💻',items:{sw1:'🖥️',sw2:'📅',def:'🔧'}},operations:{card:'🎬',sec:'🎬',items:{ops1:'🎥',def:'📢'}}};
