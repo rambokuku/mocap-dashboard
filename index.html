@@ -374,6 +374,17 @@ function xorDecrypt(b64,key){const keyBytes=new TextEncoder().encode(key.toLower
 function decryptUser(entry,englishName){try{return JSON.parse(xorDecrypt(entry._e,englishName))}catch(e){return null}}
 let RESOLVED_USER=null;
 function getDisplayName(uid){if(RESOLVED_USER&&RESOLVED_USER._uid===uid)return RESOLVED_USER.name;return uid}
+
+/* ===== DEVICE BINDING for superadmin ===== */
+const DEVICE_KEY_NAME='mocap_device_bound';
+/* Hash of the device authorization password (only rambokou knows it) */
+const SA_AUTH_HASH='d0b7384a729bc02f3b018deb458855164f2297decaee724d1b514254c41e6b02';
+/* Check if current device is already authorized for superadmin */
+function isDeviceAuthorized(){return localStorage.getItem(DEVICE_KEY_NAME)==='1'}
+/* Verify superadmin device — returns true if allowed, false if blocked */
+async function verifySuperadminDevice(uid){if(gR(uid)!=='superadmin')return true;return isDeviceAuthorized()}
+/* Verify device auth password and bind device if correct */
+async function verifyDeviceAuthCode(code){const h=await sha256(code);if(h===SA_AUTH_HASH){localStorage.setItem(DEVICE_KEY_NAME,'1');return true}return false}
 try{const s=localStorage.getItem('mocap_auth_v2');if(s){const p=JSON.parse(s);AU.users=p.users||AU.users}}catch(e){}
 /* Access request queue */
 let AR=[];
@@ -1277,9 +1288,12 @@ document.getElementById('loginError').style.display='none';
 setTimeout(()=>{document.getElementById('loginNameInput').focus()},200);
 }
 function pickIOAUser(id){doNameLogin()}
-function ioaLogin(){const user=RESOLVED_USER;if(!user||user._uid!==IOA_CUR_ID)return;
+async function submitDeviceAuth(){const inp=document.getElementById('deviceAuthInput');const errEl=document.getElementById('deviceAuthError');const code=inp.value.trim();if(!code){errEl.style.display='block';errEl.textContent='请输入设备授权码';inp.focus();return}const ok=await verifyDeviceAuthCode(code);if(ok){errEl.style.display='none';showToast('✅ 设备授权成功，正在登录...');await ioaLogin()}else{errEl.style.display='block';errEl.textContent='❌ 授权码错误，请重试';inp.value='';inp.focus()}}
+async function ioaLogin(){const user=RESOLVED_USER;if(!user||user._uid!==IOA_CUR_ID)return;
 const uid=IOA_CUR_ID;
 if(!gR(uid)){showToast('您没有访问权限',1);return}
+/* Superadmin device binding check */
+if(gR(uid)==='superadmin'){const bound=await verifySuperadminDevice(uid);if(!bound){const statusEl=document.getElementById('ioaStatus');if(statusEl){statusEl.className='ioa-status pending';statusEl.innerHTML='🔐 需要设备授权<br><span style="font-size:12px;font-weight:400;opacity:.7">超级管理员账号需要验证设备授权码</span>'}const actionEl=document.getElementById('ioaAction');if(actionEl){actionEl.innerHTML='<div style="background:rgba(255,140,0,.04);border:1px solid rgba(255,140,0,.15);border-radius:12px;padding:20px;margin-top:12px"><div style="font-size:14px;margin-bottom:12px;color:var(--txt)">🔑 输入设备授权码</div><div style="font-size:12px;color:var(--txt2);margin-bottom:16px;line-height:1.6">首次在此设备登录超级管理员账号<br>请输入您的专属授权码完成设备绑定</div><input type="password" id="deviceAuthInput" placeholder="请输入设备授权码" style="width:100%;padding:12px 14px;border:1px solid var(--bdr);border-radius:10px;font-size:14px;font-family:inherit;font-weight:700;background:rgba(255,255,255,.03);color:var(--txt);box-sizing:border-box;margin-bottom:4px" autocomplete="off" onkeydown="if(event.key===\'Enter\')submitDeviceAuth()"><div id="deviceAuthError" style="display:none;font-size:12px;color:var(--err);margin-top:6px;margin-bottom:6px"></div><button class="btn btn-p" style="width:100%;margin-top:10px" onclick="submitDeviceAuth()">验证并绑定此设备</button></div><div style="text-align:center;margin-top:16px"><button style="background:none;border:none;color:var(--txt3);font-size:12px;cursor:pointer;font-family:inherit;font-weight:700;text-decoration:underline" onclick="switchIOAUser()">切换其他账号</button></div>'}setTimeout(()=>{const inp=document.getElementById('deviceAuthInput');if(inp)inp.focus()},200);return}}
 AU.cur=uid;
 localStorage.setItem('mocap_cur',uid);
 document.getElementById('loginOv').style.display='none';
@@ -1289,7 +1303,7 @@ function doLogin(){ioaLogin()}
 function logout(){AU.cur=null;localStorage.removeItem('mocap_cur');IOA_CUR_ID=null;localStorage.removeItem('mocap_ioa_id');document.getElementById('loginOv').style.display='flex';document.getElementById('ioaLoginForm').style.display='block';document.getElementById('ioaResult').style.display='none';document.getElementById('loginNameInput').value='';document.getElementById('loginError').style.display='none';setTimeout(()=>{document.getElementById('loginNameInput').focus()},300)}
 function uBadge(){const b=document.getElementById('userBadge');if(!AU.cur){b.textContent='';b.className='ubadge';return}const r=gR(AU.cur);const dn=getDisplayName(AU.cur);b.className='ubadge '+r;b.innerHTML=RI[r]+' '+dn+' <span class="rtag '+r+'">'+RL[r].l+'</span>'}
 /* Auto-login on page load */
-(async function(){let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){AU.cur=s;document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
+(async function(){let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){/* Superadmin device check on session restore */if(gR(s)==='superadmin'){const devOk=await verifySuperadminDevice(s);if(!devOk){localStorage.removeItem('mocap_cur');localStorage.removeItem('mocap_ioa_id');await startIOAAuth();return}}AU.cur=s;document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
 
 /* ===== ICONS ===== */
 const IC={hardware:{card:'🏗️',sec:'🏗️',items:{hw1:'🏢',hw2:'📡',def:'⚙️'}},software:{card:'💻',sec:'💻',items:{sw1:'🖥️',sw2:'📅',def:'🔧'}},operations:{card:'🎬',sec:'🎬',items:{ops1:'🎥',def:'📢'}}};
