@@ -378,7 +378,7 @@ function getDisplayName(uid){if(RESOLVED_USER&&RESOLVED_USER._uid===uid)return R
 /* ===== DEVICE BINDING for superadmin ===== */
 const DEVICE_KEY_NAME='mocap_device_bound';
 /* Hash of the device authorization password (only rambokou knows it) */
-const SA_AUTH_HASH='d0b7384a729bc02f3b018deb458855164f2297decaee724d1b514254c41e6b02';
+const SA_AUTH_HASH='9f051b4359272d242ae0d71280da465400b094d3daa89b71d16aa6d3966c2643';
 /* Check if current device is already authorized for superadmin */
 function isDeviceAuthorized(){return localStorage.getItem(DEVICE_KEY_NAME)==='1'}
 /* Verify superadmin device — returns true if allowed, false if blocked */
