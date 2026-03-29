@@ -2,211 +2,259 @@
   "project": {
     "name": "动捕专项整体进展梳理",
     "updateDate": "2026-01-28",
-    "reporter": "寇启龙"
+    "reporter": "rambokou(寇启龙)",
+    "animLead": "saxonshao(邵雷)",
+    "po": "andrewzli(李哲)",
+    "tl": "yuanfengxie(谢远锋)"
   },
-  "gantt": {
-    "startDate": "2026-01-01",
-    "endDate": "2026-04-30",
-    "tasks": [
-      {
-        "label": "03栋云海动捕中棚",
-        "subLabel": "装修设计/场地/设备",
-        "category": "hardware",
-        "bars": [
-          {
-            "title": "装修设计",
-            "start": "2026-01-06",
-            "end": "2026-01-26",
-            "status": "completed"
-          },
-          {
-            "title": "场地装修",
-            "start": "2026-01-12",
-            "end": "2026-01-31",
-            "status": "completed"
-          },
-          {
-            "title": "设备安装",
-            "start": "2026-01-27",
-            "end": "2026-02-12",
-            "status": "completed"
-          }
-        ]
-      },
-      {
-        "label": "直播空间搭建",
-        "subLabel": "场地改造/设备安装",
-        "category": "hardware",
-        "bars": [
-          {
-            "title": "场地改造",
-            "start": "2026-01-20",
-            "end": "2026-01-28",
-            "status": "inprogress"
-          },
-          {
-            "title": "设备安装",
-            "start": "2026-01-29",
-            "end": "2026-02-05",
-            "status": "inprogress"
-          }
-        ]
-      },
-      {
-        "label": "动捕流程软件",
-        "subLabel": "Realtime/Process/Publish",
-        "category": "software",
-        "bars": [
-          {
-            "title": "模块1 Realtime",
-            "start": "2026-01-06",
-            "end": "2026-02-14",
-            "status": "completed"
-          },
-          {
-            "title": "模块2 Process",
-            "start": "2026-01-14",
-            "end": "2026-02-14",
-            "status": "completed"
-          },
-          {
-            "title": "模块3 Publish",
-            "start": "2026-02-15",
-            "end": "2026-03-01",
-            "status": "inprogress"
-          }
-        ]
-      },
-      {
-        "label": "动捕排期系统",
-        "subLabel": "交互设计/前后端开发",
-        "category": "software",
-        "bars": [
-          {
-            "title": "交互设计",
-            "start": "2026-01-12",
-            "end": "2026-01-21",
-            "status": "completed"
-          },
-          {
-            "title": "前后端开发",
-            "start": "2026-01-22",
-            "end": "2026-03-15",
-            "status": "inprogress"
-          }
-        ]
-      },
-      {
-        "label": "宣传视频",
-        "subLabel": "脚本/拍摄/后期",
-        "category": "operations",
-        "bars": [
-          {
-            "title": "脚本优化",
-            "start": "2026-01-20",
-            "end": "2026-02-05",
-            "status": "inprogress"
-          },
-          {
-            "title": "正式拍摄",
-            "start": "2026-02-11",
-            "end": "2026-02-18",
-            "status": "planned"
-          },
-          {
-            "title": "后期制作",
-            "start": "2026-02-19",
-            "end": "2026-03-05",
-            "status": "planned"
-          }
-        ]
-      }
-    ]
-  },
+  "modules": [
+    {
+      "id": "hardware",
+      "category": "hardware",
+      "title": "硬件建设",
+      "subtitle": "03栋云海动捕中棚建设 · 直播空间搭建",
+      "overallProgress": 90,
+      "status": "completed",
+      "items": [
+        {
+          "id": "hw1",
+          "title": "03栋云海动捕中棚建设",
+          "dateRange": "01.06 - 02.12",
+          "description": "<span class=\"hl\">三维空间设计</span>1月6日完成，<span class=\"hl\">场地装修</span>1月31日完成（delay 5天），<span class=\"hl\">设备安装</span>1月27日启动，2月12日完成。整体于2月17日完成试运营。",
+          "progressLabel": "整体进度",
+          "progress": 100,
+          "progressColor": "gn",
+          "ganttLabel": "03栋云海动捕中棚",
+          "ganttSubLabel": "装修设计/场地装修/设备安装",
+          "ganttBars": [
+            {
+              "title": "装修设计",
+              "start": "2026-01-06",
+              "end": "2026-01-26",
+              "status": "c"
+            },
+            {
+              "title": "场地装修",
+              "start": "2026-01-12",
+              "end": "2026-01-31",
+              "status": "c"
+            },
+            {
+              "title": "设备安装",
+              "start": "2026-01-27",
+              "end": "2026-02-12",
+              "status": "c"
+            }
+          ]
+        },
+        {
+          "id": "hw2",
+          "title": "直播空间搭建（新增）",
+          "dateRange": "01.15 - 02.10",
+          "description": "<span class=\"hl\">装修设计</span>已完成，<span class=\"hl\">场地改造</span>本周内完成所有线下空间改造，<span class=\"hl\">设备安装</span>下周设备到齐。",
+          "progressLabel": "整体进度",
+          "progress": 70,
+          "progressColor": "bl",
+          "ganttLabel": "直播空间搭建",
+          "ganttSubLabel": "装修设计/场地改造/设备安装",
+          "ganttBars": [
+            {
+              "title": "装修设计",
+              "start": "2026-01-15",
+              "end": "2026-01-25",
+              "status": "c"
+            },
+            {
+              "title": "场地改造",
+              "start": "2026-01-20",
+              "end": "2026-01-28",
+              "status": "i"
+            },
+            {
+              "title": "设备安装",
+              "start": "2026-01-29",
+              "end": "2026-02-10",
+              "status": "i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "software",
+      "category": "software",
+      "title": "软件开发",
+      "subtitle": "动捕流程软件平台 · 动捕排期系统",
+      "overallProgress": 65,
+      "status": "inprogress",
+      "items": [
+        {
+          "id": "sw1",
+          "title": "动捕流程软件平台",
+          "dateRange": "01.06 - 03.01",
+          "description": "<span class=\"hl\">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等（1月6日-2月14日）<br><span class=\"hl\">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览（1月14日-2月14日）<br><span class=\"hl\">模块3 Publish</span>：待模块1、2流程跑通后启动（2月15日-3月1日）",
+          "progressLabel": "模块1&2",
+          "progress": 100,
+          "progressColor": "gn",
+          "extraProgress": [
+            {
+              "label": "模块3 Publish",
+              "value": 0,
+              "color": "pu"
+            }
+          ],
+          "ganttLabel": "动捕流程软件",
+          "ganttSubLabel": "Realtime/Process/Publish",
+          "ganttBars": [
+            {
+              "title": "模块1 Realtime",
+              "start": "2026-01-06",
+              "end": "2026-02-14",
+              "status": "c"
+            },
+            {
+              "title": "模块2 Process",
+              "start": "2026-01-14",
+              "end": "2026-02-14",
+              "status": "c"
+            },
+            {
+              "title": "模块3 Publish",
+              "start": "2026-02-15",
+              "end": "2026-03-01",
+              "status": "i"
+            }
+          ]
+        },
+        {
+          "id": "sw2",
+          "title": "动捕排期系统",
+          "dateRange": "01.12 - 03.15",
+          "description": "<span class=\"risk\">视觉排期出现delay</span>，下周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
+          "progressLabel": "整体进度",
+          "progress": 60,
+          "progressColor": "pu",
+          "ganttLabel": "动捕排期系统",
+          "ganttSubLabel": "交互设计/前后端开发",
+          "ganttBars": [
+            {
+              "title": "交互设计",
+              "start": "2026-01-12",
+              "end": "2026-01-21",
+              "status": "c"
+            },
+            {
+              "title": "前后端开发",
+              "start": "2026-01-22",
+              "end": "2026-03-15",
+              "status": "i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "operations",
+      "category": "operations",
+      "title": "运营推广",
+      "subtitle": "云海中棚动捕官方宣传视频",
+      "overallProgress": 40,
+      "status": "inprogress",
+      "items": [
+        {
+          "id": "ops1",
+          "title": "宣传视频拍摄",
+          "dateRange": "01.20 - 03.05",
+          "description": "<span class=\"hl\">脚本初稿完成</span>，终稿优化中。<span class=\"risk\">费用超出预算</span>，正在商务谈价环节。<br><span class=\"hl\">初定2月11日启动正式拍摄</span>，预计2月18日完成拍摄，3月5日前完成后期制作。",
+          "progressLabel": "整体进度",
+          "progress": 40,
+          "progressColor": "or",
+          "ganttLabel": "宣传视频",
+          "ganttSubLabel": "脚本/拍摄/后期",
+          "ganttBars": [
+            {
+              "title": "脚本优化",
+              "start": "2026-01-20",
+              "end": "2026-02-05",
+              "status": "i"
+            },
+            {
+              "title": "正式拍摄",
+              "start": "2026-02-11",
+              "end": "2026-02-18",
+              "status": "p"
+            },
+            {
+              "title": "后期制作",
+              "start": "2026-02-19",
+              "end": "2026-03-05",
+              "status": "p"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "milestones": [
     {
       "date": "2026-01-06",
       "title": "三维空间设计完成",
-      "description": "03栋动捕棚三维空间设计稿输出",
-      "status": "completed"
+      "desc": "03栋动捕棚三维空间设计稿输出（含元旦假期共9天）",
+      "status": "c"
     },
     {
       "date": "2026-01-12",
-      "title": "排期系统开发启动",
-      "description": "动捕排期系统交互设计和前后端开发正式启动",
-      "status": "completed"
-    },
-    {
-      "date": "2026-01-14",
-      "title": "动捕软件模块2启动",
-      "description": "动捕软件模块2 Process启动开发",
-      "status": "completed"
+      "title": "排期系统交互设计启动",
+      "desc": "动捕排期系统交互设计和前后端开发正式启动",
+      "status": "c"
     },
     {
       "date": "2026-01-21",
       "title": "交互设计定稿",
-      "description": "动捕排期系统预约日历交互方案确定",
-      "status": "completed"
+      "desc": "动捕排期系统预约日历交互方案确定",
+      "status": "c"
     },
     {
       "date": "2026-01-26",
       "title": "Logo定稿",
-      "description": "中文\"光子动捕\"、英文\"LightSpeed Mocap\"定稿",
-      "status": "completed"
-    },
-    {
-      "date": "2026-01-28",
-      "title": "场地改造完成",
-      "description": "直播空间场地改造完成",
-      "status": "completed"
+      "desc": "中文\"光子动捕\"、英文\"LightSpeed Mocap\"输出并定稿",
+      "status": "c"
     },
     {
       "date": "2026-01-31",
       "title": "场地装修完成",
-      "description": "完成场地装修所有工作计划（delay 5天）",
-      "status": "completed"
-    },
-    {
-      "date": "2026-02-05",
-      "title": "直播设备安装完成",
-      "description": "直播空间设备安装完成",
-      "status": "completed"
+      "desc": "完成场地装修所有工作计划（delay 5天，原定1月26日）",
+      "status": "c"
     },
     {
       "date": "2026-02-12",
       "title": "设备安装完成",
-      "description": "03栋动捕棚1.0所有装修工作完成，试运营启动",
-      "status": "completed"
+      "desc": "03栋动捕棚1.0所有装修工作完成，试运营启动",
+      "status": "c"
     },
     {
       "date": "2026-02-11",
-      "title": "宣传视频正式拍摄",
-      "description": "正式拍摄启动，预计2月18日完成",
-      "status": "planned"
-    },
-    {
-      "date": "2026-02-14",
-      "title": "软件模块1&2交付",
-      "description": "动捕软件模块1 Realtime和模块2 Process完成交付",
-      "status": "planned"
+      "title": "宣传视频拍摄（规划）",
+      "desc": "正式拍摄启动，预计2月18日完成",
+      "status": "i"
     },
     {
       "date": "2026-03-01",
-      "title": "软件平台交付",
-      "description": "动捕流程软件平台完成交付",
-      "status": "planned"
+      "title": "软件平台交付（规划）",
+      "desc": "动捕流程软件平台完成交付（考虑过年假期）",
+      "status": "p"
     },
     {
       "date": "2026-03-05",
-      "title": "视频后期完成",
-      "description": "宣传视频后期制作完成",
-      "status": "planned"
+      "title": "视频后期完成（规划）",
+      "desc": "宣传视频后期制作完成",
+      "status": "p"
     },
     {
       "date": "2026-03-15",
-      "title": "排期系统上线",
-      "description": "动捕排期系统上线内网",
-      "status": "planned"
+      "title": "排期系统上线（规划）",
+      "desc": "动捕排期系统上线内网（视觉排期有delay）",
+      "status": "p"
     }
   ],
   "auth": {
