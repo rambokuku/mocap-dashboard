@@ -290,6 +290,11 @@
         "role": "admin",
         "added": "2026-03-29",
         "displayName": "saxonshao"
+      },
+      "wasabiwang": {
+        "role": "viewer",
+        "added": "2026-03-29",
+        "displayName": "wasabiwang"
       }
     }
   },
