@@ -210,13 +210,13 @@
     }
   ],
   "auth": {
-    "users": [
-      {
-        "name": "rambokou",
-        "cname": "寇启龙",
-        "role": "superadmin"
+    "users": {
+      "rambokou": {
+        "role": "superadmin",
+        "added": "2026-01-01",
+        "displayName": "寇启龙"
       }
-    ]
+    }
   },
   "accessRequests": []
 }
