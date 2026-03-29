@@ -42,8 +42,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .hd h1{font-size:18px;background:linear-gradient(90deg,#fff,rgba(255,255,255,.7));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hd-r{display:flex;align-items:flex-start;gap:14px;font-size:13px;color:var(--txt2)}
 .hd-info-row{display:flex;align-items:center;gap:14px}
-.hd-user-col{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
-.hd-team-bar{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end;color:var(--txt2);font-size:10px}
+.hd-team-bar{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;padding:6px 32px 4px;color:var(--txt2);font-size:10px}
 .hd-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(0,102,204,.12);border:1px solid rgba(0,102,204,.2);color:var(--acc2);border-radius:20px;font-size:12px}
 .hd-tag svg{width:12px;height:12px}
 .ubadge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;font-size:12px;cursor:pointer;transition:var(--tr)}
@@ -343,7 +342,6 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 /* === Tablet === */
 @media(max-width:768px){
 .hd{padding:0 16px;height:auto;min-height:60px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.hd h1{font-size:14px;white-space:nowrap}.hd-logo{width:36px;height:36px;border-radius:11px}.hd-r{gap:6px;font-size:11px;flex-wrap:wrap;justify-content:flex-end}.hd-tag{padding:3px 10px;font-size:10px}.ubadge{padding:3px 10px;font-size:10px}
-.hd-user-col{gap:4px}
 #teamInfoBar{font-size:9px!important;gap:3px!important}
 #teamInfoBar span{font-size:9px!important;padding:1px 6px!important}
 .ct{padding:24px 16px}.hero{margin-bottom:36px}.hero::before{display:none}.hero h2{font-size:24px!important;white-space:nowrap}.hero p{font-size:13px;white-space:nowrap}.hero-line{width:120px}
@@ -359,8 +357,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 @media(max-width:480px){
 .photo-divider{height:60px;margin:12px 0 24px;border-radius:12px}.photo-divider-text{font-size:9px;left:12px;bottom:10px;letter-spacing:1px}
 .hd{padding:0 10px;height:auto;min-height:50px;padding-top:6px;padding-bottom:6px}.hd h1{font-size:12px;white-space:nowrap}.hd-logo{width:30px;height:30px;border-radius:9px}.hd-r{gap:4px;font-size:9px}.hd-tag{padding:2px 6px;font-size:9px}.hd-tag svg{width:9px;height:9px}.ubadge{padding:2px 7px;font-size:9px}
-.hd-user-col{gap:3px}
-.hd-team-bar{font-size:8px}
+.hd-team-bar{font-size:8px;padding:4px 16px 2px}
 .hd-info-row{gap:4px}
 .ct{padding:16px 12px}.hero{margin-bottom:28px}.hero h2{font-size:18px!important;white-space:nowrap}.hero p{font-size:11px;white-space:nowrap}.hero-line{width:80px}.hero h2::before{inset:-15px -30px}
 .i3d{width:80px;height:80px;border-radius:16px}.i3d .ie{width:36px;height:36px}.ct-t{font-size:15px;white-space:nowrap}.ct-s{font-size:11px;margin-bottom:16px}.pm{width:96px;height:96px}.pm svg{width:96px;height:96px}.pm .pp .pn{font-size:22px}.pm .pp .pl2{font-size:9px}
@@ -431,7 +428,8 @@ onkeydown="if(event.key==='Enter')doNameLogin()">
 <div id="ioaAction"></div>
 </div>
 </div></div></div>
-<header class="hd"><div class="hd-c"><div class="hd-l"><div class="hd-logo"><span style="width:22px;height:22px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))"><svg viewBox="0 0 32 32" fill="none"><rect x="4" y="12" width="24" height="16" rx="3" fill="rgba(255,255,255,.35)" stroke="rgba(255,255,255,.5)" stroke-width="1.2"/><path d="M4 12h24l-3-8H7L4 12z" fill="rgba(255,255,255,.25)" stroke="rgba(255,255,255,.4)" stroke-width="1"/><line x1="10" y1="4" x2="12" y2="12" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/><line x1="17" y1="4" x2="19" y2="12" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/></svg></span></div><h1>动捕专项整体进展</h1></div><div class="hd-r"><div class="hd-info-row"><span class="hd-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span id="updateDate"></span></span><span style="color:var(--txt2)">PM 负责：<strong id="reporter" style="color:var(--txt)"></strong></span></div><div class="hd-user-col"><span class="ubadge" id="userBadge" onclick="toggleCfg()" title="点击打开配置"></span><div id="teamInfoBar" class="hd-team-bar"></div></div></div></div></header>
+<header class="hd"><div class="hd-c"><div class="hd-l"><div class="hd-logo"><span style="width:22px;height:22px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))"><svg viewBox="0 0 32 32" fill="none"><rect x="4" y="12" width="24" height="16" rx="3" fill="rgba(255,255,255,.35)" stroke="rgba(255,255,255,.5)" stroke-width="1.2"/><path d="M4 12h24l-3-8H7L4 12z" fill="rgba(255,255,255,.25)" stroke="rgba(255,255,255,.4)" stroke-width="1"/><line x1="10" y1="4" x2="12" y2="12" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/><line x1="17" y1="4" x2="19" y2="12" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/></svg></span></div><h1>动捕专项整体进展</h1></div><div class="hd-r"><div class="hd-info-row"><span class="hd-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span id="updateDate"></span></span><span style="color:var(--txt2)">PM 负责：<strong id="reporter" style="color:var(--txt)"></strong></span></div><span class="ubadge" id="userBadge" onclick="toggleCfg()" title="点击打开配置"></span></div></div></header>
+<div id="teamInfoBar" class="hd-team-bar"></div>
 <main class="ct" id="main"></main>
 <footer class="ft"><p>动捕专项整体进展梳理 · 更新于 <span id="footerDate"></span></p><p style="opacity:.5">LightSpeed Mocap · Project Dashboard</p></footer>
 <button class="cb" id="cfgBtn" onclick="toggleCfg()"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg></button>
