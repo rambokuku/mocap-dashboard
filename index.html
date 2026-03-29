@@ -1469,11 +1469,12 @@ const GH_API='https://api.github.com';
 function getGHToken(){return localStorage.getItem('mocap_gh_token')||''}
 function setGHToken(t){localStorage.setItem('mocap_gh_token',t)}
 
-/* 从 GitHub API 获取最新 config.json */
+/* 从 GitHub API 获取最新 config.json（公开仓库无需Token即可读取） */
 async function ghLoad(){
-const token=getGHToken();if(!token)return null;
 try{
-const resp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'}});
+const headers={'Accept':'application/vnd.github.v3+json'};
+const token=getGHToken();if(token)headers['Authorization']=`token ${token}`;
+const resp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{headers});
 if(!resp.ok)return null;
 const data=await resp.json();
 const content=JSON.parse(atob(data.content));
