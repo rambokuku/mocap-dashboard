@@ -1426,6 +1426,7 @@ if(!gR(uid)){showToast('您没有访问权限',1);return}
 if(gR(uid)==='superadmin'){const bound=await verifySuperadminDevice(uid);if(!bound){const statusEl=document.getElementById('ioaStatus');if(statusEl){statusEl.className='ioa-status pending';statusEl.innerHTML='<span style="color:#FFB340">●</span> 需要设备授权<br><span style="font-size:12px;font-weight:400;opacity:.7">超级管理员账号需要验证设备授权码</span>'}const actionEl=document.getElementById('ioaAction');if(actionEl){actionEl.innerHTML='<div style="background:rgba(255,140,0,.04);border:1px solid rgba(255,140,0,.15);border-radius:12px;padding:20px;margin-top:12px"><div style="font-size:14px;margin-bottom:12px;color:var(--txt)">输入设备授权码</div><div style="font-size:12px;color:var(--txt2);margin-bottom:16px;line-height:1.6">首次在此设备登录超级管理员账号<br>请输入您的专属授权码完成设备绑定</div><input type="password" id="deviceAuthInput" placeholder="请输入设备授权码" style="width:100%;padding:12px 14px;border:1px solid var(--bdr);border-radius:10px;font-size:14px;font-family:inherit;font-weight:700;background:rgba(255,255,255,.03);color:var(--txt);box-sizing:border-box;margin-bottom:4px" autocomplete="off" onkeydown="if(event.key===\'Enter\')submitDeviceAuth()"><div id="deviceAuthError" style="display:none;font-size:12px;color:var(--err);margin-top:6px;margin-bottom:6px"></div><button class="btn btn-p" style="width:100%;margin-top:10px" onclick="submitDeviceAuth()">验证并绑定此设备</button></div><div style="text-align:center;margin-top:16px"><button style="background:none;border:none;color:var(--txt3);font-size:12px;cursor:pointer;font-family:inherit;font-weight:700;text-decoration:underline" onclick="switchIOAUser()">切换其他账号</button></div>'}setTimeout(()=>{const inp=document.getElementById('deviceAuthInput');if(inp)inp.focus()},200);return}}
 AU.cur=uid;
 localStorage.setItem('mocap_cur',uid);
+_tryAutoToken();
 document.getElementById('loginOv').style.display='none';
 uBadge();render();showToast('欢迎回来，'+user.name+'！IOA认证登录成功');
 }
@@ -1469,6 +1470,11 @@ const GH_API='https://api.github.com';
 function getGHToken(){return localStorage.getItem('mocap_gh_token')||''}
 function setGHToken(t){localStorage.setItem('mocap_gh_token',t)}
 
+/* Token 混淆：XOR + Base64，防止明文暴露在 config.json 中 */
+const _TK='mocap-dashboard-2026';
+function _encToken(t){if(!t)return'';let r='';for(let i=0;i<t.length;i++)r+=String.fromCharCode(t.charCodeAt(i)^_TK.charCodeAt(i%_TK.length));return btoa(r)}
+function _decToken(e){if(!e)return'';try{const d=atob(e);let r='';for(let i=0;i<d.length;i++)r+=String.fromCharCode(d.charCodeAt(i)^_TK.charCodeAt(i%_TK.length));return r}catch(x){return''}}
+
 /* 从 GitHub API 获取最新 config.json（公开仓库无需Token即可读取） */
 async function ghLoad(){
 try{
@@ -1497,9 +1503,17 @@ return putResp.ok;
 }catch(e){console.warn('GitHub API 保存失败',e);return false}
 }
 
+/* 暂存远程加密Token，登录后根据权限自动下发 */
+let _remoteEncToken='';
+/* 登录成功后调用：有编辑权限且本地无 Token 时，自动从远程解密下发 */
+function _tryAutoToken(){if(_remoteEncToken&&!getGHToken()&&canE()){const t=_decToken(_remoteEncToken);if(t){setGHToken(t);console.log('🔑 已自动获取编辑同步 Token')}}}
+
 /* 构建统一的 config.json 数据格式（包含业务数据+权限+申请队列） */
 function buildCfgJSON(){
-return{project:D.project,modules:D.modules,milestones:D.milestones,auth:{users:AU.users},accessRequests:AR};
+const cfg={project:D.project,modules:D.modules,milestones:D.milestones,auth:{users:AU.users},accessRequests:AR};
+/* 超管保存时，将 Token 加密后写入 auth.ghToken，供有编辑权限的用户自动获取 */
+const t=getGHToken();if(t)cfg.auth.ghToken=_encToken(t);
+return cfg;
 }
 
 /* 从统一 config.json 恢复所有数据 */
@@ -1509,6 +1523,8 @@ if(cfg.modules)D.modules=cfg.modules;
 if(cfg.milestones)D.milestones=cfg.milestones;
 if(cfg.auth&&cfg.auth.users){AU.users=cfg.auth.users;sAuth()}
 if(cfg.accessRequests){AR=cfg.accessRequests;sReq()}
+/* 暂存远程加密 Token，登录后再根据权限下发 */
+if(cfg.auth&&cfg.auth.ghToken)_remoteEncToken=cfg.auth.ghToken;
 }
 
 /* 数据加载优先级：GitHub远程 > localStorage > config.json本地文件 > 硬编码默认值 */
@@ -1614,7 +1630,7 @@ else{ms.status='p'}
 }
 
 /* Auto-login on page load — 必须在 D 和 _initData 定义之后执行 */
-(async function(){await _initData();let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){/* Superadmin device check on session restore */if(gR(s)==='superadmin'){const devOk=await verifySuperadminDevice(s);if(!devOk){localStorage.removeItem('mocap_cur');localStorage.removeItem('mocap_ioa_id');await startIOAAuth();return}}AU.cur=s;document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
+(async function(){await _initData();let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){/* Superadmin device check on session restore */if(gR(s)==='superadmin'){const devOk=await verifySuperadminDevice(s);if(!devOk){localStorage.removeItem('mocap_cur');localStorage.removeItem('mocap_ioa_id');await startIOAAuth();return}}AU.cur=s;_tryAutoToken();document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
 
 /* ===== HELPERS ===== */
 const GS=new Date('2026-01-01'),GE=new Date('2026-04-30'),GT_=(GE-GS)/864e5;
