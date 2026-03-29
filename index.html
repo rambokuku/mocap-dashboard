@@ -436,7 +436,7 @@ onkeydown="if(event.key==='Enter')doNameLogin()">
 <div class="cp" id="cfgP"><div class="cpi">
 <div class="cpH"><h3><span style="display:inline-flex;width:16px;height:16px;vertical-align:middle;margin-right:4px"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4l2.5 2.8c1.2-.3 2.4-.2 3.5.2L24.5 4.5l1 3.5 2.8 2.5c-.3 1.2-.2 2.4.2 3.5L28 16l-2.8 2.5c.3 1.2.2 2.4-.2 3.5l2.5 2.5-3.5 1-2.5 2.8c-1.2-.3-2.4-.2-3.5.2L16 28l-2.5-2.8c-1.2.3-2.4.2-3.5-.2L7.5 27.5l-1-3.5L3.7 21.5c.3-1.2.2-2.4-.2-3.5L4 16l2.8-2.5c-.3-1.2-.2-2.4.2-3.5L4.5 7.5 8 6.5l2.5-2.8c1.2.3 2.4.2 3.5-.2z" fill="rgba(255,255,255,.25)" stroke="rgba(255,255,255,.4)" stroke-width="1"/><circle cx="16" cy="16" r="4.5" fill="rgba(6,10,20,.5)" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/></svg></span> 配置面板</h3><button class="ccl" onclick="toggleCfg()"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
 <div class="ctabs" id="cfgTabs"></div>
-<div class="ctc act" id="tab-basic"><div class="cg"><label>更新日期 <span style="font-size:10px;color:var(--txt3);font-weight:normal">（保存时自动更新为当前北京时间）</span></label><input type="text" id="cfgDate" readonly style="opacity:.7;cursor:default"></div><div class="cg"><label>PM 负责</label><input type="text" id="cfgRep" value="rambokou(寇启龙)"></div><div class="cg"><label>动画负责人</label><input type="text" id="cfgAnimLead" value="saxonshao(邵雷)"></div><div class="cg"><label>PO</label><input type="text" id="cfgPO" value="andrewzli(李哲)"></div><div class="cg"><label>TL</label><input type="text" id="cfgTL" value="yuanfengxie(谢远锋)"></div><div class="csec"><h4>甘特图日期</h4><div id="ganttCfg"></div></div></div>
+<div class="ctc act" id="tab-basic"><div class="cg"><label>更新日期 <span style="font-size:10px;color:var(--txt3);font-weight:normal">（保存时自动更新为当前北京时间）</span></label><input type="text" id="cfgDate" readonly style="opacity:.7;cursor:default"></div><div class="cg"><label>PM 负责</label><input type="text" id="cfgRep" value="rambokou(寇启龙)"></div><div class="cg"><label>动画负责人</label><input type="text" id="cfgAnimLead" value="saxonshao(邵雷)"></div><div class="cg"><label>PO</label><input type="text" id="cfgPO" value="andrewzli(李哲)"></div><div class="cg"><label>TL</label><input type="text" id="cfgTL" value="yuanfengxie(谢远锋)"></div><div class="csec" id="ghSyncSec" style="display:none"><h4>🔄 GitHub 数据同步</h4><div style="padding:12px;background:rgba(0,200,140,.04);border:1px solid rgba(0,200,140,.15);border-radius:12px;margin-bottom:12px"><div style="font-size:12px;color:var(--txt3);margin-bottom:10px">配置 GitHub Token 后，所有业务数据和权限信息将自动同步到 GitHub 仓库。<br>所有访问者打开页面时会自动获取最新数据，无需手动同步。</div><div class="cg"><label>GitHub Personal Access Token <span style="font-size:10px;color:var(--txt3);font-weight:400">（仅超管可配置，存在本地浏览器中）</span></label><div style="display:flex;gap:8px"><input type="password" id="ghTokenInput" placeholder="ghp_xxxxxxxxxxxx" style="flex:1" value=""><button class="abtn" style="margin:0;white-space:nowrap" onclick="cfgGHToken()">保存 Token</button><button class="abtn" style="margin:0;white-space:nowrap;background:rgba(255,255,255,.04)" onclick="testGHToken()">测试连接</button></div></div><div id="ghSyncStatus" style="font-size:12px;margin-top:8px"></div></div></div><div class="csec"><h4>甘特图日期</h4><div id="ganttCfg"></div></div></div>
 <div class="ctc" id="tab-modules"><div id="moduleCfg"></div><div id="addModBtn"></div></div>
 <div class="ctc" id="tab-perms"><div id="permCfg"></div></div>
 <div class="cact"><button class="btn btn-s" onclick="resetCfg()">重置数据</button><button class="btn btn-p" onclick="applyCfg()">应用更改</button></div>
@@ -507,8 +507,20 @@ try{const s=localStorage.getItem('mocap_auth_v2');if(s){const p=JSON.parse(s);AU
 /* Access request queue */
 let AR=[];
 try{const s=localStorage.getItem('mocap_access_req');if(s)AR=JSON.parse(s)}catch(e){}
-function sAuth(){localStorage.setItem('mocap_auth_v2',JSON.stringify({users:AU.users}))}
-function sReq(){localStorage.setItem('mocap_access_req',JSON.stringify(AR))}
+function sAuth(){localStorage.setItem('mocap_auth_v2',JSON.stringify({users:AU.users}));_syncGH('chore: 权限变更')}
+function sReq(){localStorage.setItem('mocap_access_req',JSON.stringify(AR));_syncGH('chore: 权限申请更新')}
+/* 防抖：权限变更频繁时合并 GitHub 同步请求 */
+let _ghSyncTimer=null;
+function _syncGH(msg){
+if(_ghSyncTimer)clearTimeout(_ghSyncTimer);
+_ghSyncTimer=setTimeout(()=>{
+_ghSyncTimer=null;
+if(typeof ghSave==='function'&&typeof buildCfgJSON==='function'){
+ghSave(buildCfgJSON(),msg+' ('+getBJNow()+')').then(ok=>{
+if(ok)console.log('✅ 权限数据已同步到 GitHub');
+}).catch(()=>{});}
+},1500);
+}
 let _hashCache={};async function _cacheHash(n){if(!_hashCache[n])_hashCache[n]=await sha256(n.toLowerCase());return _hashCache[n]}
 function gR(n){if(AU.users[n]?.role)return AU.users[n].role;if(_hashCache[n]&&IOA_USERS_HASH[_hashCache[n]])return'viewer';return null}
 function gRL(n){const r=gR(n);return r?RL[r].lv:0}
@@ -1450,20 +1462,87 @@ function gi(cat,t,iid){const c=IC[cat]||IC.hardware;let k;if(t==='card')k=c.card
 const CC={hardware:{m:'#0066CC',a:'#00A3E0',c:'hw'},software:{m:'#6C5CE7',a:'#A855F7',c:'sw'},operations:{m:'#FF8C00',a:'#FFB340',c:'op'}};
 /* D 的默认值作为最后兜底，正常情况会被 config.json 覆盖 */
 let D={project:{name:"动捕专项整体进展梳理",updateDate:"2026-01-28",reporter:"rambokou(寇启龙)",animLead:"saxonshao(邵雷)",po:"andrewzli(李哲)",tl:"yuanfengxie(谢远锋)"},modules:[{id:'hardware',category:'hardware',title:'硬件建设',subtitle:'03栋云海动捕中棚建设 · 直播空间搭建',overallProgress:90,status:'completed',items:[{id:'hw1',title:'03栋云海动捕中棚建设',dateRange:'01.06 - 02.12',description:'<span class="hl">三维空间设计</span>1月6日完成，<span class="hl">场地装修</span>1月31日完成（delay 5天），<span class="hl">设备安装</span>1月27日启动，2月12日完成。整体于2月17日完成试运营。',progressLabel:'整体进度',progress:100,progressColor:'gn',ganttLabel:'03栋云海动捕中棚',ganttSubLabel:'装修设计/场地装修/设备安装',ganttBars:[{title:'装修设计',start:'2026-01-06',end:'2026-01-26',status:'c'},{title:'场地装修',start:'2026-01-12',end:'2026-01-31',status:'c'},{title:'设备安装',start:'2026-01-27',end:'2026-02-12',status:'c'}]},{id:'hw2',title:'直播空间搭建（新增）',dateRange:'01.15 - 02.10',description:'<span class="hl">装修设计</span>已完成，<span class="hl">场地改造</span>本周内完成所有线下空间改造，<span class="hl">设备安装</span>下周设备到齐。',progressLabel:'整体进度',progress:70,progressColor:'bl',ganttLabel:'直播空间搭建',ganttSubLabel:'装修设计/场地改造/设备安装',ganttBars:[{title:'装修设计',start:'2026-01-15',end:'2026-01-25',status:'c'},{title:'场地改造',start:'2026-01-20',end:'2026-01-28',status:'i'},{title:'设备安装',start:'2026-01-29',end:'2026-02-10',status:'i'}]}]},{id:'software',category:'software',title:'软件开发',subtitle:'动捕流程软件平台 · 动捕排期系统',overallProgress:65,status:'inprogress',items:[{id:'sw1',title:'动捕流程软件平台',dateRange:'01.06 - 03.01',description:'<span class="hl">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等（1月6日-2月14日）<br><span class="hl">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览（1月14日-2月14日）<br><span class="hl">模块3 Publish</span>：待模块1、2流程跑通后启动（2月15日-3月1日）',progressLabel:'模块1&2',progress:100,progressColor:'gn',extraProgress:[{label:'模块3 Publish',value:0,color:'pu'}],ganttLabel:'动捕流程软件',ganttSubLabel:'Realtime/Process/Publish',ganttBars:[{title:'模块1 Realtime',start:'2026-01-06',end:'2026-02-14',status:'c'},{title:'模块2 Process',start:'2026-01-14',end:'2026-02-14',status:'c'},{title:'模块3 Publish',start:'2026-02-15',end:'2026-03-01',status:'i'}]},{id:'sw2',title:'动捕排期系统',dateRange:'01.12 - 03.15',description:'<span class="risk">视觉排期出现delay</span>，下周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。',progressLabel:'整体进度',progress:60,progressColor:'pu',ganttLabel:'动捕排期系统',ganttSubLabel:'交互设计/前后端开发',ganttBars:[{title:'交互设计',start:'2026-01-12',end:'2026-01-21',status:'c'},{title:'前后端开发',start:'2026-01-22',end:'2026-03-15',status:'i'}]}]},{id:'operations',category:'operations',title:'运营推广',subtitle:'云海中棚动捕官方宣传视频',overallProgress:40,status:'inprogress',items:[{id:'ops1',title:'宣传视频拍摄',dateRange:'01.20 - 03.05',description:'<span class="hl">脚本初稿完成</span>，终稿优化中。<span class="risk">费用超出预算</span>，正在商务谈价环节。<br><span class="hl">初定2月11日启动正式拍摄</span>，预计2月18日完成拍摄，3月5日前完成后期制作。',progressLabel:'整体进度',progress:40,progressColor:'or',ganttLabel:'宣传视频',ganttSubLabel:'脚本/拍摄/后期',ganttBars:[{title:'脚本优化',start:'2026-01-20',end:'2026-02-05',status:'i'},{title:'正式拍摄',start:'2026-02-11',end:'2026-02-18',status:'p'},{title:'后期制作',start:'2026-02-19',end:'2026-03-05',status:'p'}]}]}],milestones:[{date:'2026-01-06',title:'三维空间设计完成',desc:'03栋动捕棚三维空间设计稿输出（含元旦假期共9天）',status:'c'},{date:'2026-01-12',title:'排期系统交互设计启动',desc:'动捕排期系统交互设计和前后端开发正式启动',status:'c'},{date:'2026-01-21',title:'交互设计定稿',desc:'动捕排期系统预约日历交互方案确定',status:'c'},{date:'2026-01-26',title:'Logo定稿',desc:'中文"光子动捕"、英文"LightSpeed Mocap"输出并定稿',status:'c'},{date:'2026-01-31',title:'场地装修完成',desc:'完成场地装修所有工作计划（delay 5天，原定1月26日）',status:'c'},{date:'2026-02-12',title:'设备安装完成',desc:'03栋动捕棚1.0所有装修工作完成，试运营启动',status:'c'},{date:'2026-02-11',title:'宣传视频拍摄（规划）',desc:'正式拍摄启动，预计2月18日完成',status:'i'},{date:'2026-03-01',title:'软件平台交付（规划）',desc:'动捕流程软件平台完成交付（考虑过年假期）',status:'p'},{date:'2026-03-05',title:'视频后期完成（规划）',desc:'宣传视频后期制作完成',status:'p'},{date:'2026-03-15',title:'排期系统上线（规划）',desc:'动捕排期系统上线内网（视觉排期有delay）',status:'p'}]};
-/* 数据加载优先级：localStorage 最高，config.json 仅在 localStorage 为空时作为初始值 */
+/* ===== GitHub API 数据同步配置 ===== */
+const GH_REPO='rambokuku/mocap-dashboard';
+const GH_FILE='config.json';
+const GH_API='https://api.github.com';
+function getGHToken(){return localStorage.getItem('mocap_gh_token')||''}
+function setGHToken(t){localStorage.setItem('mocap_gh_token',t)}
+
+/* 从 GitHub API 获取最新 config.json */
+async function ghLoad(){
+const token=getGHToken();if(!token)return null;
+try{
+const resp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'}});
+if(!resp.ok)return null;
+const data=await resp.json();
+const content=JSON.parse(atob(data.content));
+return{content,sha:data.sha};
+}catch(e){console.warn('GitHub API 加载失败',e);return null}
+}
+
+/* 保存数据到 GitHub：更新 config.json */
+async function ghSave(jsonData,msg){
+const token=getGHToken();if(!token){console.warn('未配置 GitHub Token，仅本地保存');return false}
+try{
+/* 先获取当前文件的 sha */
+const getResp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'}});
+if(!getResp.ok){console.warn('获取文件SHA失败');return false}
+const fileInfo=await getResp.json();
+const content=btoa(unescape(encodeURIComponent(JSON.stringify(jsonData,null,2))));
+const putResp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{method:'PUT',headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},
+body:JSON.stringify({message:msg||'chore: 更新业务数据',content:content,sha:fileInfo.sha})});
+return putResp.ok;
+}catch(e){console.warn('GitHub API 保存失败',e);return false}
+}
+
+/* 构建统一的 config.json 数据格式（包含业务数据+权限+申请队列） */
+function buildCfgJSON(){
+return{project:D.project,modules:D.modules,milestones:D.milestones,auth:{users:AU.users},accessRequests:AR};
+}
+
+/* 从统一 config.json 恢复所有数据 */
+function applyCfgJSON(cfg){
+if(cfg.project)D.project=cfg.project;
+if(cfg.modules)D.modules=cfg.modules;
+if(cfg.milestones)D.milestones=cfg.milestones;
+if(cfg.auth&&cfg.auth.users){AU.users=cfg.auth.users;sAuth()}
+if(cfg.accessRequests){AR=cfg.accessRequests;sReq()}
+}
+
+/* 数据加载优先级：GitHub远程 > localStorage > config.json本地文件 > 硬编码默认值 */
 let _dataReady=false;
 async function _initData(){
-/* 1. localStorage 最高优先级 —— 用户在配置面板保存的数据永远不会被覆盖 */
 let loaded=false;
-try{const s=localStorage.getItem('mocap_v5');if(s){D=JSON.parse(s);loaded=true}}catch(e){}
-/* 2. 仅当 localStorage 无数据时，从 config.json 加载作为初始值 */
+/* 1. 尝试从 GitHub API 加载最新数据（需要已配置 token） */
+const ghData=await ghLoad();
+if(ghData&&ghData.content){
+applyCfgJSON(ghData.content);
+save();/* 同步到 localStorage */
+loaded=true;
+console.log('✅ 从 GitHub 远程加载最新数据');
+}
+/* 2. GitHub 不可用时，回退到 localStorage */
+if(!loaded){try{const s=localStorage.getItem('mocap_v5');if(s){D=JSON.parse(s);loaded=true;console.log('📦 从 localStorage 加载数据')}}catch(e){}}
+/* 3. 都没有时，从本地 config.json 加载作为初始值 */
 if(!loaded){try{const resp=await fetch('config.json?t='+Date.now());if(resp.ok){const cfg=await resp.json();
+/* 兼容旧格式 config.json（只有 gantt/milestones，没有 modules） */
+if(cfg.modules){applyCfgJSON(cfg)}
+else{
 if(cfg.gantt&&cfg.gantt.tasks){cfg.gantt.tasks.forEach(task=>{D.modules.forEach(m=>{m.items.forEach(it=>{if(it.ganttLabel===task.label&&task.bars){task.bars.forEach((cb,bi)=>{if(it.ganttBars&&it.ganttBars[bi]){it.ganttBars[bi].start=cb.start||it.ganttBars[bi].start;it.ganttBars[bi].end=cb.end||it.ganttBars[bi].end}})}})})})}
 if(cfg.milestones){cfg.milestones.forEach((cm,i)=>{if(D.milestones[i]){D.milestones[i].date=cm.date||D.milestones[i].date}})}
+}
 if(cfg.project){if(cfg.project.updateDate)D.project.updateDate=cfg.project.updateDate;if(cfg.project.name)D.project.name=cfg.project.name;if(cfg.project.reporter)D.project.reporter=cfg.project.reporter}
 }}catch(e){console.warn('config.json 加载失败，使用默认数据',e)}}
 _dataReady=true}
 function save(){localStorage.setItem('mocap_v5',JSON.stringify(D))}
+/* 保存并同步到 GitHub（异步） */
+async function saveAndSync(msg){
+save();
+const ok=await ghSave(buildCfgJSON(),msg||'chore: 更新业务数据 ('+getBJNow()+')');
+if(ok){showToast('✅ 数据已同步到 GitHub')}
+else if(getGHToken()){showToast('⚠️ GitHub 同步失败，数据仅保存在本地',1)}
+}
 
 /* ===== 自动状态计算：根据日期自动推导甘特条状态、模块进度和时间区间 ===== */
 function autoCalc(){
@@ -1809,7 +1888,10 @@ break}}},200)},100)}
 function toggleCfg(){if(!canE()){showToast('您没有编辑权限',1);return}document.getElementById('cfgP').classList.toggle('open');document.getElementById('cfgOv').classList.toggle('open');if(document.getElementById('cfgP').classList.contains('open'))renderCfg()}
 function rTabs(){const t=document.getElementById('cfgTabs');const pendingCount=AR.filter(r=>r.status==='pending').length;let h='<button class="ctab act" data-tab="basic" onclick="stab(\'basic\',this)">基础信息</button><button class="ctab" data-tab="modules" onclick="stab(\'modules\',this)">模块编辑</button>';if(canM())h+=`<button class="ctab" data-tab="perms" onclick="stab('perms',this)">权限管理${pendingCount>0?'<span class="pending-badge">'+pendingCount+'</span>':''}</button>`;t.innerHTML=h}
 function stab(n,el){document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('act'));document.querySelectorAll('.ctc').forEach(t=>t.classList.remove('act'));el.classList.add('act');document.getElementById('tab-'+n).classList.add('act')}
-function renderCfg(){rTabs();document.getElementById('cfgDate').value=fdfUpdate(D.project.updateDate)||'尚未更新';document.getElementById('cfgRep').value=D.project.reporter||'rambokou(寇启龙)';document.getElementById('cfgAnimLead').value=D.project.animLead||'saxonshao(邵雷)';document.getElementById('cfgPO').value=D.project.po||'andrewzli(李哲)';document.getElementById('cfgTL').value=D.project.tl||'yuanfengxie(谢远锋)';rGantt();rMod();if(canM()){rPerm()}}
+function renderCfg(){rTabs();document.getElementById('cfgDate').value=fdfUpdate(D.project.updateDate)||'尚未更新';document.getElementById('cfgRep').value=D.project.reporter||'rambokou(寇启龙)';document.getElementById('cfgAnimLead').value=D.project.animLead||'saxonshao(邵雷)';document.getElementById('cfgPO').value=D.project.po||'andrewzli(李哲)';document.getElementById('cfgTL').value=D.project.tl||'yuanfengxie(谢远锋)';
+/* GitHub 同步区域仅超管可见 */
+const ghSec=document.getElementById('ghSyncSec');if(ghSec){if(isS()){ghSec.style.display='';const ti=document.getElementById('ghTokenInput');if(ti){const t=getGHToken();ti.value=t?'••••••••'+t.slice(-4):'';}_updateGHStatus()}else{ghSec.style.display='none'}}
+rGantt();rMod();if(canM()){rPerm()}}
 function rGantt(){let h='';const isManager=canM();D.modules.forEach(m=>{/* 模块分组容器 */
 h+=`<div class="gantt-mod-group" style="margin-bottom:20px;padding:16px;border:1px solid rgba(255,179,64,.15);border-radius:14px;background:rgba(255,179,64,.02)">`;
 h+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06)"><span style="font-size:14px;font-weight:700;color:var(--acc2)">${m.title}</span>`;
@@ -2722,8 +2804,19 @@ function delGanttItem(mid,iid){const m=D.modules.find(x=>x.id===mid);if(!m)retur
 function updGanttBar(mid,iid,bi,f,v){const m=D.modules.find(x=>x.id===mid);if(!m)return;const it=m.items.find(x=>x.id===iid);if(!it||!it.ganttBars||!it.ganttBars[bi])return;it.ganttBars[bi][f]=v}
 function applyCfg(){/* 保存前校验：结束日期不得早于开始日期 */
 let dateErr=false;document.querySelectorAll('.gantt-date-pair').forEach(pair=>{const inputs=pair.querySelectorAll('input[type="date"]');if(inputs.length!==2)return;const sv=inputs[0].value,ev=inputs[1].value;if(sv&&ev&&ev<sv){dateErr=true;inputs[1].style.outline='2px solid #ff4444';inputs[0].style.outline='2px solid #ff4444';setTimeout(()=>{inputs[0].style.outline='';inputs[1].style.outline=''},2000)}});if(dateErr){showToast('⚠️ 结束日期不能早于开始日期，请修正后再保存');return}
-/* 保存时自动记录当前北京时间为更新日期 */D.project.updateDate=getBJNow();D.project.reporter=document.getElementById('cfgRep').value||'rambokou(寇启龙)';D.project.animLead=document.getElementById('cfgAnimLead').value||'';D.project.po=document.getElementById('cfgPO').value||'';D.project.tl=document.getElementById('cfgTL').value||'';document.querySelectorAll('.gdi').forEach(inp=>{const mid=inp.dataset.m,iid=inp.dataset.i,bi=+inp.dataset.b,f=inp.dataset.f,v=inp.value;if(!mid||!iid||!f)return;const m=D.modules.find(x=>x.id===mid);if(m){const it=m.items.find(x=>x.id===iid);if(it&&it.ganttBars[bi]){it.ganttBars[bi][f]=v}}});save();render();toggleCfg();showToast('配置已保存')}
+/* 保存时自动记录当前北京时间为更新日期 */D.project.updateDate=getBJNow();D.project.reporter=document.getElementById('cfgRep').value||'rambokou(寇启龙)';D.project.animLead=document.getElementById('cfgAnimLead').value||'';D.project.po=document.getElementById('cfgPO').value||'';D.project.tl=document.getElementById('cfgTL').value||'';document.querySelectorAll('.gdi').forEach(inp=>{const mid=inp.dataset.m,iid=inp.dataset.i,bi=+inp.dataset.b,f=inp.dataset.f,v=inp.value;if(!mid||!iid||!f)return;const m=D.modules.find(x=>x.id===mid);if(m){const it=m.items.find(x=>x.id===iid);if(it&&it.ganttBars[bi]){it.ganttBars[bi][f]=v}}});saveAndSync('chore: 配置面板保存 ('+getBJNow()+')');render();toggleCfg()}
 function resetCfg(){if(!confirm('确定重置所有数据？'))return;localStorage.removeItem('mocap_v5');localStorage.removeItem('mocap_auth_v2');localStorage.removeItem('mocap_access_req');localStorage.removeItem('mocap_ioa_id');location.reload()}
+/* ===== GitHub Token 配置函数 ===== */
+function cfgGHToken(){const inp=document.getElementById('ghTokenInput');if(!inp)return;let v=inp.value.trim();if(v.startsWith('••'))v='';/* 防止误保存掩码值 */
+if(!v){showToast('请输入有效的 GitHub Token',1);return}
+setGHToken(v);inp.value='••••••••'+v.slice(-4);showToast('✅ GitHub Token 已保存');_updateGHStatus()}
+async function testGHToken(){const st=document.getElementById('ghSyncStatus');if(st)st.innerHTML='<span style="color:var(--txt3)">⏳ 正在测试连接...</span>';
+const token=getGHToken();if(!token){if(st)st.innerHTML='<span style="color:#ff4444">❌ 未配置 Token</span>';return}
+try{const resp=await fetch(`${GH_API}/repos/${GH_REPO}`,{headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'}});
+if(resp.ok){const data=await resp.json();if(st)st.innerHTML=`<span style="color:#00C48C">✅ 连接成功！仓库: ${data.full_name} · 可${data.permissions?.push?'读写':'只读'}</span>`;showToast('✅ GitHub 连接测试成功')}
+else{const err=await resp.json().catch(()=>({}));if(st)st.innerHTML=`<span style="color:#ff4444">❌ 连接失败: ${err.message||resp.status}</span>`;showToast('GitHub 连接失败',1)}}
+catch(e){if(st)st.innerHTML=`<span style="color:#ff4444">❌ 网络错误: ${e.message}</span>`}}
+function _updateGHStatus(){const st=document.getElementById('ghSyncStatus');if(!st)return;const t=getGHToken();st.innerHTML=t?'<span style="color:#00C48C">🔗 Token 已配置（尾号 '+t.slice(-4)+'）· 数据将自动同步</span>':'<span style="color:var(--txt3)">⚠️ 未配置 Token · 数据仅保存在当前浏览器</span>'}
 function showToast(msg,err){const t=document.getElementById('toast');t.textContent=msg;t.className='toast'+(err?' error':'');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
 render();
 </script>
