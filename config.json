@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-01-28",
+    "updateDate": "2026-03-30T03:51",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -19,7 +19,7 @@
         {
           "id": "hw1",
           "title": "03栋云海动捕中棚建设",
-          "dateRange": "01.06 - 02.12",
+          "dateRange": "01.06 - 03.12",
           "description": "<span class=\"hl\">三维空间设计</span>1月6日完成，<span class=\"hl\">场地装修</span>1月31日完成（delay 5天），<span class=\"hl\">设备安装</span>1月27日启动，2月12日完成。整体于2月17日完成试运营。",
           "progressLabel": "整体进度",
           "progress": 100,
@@ -43,6 +43,12 @@
               "title": "设备安装",
               "start": "2026-01-27",
               "end": "2026-02-12",
+              "status": "c"
+            },
+            {
+              "title": "运营测试",
+              "start": "2026-02-12",
+              "end": "2026-03-12",
               "status": "c"
             }
           ]
