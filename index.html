@@ -1477,7 +1477,7 @@ const token=getGHToken();if(token)headers['Authorization']=`token ${token}`;
 const resp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{headers});
 if(!resp.ok)return null;
 const data=await resp.json();
-const content=JSON.parse(atob(data.content));
+const content=JSON.parse(decodeURIComponent(escape(atob(data.content))));
 return{content,sha:data.sha};
 }catch(e){console.warn('GitHub API 加载失败',e);return null}
 }
