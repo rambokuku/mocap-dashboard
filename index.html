@@ -1420,8 +1420,7 @@ uBadge();render();showToast('欢迎回来，'+user.name+'！IOA认证登录成�
 function doLogin(){ioaLogin()}
 function logout(){AU.cur=null;localStorage.removeItem('mocap_cur');IOA_CUR_ID=null;localStorage.removeItem('mocap_ioa_id');document.getElementById('loginOv').style.display='flex';document.getElementById('ioaLoginForm').style.display='block';document.getElementById('ioaResult').style.display='none';document.getElementById('loginNameInput').value='';document.getElementById('loginError').style.display='none';setTimeout(()=>{document.getElementById('loginNameInput').focus()},300)}
 function uBadge(){const b=document.getElementById('userBadge');if(!AU.cur){b.textContent='';b.className='ubadge';return}const r=gR(AU.cur);const dn=getDisplayName(AU.cur);b.className='ubadge '+r;b.innerHTML=RI[r]+' '+dn+' <span class="rtag '+r+'">'+RL[r].l+'</span>'}
-/* Auto-login on page load */
-(async function(){await _initData();let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){/* Superadmin device check on session restore */if(gR(s)==='superadmin'){const devOk=await verifySuperadminDevice(s);if(!devOk){localStorage.removeItem('mocap_cur');localStorage.removeItem('mocap_ioa_id');await startIOAAuth();return}}AU.cur=s;document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
+/* Auto-login IIFE 已移到 D 和 _initData 定义之后，避免 let D 的 TDZ 问题 */
 
 /* ===== SVG ICON SYSTEM — soft matte 3D fluid style ===== */
 const SVG_ICONS={
@@ -1465,6 +1464,9 @@ if(cfg.project){if(cfg.project.updateDate)D.project.updateDate=cfg.project.updat
 }}catch(e){console.warn('config.json 加载失败，使用默认数据',e)}}
 _dataReady=true}
 function save(){localStorage.setItem('mocap_v5',JSON.stringify(D))}
+
+/* Auto-login on page load — 必须在 D 和 _initData 定义之后执行 */
+(async function(){await _initData();let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){/* Superadmin device check on session restore */if(gR(s)==='superadmin'){const devOk=await verifySuperadminDevice(s);if(!devOk){localStorage.removeItem('mocap_cur');localStorage.removeItem('mocap_ioa_id');await startIOAAuth();return}}AU.cur=s;document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
 
 /* ===== HELPERS ===== */
 const GS=new Date('2026-01-01'),GE=new Date('2026-04-30'),GT_=(GE-GS)/864e5;
