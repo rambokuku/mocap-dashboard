@@ -1929,6 +1929,7 @@ document.getElementById('ganttCfg').innerHTML=h;
 document.querySelectorAll('.gantt-date-pair').forEach(pair=>{const inputs=pair.querySelectorAll('input[type="date"]');if(inputs.length!==2)return;const startInp=inputs[0],endInp=inputs[1];startInp.addEventListener('change',()=>{endInp.min=startInp.value;if(endInp.value&&endInp.value<startInp.value){endInp.value=startInp.value;endInp.style.outline='2px solid #ff4444';setTimeout(()=>endInp.style.outline='',1500)}});endInp.addEventListener('change',()=>{startInp.max=endInp.value;if(startInp.value&&startInp.value>endInp.value){endInp.value=startInp.value;endInp.style.outline='2px solid #ff4444';setTimeout(()=>endInp.style.outline='',1500)}})})}
 /* ===== 里程碑编辑（配置面板 - 基础信息 Tab） ===== */
 function rMilestonesCfg(){const ct=document.getElementById('msCfg');if(!ct)return;const isManager=canM();let h='<div style="font-size:11px;color:var(--txt3);margin-bottom:12px;line-height:1.6">里程碑状态根据日期自动计算：已过日期 = 已完成，未来日期 = 规划中</div>';
+if(isManager){h+=`<button class="abtn" style="margin-bottom:14px;background:linear-gradient(135deg,rgba(0,163,224,.15),rgba(108,92,231,.15));border:1px solid rgba(0,163,224,.3);width:100%;justify-content:center;gap:8px" onclick="syncMsFromModules()"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>从模块数据同步里程碑</button>`;}
 if(!D.milestones||!D.milestones.length){h+='<div style="padding:16px;text-align:center;color:var(--txt3);font-size:12px">暂无里程碑</div>';}
 else{D.milestones.forEach((ms,i)=>{const stC=ms.status==='c'?'#00C48C':ms.status==='i'?'#FFB340':'#A29BFE';const stL=ms.status==='c'?'已完成':ms.status==='i'?'进行中':'规划中';
 h+=`<div style="margin-bottom:12px;padding:14px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:rgba(255,255,255,.02);border-left:3px solid ${stC}"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><div style="display:flex;align-items:center;gap:8px"><span style="width:24px;height:24px;border-radius:50%;background:${stC};display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff">${i+1}</span><span style="font-size:11px;color:${stC}">${stL}</span></div>`;
@@ -1939,6 +1940,70 @@ ct.innerHTML=h;}
 function updMs(i,f,v){if(!D.milestones||!D.milestones[i])return;D.milestones[i][f]=v;}
 function addMs(){if(!D.milestones)D.milestones=[];D.milestones.push({date:'',title:'新里程碑',desc:'',status:'p'});rMilestonesCfg();}
 function delMs(i){if(!D.milestones||!D.milestones[i])return;if(!confirm('确定删除里程碑「'+D.milestones[i].title+'」？'))return;D.milestones.splice(i,1);rMilestonesCfg();}
+
+/* ===== 从模块数据同步里程碑 ===== */
+function syncMsFromModules(){
+if(!confirm('将从「模块编辑」和「基础信息」中提取关键节点，\n生成里程碑并替换现有内容。\n\n确定同步？'))return;
+const today=new Date().toISOString().slice(0,10);
+const ms=[];
+/* 遍历每个模块 */
+D.modules.forEach(m=>{
+const catLabel=m.category==='hardware'?'硬件建设':m.category==='software'?'软件开发':'运营推广';
+/* 模块级：第一个甘特条的开始日期 = 模块启动里程碑 */
+let mStart=null,mEnd=null;
+m.items.forEach(it=>{
+if(!it.ganttBars||!it.ganttBars.length)return;
+/* 子项目级别的最早开始和最晚结束 */
+let itStart=null,itEnd=null;
+const barNames=[];
+it.ganttBars.forEach(b=>{
+if(b.start&&(!itStart||b.start<itStart))itStart=b.start;
+if(b.end&&(!itEnd||b.end>itEnd))itEnd=b.end;
+if(b.title)barNames.push(b.title);
+});
+if(!mStart||itStart<mStart)mStart=itStart;
+if(!mEnd||itEnd>mEnd)mEnd=itEnd;
+/* 子项目完成里程碑 = 最晚甘特条结束日期 */
+if(itEnd){
+const st=itEnd<=today?'c':'p';
+const pct=it.progress!==undefined?it.progress:0;
+const pctTxt=pct>=100?'（已完成）':pct>0?`（进度${pct}%）`:'（规划中）';
+ms.push({
+date:itEnd,
+title:it.title+'完成',
+desc:`[${catLabel}${m.title!==catLabel?'/'+m.title:''}] ${barNames.join('→')} ${pctTxt}`,
+status:st
+});
+}
+});
+/* 模块启动里程碑 */
+if(mStart){
+ms.push({
+date:mStart,
+title:catLabel+'启动',
+desc:`${m.title} — 首个任务开始`,
+status:mStart<=today?'c':'p'
+});
+}
+});
+/* 综合基础信息：如果有负责人信息，附加到首尾里程碑描述 */
+const pInfo=[];
+if(D.project.reporter)pInfo.push('PM:'+D.project.reporter);
+if(D.project.animLead)pInfo.push('动画:'+D.project.animLead);
+if(D.project.po)pInfo.push('PO:'+D.project.po);
+if(D.project.tl)pInfo.push('TL:'+D.project.tl);
+const teamStr=pInfo.length?'（'+pInfo.join(' / ')+')':'';
+/* 按日期排序 */
+ms.sort((a,b)=>a.date.localeCompare(b.date));
+/* 去重：同一天+相同标题的合并 */
+const seen=new Set();const deduped=[];
+ms.forEach(m=>{const k=m.date+'|'+m.title;if(!seen.has(k)){seen.add(k);deduped.push(m)}});
+/* 第一个里程碑补充团队信息 */
+if(deduped.length&&teamStr){deduped[0].desc+='\n'+teamStr}
+D.milestones=deduped;
+rMilestonesCfg();
+showToast('已从模块数据同步 '+deduped.length+' 个里程碑');
+}
 function rMod(){let h='';const isManager=canM();const _sl=s=>s==='completed'?'已完成':s==='inprogress'?'进行中':'规划中';const _sc=s=>s==='completed'?'#00C48C':s==='inprogress'?'#FFB340':'#A29BFE';D.modules.forEach(m=>{h+=`<div class="cmc"><div class="cmch"><div class="cmct"><span class="dot" style="background:${CC[m.category]?.m||'#0066CC'}"></span>${m.title}</div>${isManager?`<button class="mdel" onclick="delMod('${m.id}')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></button>`:''}</div>`;if(isManager){h+=`<div class="cg"><label>模块名称</label><input type="text" value="${m.title}" onchange="umf('${m.id}','title',this.value)"></div><div class="cg"><label>副标题</label><input type="text" value="${m.subtitle}" onchange="umf('${m.id}','subtitle',this.value)"></div><div class="cg"><label>类别</label><select onchange="umf('${m.id}','category',this.value)"><option value="hardware"${m.category==='hardware'?' selected':''}>硬件建设</option><option value="software"${m.category==='software'?' selected':''}>软件开发</option><option value="operations"${m.category==='operations'?' selected':''}>运营推广</option></select></div><div class="cg"><label>总进度 <span style="font-size:10px;color:var(--txt3);font-weight:400">🤖 自动计算</span></label><div style="display:flex;align-items:center;gap:10px;padding:8px 14px;background:rgba(255,255,255,.02);border:1px solid var(--bdr);border-radius:10px"><div style="flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden"><div style="height:100%;width:${m.overallProgress}%;background:${_sc(m.status)};border-radius:3px;transition:width .3s"></div></div><span style="font-size:14px;color:${_sc(m.status)};min-width:40px;text-align:right">${m.overallProgress}%</span></div></div><div class="cg"><label>状态 <span style="font-size:10px;color:var(--txt3);font-weight:400">🤖 自动计算</span></label><div style="padding:8px 14px;background:rgba(255,255,255,.02);border:1px solid var(--bdr);border-radius:10px;display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:${_sc(m.status)}"></span><span style="color:${_sc(m.status)};font-size:13px">${_sl(m.status)}</span></div></div>`;}h+=`<div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--bdr)"><div class="csih"><span style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--acc2);font-weight:700">📋 子项目</span></div>`;m.items.forEach(it=>{const _itSt=it.progress>=100?'已完成':it.progress>0?'进行中':'规划中';const _itSc=it.progress>=100?'#00C48C':it.progress>0?'#FFB340':'#A29BFE';h+=`<div class="csi"><div class="csih"><span>${it.title}</span>${isManager?`<button class="sdel" onclick="delItem('${m.id}','${it.id}')"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>`:''}</div><div class="cg"><label>标题</label><input type="text" value="${it.title}" onchange="uif('${m.id}','${it.id}','title',this.value)"></div><div class="cg"><label>日期范围 <span style="font-size:10px;color:var(--txt3);font-weight:400">🤖 自动计算</span></label><div style="padding:8px 14px;background:rgba(255,255,255,.02);border:1px solid var(--bdr);border-radius:10px;color:var(--txt2);font-size:13px">${it.dateRange||'—'}</div></div><div class="cg"><label>描述 (支持HTML)</label><textarea onchange="uif('${m.id}','${it.id}','description',this.value)">${it.description.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</textarea></div><div class="cg"><label>进度标签</label><input type="text" value="${it.progressLabel}" onchange="uif('${m.id}','${it.id}','progressLabel',this.value)"></div><div class="cg"><label>进度 <span style="font-size:10px;color:var(--txt3);font-weight:400">🤖 自动计算</span></label><div style="display:flex;align-items:center;gap:10px;padding:8px 14px;background:rgba(255,255,255,.02);border:1px solid var(--bdr);border-radius:10px"><div style="flex:1;height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden"><div style="height:100%;width:${it.progress}%;background:${_itSc};border-radius:3px;transition:width .3s"></div></div><span style="font-size:13px;color:${_itSc};min-width:36px;text-align:right">${it.progress}%</span><span style="font-size:11px;color:var(--txt3)">${_itSt}</span></div></div></div>`;});if(isManager){h+=`<button class="abtn" onclick="addItem('${m.id}')"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>新增子项目</button>`;}h+='</div></div>';});document.getElementById('moduleCfg').innerHTML=h;const addBtn=document.getElementById('addModBtn');if(addBtn)addBtn.innerHTML=isManager?'<button class="abtn" onclick="addMod()"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>新增模块</button>':''}
 function rPerm(){const ct=document.getElementById('permCfg');if(!ct)return;const curDn=getDisplayName(AU.cur);let h=`<div style="margin-bottom:20px;padding:16px;background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.15);border-radius:12px"><div style="font-size:13px;color:#FFD700;margin-bottom:4px">👑 当前登录</div><div style="font-size:15px">${AU.cur}(${curDn}) · <span class="rtag ${gR(AU.cur)}">${RL[gR(AU.cur)].l}</span></div></div>`;
 /* === Pending Access Requests (only for superadmin) === */
