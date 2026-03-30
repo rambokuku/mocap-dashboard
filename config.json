@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-03-30T18:03",
+    "updateDate": "2026-03-30T18:07",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -97,7 +97,7 @@
       "category": "software",
       "title": "软件开发",
       "subtitle": "动捕流程软件平台 · 动捕排期系统",
-      "overallProgress": 40,
+      "overallProgress": 50,
       "status": "inprogress",
       "items": [
         {
@@ -144,7 +144,7 @@
           "dateRange": "12.25 - 04.03",
           "description": "<span class=\"risk\">视觉排期出现delay</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
           "progressLabel": "整体进度",
-          "progress": 50,
+          "progress": 67,
           "progressColor": "bl",
           "ganttLabel": "动捕排期系统",
           "ganttSubLabel": "交互设计/前后端开发",
@@ -158,6 +158,12 @@
             {
               "title": "前后端开发",
               "start": "2026-01-02",
+              "end": "2026-03-29",
+              "status": "c"
+            },
+            {
+              "title": "运营测试",
+              "start": "2026-03-29",
               "end": "2026-04-03",
               "status": "i"
             }
