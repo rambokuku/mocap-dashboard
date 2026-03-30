@@ -13,7 +13,7 @@
       "category": "hardware",
       "title": "硬件建设",
       "subtitle": "03栋云海动捕中棚建设 · 直播空间搭建",
-      "overallProgress": 88,
+      "overallProgress": 93,
       "status": "inprogress",
       "items": [
         {
@@ -31,25 +31,29 @@
               "title": "装修设计",
               "start": "2026-01-06",
               "end": "2026-01-26",
-              "status": "c"
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "场地装修",
               "start": "2026-01-12",
               "end": "2026-01-31",
-              "status": "c"
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "设备安装",
               "start": "2026-01-27",
               "end": "2026-02-12",
-              "status": "c"
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "运营测试",
               "start": "2026-02-12",
               "end": "2026-03-12",
-              "status": "c"
+              "status": "c",
+              "_progress": 100
             }
           ]
         },
@@ -59,7 +63,7 @@
           "dateRange": "01.21 - 04.03",
           "description": "<span class=\"hl\">装修设计</span>已完成，<span class=\"hl\">场地改造</span>27 号已完成所有线下空间改造，<span class=\"hl\">设备安装</span>设备基本到齐，本周进入运营测试阶段",
           "progressLabel": "整体进度",
-          "progress": 75,
+          "progress": 86,
           "progressColor": "bl",
           "ganttLabel": "直播空间搭建",
           "ganttSubLabel": "装修设计/场地改造/设备安装",
@@ -68,25 +72,29 @@
               "title": "装修设计",
               "start": "2026-03-18",
               "end": "2026-03-28",
-              "status": "c"
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "场地改造",
               "start": "2026-03-18",
               "end": "2026-03-25",
-              "status": "c"
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "设备安装",
               "start": "2026-01-21",
               "end": "2026-03-27",
-              "status": "c"
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "运营测试",
               "start": "2026-03-27",
               "end": "2026-04-03",
-              "status": "i"
+              "status": "i",
+              "_progress": 43
             }
           ]
         }
@@ -97,7 +105,7 @@
       "category": "software",
       "title": "软件开发",
       "subtitle": "动捕流程软件平台 · 动捕排期系统",
-      "overallProgress": 50,
+      "overallProgress": 70,
       "status": "inprogress",
       "items": [
         {
@@ -106,7 +114,7 @@
           "dateRange": "12.25 - 05.30",
           "description": "<span class=\"hl\">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等（1月6日-2月28日）<br><span class=\"hl\">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览（1月14日-3月31日）<br><span class=\"hl\">模块3 Publish</span>：待模块1、2流程跑通后启动",
           "progressLabel": "模块1&2",
-          "progress": 33,
+          "progress": 66,
           "progressColor": "bl",
           "extraProgress": [
             {
@@ -122,19 +130,22 @@
               "title": "模块1 Realtime",
               "start": "2025-12-25",
               "end": "2026-01-31",
-              "status": "c"
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "模块2 Process",
               "start": "2026-01-22",
               "end": "2026-03-31",
-              "status": "i"
+              "status": "i",
+              "_progress": 99
             },
             {
               "title": "模块3 Publish",
               "start": "2026-05-01",
               "end": "2026-05-30",
-              "status": "p"
+              "status": "p",
+              "_progress": 0
             }
           ]
         },
@@ -144,7 +155,7 @@
           "dateRange": "12.25 - 04.03",
           "description": "<span class=\"risk\">视觉排期出现delay</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
           "progressLabel": "整体进度",
-          "progress": 67,
+          "progress": 73,
           "progressColor": "bl",
           "ganttLabel": "动捕排期系统",
           "ganttSubLabel": "交互设计/前后端开发",
@@ -153,19 +164,22 @@
               "title": "交互设计",
               "start": "2025-12-25",
               "end": "2026-03-28",
-              "status": "c"
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "前后端开发",
               "start": "2026-01-02",
               "end": "2026-03-29",
-              "status": "c"
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "运营测试",
               "start": "2026-03-29",
               "end": "2026-04-03",
-              "status": "i"
+              "status": "i",
+              "_progress": 20
             }
           ]
         }
@@ -194,19 +208,22 @@
               "title": "脚本优化",
               "start": "2026-03-06",
               "end": "2026-03-24",
-              "status": "c"
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "正式拍摄",
               "start": "2026-04-03",
               "end": "2026-04-08",
-              "status": "p"
+              "status": "p",
+              "_progress": 0
             },
             {
               "title": "后期制作",
               "start": "2026-04-09",
               "end": "2026-04-15",
-              "status": "p"
+              "status": "p",
+              "_progress": 0
             }
           ]
         }
