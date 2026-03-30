@@ -1562,65 +1562,73 @@ else if(getGHToken()){showToast('⚠️ GitHub 同步失败，数据仅保存在
 }
 
 /* ===== 自动状态计算：根据日期自动推导甘特条状态、模块进度和时间区间 ===== */
+/* 计算日期差值（天数），两端都算入 */
+function _daysBetween(d1,d2){return Math.round((new Date(d2)-new Date(d1))/864e5);}
 function autoCalc(){
 const today=new Date().toISOString().slice(0,10);
-/* 1. 自动计算每个甘特条的状态 */
 D.modules.forEach(m=>{
+/* ── 遍历二级模块（子项目） ── */
 m.items.forEach(it=>{
 if(!it.ganttBars||!it.ganttBars.length)return;
-let minStart=null,maxEnd=null,completedCount=0;
+let minStart=null,maxEnd=null;
+/* ── 三级模块（甘特条）进度计算 ── */
 it.ganttBars.forEach(b=>{
-/* 根据日期自动推导状态 */
+/* 1. 根据日期自动推导状态 */
 if(b.start&&b.end){
 if(b.end<=today){b.status='c'}
 else if(b.start<=today&&b.end>today){b.status='i'}
 else{b.status='p'}
 }
+/* 2. 三级模块完成度：
+   - 已完成(c)：100%
+   - 未启动(p)：0%
+   - 进行中(i)：已过天数 / 总天数 × 100%  */
+if(b.status==='c'){b._progress=100}
+else if(b.status==='p'){b._progress=0}
+else if(b.status==='i'&&b.start&&b.end){
+const totalDays=_daysBetween(b.start,b.end);
+const elapsed=_daysBetween(b.start,today);
+b._progress=totalDays>0?Math.min(Math.round(elapsed/totalDays*100),99):0;
+}else{b._progress=0}
 /* 收集该子项的时间区间 */
 if(b.start&&(!minStart||b.start<minStart))minStart=b.start;
 if(b.end&&(!maxEnd||b.end>maxEnd))maxEnd=b.end;
-/* 统计已完成的甘特条 */
-if(b.status==='c')completedCount++;
 });
-/* 2. 自动计算子项的日期范围(dateRange) */
+/* ── 二级模块日期范围 ── */
 if(minStart&&maxEnd){
 const s=minStart.slice(5).replace('-','.');
 const e=maxEnd.slice(5).replace('-','.');
 it.dateRange=s+' - '+e;
 }
-/* 3. 自动计算子项的进度(progress)：已完成条数/总条数*100 */
+/* ── 二级模块完成度 = 下属三级模块完成度之和 / 三级模块个数 ── */
 if(it.ganttBars.length>0){
-it.progress=Math.round(completedCount/it.ganttBars.length*100);
+const sum=it.ganttBars.reduce((a,b)=>a+(b._progress||0),0);
+it.progress=Math.round(sum/it.ganttBars.length);
 it.progressColor=it.progress>=100?'gn':it.progress>0?'bl':'pu';
 }
 });
-/* 4. 自动计算模块级的时间区间、总进度、状态 */
-let mMinStart=null,mMaxEnd=null,totalBars=0,totalCompleted=0;
+/* ── 一级模块完成率 = 下属二级模块完成度之和 / 二级模块个数 ── */
+let mMinStart=null,mMaxEnd=null;
+const itemsWithBars=m.items.filter(it=>it.ganttBars&&it.ganttBars.length>0);
+if(itemsWithBars.length>0){
+const sumProgress=itemsWithBars.reduce((a,it)=>a+(it.progress||0),0);
+m.overallProgress=Math.round(sumProgress/itemsWithBars.length);
+}
+/* 模块时间区间和状态自动推导 */
 m.items.forEach(it=>{
 if(!it.ganttBars||!it.ganttBars.length)return;
 it.ganttBars.forEach(b=>{
 if(b.start&&(!mMinStart||b.start<mMinStart))mMinStart=b.start;
 if(b.end&&(!mMaxEnd||b.end>mMaxEnd))mMaxEnd=b.end;
-totalBars++;
-if(b.status==='c')totalCompleted++;
 });
 });
-/* 模块总进度 = 所有子项甘特条已完成数 / 总甘特条数 */
-if(totalBars>0){
-m.overallProgress=Math.round(totalCompleted/totalBars*100);
-}
-/* 模块状态自动推导 */
 if(mMinStart&&mMaxEnd){
 if(mMaxEnd<=today){m.status='completed'}
 else if(mMinStart<=today&&mMaxEnd>today){m.status='inprogress'}
 else{m.status='planned'}
-/* 模块副标题中的时间区间 */
-const ms=mMinStart.slice(5).replace('-','.');
-const me=mMaxEnd.slice(5).replace('-','.');
-/* 保留模块原有的文字描述副标题，不自动覆盖 */
 }
 });
-/* 5. 里程碑状态自动根据日期计算 */
+/* ── 里程碑状态自动根据日期计算 ── */
 if(D.milestones){D.milestones.forEach(ms=>{
 if(ms.date){
 if(ms.date<=today){ms.status='c'}
