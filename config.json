@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-03-30T16:42",
+    "updateDate": "2026-03-30T16:43",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -97,16 +97,16 @@
       "category": "software",
       "title": "软件开发",
       "subtitle": "动捕流程软件平台 · 动捕排期系统",
-      "overallProgress": 80,
+      "overallProgress": 60,
       "status": "inprogress",
       "items": [
         {
           "id": "sw1",
           "title": "动捕流程软件平台",
-          "dateRange": "12.25 - 05.15",
+          "dateRange": "12.25 - 06.30",
           "description": "<span class=\"hl\">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等（1月6日-2月28日）<br><span class=\"hl\">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览（1月14日-3月31日）<br><span class=\"hl\">模块3 Publish</span>：待模块1、2流程跑通后启动",
           "progressLabel": "模块1&2",
-          "progress": 67,
+          "progress": 33,
           "progressColor": "bl",
           "extraProgress": [
             {
@@ -127,13 +127,13 @@
             {
               "title": "模块2 Process",
               "start": "2026-01-22",
-              "end": "2026-02-14",
-              "status": "c"
+              "end": "2026-03-31",
+              "status": "i"
             },
             {
               "title": "模块3 Publish",
               "start": "2026-05-01",
-              "end": "2026-05-15",
+              "end": "2026-06-30",
               "status": "p"
             }
           ]
