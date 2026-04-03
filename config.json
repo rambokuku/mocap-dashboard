@@ -13,8 +13,8 @@
       "category": "hardware",
       "title": "硬件建设",
       "subtitle": "03栋云海动捕中棚建设 · 直播空间搭建",
-      "overallProgress": 99,
-      "status": "inprogress",
+      "overallProgress": 100,
+      "status": "completed",
       "items": [
         {
           "id": "hw1",
@@ -63,8 +63,8 @@
           "dateRange": "01.21 - 04.03",
           "description": "<span class=\"hl\">装修设计</span>已完成，<span class=\"hl\">场地改造</span>27 号已完成所有线下空间改造，<span class=\"hl\">设备安装</span>设备基本到齐，本周进入运营测试阶段",
           "progressLabel": "整体进度",
-          "progress": 97,
-          "progressColor": "bl",
+          "progress": 100,
+          "progressColor": "gn",
           "ganttLabel": "直播空间搭建",
           "ganttSubLabel": "装修设计/场地改造/设备安装",
           "ganttBars": [
@@ -93,8 +93,8 @@
               "title": "运营测试",
               "start": "2026-03-27",
               "end": "2026-04-03",
-              "status": "i",
-              "_progress": 86
+              "status": "c",
+              "_progress": 100
             }
           ]
         }
@@ -105,7 +105,7 @@
       "category": "software",
       "title": "软件开发",
       "subtitle": "动捕流程软件平台 · 动捕排期系统",
-      "overallProgress": 80,
+      "overallProgress": 84,
       "status": "inprogress",
       "items": [
         {
@@ -155,8 +155,8 @@
           "dateRange": "12.25 - 04.03",
           "description": "<span class=\"risk\">视觉排期出现delay</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
           "progressLabel": "整体进度",
-          "progress": 93,
-          "progressColor": "bl",
+          "progress": 100,
+          "progressColor": "gn",
           "ganttLabel": "动捕排期系统",
           "ganttSubLabel": "交互设计/前后端开发",
           "ganttBars": [
@@ -178,8 +178,8 @@
               "title": "运营测试",
               "start": "2026-03-29",
               "end": "2026-04-03",
-              "status": "i",
-              "_progress": 80
+              "status": "c",
+              "_progress": 100
             }
           ]
         }
@@ -215,7 +215,7 @@
               "title": "正式拍摄",
               "start": "2026-04-03",
               "end": "2026-04-08",
-              "status": "p",
+              "status": "i",
               "_progress": 0
             },
             {
@@ -265,7 +265,7 @@
       "date": "2026-04-03",
       "title": "直播空间搭建（新增）完成",
       "desc": "[硬件建设] 装修设计→场地改造→设备安装→运营测试 （进度75%）",
-      "status": "p"
+      "status": "c"
     },
     {
       "date": "2026-04-15",
