@@ -190,7 +190,7 @@
       "category": "operations",
       "title": "运营推广",
       "subtitle": "云海中棚动捕官方宣传视频",
-      "overallProgress": 40,
+      "overallProgress": 67,
       "status": "inprogress",
       "items": [
         {
@@ -199,7 +199,7 @@
           "dateRange": "03.06 - 04.15",
           "description": "<span class=\"hl\">脚本初稿完成</span>，终稿优化中。<span class=\"risk\">费用超出预算</span>，正在和光子市场部沟通后续的视频拍摄需求，等待对方本周三前反馈。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月中旬完成拍摄。",
           "progressLabel": "整体进度",
-          "progress": 40,
+          "progress": 67,
           "progressColor": "bl",
           "ganttLabel": "宣传视频",
           "ganttSubLabel": "脚本/拍摄/后期",
@@ -215,14 +215,14 @@
               "title": "正式拍摄",
               "start": "2026-04-03",
               "end": "2026-04-08",
-              "status": "i",
-              "_progress": 20
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "后期制作",
               "start": "2026-04-09",
               "end": "2026-04-15",
-              "status": "p",
+              "status": "i",
               "_progress": 0
             }
           ]
