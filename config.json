@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-09T11:04",
+    "updateDate": "2026-04-09T13:02",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -190,38 +190,45 @@
       "category": "operations",
       "title": "运营推广",
       "subtitle": "云海中棚动捕官方宣传视频",
-      "overallProgress": 67,
+      "overallProgress": 0,
       "status": "inprogress",
       "items": [
         {
           "id": "ops1",
           "title": "宣传视频拍摄",
-          "dateRange": "03.06 - 04.15",
+          "dateRange": "04.09 - 04.25",
           "description": "<span class=\"hl\">脚本初稿完成</span>，终稿优化中。<span class=\"risk\">费用超出预算</span>，正在和光子市场部沟通后续的视频拍摄需求，等待对方本周三前反馈。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月中旬完成拍摄。",
           "progressLabel": "整体进度",
-          "progress": 67,
-          "progressColor": "bl",
+          "progress": 0,
+          "progressColor": "pu",
           "ganttLabel": "宣传视频",
           "ganttSubLabel": "脚本/拍摄/后期",
           "ganttBars": [
             {
               "title": "脚本优化",
-              "start": "2026-03-06",
-              "end": "2026-03-24",
-              "status": "c",
-              "_progress": 100
+              "start": "2026-04-13",
+              "end": "2026-04-17",
+              "status": "p",
+              "_progress": 0
             },
             {
               "title": "正式拍摄",
-              "start": "2026-04-03",
-              "end": "2026-04-08",
-              "status": "c",
-              "_progress": 100
+              "start": "2026-04-18",
+              "end": "2026-04-22",
+              "status": "p",
+              "_progress": 0
             },
             {
               "title": "后期制作",
+              "start": "2026-04-23",
+              "end": "2026-04-25",
+              "status": "p",
+              "_progress": 0
+            },
+            {
+              "title": "CP 确认",
               "start": "2026-04-09",
-              "end": "2026-04-15",
+              "end": "2026-04-13",
               "status": "i",
               "_progress": 0
             }
