@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-09T13:11",
+    "updateDate": "2026-04-09T13:16",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -13,8 +13,8 @@
       "category": "hardware",
       "title": "硬件建设",
       "subtitle": "03栋云海动捕中棚建设 · 直播空间搭建",
-      "overallProgress": 100,
-      "status": "completed",
+      "overallProgress": 67,
+      "status": "inprogress",
       "items": [
         {
           "id": "hw1",
@@ -95,6 +95,47 @@
               "end": "2026-04-03",
               "status": "c",
               "_progress": 100
+            }
+          ]
+        },
+        {
+          "id": "item_1775711608512",
+          "title": "OG 动捕棚需求建设",
+          "dateRange": "04.09 - 06.22",
+          "description": "请编辑描述",
+          "progressLabel": "整体进度",
+          "progress": 0,
+          "progressColor": "pu",
+          "ganttLabel": "OG 动捕棚需求建设",
+          "ganttSubLabel": "",
+          "ganttBars": [
+            {
+              "title": "合同签约",
+              "start": "2026-04-15",
+              "end": "2026-04-22",
+              "status": "p",
+              "_progress": 0
+            },
+            {
+              "title": "合作策略确认",
+              "start": "2026-04-09",
+              "end": "2026-04-14",
+              "status": "i",
+              "_progress": 0
+            },
+            {
+              "title": "流程推进",
+              "start": "2026-04-22",
+              "end": "2026-05-22",
+              "status": "p",
+              "_progress": 0
+            },
+            {
+              "title": "付款交付",
+              "start": "2026-05-22",
+              "end": "2026-06-22",
+              "status": "p",
+              "_progress": 0
             }
           ]
         }
