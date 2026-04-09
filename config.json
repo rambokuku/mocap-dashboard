@@ -105,14 +105,14 @@
       "category": "software",
       "title": "软件开发",
       "subtitle": "动捕流程软件平台 · 动捕排期系统",
-      "overallProgress": 84,
+      "overallProgress": 79,
       "status": "inprogress",
       "items": [
         {
           "id": "sw1",
           "title": "动捕流程软件平台",
           "dateRange": "12.25 - 05.30",
-          "description": "<span class=\"hl\">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等（1月6日-2月28日）<br><span class=\"hl\">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览（1月14日-3月31日）<br><span class=\"hl\">模块3 Publish</span>：待模块1、2流程跑通后启动；模块1&2功能均已开发完成，在修复使用过程发现的bug。",
+          "description": "<span class=\"hl\">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等（1月6日-2月28日）<br><span class=\"hl\">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览（1月14日-3月31日）<br><span class=\"hl\">模块3 Publish</span>：待模块1、2流程跑通后启动",
           "progressLabel": "模块1&2",
           "progress": 67,
           "progressColor": "bl",
@@ -152,11 +152,11 @@
         {
           "id": "sw2",
           "title": "动捕排期系统",
-          "dateRange": "12.25 - 04.03",
+          "dateRange": "12.25 - 04.15",
           "description": "<span class=\"risk\">视觉排期出现delay</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
           "progressLabel": "整体进度",
-          "progress": 100,
-          "progressColor": "gn",
+          "progress": 91,
+          "progressColor": "bl",
           "ganttLabel": "动捕排期系统",
           "ganttSubLabel": "交互设计/前后端开发",
           "ganttBars": [
@@ -175,11 +175,18 @@
               "_progress": 100
             },
             {
-              "title": "运营测试",
+              "title": "运营测试&Debug",
               "start": "2026-03-29",
-              "end": "2026-04-03",
-              "status": "c",
-              "_progress": 100
+              "end": "2026-04-15",
+              "status": "i",
+              "_progress": 65
+            },
+            {
+              "title": "动捕排期系统 - 视觉设计",
+              "start": "2026-01-05",
+              "end": "2026-04-10",
+              "status": "i",
+              "_progress": 99
             }
           ]
         }
