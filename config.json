@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-09T11:03",
+    "updateDate": "2026-04-09T11:04",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -105,14 +105,14 @@
       "category": "software",
       "title": "软件开发",
       "subtitle": "动捕流程软件平台 · 动捕排期系统",
-      "overallProgress": 79,
+      "overallProgress": 84,
       "status": "inprogress",
       "items": [
         {
           "id": "sw1",
           "title": "动捕流程软件平台",
           "dateRange": "12.25 - 05.30",
-          "description": "<span class=\"hl\">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等（1月6日-2月28日）<br><span class=\"hl\">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览（1月14日-3月31日）<br><span class=\"hl\">模块3 Publish</span>：待模块1、2流程跑通后启动",
+          "description": "<span class=\"hl\">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等功能开发完成，优化问题中（1月6日-2月28日）<br><span class=\"hl\">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览等功能开发完成，优化问题中（1月14日-3月31日）<br><span class=\"hl\">模块3 Publish</span>：待模块1、2流程跑通后启动。",
           "progressLabel": "模块1&2",
           "progress": 67,
           "progressColor": "bl",
@@ -152,11 +152,11 @@
         {
           "id": "sw2",
           "title": "动捕排期系统",
-          "dateRange": "12.25 - 04.15",
+          "dateRange": "12.25 - 04.03",
           "description": "<span class=\"risk\">视觉排期出现delay</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
           "progressLabel": "整体进度",
-          "progress": 90,
-          "progressColor": "bl",
+          "progress": 100,
+          "progressColor": "gn",
           "ganttLabel": "动捕排期系统",
           "ganttSubLabel": "交互设计/前后端开发",
           "ganttBars": [
@@ -170,23 +170,16 @@
             {
               "title": "前后端开发",
               "start": "2026-01-02",
-              "end": "2026-04-15",
-              "status": "i",
-              "_progress": 94
+              "end": "2026-03-29",
+              "status": "c",
+              "_progress": 100
             },
             {
-              "title": "运营测试&Debug",
+              "title": "运营测试",
               "start": "2026-03-29",
-              "end": "2026-04-15",
-              "status": "i",
-              "_progress": 65
-            },
-            {
-              "title": "动捕排期系统 - 视觉设计",
-              "start": "2026-01-05",
-              "end": "2026-04-10",
-              "status": "i",
-              "_progress": 99
+              "end": "2026-04-03",
+              "status": "c",
+              "_progress": 100
             }
           ]
         }
