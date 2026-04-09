@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-09T13:21",
+    "updateDate": "2026-04-09T13:29",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -194,7 +194,7 @@
           "id": "sw2",
           "title": "动捕排期系统",
           "dateRange": "12.25 - 04.03",
-          "description": "<span class=\"risk\">视觉排期出现delay</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
+          "description": "<span class=\"risk\">最新视觉完成 90%</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
           "progressLabel": "整体进度",
           "progress": 100,
           "progressColor": "gn",
