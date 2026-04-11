@@ -13,7 +13,7 @@
       "category": "hardware",
       "title": "硬件建设",
       "subtitle": "03栋云海动捕中棚建设 · 直播空间搭建",
-      "overallProgress": 68,
+      "overallProgress": 70,
       "status": "inprogress",
       "items": [
         {
@@ -104,7 +104,7 @@
           "dateRange": "04.09 - 06.22",
           "description": "1. 服采库内直采方案是按照物件数进行实时结算，流程不可用；\n2. 准备启动自采流程（已和服采、集团风控对齐）；\n3. 针对自采明确各自分工后，推动OG 侧走自采流程",
           "progressLabel": "整体进度",
-          "progress": 5,
+          "progress": 10,
           "progressColor": "bl",
           "ganttLabel": "OG 动捕棚需求建设",
           "ganttSubLabel": "",
@@ -121,7 +121,7 @@
               "start": "2026-04-09",
               "end": "2026-04-14",
               "status": "i",
-              "_progress": 20
+              "_progress": 40
             },
             {
               "title": "流程推进",
@@ -146,7 +146,7 @@
       "category": "software",
       "title": "软件开发",
       "subtitle": "动捕流程软件平台 · 动捕排期系统",
-      "overallProgress": 80,
+      "overallProgress": 82,
       "status": "inprogress",
       "items": [
         {
@@ -196,7 +196,7 @@
           "dateRange": "12.25 - 04.13",
           "description": "<span class=\"risk\">最新视觉完成 90%</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
           "progressLabel": "整体进度",
-          "progress": 93,
+          "progress": 96,
           "progressColor": "bl",
           "ganttLabel": "动捕排期系统",
           "ganttSubLabel": "交互设计/前后端开发",
@@ -220,7 +220,7 @@
               "start": "2026-03-29",
               "end": "2026-04-13",
               "status": "i",
-              "_progress": 80
+              "_progress": 87
             }
           ]
         }
@@ -231,7 +231,7 @@
       "category": "operations",
       "title": "运营推广",
       "subtitle": "云海中棚动捕官方宣传视频",
-      "overallProgress": 6,
+      "overallProgress": 13,
       "status": "inprogress",
       "items": [
         {
@@ -240,7 +240,7 @@
           "dateRange": "04.09 - 04.25",
           "description": "正在和光子市场部沟通后续的视频拍摄需求，正在CP 筛选阶段（确认CP后明确最终排期）。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月底完成拍摄。",
           "progressLabel": "整体进度",
-          "progress": 6,
+          "progress": 13,
           "progressColor": "bl",
           "ganttLabel": "宣传视频",
           "ganttSubLabel": "脚本/拍摄/后期",
@@ -271,7 +271,7 @@
               "start": "2026-04-09",
               "end": "2026-04-13",
               "status": "i",
-              "_progress": 25
+              "_progress": 50
             }
           ]
         }
