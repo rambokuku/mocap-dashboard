@@ -470,7 +470,7 @@ onkeydown="if(event.key==='Enter')doNameLogin()">
 <div class="ctc" id="tab-modules"><div id="moduleCfg"></div><div id="addModBtn"></div></div>
 <div class="ctc" id="tab-perms"><div id="permCfg"></div></div>
 <div class="ctc" id="tab-version"><div id="versionCfg"></div></div>
-<div class="cact"><button class="btn btn-s" onclick="resetCfg()">重置数据</button><button class="btn btn-p" onclick="applyCfg()">应用更改</button></div>
+<div class="cact" id="cfgActBtns"><button class="btn btn-s" onclick="resetCfg()">重置数据</button><button class="btn btn-p" onclick="applyCfg()">应用更改</button></div>
 </div></div>
 <script>
 /* ===== PARTICLE NEBULA SYSTEM ===== */
@@ -1996,7 +1996,7 @@ setTimeout(()=>{group.style.borderColor='';group.style.boxShadow=''},2000);
 break}}},200)},100)}
 function toggleCfg(){if(!canE()){showToast('您没有编辑权限',1);return}document.getElementById('cfgP').classList.toggle('open');document.getElementById('cfgOv').classList.toggle('open');if(document.getElementById('cfgP').classList.contains('open')){_prevSnapshot=_takeSnapshot();renderCfg()}}
 function rTabs(){const t=document.getElementById('cfgTabs');const pendingCount=AR.filter(r=>r.status==='pending').length;let h='<button class="ctab act" data-tab="basic" onclick="stab(\'basic\',this)">基础信息</button><button class="ctab" data-tab="modules" onclick="stab(\'modules\',this)">模块编辑</button>';if(canM())h+=`<button class="ctab" data-tab="perms" onclick="stab('perms',this)">权限管理${pendingCount>0?'<span class="pending-badge">'+pendingCount+'</span>':''}</button>`;if(canE())h+=`<button class="ctab" data-tab="version" onclick="stab('version',this)">版本管理</button>`;t.innerHTML=h}
-function stab(n,el){document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('act'));document.querySelectorAll('.ctc').forEach(t=>t.classList.remove('act'));if(el){el.classList.add('act')}else{const btn=document.querySelector('.ctab[data-tab="'+n+'"]');if(btn)btn.classList.add('act')}document.getElementById('tab-'+n).classList.add('act')}
+function stab(n,el){document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('act'));document.querySelectorAll('.ctc').forEach(t=>t.classList.remove('act'));if(el){el.classList.add('act')}else{const btn=document.querySelector('.ctab[data-tab="'+n+'"]');if(btn)btn.classList.add('act')}document.getElementById('tab-'+n).classList.add('act');const ab=document.getElementById('cfgActBtns');if(ab)ab.style.display=n==='version'?'none':'flex'}
 /* === 双击子模块卡片 → 跳转配置面板模块编辑并定位 === */
 function jumpToModEdit(mid,iid){if(!canE()){showToast('您没有编辑权限',1);return}const p=document.getElementById('cfgP');const isOpen=p.classList.contains('open');if(!isOpen){document.getElementById('cfgP').classList.add('open');document.getElementById('cfgOv').classList.add('open');renderCfg()}stab('modules',null);setTimeout(()=>{const target=document.querySelector('.csi[data-cfg-mid="'+mid+'"][data-cfg-iid="'+iid+'"]');if(target){target.scrollIntoView({behavior:'smooth',block:'center'});target.style.outline='2px solid var(--acc2)';target.style.outlineOffset='4px';target.style.transition='outline-color 2s';setTimeout(()=>{target.style.outline='';target.style.outlineOffset=''},2500)}},200)}
 /* === 双击里程碑 → 跳转配置面板里程碑编辑区 === */
