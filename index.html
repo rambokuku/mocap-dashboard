@@ -254,8 +254,27 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .ctabs{display:flex;gap:4px;margin-bottom:24px;background:rgba(255,255,255,.03);border-radius:12px;padding:4px;flex-wrap:wrap}
 .ctab{flex:1;padding:12px 14px;border-radius:10px;border:none;background:transparent;color:var(--txt2);font-size:14px;font-weight:700;cursor:pointer;transition:var(--tr);font-family:inherit;white-space:nowrap;letter-spacing:.5px}
 .ctab.act{background:rgba(0,102,204,.15);color:var(--acc2)}.ctab:hover:not(.act){background:rgba(255,255,255,.03)}
-.ctab[data-tab="basic"]{color:#00C48C}.ctab[data-tab="modules"]{color:#FF9F43}.ctab[data-tab="perms"]{color:#FF6B6B}
-.ctab.act[data-tab="basic"]{color:#00E6A0;background:rgba(0,196,140,.12)}.ctab.act[data-tab="modules"]{color:#FFB366;background:rgba(255,159,67,.12)}.ctab.act[data-tab="perms"]{color:#FF8585;background:rgba(255,107,107,.12)}
+.ctab[data-tab="basic"]{color:#00C48C}.ctab[data-tab="modules"]{color:#FF9F43}.ctab[data-tab="perms"]{color:#FF6B6B}.ctab[data-tab="version"]{color:#A29BFE}
+.ctab.act[data-tab="basic"]{color:#00E6A0;background:rgba(0,196,140,.12)}.ctab.act[data-tab="modules"]{color:#FFB366;background:rgba(255,159,67,.12)}.ctab.act[data-tab="perms"]{color:#FF8585;background:rgba(255,107,107,.12)}.ctab.act[data-tab="version"]{color:#C4B5FD;background:rgba(162,155,254,.12)}
+/* === 版本管理面板样式 === */
+.ver-subtab{display:flex;gap:4px;margin-bottom:18px;background:rgba(255,255,255,.02);border-radius:10px;padding:3px}
+.ver-subtab-btn{flex:1;padding:10px 12px;border-radius:8px;border:none;background:transparent;color:var(--txt2);font-size:13px;font-weight:700;cursor:pointer;transition:var(--tr);font-family:inherit}
+.ver-subtab-btn.act{background:rgba(162,155,254,.12);color:#C4B5FD}
+.ver-subtab-btn:hover:not(.act){background:rgba(255,255,255,.03)}
+.ver-sub{display:none}.ver-sub.act{display:block}
+.ver-entry{padding:14px;border:1px solid var(--bdr);border-radius:12px;margin-bottom:10px;background:rgba(255,255,255,.02);transition:var(--tr)}
+.ver-entry:hover{border-color:rgba(162,155,254,.3)}
+.ver-entry-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.ver-entry-time{font-size:11px;color:var(--txt3)}
+.ver-entry-tag{font-size:10px;padding:2px 8px;border-radius:6px;font-weight:700}
+.ver-entry-tag.add{background:rgba(0,196,140,.15);color:#00E6A0}
+.ver-entry-tag.edit{background:rgba(0,163,224,.15);color:var(--acc2)}
+.ver-entry-tag.del{background:rgba(255,71,87,.15);color:var(--err)}
+.ver-entry-tag.ver{background:rgba(162,155,254,.15);color:#C4B5FD}
+.ver-entry-body{font-size:12px;color:var(--txt2);line-height:1.7}
+.ver-entry-body .field{color:var(--acc2)}.ver-entry-body .old{color:var(--err);text-decoration:line-through;opacity:.6}.ver-entry-body .new{color:#00E6A0}
+.ver-version-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:10px;background:linear-gradient(135deg,rgba(162,155,254,.08),rgba(108,92,231,.08));border:1px solid rgba(162,155,254,.2);font-size:15px;color:#C4B5FD;margin-bottom:16px}
+.ver-empty{padding:32px;text-align:center;color:var(--txt3);font-size:13px}
 .ctc{display:none}.ctc.act{display:block}
 .cg{margin-bottom:14px}.cg label{display:block;font-size:12px;color:var(--txt2);margin-bottom:6px}
 .cg input,.cg textarea,.cg select{width:100%;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;font-size:13px;font-family:inherit;font-weight:700;transition:var(--tr);background:rgba(255,255,255,.03);color:var(--txt)}
@@ -449,6 +468,7 @@ onkeydown="if(event.key==='Enter')doNameLogin()">
 <div class="ctc act" id="tab-basic"><div class="cg"><label>更新日期 <span style="font-size:10px;color:var(--txt3);font-weight:normal">（保存时自动更新为当前北京时间）</span></label><input type="text" id="cfgDate" readonly style="opacity:.7;cursor:default"></div><div class="cg"><label>PM 负责</label><input type="text" id="cfgRep" value="rambokou(寇启龙)"></div><div class="cg"><label>动画负责人</label><input type="text" id="cfgAnimLead" value="saxonshao(邵雷)"></div><div class="cg"><label>PO</label><input type="text" id="cfgPO" value="andrewzli(李哲)"></div><div class="cg"><label>TL</label><input type="text" id="cfgTL" value="yuanfengxie(谢远锋)"></div><div class="csec" id="ghSyncSec" style="display:none"><h4>🔄 GitHub 数据同步</h4><div style="padding:12px;background:rgba(0,200,140,.04);border:1px solid rgba(0,200,140,.15);border-radius:12px;margin-bottom:12px"><div style="font-size:12px;color:var(--txt3);margin-bottom:10px">配置 GitHub Token 后，所有业务数据和权限信息将自动同步到 GitHub 仓库。<br>所有访问者打开页面时会自动获取最新数据，无需手动同步。</div><div class="cg"><label>GitHub Personal Access Token <span style="font-size:10px;color:var(--txt3);font-weight:400">（仅超管可配置，存在本地浏览器中）</span></label><div style="display:flex;gap:8px"><input type="password" id="ghTokenInput" placeholder="ghp_xxxxxxxxxxxx" style="flex:1" value=""><button class="abtn" style="margin:0;white-space:nowrap" onclick="cfgGHToken()">保存 Token</button><button class="abtn" style="margin:0;white-space:nowrap;background:rgba(255,255,255,.04)" onclick="testGHToken()">测试连接</button></div></div><div id="ghSyncStatus" style="font-size:12px;margin-top:8px"></div></div></div><div class="csec"><h4>甘特图日期</h4><div id="ganttCfg"></div></div><div class="csec"><h4>🚩 关键里程碑</h4><div id="msCfg"></div></div></div>
 <div class="ctc" id="tab-modules"><div id="moduleCfg"></div><div id="addModBtn"></div></div>
 <div class="ctc" id="tab-perms"><div id="permCfg"></div></div>
+<div class="ctc" id="tab-version"><div id="versionCfg"></div></div>
 <div class="cact"><button class="btn btn-s" onclick="resetCfg()">重置数据</button><button class="btn btn-p" onclick="applyCfg()">应用更改</button></div>
 </div></div>
 <script>
@@ -1473,7 +1493,7 @@ function gi(cat,t,iid){const c=IC[cat]||IC.hardware;let k;if(t==='card')k=c.card
 /* ===== DATA ===== */
 const CC={hardware:{m:'#0066CC',a:'#00A3E0',c:'hw'},software:{m:'#6C5CE7',a:'#A855F7',c:'sw'},operations:{m:'#FF8C00',a:'#FFB340',c:'op'}};
 /* D 的默认值作为最后兜底，正常情况会被 config.json 覆盖 */
-let D={project:{name:"动捕专项整体进展梳理",updateDate:"2026-01-28",reporter:"rambokou(寇启龙)",animLead:"saxonshao(邵雷)",po:"andrewzli(李哲)",tl:"yuanfengxie(谢远锋)"},modules:[{id:'hardware',category:'hardware',title:'硬件建设',subtitle:'03栋云海动捕中棚建设 · 直播空间搭建',overallProgress:90,status:'completed',items:[{id:'hw1',title:'03栋云海动捕中棚建设',dateRange:'01.06 - 02.12',description:'<span class="hl">三维空间设计</span>1月6日完成，<span class="hl">场地装修</span>1月31日完成（delay 5天），<span class="hl">设备安装</span>1月27日启动，2月12日完成。整体于2月17日完成试运营。',progressLabel:'整体进度',progress:100,progressColor:'gn',ganttLabel:'03栋云海动捕中棚',ganttSubLabel:'装修设计/场地装修/设备安装',ganttBars:[{title:'装修设计',start:'2026-01-06',end:'2026-01-26',status:'c'},{title:'场地装修',start:'2026-01-12',end:'2026-01-31',status:'c'},{title:'设备安装',start:'2026-01-27',end:'2026-02-12',status:'c'}]},{id:'hw2',title:'直播空间搭建（新增）',dateRange:'01.15 - 02.10',description:'<span class="hl">装修设计</span>已完成，<span class="hl">场地改造</span>本周内完成所有线下空间改造，<span class="hl">设备安装</span>下周设备到齐。',progressLabel:'整体进度',progress:70,progressColor:'bl',ganttLabel:'直播空间搭建',ganttSubLabel:'装修设计/场地改造/设备安装',ganttBars:[{title:'装修设计',start:'2026-01-15',end:'2026-01-25',status:'c'},{title:'场地改造',start:'2026-01-20',end:'2026-01-28',status:'i'},{title:'设备安装',start:'2026-01-29',end:'2026-02-10',status:'i'}]}]},{id:'software',category:'software',title:'软件开发',subtitle:'动捕流程软件平台 · 动捕排期系统',overallProgress:65,status:'inprogress',items:[{id:'sw1',title:'动捕流程软件平台',dateRange:'01.06 - 03.01',description:'<span class="hl">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等（1月6日-2月14日）<br><span class="hl">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览（1月14日-2月14日）<br><span class="hl">模块3 Publish</span>：待模块1、2流程跑通后启动（2月15日-3月1日）',progressLabel:'模块1&2',progress:100,progressColor:'gn',extraProgress:[{label:'模块3 Publish',value:0,color:'pu'}],ganttLabel:'动捕流程软件',ganttSubLabel:'Realtime/Process/Publish',ganttBars:[{title:'模块1 Realtime',start:'2026-01-06',end:'2026-02-14',status:'c'},{title:'模块2 Process',start:'2026-01-14',end:'2026-02-14',status:'c'},{title:'模块3 Publish',start:'2026-02-15',end:'2026-03-01',status:'i'}]},{id:'sw2',title:'动捕排期系统',dateRange:'01.12 - 03.15',description:'<span class="risk">视觉排期出现delay</span>，下周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。',progressLabel:'整体进度',progress:60,progressColor:'pu',ganttLabel:'动捕排期系统',ganttSubLabel:'交互设计/前后端开发',ganttBars:[{title:'交互设计',start:'2026-01-12',end:'2026-01-21',status:'c'},{title:'前后端开发',start:'2026-01-22',end:'2026-03-15',status:'i'}]}]},{id:'operations',category:'operations',title:'运营推广',subtitle:'云海中棚动捕官方宣传视频',overallProgress:40,status:'inprogress',items:[{id:'ops1',title:'宣传视频拍摄',dateRange:'01.20 - 03.05',description:'<span class="hl">脚本初稿完成</span>，终稿优化中。<span class="risk">费用超出预算</span>，正在商务谈价环节。<br><span class="hl">初定2月11日启动正式拍摄</span>，预计2月18日完成拍摄，3月5日前完成后期制作。',progressLabel:'整体进度',progress:40,progressColor:'or',ganttLabel:'宣传视频',ganttSubLabel:'脚本/拍摄/后期',ganttBars:[{title:'脚本优化',start:'2026-01-20',end:'2026-02-05',status:'i'},{title:'正式拍摄',start:'2026-02-11',end:'2026-02-18',status:'p'},{title:'后期制作',start:'2026-02-19',end:'2026-03-05',status:'p'}]}]}],milestones:[{date:'2026-01-06',title:'三维空间设计完成',desc:'03栋动捕棚三维空间设计稿输出（含元旦假期共9天）',status:'c'},{date:'2026-01-12',title:'排期系统交互设计启动',desc:'动捕排期系统交互设计和前后端开发正式启动',status:'c'},{date:'2026-01-21',title:'交互设计定稿',desc:'动捕排期系统预约日历交互方案确定',status:'c'},{date:'2026-01-26',title:'Logo定稿',desc:'中文"光子动捕"、英文"LightSpeed Mocap"输出并定稿',status:'c'},{date:'2026-01-31',title:'场地装修完成',desc:'完成场地装修所有工作计划（delay 5天，原定1月26日）',status:'c'},{date:'2026-02-12',title:'设备安装完成',desc:'03栋动捕棚1.0所有装修工作完成，试运营启动',status:'c'},{date:'2026-02-11',title:'宣传视频拍摄（规划）',desc:'正式拍摄启动，预计2月18日完成',status:'i'},{date:'2026-03-01',title:'软件平台交付（规划）',desc:'动捕流程软件平台完成交付（考虑过年假期）',status:'p'},{date:'2026-03-05',title:'视频后期完成（规划）',desc:'宣传视频后期制作完成',status:'p'},{date:'2026-03-15',title:'排期系统上线（规划）',desc:'动捕排期系统上线内网（视觉排期有delay）',status:'p'}]};
+let D={project:{name:"动捕专项整体进展梳理",updateDate:"2026-01-28",reporter:"rambokou(寇启龙)",animLead:"saxonshao(邵雷)",po:"andrewzli(李哲)",tl:"yuanfengxie(谢远锋)"},modules:[{id:'hardware',category:'hardware',title:'硬件建设',subtitle:'03栋云海动捕中棚建设 · 直播空间搭建',overallProgress:90,status:'completed',items:[{id:'hw1',title:'03栋云海动捕中棚建设',dateRange:'01.06 - 02.12',description:'<span class="hl">三维空间设计</span>1月6日完成，<span class="hl">场地装修</span>1月31日完成（delay 5天），<span class="hl">设备安装</span>1月27日启动，2月12日完成。整体于2月17日完成试运营。',progressLabel:'整体进度',progress:100,progressColor:'gn',ganttLabel:'03栋云海动捕中棚',ganttSubLabel:'装修设计/场地装修/设备安装',ganttBars:[{title:'装修设计',start:'2026-01-06',end:'2026-01-26',status:'c'},{title:'场地装修',start:'2026-01-12',end:'2026-01-31',status:'c'},{title:'设备安装',start:'2026-01-27',end:'2026-02-12',status:'c'}]},{id:'hw2',title:'直播空间搭建（新增）',dateRange:'01.15 - 02.10',description:'<span class="hl">装修设计</span>已完成，<span class="hl">场地改造</span>本周内完成所有线下空间改造，<span class="hl">设备安装</span>下周设备到齐。',progressLabel:'整体进度',progress:70,progressColor:'bl',ganttLabel:'直播空间搭建',ganttSubLabel:'装修设计/场地改造/设备安装',ganttBars:[{title:'装修设计',start:'2026-01-15',end:'2026-01-25',status:'c'},{title:'场地改造',start:'2026-01-20',end:'2026-01-28',status:'i'},{title:'设备安装',start:'2026-01-29',end:'2026-02-10',status:'i'}]}]},{id:'software',category:'software',title:'软件开发',subtitle:'动捕流程软件平台 · 动捕排期系统',overallProgress:65,status:'inprogress',items:[{id:'sw1',title:'动捕流程软件平台',dateRange:'01.06 - 03.01',description:'<span class="hl">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等（1月6日-2月14日）<br><span class="hl">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览（1月14日-2月14日）<br><span class="hl">模块3 Publish</span>：待模块1、2流程跑通后启动（2月15日-3月1日）',progressLabel:'模块1&2',progress:100,progressColor:'gn',extraProgress:[{label:'模块3 Publish',value:0,color:'pu'}],ganttLabel:'动捕流程软件',ganttSubLabel:'Realtime/Process/Publish',ganttBars:[{title:'模块1 Realtime',start:'2026-01-06',end:'2026-02-14',status:'c'},{title:'模块2 Process',start:'2026-01-14',end:'2026-02-14',status:'c'},{title:'模块3 Publish',start:'2026-02-15',end:'2026-03-01',status:'i'}]},{id:'sw2',title:'动捕排期系统',dateRange:'01.12 - 03.15',description:'<span class="risk">视觉排期出现delay</span>，下周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。',progressLabel:'整体进度',progress:60,progressColor:'pu',ganttLabel:'动捕排期系统',ganttSubLabel:'交互设计/前后端开发',ganttBars:[{title:'交互设计',start:'2026-01-12',end:'2026-01-21',status:'c'},{title:'前后端开发',start:'2026-01-22',end:'2026-03-15',status:'i'}]}]},{id:'operations',category:'operations',title:'运营推广',subtitle:'云海中棚动捕官方宣传视频',overallProgress:40,status:'inprogress',items:[{id:'ops1',title:'宣传视频拍摄',dateRange:'01.20 - 03.05',description:'<span class="hl">脚本初稿完成</span>，终稿优化中。<span class="risk">费用超出预算</span>，正在商务谈价环节。<br><span class="hl">初定2月11日启动正式拍摄</span>，预计2月18日完成拍摄，3月5日前完成后期制作。',progressLabel:'整体进度',progress:40,progressColor:'or',ganttLabel:'宣传视频',ganttSubLabel:'脚本/拍摄/后期',ganttBars:[{title:'脚本优化',start:'2026-01-20',end:'2026-02-05',status:'i'},{title:'正式拍摄',start:'2026-02-11',end:'2026-02-18',status:'p'},{title:'后期制作',start:'2026-02-19',end:'2026-03-05',status:'p'}]}]}],milestones:[{date:'2026-01-06',title:'三维空间设计完成',desc:'03栋动捕棚三维空间设计稿输出（含元旦假期共9天）',status:'c'},{date:'2026-01-12',title:'排期系统交互设计启动',desc:'动捕排期系统交互设计和前后端开发正式启动',status:'c'},{date:'2026-01-21',title:'交互设计定稿',desc:'动捕排期系统预约日历交互方案确定',status:'c'},{date:'2026-01-26',title:'Logo定稿',desc:'中文"光子动捕"、英文"LightSpeed Mocap"输出并定稿',status:'c'},{date:'2026-01-31',title:'场地装修完成',desc:'完成场地装修所有工作计划（delay 5天，原定1月26日）',status:'c'},{date:'2026-02-12',title:'设备安装完成',desc:'03栋动捕棚1.0所有装修工作完成，试运营启动',status:'c'},{date:'2026-02-11',title:'宣传视频拍摄（规划）',desc:'正式拍摄启动，预计2月18日完成',status:'i'},{date:'2026-03-01',title:'软件平台交付（规划）',desc:'动捕流程软件平台完成交付（考虑过年假期）',status:'p'},{date:'2026-03-05',title:'视频后期完成（规划）',desc:'宣传视频后期制作完成',status:'p'},{date:'2026-03-15',title:'排期系统上线（规划）',desc:'动捕排期系统上线内网（视觉排期有delay）',status:'p'}],dataHistory:[],devHistory:[{ver:'V1.0',date:'2026-01-28',type:'major',desc:'光子动捕管理协作平台初始版本上线',changes:['基础信息展示（项目概览、团队信息）','三大业务模块卡片（硬件建设/软件开发/运营推广）','项目甘特图（进度条+日期轴）','关键里程碑时间线（S曲线展示）','配置面板（基础信息/模块编辑/权限管理）','GitHub数据同步（双向读写）','多角色权限体系（超管/管理员/编辑/浏览）']}],platformVersion:'V1.0'};
 /* ===== GitHub API 数据同步配置 ===== */
 const GH_REPO='rambokuku/mocap-dashboard';
 const GH_FILE='config.json';
@@ -1519,9 +1539,9 @@ let _remoteEncToken='';
 /* 登录成功后调用：有编辑权限且本地无 Token 时，自动从远程解密下发 */
 function _tryAutoToken(){if(_remoteEncToken&&!getGHToken()&&canE()){const t=_decToken(_remoteEncToken);if(t){setGHToken(t);console.log('🔑 已自动获取编辑同步 Token')}}}
 
-/* 构建统一的 config.json 数据格式（包含业务数据+权限+申请队列） */
+/* 构建统一的 config.json 数据格式（包含业务数据+权限+申请队列+版本管理） */
 function buildCfgJSON(){
-const cfg={project:D.project,modules:D.modules,milestones:D.milestones,auth:{users:AU.users},accessRequests:AR};
+const cfg={project:D.project,modules:D.modules,milestones:D.milestones,auth:{users:AU.users},accessRequests:AR,dataHistory:D.dataHistory||[],devHistory:D.devHistory||[],platformVersion:D.platformVersion||'V1.0'};
 /* 超管保存时，将 Token 加密后写入 auth.ghToken，供有编辑权限的用户自动获取 */
 const t=getGHToken();if(t)cfg.auth.ghToken=_encToken(t);
 return cfg;
@@ -1534,6 +1554,10 @@ if(cfg.modules)D.modules=cfg.modules;
 if(cfg.milestones)D.milestones=cfg.milestones;
 if(cfg.auth&&cfg.auth.users){AU.users=cfg.auth.users;sAuth()}
 if(cfg.accessRequests){AR=cfg.accessRequests;sReq()}
+/* 版本管理数据恢复 */
+if(cfg.dataHistory)D.dataHistory=cfg.dataHistory;
+if(cfg.devHistory)D.devHistory=cfg.devHistory;
+if(cfg.platformVersion)D.platformVersion=cfg.platformVersion;
 /* 暂存远程加密 Token，登录后再根据权限下发 */
 if(cfg.auth&&cfg.auth.ghToken)_remoteEncToken=cfg.auth.ghToken;
 }
@@ -1969,8 +1993,8 @@ group.style.borderColor='rgba(0,163,224,.6)';
 group.style.boxShadow='0 0 20px rgba(0,163,224,.2)';
 setTimeout(()=>{group.style.borderColor='';group.style.boxShadow=''},2000);
 break}}},200)},100)}
-function toggleCfg(){if(!canE()){showToast('您没有编辑权限',1);return}document.getElementById('cfgP').classList.toggle('open');document.getElementById('cfgOv').classList.toggle('open');if(document.getElementById('cfgP').classList.contains('open'))renderCfg()}
-function rTabs(){const t=document.getElementById('cfgTabs');const pendingCount=AR.filter(r=>r.status==='pending').length;let h='<button class="ctab act" data-tab="basic" onclick="stab(\'basic\',this)">基础信息</button><button class="ctab" data-tab="modules" onclick="stab(\'modules\',this)">模块编辑</button>';if(canM())h+=`<button class="ctab" data-tab="perms" onclick="stab('perms',this)">权限管理${pendingCount>0?'<span class="pending-badge">'+pendingCount+'</span>':''}</button>`;t.innerHTML=h}
+function toggleCfg(){if(!canE()){showToast('您没有编辑权限',1);return}document.getElementById('cfgP').classList.toggle('open');document.getElementById('cfgOv').classList.toggle('open');if(document.getElementById('cfgP').classList.contains('open')){_prevSnapshot=_takeSnapshot();renderCfg()}}
+function rTabs(){const t=document.getElementById('cfgTabs');const pendingCount=AR.filter(r=>r.status==='pending').length;let h='<button class="ctab act" data-tab="basic" onclick="stab(\'basic\',this)">基础信息</button><button class="ctab" data-tab="modules" onclick="stab(\'modules\',this)">模块编辑</button>';if(canM())h+=`<button class="ctab" data-tab="perms" onclick="stab('perms',this)">权限管理${pendingCount>0?'<span class="pending-badge">'+pendingCount+'</span>':''}</button>`;if(canE())h+=`<button class="ctab" data-tab="version" onclick="stab('version',this)">版本管理</button>`;t.innerHTML=h}
 function stab(n,el){document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('act'));document.querySelectorAll('.ctc').forEach(t=>t.classList.remove('act'));if(el){el.classList.add('act')}else{const btn=document.querySelector('.ctab[data-tab="'+n+'"]');if(btn)btn.classList.add('act')}document.getElementById('tab-'+n).classList.add('act')}
 /* === 双击子模块卡片 → 跳转配置面板模块编辑并定位 === */
 function jumpToModEdit(mid,iid){if(!canE()){showToast('您没有编辑权限',1);return}const p=document.getElementById('cfgP');const isOpen=p.classList.contains('open');if(!isOpen){document.getElementById('cfgP').classList.add('open');document.getElementById('cfgOv').classList.add('open');renderCfg()}stab('modules',null);setTimeout(()=>{const target=document.querySelector('.csi[data-cfg-mid="'+mid+'"][data-cfg-iid="'+iid+'"]');if(target){target.scrollIntoView({behavior:'smooth',block:'center'});target.style.outline='2px solid var(--acc2)';target.style.outlineOffset='4px';target.style.transition='outline-color 2s';setTimeout(()=>{target.style.outline='';target.style.outlineOffset=''},2500)}},200)}
@@ -1979,7 +2003,7 @@ function jumpToMsEdit(idx){if(!canE()){showToast('您没有编辑权限',1);retu
 function renderCfg(){rTabs();document.getElementById('cfgDate').value=fdfUpdate(D.project.updateDate)||'尚未更新';document.getElementById('cfgRep').value=D.project.reporter||'rambokou(寇启龙)';document.getElementById('cfgAnimLead').value=D.project.animLead||'saxonshao(邵雷)';document.getElementById('cfgPO').value=D.project.po||'andrewzli(李哲)';document.getElementById('cfgTL').value=D.project.tl||'yuanfengxie(谢远锋)';
 /* GitHub 同步区域仅超管可见 */
 const ghSec=document.getElementById('ghSyncSec');if(ghSec){if(isS()){ghSec.style.display='';const ti=document.getElementById('ghTokenInput');if(ti){const t=getGHToken();ti.value=t?'••••••••'+t.slice(-4):'';}_updateGHStatus()}else{ghSec.style.display='none'}}
-rGantt();rMilestonesCfg();rMod();if(canM()){rPerm()}}
+rGantt();rMilestonesCfg();rMod();if(canM()){rPerm()}if(canE()){rVersion()}}
 function rGantt(){let h='';const isManager=canM();D.modules.forEach(m=>{/* 模块分组容器 */
 h+=`<div class="gantt-mod-group" style="margin-bottom:20px;padding:16px;border:1px solid rgba(255,179,64,.15);border-radius:14px;background:rgba(255,179,64,.02)">`;
 h+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06)"><span style="font-size:14px;font-weight:700;color:var(--acc2)">${m.title}</span>`;
@@ -2969,9 +2993,176 @@ function addGanttBar(mid,iid){const m=D.modules.find(x=>x.id===mid);if(!m)return
 function delGanttBar(mid,iid,bi){const m=D.modules.find(x=>x.id===mid);if(!m)return;const it=m.items.find(x=>x.id===iid);if(!it||!it.ganttBars)return;const bName=it.ganttBars[bi]?.title||'';if(!confirm('确定删除甘特条「'+bName+'」？'))return;it.ganttBars.splice(bi,1);rGantt();showToast('已删除甘特条')}
 function delGanttItem(mid,iid){const m=D.modules.find(x=>x.id===mid);if(!m)return;const it=m.items.find(x=>x.id===iid);if(!it)return;if(!confirm('确定删除子项「'+it.title+'」及其所有甘特条？'))return;m.items=m.items.filter(i=>i.id!==iid);rGantt();rMod();showToast('已删除子项')}
 function updGanttBar(mid,iid,bi,f,v){const m=D.modules.find(x=>x.id===mid);if(!m)return;const it=m.items.find(x=>x.id===iid);if(!it||!it.ganttBars||!it.ganttBars[bi])return;it.ganttBars[bi][f]=v}
+/* ===== 版本管理：数据快照与变更检测 ===== */
+let _prevSnapshot=null;
+function _takeSnapshot(){
+return JSON.parse(JSON.stringify({project:D.project,modules:D.modules,milestones:D.milestones}));
+}
+function _detectChanges(prev,cur){
+if(!prev)return[];
+const changes=[];const now=getBJNow();const user=AU.cur||'unknown';
+/* 检测项目基础信息变更 */
+['reporter','animLead','po','tl'].forEach(f=>{
+const labels={reporter:'PM 负责',animLead:'动画负责人',po:'PO',tl:'TL'};
+if(prev.project[f]!==cur.project[f]){
+changes.push({time:now,user:user,type:'edit',scope:'基础信息',detail:`${labels[f]}：${prev.project[f]||'(空)'} → ${cur.project[f]||'(空)'}`});
+}});
+/* 检测模块结构变更 */
+const prevMids=new Set(prev.modules.map(m=>m.id));
+const curMids=new Set(cur.modules.map(m=>m.id));
+cur.modules.forEach(m=>{if(!prevMids.has(m.id)){changes.push({time:now,user:user,type:'add',scope:'模块',detail:`新增一级模块「${m.title}」`})}});
+prev.modules.forEach(m=>{if(!curMids.has(m.id)){changes.push({time:now,user:user,type:'del',scope:'模块',detail:`删除一级模块「${m.title}」`})}});
+/* 检测模块内容变更 */
+cur.modules.forEach(cm=>{
+const pm=prev.modules.find(x=>x.id===cm.id);if(!pm)return;
+if(pm.title!==cm.title)changes.push({time:now,user:user,type:'edit',scope:cm.title,detail:`模块标题：${pm.title} → ${cm.title}`});
+if(pm.subtitle!==cm.subtitle)changes.push({time:now,user:user,type:'edit',scope:cm.title,detail:`副标题：${pm.subtitle||'(空)'} → ${cm.subtitle||'(空)'}`});
+/* 检测子项目增删 */
+const prevIids=new Set(pm.items.map(i=>i.id));
+const curIids=new Set(cm.items.map(i=>i.id));
+cm.items.forEach(ci=>{if(!prevIids.has(ci.id)){changes.push({time:now,user:user,type:'add',scope:cm.title,detail:`新增子项目「${ci.title}」`})}});
+pm.items.forEach(pi=>{if(!curIids.has(pi.id)){changes.push({time:now,user:user,type:'del',scope:cm.title,detail:`删除子项目「${pi.title}」`})}});
+/* 检测子项目甘特条变更 */
+cm.items.forEach(ci=>{
+const pi=pm.items.find(x=>x.id===ci.id);if(!pi)return;
+if(pi.title!==ci.title)changes.push({time:now,user:user,type:'edit',scope:cm.title+'/'+ci.title,detail:`子项目标题：${pi.title} → ${ci.title}`});
+if(!pi.ganttBars||!ci.ganttBars)return;
+const maxLen=Math.max(pi.ganttBars.length,ci.ganttBars.length);
+for(let bi=0;bi<maxLen;bi++){
+const pb=pi.ganttBars[bi],cb=ci.ganttBars[bi];
+if(!pb&&cb){changes.push({time:now,user:user,type:'add',scope:cm.title+'/'+ci.title,detail:`新增甘特条「${cb.title}」`});continue}
+if(pb&&!cb){changes.push({time:now,user:user,type:'del',scope:cm.title+'/'+ci.title,detail:`删除甘特条「${pb.title}」`});continue}
+if(pb&&cb){
+if(pb.title!==cb.title)changes.push({time:now,user:user,type:'edit',scope:cm.title+'/'+ci.title,detail:`甘特条标题：${pb.title} → ${cb.title}`});
+if(pb.start!==cb.start)changes.push({time:now,user:user,type:'edit',scope:cm.title+'/'+ci.title,detail:`「${cb.title}」开始日期：${pb.start||'(空)'} → ${cb.start||'(空)'}`});
+if(pb.end!==cb.end)changes.push({time:now,user:user,type:'edit',scope:cm.title+'/'+ci.title,detail:`「${cb.title}」结束日期：${pb.end||'(空)'} → ${cb.end||'(空)'}`});
+}}});});
+/* 检测里程碑变更 */
+if(prev.milestones&&cur.milestones){
+const maxMs=Math.max(prev.milestones.length,cur.milestones.length);
+for(let i=0;i<maxMs;i++){
+const pm=prev.milestones[i],cm=cur.milestones[i];
+if(!pm&&cm){changes.push({time:now,user:user,type:'add',scope:'里程碑',detail:`新增里程碑「${cm.title}」(${cm.date})`});continue}
+if(pm&&!cm){changes.push({time:now,user:user,type:'del',scope:'里程碑',detail:`删除里程碑「${pm.title}」`});continue}
+if(pm&&cm){
+if(pm.title!==cm.title)changes.push({time:now,user:user,type:'edit',scope:'里程碑',detail:`标题：${pm.title} → ${cm.title}`});
+if(pm.date!==cm.date)changes.push({time:now,user:user,type:'edit',scope:'里程碑',detail:`「${cm.title}」日期：${pm.date} → ${cm.date}`});
+if(pm.desc!==cm.desc)changes.push({time:now,user:user,type:'edit',scope:'里程碑',detail:`「${cm.title}」描述更新`});
+}}}
+return changes;
+}
+/* ===== 版本号管理 ===== */
+function _bumpVersion(curVer,isMajor){
+if(!curVer)curVer='V1.0';
+const m=curVer.match(/V?(\d+)\.(\d+)/);if(!m)return'V1.1';
+let major=parseInt(m[1]),minor=parseInt(m[2]);
+if(isMajor){major++;minor=0}else{minor++}
+return'V'+major+'.'+minor;
+}
+/* 手动添加开发版本记录 */
+function addDevVersion(isMajor){
+const desc=prompt('请输入版本更新描述：');if(!desc||!desc.trim())return;
+const changes=prompt('请输入具体变更点（多项用";"分隔）：');
+if(!D.devHistory)D.devHistory=[];
+const newVer=_bumpVersion(D.platformVersion||'V1.0',isMajor);
+D.devHistory.push({
+ver:newVer,
+date:getBJNow(),
+type:isMajor?'major':'minor',
+desc:desc.trim(),
+changes:changes?changes.split(';').map(s=>s.trim()).filter(Boolean):[desc.trim()]
+});
+D.platformVersion=newVer;
+rVersion();
+showToast('✅ 已发布 '+newVer);
+}
+/* 删除数据历史条目 */
+function delDataHist(idx){if(!D.dataHistory||!D.dataHistory[idx])return;if(!confirm('确定删除该条历史记录？'))return;D.dataHistory.splice(idx,1);rVersion()}
+/* 删除开发版本条目 */
+function delDevHist(idx){if(!D.devHistory||!D.devHistory[idx])return;if(!confirm('确定删除版本记录「'+D.devHistory[idx].ver+'」？'))return;D.devHistory.splice(idx,1);/* 如果删除了最新版本，回退platformVersion */if(D.devHistory.length>0){D.platformVersion=D.devHistory[D.devHistory.length-1].ver}else{D.platformVersion='V1.0'}rVersion()}
+/* ===== 版本管理面板渲染 ===== */
+let _verSubTab='data';
+function switchVerSub(tab,el){_verSubTab=tab;document.querySelectorAll('.ver-subtab-btn').forEach(b=>b.classList.remove('act'));if(el)el.classList.add('act');document.querySelectorAll('.ver-sub').forEach(s=>s.classList.remove('act'));const target=document.getElementById('ver-sub-'+tab);if(target)target.classList.add('act')}
+function rVersion(){
+const ct=document.getElementById('versionCfg');if(!ct)return;
+const isManager=canM();
+let h='';
+/* 当前版本号徽标 */
+h+=`<div class="ver-version-badge">🏷️ 当前版本：<strong>${D.platformVersion||'V1.0'}</strong></div>`;
+/* 二级子模块Tab */
+h+=`<div class="ver-subtab"><button class="ver-subtab-btn${_verSubTab==='data'?' act':''}" onclick="switchVerSub('data',this)">📋 业务数据历史更新</button><button class="ver-subtab-btn${_verSubTab==='dev'?' act':''}" onclick="switchVerSub('dev',this)">🚀 版本开发历史更新</button></div>`;
+/* ===== 子模块1：业务数据历史更新 ===== */
+h+=`<div class="ver-sub${_verSubTab==='data'?' act':''}" id="ver-sub-data">`;
+h+='<div style="font-size:11px;color:var(--txt3);margin-bottom:14px;line-height:1.6;padding:10px 14px;background:rgba(255,255,255,.02);border-radius:10px;border:1px solid var(--bdr)">💡 每次通过配置面板保存更改时，系统会自动检测并记录所有业务数据的变更（日期、文字、模块增删等），可在此处追溯完整变更历史。</div>';
+if(!D.dataHistory||!D.dataHistory.length){
+h+='<div class="ver-empty">📭 暂无业务数据变更记录<br><span style="font-size:11px;margin-top:4px;display:block">当您通过配置面板修改并保存数据后，变更记录将自动出现在此处</span></div>';
+}else{
+/* 按时间倒序展示，相同时间戳的分组 */
+const grouped={};D.dataHistory.forEach((entry,idx)=>{
+const key=entry.time||'unknown';
+if(!grouped[key])grouped[key]={time:key,user:entry.user,items:[]};
+grouped[key].items.push({...entry,_idx:idx});
+});
+const groups=Object.values(grouped).sort((a,b)=>b.time.localeCompare(a.time));
+groups.forEach(g=>{
+h+=`<div class="ver-entry"><div class="ver-entry-hd"><div><span class="ver-entry-time">🕐 ${fdfUpdate(g.time)}</span><span style="font-size:11px;color:var(--txt3);margin-left:10px">操作人: ${g.user||'—'}</span></div>`;
+if(isManager){h+=`<button style="background:none;border:none;cursor:pointer;color:var(--txt3);font-size:10px;padding:2px 6px;border-radius:4px" onmouseover="this.style.color='#ff4444'" onmouseout="this.style.color='var(--txt3)'" onclick="delDataHistGroup('${g.time}')">清除该批次</button>`}
+h+=`</div><div class="ver-entry-body">`;
+g.items.forEach(it=>{
+const tagCls=it.type==='add'?'add':it.type==='del'?'del':'edit';
+const tagTxt=it.type==='add'?'新增':it.type==='del'?'删除':'修改';
+h+=`<div style="margin-bottom:4px;display:flex;align-items:flex-start;gap:8px"><span class="ver-entry-tag ${tagCls}">${tagTxt}</span><span><span class="field">[${it.scope}]</span> ${it.detail}</span></div>`;
+});
+h+='</div></div>';
+});
+}
+h+='</div>';
+/* ===== 子模块2：版本开发历史更新 ===== */
+h+=`<div class="ver-sub${_verSubTab==='dev'?' act':''}" id="ver-sub-dev">`;
+h+='<div style="font-size:11px;color:var(--txt3);margin-bottom:14px;line-height:1.6;padding:10px 14px;background:rgba(255,255,255,.02);border-radius:10px;border:1px solid var(--bdr)">💡 记录平台功能更新和开发版本。版本号规则：<br>• 一级子菜单新增/更新 → 大版本号递增（V1.0 → V2.0）<br>• 二级/三级/四级子菜单新增/更新 → 小版本号递增（V1.0 → V1.1）</div>';
+if(isManager){
+h+=`<div style="display:flex;gap:8px;margin-bottom:16px"><button class="abtn" style="margin:0;flex:1;background:linear-gradient(135deg,rgba(162,155,254,.08),rgba(108,92,231,.08));border-color:rgba(162,155,254,.3)" onclick="addDevVersion(true)"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> 发布大版本更新</button><button class="abtn" style="margin:0;flex:1" onclick="addDevVersion(false)"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> 发布小版本更新</button></div>`;
+}
+if(!D.devHistory||!D.devHistory.length){
+h+='<div class="ver-empty">📭 暂无版本开发历史记录</div>';
+}else{
+/* 倒序展示版本 */
+const devSorted=[...D.devHistory].reverse();
+devSorted.forEach((v,idx)=>{
+const realIdx=D.devHistory.length-1-idx;
+const isMajor=v.type==='major';
+const verColor=isMajor?'#C4B5FD':'var(--acc2)';
+const typeTxt=isMajor?'大版本更新':'小版本更新';
+h+=`<div class="ver-entry" style="border-left:3px solid ${verColor}"><div class="ver-entry-hd"><div style="display:flex;align-items:center;gap:10px"><span style="font-size:16px;font-weight:700;color:${verColor}">${v.ver}</span><span class="ver-entry-tag ver">${typeTxt}</span><span class="ver-entry-time">${fdfUpdate(v.date)}</span></div>`;
+if(isManager){h+=`<button style="background:none;border:none;cursor:pointer;color:var(--txt3);font-size:10px;padding:2px 6px;border-radius:4px" onmouseover="this.style.color='#ff4444'" onmouseout="this.style.color='var(--txt3)'" onclick="delDevHist(${realIdx})">✕</button>`}
+h+=`</div><div class="ver-entry-body"><div style="margin-bottom:6px;font-size:13px;color:var(--txt)">${v.desc}</div>`;
+if(v.changes&&v.changes.length){
+h+='<ul style="margin:6px 0 0 16px;padding:0;list-style:none">';
+v.changes.forEach(c=>{h+=`<li style="margin-bottom:3px;position:relative;padding-left:14px"><span style="position:absolute;left:0;top:6px;width:6px;height:6px;border-radius:50%;background:${verColor};opacity:.6"></span>${c}</li>`});
+h+='</ul>';
+}
+h+='</div></div>';
+});
+}
+h+='</div>';
+ct.innerHTML=h;
+}
+/* 删除某批次数据历史 */
+function delDataHistGroup(time){if(!D.dataHistory)return;if(!confirm('确定删除该批次所有变更记录？'))return;D.dataHistory=D.dataHistory.filter(e=>e.time!==time);rVersion()}
 function applyCfg(){/* 保存前校验：结束日期不得早于开始日期 */
 let dateErr=false;document.querySelectorAll('.gantt-date-pair').forEach(pair=>{const inputs=pair.querySelectorAll('input[type="date"]');if(inputs.length!==2)return;const sv=inputs[0].value,ev=inputs[1].value;if(sv&&ev&&ev<sv){dateErr=true;inputs[1].style.outline='2px solid #ff4444';inputs[0].style.outline='2px solid #ff4444';setTimeout(()=>{inputs[0].style.outline='';inputs[1].style.outline=''},2000)}});if(dateErr){showToast('⚠️ 结束日期不能早于开始日期，请修正后再保存');return}
-/* 保存时自动记录当前北京时间为更新日期 */D.project.updateDate=getBJNow();D.project.reporter=document.getElementById('cfgRep').value||'rambokou(寇启龙)';D.project.animLead=document.getElementById('cfgAnimLead').value||'';D.project.po=document.getElementById('cfgPO').value||'';D.project.tl=document.getElementById('cfgTL').value||'';document.querySelectorAll('.gdi').forEach(inp=>{const mid=inp.dataset.m,iid=inp.dataset.i,bi=+inp.dataset.b,f=inp.dataset.f,v=inp.value;if(!mid||!iid||!f)return;const m=D.modules.find(x=>x.id===mid);if(m){const it=m.items.find(x=>x.id===iid);if(it&&it.ganttBars[bi]){it.ganttBars[bi][f]=v}}});saveAndSync('chore: 配置面板保存 ('+getBJNow()+')');render();toggleCfg()}
+/* 保存时自动记录当前北京时间为更新日期 */D.project.updateDate=getBJNow();D.project.reporter=document.getElementById('cfgRep').value||'rambokou(寇启龙)';D.project.animLead=document.getElementById('cfgAnimLead').value||'';D.project.po=document.getElementById('cfgPO').value||'';D.project.tl=document.getElementById('cfgTL').value||'';document.querySelectorAll('.gdi').forEach(inp=>{const mid=inp.dataset.m,iid=inp.dataset.i,bi=+inp.dataset.b,f=inp.dataset.f,v=inp.value;if(!mid||!iid||!f)return;const m=D.modules.find(x=>x.id===mid);if(m){const it=m.items.find(x=>x.id===iid);if(it&&it.ganttBars[bi]){it.ganttBars[bi][f]=v}}});
+/* ===== 版本管理：自动检测业务数据变更 ===== */
+const curSnapshot=_takeSnapshot();
+const changes=_detectChanges(_prevSnapshot,curSnapshot);
+if(changes.length>0){
+if(!D.dataHistory)D.dataHistory=[];
+D.dataHistory.push(...changes);
+/* 最多保留500条记录，超出则删除最早的 */
+if(D.dataHistory.length>500)D.dataHistory=D.dataHistory.slice(-500);
+}
+_prevSnapshot=_takeSnapshot();/* 更新快照为当前状态 */
+saveAndSync('chore: 配置面板保存 ('+getBJNow()+')');render();toggleCfg()}
 function resetCfg(){if(!confirm('确定重置所有数据？'))return;localStorage.removeItem('mocap_v5');localStorage.removeItem('mocap_auth_v2');localStorage.removeItem('mocap_access_req');localStorage.removeItem('mocap_ioa_id');location.reload()}
 /* ===== GitHub Token 配置函数 ===== */
 function cfgGHToken(){const inp=document.getElementById('ghTokenInput');if(!inp)return;let v=inp.value.trim();if(v.startsWith('••'))v='';/* 防止误保存掩码值 */
