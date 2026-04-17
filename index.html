@@ -133,7 +133,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .gld.c{background:linear-gradient(135deg,#00C48C,#00E6A0);box-shadow:0 0 10px rgba(0,196,140,.4)}
 .gld.i{background:linear-gradient(135deg,#FF8C00,#FFB340);box-shadow:0 0 10px rgba(255,140,0,.4)}
 .gld.p{background:transparent;border:2px dashed var(--txt3)}
-.gc{min-width:800px}.gth{display:flex;border-bottom:1px solid var(--bdr);padding-left:280px;margin-bottom:8px}
+.gc{min-width:800px}.gth{display:flex;border-bottom:1px solid var(--bdr);margin-bottom:8px}
 .gm{flex:1;min-width:80px;text-align:center;font-size:13px;color:var(--txt2);padding:12px 0;position:relative}
 .gm::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:16px;background:var(--bdr)}
 /* 折叠按钮：悬停月份时显示 */
@@ -142,20 +142,22 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .gm-fold-btn:hover{background:rgba(0,102,204,.18);border-color:var(--acc2);box-shadow:0 0 14px rgba(0,102,204,.4);transform:translateX(-50%) scale(1.05)}
 @keyframes ganttFoldGlow{0%,100%{box-shadow:0 0 4px rgba(0,102,204,.2),0 0 8px rgba(0,102,204,.1)}50%{box-shadow:0 0 10px rgba(0,102,204,.45),0 0 20px rgba(0,102,204,.2)}}
 /* 折叠提示条 */
-.gm-fold-hint{display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;background:rgba(0,102,204,.04);border:1px solid rgba(0,102,204,.15);border-radius:10px;padding:8px 20px;margin:0 0 8px 280px;transition:all .3s;font-size:12px;color:var(--txt3)}
+.gm-fold-hint{display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;background:rgba(0,102,204,.04);border:1px solid rgba(0,102,204,.15);border-radius:10px;padding:8px 20px;margin:0 0 8px 280px;transition:all .3s;font-size:12px;color:var(--txt3);position:sticky;left:280px;z-index:1}
 .gm-fold-hint:hover{background:rgba(0,102,204,.1);border-color:var(--acc2)}
 .gm-fold-icon{color:var(--acc2);animation:ganttFoldPulse 1.5s ease-in-out infinite}
 .gm-unfold-btn{color:var(--acc2);font-weight:700;background:rgba(0,102,204,.1);padding:3px 10px;border-radius:6px;transition:all .2s;margin-left:4px}
 .gm-unfold-btn:hover{background:rgba(0,102,204,.2)}
 @keyframes ganttFoldPulse{0%,100%{opacity:.5}50%{opacity:1}}
-.gwm{display:flex;padding-left:280px;margin-bottom:24px}.gwg{flex:1;min-width:80px;display:flex;justify-content:space-around}.gwl{font-size:10px;color:var(--txt3)}
-.gcl{font-size:22px;text-transform:uppercase;letter-spacing:1.5px;padding:12px 0 16px;display:flex;align-items:center;gap:10px}
+.gwm{display:flex;margin-bottom:24px}.gwg{flex:1;min-width:80px;display:flex;justify-content:space-around}.gwl{font-size:10px;color:var(--txt3)}
+/* 甘特图头部 sticky 占位 */
+.gth-pad,.gwm-pad{width:280px;flex-shrink:0;position:sticky;left:0;z-index:2;background:rgba(12,18,35,.92);backdrop-filter:blur(10px)}
+.gcl{font-size:22px;text-transform:uppercase;letter-spacing:1.5px;padding:12px 0 16px;display:flex;align-items:center;gap:10px;position:sticky;left:0;z-index:2}
 .gcl .cd{width:10px;height:10px;border-radius:3px}
 .gcl.hw{color:var(--acc2)}.gcl.hw .cd{background:var(--pri);box-shadow:0 0 8px rgba(0,102,204,.5)}
 .gcl.sw{color:#A29BFE}.gcl.sw .cd{background:var(--pur);box-shadow:0 0 8px rgba(108,92,231,.5)}
 .gcl.op{color:#FFB340}.gcl.op .cd{background:var(--warn);box-shadow:0 0 8px rgba(255,140,0,.5)}
 .gr{display:flex;align-items:stretch;margin-bottom:14px;transition:var(--tr);padding:4px 0;border-radius:8px}.gr:hover{background:rgba(255,255,255,.02)}
-.grl{width:280px;font-size:22px;padding-right:20px;padding-left:16px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center}.grl .sl{display:block;font-size:14px;color:var(--txt3);margin-top:4px}
+.grl{width:280px;font-size:22px;padding-right:20px;padding-left:16px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;position:sticky;left:0;z-index:2;background:rgba(12,18,35,.92);backdrop-filter:blur(10px)}.grl .sl{display:block;font-size:14px;color:var(--txt3);margin-top:4px}
 .gbs{flex:1;display:flex;flex-direction:column;gap:4px;min-width:500px}
 .gb-row{position:relative;height:40px;width:100%}
 .gb{position:absolute;height:40px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 12px;font-size:12px;color:#fff;transition:var(--tr2);cursor:pointer;overflow:hidden}
@@ -396,7 +398,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .ct{padding:24px 16px}.hero{margin-bottom:36px}.hero::before{display:none}.hero h2{font-size:24px!important;white-space:nowrap}.hero p{font-size:13px;white-space:nowrap}.hero-line{width:120px}
 .sg{grid-template-columns:1fr!important}
 .i3d{width:100px;height:100px;border-radius:20px}.i3d .ie{width:44px;height:44px}.ct-t{font-size:20px}.ct-s{font-size:13px}.pm{width:120px;height:120px}.pm svg{width:120px;height:120px}.pm .pp .pn{font-size:28px}.pm .pp .pl2{font-size:10px}
-.gs{padding:20px 16px;margin-bottom:40px}.gs-ta h3{font-size:18px}.gs-ta p{font-size:12px}.gcl{font-size:15px;letter-spacing:.5px;padding:8px 0 10px}.grl{width:180px;font-size:14px;padding-left:10px;padding-right:12px}.grl .sl{font-size:11px}
+.gs{padding:20px 16px;margin-bottom:40px}.gs-ta h3{font-size:18px}.gs-ta p{font-size:12px}.gcl{font-size:15px;letter-spacing:.5px;padding:8px 0 10px}.grl{width:180px;font-size:14px;padding-left:10px;padding-right:12px}.grl .sl{font-size:11px}.gth-pad,.gwm-pad{width:180px}.gm-fold-hint{margin-left:180px;left:180px}
 .mhc{padding:16px 20px}.mi{gap:14px}.mn{width:44px;height:44px;border-radius:12px}.mn span{width:22px!important;height:22px!important}.mm h3{font-size:18px}.mm p{font-size:13px}.mst-v{font-size:22px}
 .dc{padding:20px}.dc h4{font-size:16px}
 .sh2 h2{font-size:18px;white-space:nowrap}.ms-node{width:220px}.ms-card{padding:22px 16px 16px}.ms-title{font-size:14px}.ms-date{font-size:11px}.ms-desc{font-size:11px}.ms-dot{width:34px;height:34px;font-size:14px;top:-17px}.milestone-scurve{padding:30px 10px 10px}
@@ -411,7 +413,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .hd-info-row{gap:4px}
 .ct{padding:16px 12px}.hero{margin-bottom:28px}.hero h2{font-size:18px!important;white-space:nowrap}.hero p{font-size:11px;white-space:nowrap}.hero-line{width:80px}.hero h2::before{inset:-15px -30px}
 .i3d{width:80px;height:80px;border-radius:16px}.i3d .ie{width:36px;height:36px}.ct-t{font-size:15px;white-space:nowrap}.ct-s{font-size:11px;margin-bottom:16px}.pm{width:96px;height:96px}.pm svg{width:96px;height:96px}.pm .pp .pn{font-size:22px}.pm .pp .pl2{font-size:9px}
-.gs{padding:16px 10px;margin-bottom:28px;border-radius:16px}.gs-ta h3{font-size:14px;gap:6px;white-space:nowrap}.gs-ta p{font-size:11px}.gl{gap:12px}.gli{font-size:10px;gap:4px}.gld{width:8px;height:8px;border-radius:3px}.gcl{font-size:13px;letter-spacing:0;padding:6px 0 8px;gap:6px}.grl{width:130px;font-size:12px;padding-left:6px;padding-right:8px}.grl .sl{font-size:10px;margin-top:2px}.gb .bt{font-size:11px}.gb .bd{font-size:9px}
+.gs{padding:16px 10px;margin-bottom:28px;border-radius:16px}.gs-ta h3{font-size:14px;gap:6px;white-space:nowrap}.gs-ta p{font-size:11px}.gl{gap:12px}.gli{font-size:10px;gap:4px}.gld{width:8px;height:8px;border-radius:3px}.gcl{font-size:13px;letter-spacing:0;padding:6px 0 8px;gap:6px}.grl{width:130px;font-size:12px;padding-left:6px;padding-right:8px}.grl .sl{font-size:10px;margin-top:2px}.gb .bt{font-size:11px}.gb .bd{font-size:9px}.gth-pad,.gwm-pad{width:130px}.gm-fold-hint{margin-left:130px;left:130px}
 .ms{margin-bottom:32px}.mhc{padding:14px 16px;border-radius:14px}.mi{gap:10px;flex-wrap:wrap}.mn{width:38px;height:38px;border-radius:10px}.mn span{width:18px!important;height:18px!important}.mm h3{font-size:14px;white-space:nowrap}.mm p{font-size:11px;margin-top:2px}.mst-v{font-size:18px}.mst-l{font-size:10px}.mst{gap:18px}
 .dg{gap:14px}.dc{padding:16px;border-radius:14px}.dc h4{font-size:14px;gap:6px}.dc h4 span{font-size:10px!important}.dch{margin-bottom:10px}.dc p{font-size:12px}.pla{font-size:11px}
 .sh2 h2{font-size:14px;gap:8px;white-space:nowrap}.sh2 h2 span{font-size:12px!important}
@@ -1746,7 +1748,7 @@ function _buildGanttHeader(){
 _calcGanttRange();
 /* 可见月份 = 折叠后的剩余月份 */
 const visMonths=_ganttAllMonths.slice(_ganttFoldIdx);
-let mh='';
+let mh='<div class="gth-pad"></div>';
 visMonths.forEach((mo,idx)=>{
 const globalIdx=_ganttFoldIdx+idx;
 const label=(mo.getMonth()+1)+'月';
@@ -1754,7 +1756,7 @@ const label=(mo.getMonth()+1)+'月';
 const foldBtn=globalIdx>0?`<span class="gm-fold-btn" data-fold-idx="${globalIdx}" onclick="event.stopPropagation();foldGantt(${globalIdx})" title="折叠${label}之前的月份">◀ 折叠</span>`:'';
 mh+=`<div class="gm" data-month-idx="${globalIdx}">${label}${foldBtn}</div>`;
 });
-let wh='';visMonths.forEach(mo=>{
+let wh='<div class="gwm-pad"></div>';visMonths.forEach(mo=>{
 const y=mo.getFullYear(),m=mo.getMonth();
 const lastDay=new Date(y,m+1,0).getDate();
 const weeks=Math.ceil(lastDay/7);
@@ -2087,7 +2089,9 @@ h+=`<div class="gantt-group"><div class="gantt-group-label" style="display:flex;
 if(isManager){h+=`<div style="display:flex;gap:6px"><button class="abtn" style="margin:0;font-size:10px;padding:3px 8px" onclick="addGanttBar('${m.id}','${it.id}')"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>新增甘特条</button><button style="background:none;border:none;cursor:pointer;color:var(--txt3);font-size:11px;padding:3px 6px;border-radius:6px;transition:all .2s" onmouseover="this.style.color='#ff4444';this.style.background='rgba(255,68,68,.1)'" onmouseout="this.style.color='var(--txt3)';this.style.background='none'" onclick="delGanttItem('${m.id}','${it.id}')">✕ 删除子项</button></div>`;}
 h+=`</div>`;
 if(!it.ganttBars||!it.ganttBars.length){h+=`<div style="padding:12px;text-align:center;color:var(--txt3);font-size:12px">暂无甘特条，请点击"新增甘特条"添加</div>`;}
-it.ganttBars.forEach((b,bi)=>{const pairId=m.id+'_'+it.id+'_'+bi;h+=`<div class="cg" style="margin-bottom:10px"><div style="display:flex;align-items:center;justify-content:space-between"><label style="font-size:12px;color:var(--txt2);flex:1">${groupLabel} - <input type="text" value="${b.title}" style="background:none;border:none;border-bottom:1px dashed var(--bdr);color:var(--txt);font-size:12px;width:120px;padding:2px 4px" onchange="updGanttBar('${m.id}','${it.id}',${bi},'title',this.value)"></label>`;
+/* 按开始时间排序后渲染（不改变原数组顺序） */
+const _sortedBars=it.ganttBars.map((b,bi)=>({b,bi})).sort((a,b)=>{if(!a.b.start&&!b.b.start)return 0;if(!a.b.start)return 1;if(!b.b.start)return -1;return a.b.start.localeCompare(b.b.start)});
+_sortedBars.forEach(({b,bi})=>{const pairId=m.id+'_'+it.id+'_'+bi;h+=`<div class="cg" style="margin-bottom:10px"><div style="display:flex;align-items:center;justify-content:space-between"><label style="font-size:12px;color:var(--txt2);flex:1">${groupLabel} - <input type="text" value="${b.title}" style="background:none;border:none;border-bottom:1px dashed var(--bdr);color:var(--txt);font-size:12px;width:120px;padding:2px 4px" onchange="updGanttBar('${m.id}','${it.id}',${bi},'title',this.value)"></label>`;
 if(isManager){h+=`<button style="background:none;border:none;cursor:pointer;color:var(--txt3);font-size:10px;padding:2px 6px;border-radius:4px" onmouseover="this.style.color='#ff4444'" onmouseout="this.style.color='var(--txt3)'" onclick="delGanttBar('${m.id}','${it.id}',${bi})">✕</button>`;}
 h+=`</div><div class="gantt-date-pair"><input type="date" value="${b.start}" data-m="${m.id}" data-i="${it.id}" data-b="${bi}" data-f="start" class="gdi" id="gs_${pairId}" max="${b.end}"><span class="date-sep">→</span><input type="date" value="${b.end}" data-m="${m.id}" data-i="${it.id}" data-b="${bi}" data-f="end" class="gdi" id="ge_${pairId}" min="${b.start}"></div></div>`;});h+='</div>';});
 h+=`</div>`;});
