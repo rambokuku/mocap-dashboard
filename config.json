@@ -13,7 +13,7 @@
       "category": "hardware",
       "title": "硬件建设",
       "subtitle": "云海动捕中棚建设 · 直播空间搭建",
-      "overallProgress": 77,
+      "overallProgress": 75,
       "status": "inprogress",
       "items": [
         {
@@ -60,11 +60,11 @@
         {
           "id": "hw2",
           "title": "直播空间搭建（新增）",
-          "dateRange": "01.21 - 04.03",
+          "dateRange": "01.21 - 04.25",
           "description": "<span class=\"hl\">装修设计</span>已完成，<span class=\"hl\">场地改造</span>27 号已完成所有线下空间改造，<span class=\"hl\">设备安装</span>设备基本到齐，应正式进入运营测试阶段",
           "progressLabel": "整体进度",
-          "progress": 100,
-          "progressColor": "gn",
+          "progress": 93,
+          "progressColor": "bl",
           "ganttLabel": "直播空间搭建",
           "ganttSubLabel": "装修设计/场地改造/设备安装",
           "ganttBars": [
@@ -92,9 +92,9 @@
             {
               "title": "运营测试",
               "start": "2026-03-27",
-              "end": "2026-04-03",
-              "status": "c",
-              "_progress": 100
+              "end": "2026-04-25",
+              "status": "i",
+              "_progress": 72
             }
           ]
         },
@@ -765,6 +765,13 @@
       "type": "edit",
       "scope": "硬件建设/OG 动捕棚需求建设【新增】",
       "detail": "子项目标题：OG 动捕棚需求建设 → OG 动捕棚需求建设【新增】"
+    },
+    {
+      "time": "2026-04-18T03:41",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "硬件建设/直播空间搭建（新增）",
+      "detail": "「运营测试」结束日期：2026-04-03 → 2026-04-25"
     }
   ],
   "dataSnapshots": {
@@ -862,7 +869,7 @@
                 {
                   "title": "运营测试",
                   "start": "2026-03-27",
-                  "end": "2026-04-03",
+                  "end": "2026-04-25",
                   "status": "c",
                   "_progress": 100
                 }
