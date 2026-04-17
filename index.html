@@ -82,7 +82,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 /* Card sequential reveal */
 .sc.card-reveal{opacity:0;transform:translateY(60px) scale(.8)}
 .sc.card-revealed{opacity:1;transform:translateY(0) scale(1);transition:opacity 1.2s cubic-bezier(.25,.46,.45,.94),transform 1.4s cubic-bezier(.34,1.56,.64,1)}
-.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;margin-bottom:64px;position:relative}
+.sg{display:grid;gap:28px;margin-bottom:64px;position:relative}
 .sc{position:relative;z-index:1;background:rgba(12,18,35,0.75);border-radius:var(--r-xl);padding:36px 32px 32px;cursor:pointer;transition:var(--tr);border:1px solid rgba(255,255,255,.08);overflow:hidden;backdrop-filter:blur(30px) saturate(150%)}
 .sc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
 .sc.hw::before{background:linear-gradient(90deg,#0066CC,#00A3E0,transparent)}
@@ -250,10 +250,10 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .cb{position:fixed;right:24px;bottom:24px;width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,var(--pri),var(--acc));color:#fff;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(0,102,204,.4);transition:var(--tr2);z-index:201;display:flex;align-items:center;justify-content:center}
 .cb:hover{transform:scale(1.08) rotate(30deg);box-shadow:0 8px 36px rgba(0,102,204,.5)}
 .co{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);z-index:199;opacity:0;pointer-events:none;transition:opacity .3s}.co.open{opacity:1;pointer-events:all}
-.cp{position:fixed;right:-560px;top:0;width:560px;height:100vh;background:rgba(12,18,35,.92);box-shadow:-8px 0 60px rgba(0,0,0,.6);overflow-y:auto;transition:right .4s cubic-bezier(.25,.46,.45,.94);z-index:200;border-left:1px solid rgba(255,255,255,.06);backdrop-filter:blur(40px) saturate(150%)}.cp.open{right:0}.cpi{padding:28px}
-.cpH{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--bdr)}.cpH h3{font-size:20px}
+.cp{position:fixed;right:-560px;top:0;width:560px;height:100vh;background:rgba(12,18,35,.92);box-shadow:-8px 0 60px rgba(0,0,0,.6);overflow:hidden;transition:right .4s cubic-bezier(.25,.46,.45,.94);z-index:200;border-left:1px solid rgba(255,255,255,.06);backdrop-filter:blur(40px) saturate(150%);display:flex;flex-direction:column}.cp.open{right:0}.cpi{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden}
+.cpH{display:flex;justify-content:space-between;align-items:center;padding:28px 28px 20px;border-bottom:1px solid var(--bdr);flex-shrink:0}.cpH h3{font-size:20px}
 .ccl{width:36px;height:36px;border-radius:12px;border:1px solid var(--bdr);background:transparent;cursor:pointer;color:var(--txt2);display:flex;align-items:center;justify-content:center;transition:var(--tr)}.ccl:hover{background:rgba(255,71,87,.1);color:var(--err);border-color:rgba(255,71,87,.2)}
-.ctabs{display:flex;gap:4px;margin-bottom:24px;background:rgba(255,255,255,.03);border-radius:12px;padding:4px;flex-wrap:wrap}
+.ctabs{display:flex;gap:4px;background:rgba(255,255,255,.03);border-radius:12px;padding:4px;flex-wrap:wrap;margin:16px 28px;flex-shrink:0}
 .ctab{flex:1;padding:12px 14px;border-radius:10px;border:none;background:transparent;color:var(--txt2);font-size:14px;font-weight:700;cursor:pointer;transition:var(--tr);font-family:inherit;white-space:nowrap;letter-spacing:.5px}
 .ctab.act{background:rgba(0,102,204,.15);color:var(--acc2)}.ctab:hover:not(.act){background:rgba(255,255,255,.03)}
 .ctab[data-tab="basic"]{color:#00C48C}.ctab[data-tab="modules"]{color:#FF9F43}.ctab[data-tab="perms"]{color:#FF6B6B}.ctab[data-tab="version"]{color:#A29BFE}
@@ -277,7 +277,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .ver-entry-body .field{color:var(--acc2)}.ver-entry-body .old{color:var(--err);text-decoration:line-through;opacity:.6}.ver-entry-body .new{color:#00E6A0}
 .ver-version-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:10px;background:linear-gradient(135deg,rgba(162,155,254,.08),rgba(108,92,231,.08));border:1px solid rgba(162,155,254,.2);font-size:15px;color:#C4B5FD;margin-bottom:16px}
 .ver-empty{padding:32px;text-align:center;color:var(--txt3);font-size:13px}
-.ctc{display:none}.ctc.act{display:block}
+.ctc{display:none;overflow-y:auto;flex:1;min-height:0;padding:24px 28px}.ctc.act{display:block}
 .cg{margin-bottom:14px}.cg label{display:block;font-size:12px;color:var(--txt2);margin-bottom:6px}
 .cg input,.cg textarea,.cg select{width:100%;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;font-size:13px;font-family:inherit;font-weight:700;transition:var(--tr);background:rgba(255,255,255,.03);color:var(--txt)}
 .cg input[type="date"]{cursor:pointer}.cg input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.7);cursor:pointer}
@@ -292,7 +292,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .csih{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.csih span{font-size:12px;color:var(--txt2)}
 .sdel{width:24px;height:24px;border-radius:6px;border:none;background:transparent;color:var(--txt3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--tr);font-size:12px}.sdel:hover{color:var(--err)}
 .abtn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;border-radius:10px;border:1px dashed var(--bdr);background:transparent;color:var(--txt3);cursor:pointer;font-size:12px;font-weight:700;font-family:inherit;transition:var(--tr);margin-top:8px}.abtn:hover{border-color:var(--pri);color:var(--acc2);background:rgba(0,102,204,.05)}
-.cfg-apply-float{position:sticky;bottom:0;z-index:10;padding:16px 28px 20px;display:flex;justify-content:flex-end;background:linear-gradient(to top,rgba(12,18,35,.95) 50%,rgba(12,18,35,0));pointer-events:none}
+.cfg-apply-float{flex-shrink:0;z-index:10;padding:16px 28px 20px;display:flex;justify-content:flex-end;background:linear-gradient(to top,rgba(12,18,35,.95) 50%,rgba(12,18,35,0));pointer-events:none}
 .cfg-apply-btn{pointer-events:all;flex:none;padding:12px 28px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(0,102,204,.5);min-width:auto;justify-content:center;font-size:14px;border-radius:14px}
 .cfg-apply-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,102,204,.6)}
 .cfg-reset-zone{margin-top:32px;padding-top:20px;border-top:1px solid var(--bdr)}
@@ -374,14 +374,14 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-20px);padding:12px 28px;border-radius:12px;background:rgba(0,196,140,.15);border:1px solid rgba(0,196,140,.3);color:#00E6A0;font-size:13px;opacity:0;transition:var(--tr);z-index:300;pointer-events:none;backdrop-filter:blur(10px)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.toast.error{background:rgba(255,71,87,.15);border-color:rgba(255,71,87,.3);color:var(--err)}
 @keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .ain{opacity:0;animation:fu .7s cubic-bezier(.25,.46,.45,.94) forwards}.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}
-@media(max-width:1200px){.sg{grid-template-columns:1fr}.dg{grid-template-columns:1fr}.mst{display:none}.photo-divider{height:80px;margin:16px 0 32px}.photo-divider-text{font-size:11px;left:20px;bottom:14px}}
+@media(max-width:1200px){.sg{grid-template-columns:repeat(2,1fr)!important}.dg{grid-template-columns:1fr}.mst{display:none}.photo-divider{height:80px;margin:16px 0 32px}.photo-divider-text{font-size:11px;left:20px;bottom:14px}}
 /* === Tablet === */
 @media(max-width:768px){
 .hd{padding:0 16px;height:auto;min-height:60px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.hd h1{font-size:14px;white-space:nowrap}.hd-logo{width:36px;height:36px;border-radius:11px}.hd-r{gap:6px;font-size:11px;flex-wrap:wrap;justify-content:flex-end}.hd-tag{padding:3px 10px;font-size:10px}.ubadge{padding:3px 10px;font-size:10px}
 .team-info-float{font-size:9px!important;gap:4px!important}
 .team-info-float span{font-size:9px!important;padding:1px 6px!important}
 .ct{padding:24px 16px}.hero{margin-bottom:36px}.hero::before{display:none}.hero h2{font-size:24px!important;white-space:nowrap}.hero p{font-size:13px;white-space:nowrap}.hero-line{width:120px}
-.sg{grid-template-columns:1fr}
+.sg{grid-template-columns:1fr!important}
 .i3d{width:100px;height:100px;border-radius:20px}.i3d .ie{width:44px;height:44px}.ct-t{font-size:20px}.ct-s{font-size:13px}.pm{width:120px;height:120px}.pm svg{width:120px;height:120px}.pm .pp .pn{font-size:28px}.pm .pp .pl2{font-size:10px}
 .gs{padding:20px 16px;margin-bottom:40px}.gs-ta h3{font-size:18px}.gs-ta p{font-size:12px}.gcl{font-size:15px;letter-spacing:.5px;padding:8px 0 10px}.grl{width:180px;font-size:14px;padding-left:10px;padding-right:12px}.grl .sl{font-size:11px}
 .mhc{padding:16px 20px}.mi{gap:14px}.mn{width:44px;height:44px;border-radius:12px}.mn span{width:22px!important;height:22px!important}.mm h3{font-size:18px}.mm p{font-size:13px}.mst-v{font-size:22px}
@@ -1778,7 +1778,9 @@ _css+=`.gantt-item-group.${cl}:hover{border-color:${cm}66;box-shadow:0 4px 24px 
 });_dynEl.textContent=_css;
 let h='';
 h+=`<div class="hero ain"><h2>动捕专项<span>整体进展</span></h2><p>${D.modules.map(m=>m.title).join('、')} · 单击查看详情 · 双击编辑</p><div class="hero-line"></div></div>`;
-h+='<div class="sg" id="moduleGrid">';
+/* 一级模块排版：一排最多5个；超5个时均分两排（每排个数相等，奇数时上排多1） */
+const _modN=D.modules.length;let _cols;if(_modN<=5){_cols=_modN||1}else{_cols=Math.ceil(_modN/2)}
+h+=`<div class="sg" id="moduleGrid" style="grid-template-columns:repeat(${_cols},1fr)">`;
 /* SVG gradient defs for progress rings */
 h+='<svg width="0" height="0" style="position:absolute"><defs>';
 D.modules.forEach((m,i)=>{const pc=psc(m.category);const cc_=_getCatColor(m.category);const lightC=cc_.a+'80';
@@ -3019,11 +3021,11 @@ function confirmWxPick(){if(!wxSelectedNames.length)return;const rs=document.get
 function umf(mid,f,v){const m=D.modules.find(x=>x.id===mid);if(m)m[f]=v}
 function _stripHtml(s){if(!s)return'';return s.replace(/<br\s*\/?>/gi,'\n').replace(/<[^>]+>/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#39;/g,"'")}
 function _buildCatOptions(cur){const cats=new Set();D.modules.forEach(m=>cats.add(m.category));cats.add('hardware');cats.add('software');cats.add('operations');const labels={hardware:'硬件建设',software:'软件开发',operations:'运营推广'};let h='';cats.forEach(c=>{const l=labels[c]||c;h+=`<option value="${c}"${c===cur?' selected':''}>${l}</option>`;});h+='<option value="__custom">+ 新建类别...</option>';return h}
-function uif(mid,iid,f,v){const m=D.modules.find(x=>x.id===mid);if(!m)return;const it=m.items.find(x=>x.id===iid);if(!it)return;if(f==='description')v=v.replace(/\n/g,'<br>');it[f]=v}
-function delMod(id){if(!confirm('确定删除？'))return;D.modules=D.modules.filter(m=>m.id!==id);rMod()}
+function uif(mid,iid,f,v){const m=D.modules.find(x=>x.id===mid);if(!m)return;const it=m.items.find(x=>x.id===iid);if(!it)return;if(f==='description')v=v.replace(/\n/g,'<br>');it[f]=v;/* 标题变更时同步甘特Label */if(f==='title'){it.ganttLabel=v;rGantt()}}
+function delMod(id){if(!confirm('确定删除？'))return;D.modules=D.modules.filter(m=>m.id!==id);rMod();rGantt()}
 function addMod(){const name=prompt('请输入新模块名称');if(!name||!name.trim()){D.modules.push({id:'mod_'+Date.now(),category:'mod_'+Date.now(),title:'新模块',subtitle:'请编辑',overallProgress:0,status:'planned',items:[]});rMod();return}const mid='mod_'+Date.now();const catId=name.trim().toLowerCase().replace(/[^a-z0-9]/g,'_')||mid;D.modules.push({id:mid,category:catId,title:name.trim(),subtitle:'请编辑',overallProgress:0,status:'planned',items:[{id:'item_'+Date.now(),title:name.trim()+' - 新子项目',dateRange:'',description:'请编辑描述',progressLabel:'整体进度',progress:0,progressColor:'bl',ganttLabel:name.trim(),ganttSubLabel:'',ganttBars:[{title:'新任务',start:'',end:'',status:'p'}]}]});rMod();rGantt()}
-function delItem(mid,iid){const m=D.modules.find(x=>x.id===mid);if(!m)return;m.items=m.items.filter(i=>i.id!==iid);rMod()}
-function addItem(mid){const m=D.modules.find(x=>x.id===mid);if(!m)return;const name=prompt('请输入子项目名称');const t=name&&name.trim()?name.trim():'新子项目';m.items.push({id:'item_'+Date.now(),title:t,dateRange:'',description:'请编辑描述',progressLabel:'整体进度',progress:0,progressColor:'bl',ganttLabel:t,ganttSubLabel:'',ganttBars:[{title:'新任务',start:'',end:'',status:'p'}]});rMod();rGantt()}
+function delItem(mid,iid){const m=D.modules.find(x=>x.id===mid);if(!m)return;m.items=m.items.filter(i=>i.id!==iid);rMod();rGantt()}
+function addItem(mid){const m=D.modules.find(x=>x.id===mid);if(!m)return;const name=prompt('请输入子项目名称');const t=name&&name.trim()?name.trim():'新子项目';m.items.push({id:'item_'+Date.now(),title:t,dateRange:'',description:'请编辑描述',progressLabel:'整体进度',progress:0,progressColor:'bl',ganttLabel:t,ganttSubLabel:'',ganttBars:[{title:t,start:'',end:'',status:'p'}]});rMod();rGantt();showToast('✅ 已新增子项目「'+t+'」，请到基础信息填写甘特条日期')}
 /* ===== 甘特图日期页面 - 新增/删除功能 ===== */
 function addGanttMod(){const name=prompt('请输入新模块名称（例如：03栋云海动捕中棚）');if(!name||!name.trim())return;const cat=prompt('请选择类别：输入 1=硬件建设, 2=软件开发, 3=运营推广, 或输入自定义英文名','1');const catMap={'1':'hardware','2':'software','3':'operations'};const category=catMap[cat]||cat||'hardware';const mid='mod_'+Date.now();const iid='item_'+Date.now();D.modules.push({id:mid,category:category,title:name.trim(),subtitle:'请编辑',overallProgress:0,status:'planned',items:[{id:iid,title:name.trim()+' - 新子项目',dateRange:'',description:'请编辑描述',progressLabel:'整体进度',progress:0,progressColor:'bl',ganttLabel:name.trim(),ganttSubLabel:'',ganttBars:[{title:'新任务',start:'',end:'',status:'p'}]}]});rGantt();rMod();showToast('✅ 已新增模块：'+name.trim())}
 function addGanttItem(mid){const m=D.modules.find(x=>x.id===mid);if(!m)return;const name=prompt('请输入子项目名称（例如：装修设计）');if(!name||!name.trim())return;const iid='item_'+Date.now();m.items.push({id:iid,title:name.trim(),dateRange:'',description:'请编辑描述',progressLabel:'整体进度',progress:0,progressColor:'bl',ganttLabel:name.trim(),ganttSubLabel:'',ganttBars:[{title:'新任务',start:'',end:'',status:'p'}]});rGantt();rMod();showToast('✅ 已在「'+m.title+'」下新增子项目：'+name.trim())}
