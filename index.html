@@ -290,9 +290,9 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .csih{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.csih span{font-size:12px;color:var(--txt2)}
 .sdel{width:24px;height:24px;border-radius:6px;border:none;background:transparent;color:var(--txt3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--tr);font-size:12px}.sdel:hover{color:var(--err)}
 .abtn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;border-radius:10px;border:1px dashed var(--bdr);background:transparent;color:var(--txt3);cursor:pointer;font-size:12px;font-weight:700;font-family:inherit;transition:var(--tr);margin-top:8px}.abtn:hover{border-color:var(--pri);color:var(--acc2);background:rgba(0,102,204,.05)}
-.cfg-apply-float{position:fixed;bottom:24px;right:24px;z-index:210;display:flex;justify-content:flex-end;pointer-events:none;transition:opacity .3s,transform .3s}
-.cfg-apply-btn{pointer-events:all;flex:none;padding:14px 32px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 24px rgba(0,102,204,.5);min-width:auto;justify-content:center;font-size:15px;border-radius:14px}
-.cfg-apply-btn:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(0,102,204,.6)}
+.cfg-apply-float{position:sticky;bottom:0;z-index:10;padding:16px 28px 20px;display:flex;justify-content:flex-end;background:linear-gradient(to top,rgba(12,18,35,.95) 50%,rgba(12,18,35,0));pointer-events:none}
+.cfg-apply-btn{pointer-events:all;flex:none;padding:12px 28px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(0,102,204,.5);min-width:auto;justify-content:center;font-size:14px;border-radius:14px}
+.cfg-apply-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,102,204,.6)}
 .cfg-reset-zone{margin-top:32px;padding-top:20px;border-top:1px solid var(--bdr)}
 .cfg-reset-btn{width:100%;padding:12px 20px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;transition:var(--tr);border:1px solid rgba(255,71,87,.2);font-family:inherit;background:rgba(255,71,87,.06);color:var(--err);display:flex;align-items:center;justify-content:center;gap:8px}
 .cfg-reset-btn:hover{background:rgba(255,71,87,.12);border-color:rgba(255,71,87,.35)}
@@ -386,7 +386,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .dc{padding:20px}.dc h4{font-size:16px}
 .sh2 h2{font-size:18px;white-space:nowrap}.ms-node{width:220px}.ms-card{padding:22px 16px 16px}.ms-title{font-size:14px}.ms-date{font-size:11px}.ms-desc{font-size:11px}.ms-dot{width:34px;height:34px;font-size:14px;top:-17px}.milestone-scurve{padding:30px 10px 10px}
 .cp{width:100%;right:-100%}.cpH h3{font-size:17px}
-.cfg-apply-float{right:16px;bottom:16px}
+.cfg-apply-float{padding:12px 20px 16px}
 }
 /* === Mobile === */
 @media(max-width:480px){
@@ -476,8 +476,7 @@ onkeydown="if(event.key==='Enter')doNameLogin()">
 <div class="ctc" id="tab-modules"><div id="moduleCfg"></div><div id="addModBtn"></div></div>
 <div class="ctc" id="tab-perms"><div id="permCfg"></div></div>
 <div class="ctc" id="tab-version"><div id="versionCfg"></div></div>
-<div class="cfg-apply-float" id="cfgApplyFloat" style="display:none"><button class="btn btn-p cfg-apply-btn" onclick="applyCfg()"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> 应用更改</button></div>
-</div></div>
+</div><div class="cfg-apply-float" id="cfgApplyFloat" style="display:none"><button class="btn btn-p cfg-apply-btn" onclick="applyCfg()"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> 应用更改</button></div></div>
 <script>
 /* ===== PARTICLE NEBULA SYSTEM ===== */
 (function initParticles(){
