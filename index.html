@@ -150,14 +150,19 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 @keyframes ganttFoldPulse{0%,100%{opacity:.5}50%{opacity:1}}
 .gwm{display:flex;margin-bottom:24px}.gwg{flex:1;min-width:80px;display:flex;justify-content:space-around}.gwl{font-size:10px;color:var(--txt3)}
 /* 甘特图头部 sticky 占位 */
-.gth-pad,.gwm-pad{width:280px;flex-shrink:0;position:sticky;left:0;z-index:2;background:rgba(255,255,255,.04);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.gth-pad,.gwm-pad{width:280px;flex-shrink:0;position:sticky;left:0;z-index:2;background:transparent}
+/* 时间轴吸顶浮层 */
+.gantt-sentinel{height:0;width:100%}
+.gantt-sticky-bar{position:fixed;top:0;z-index:100;overflow:hidden;pointer-events:none;background:rgba(12,18,35,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.gantt-sticky-bar .gantt-sticky-inner{display:flex;flex-direction:column}
+.gantt-sticky-bar .gth,.gantt-sticky-bar .gwm{pointer-events:auto}
 .gcl{font-size:22px;text-transform:uppercase;letter-spacing:1.5px;padding:12px 0 16px;display:flex;align-items:center;gap:10px;position:sticky;left:0;z-index:2}
 .gcl .cd{width:10px;height:10px;border-radius:3px}
 .gcl.hw{color:var(--acc2)}.gcl.hw .cd{background:var(--pri);box-shadow:0 0 8px rgba(0,102,204,.5)}
 .gcl.sw{color:#A29BFE}.gcl.sw .cd{background:var(--pur);box-shadow:0 0 8px rgba(108,92,231,.5)}
 .gcl.op{color:#FFB340}.gcl.op .cd{background:var(--warn);box-shadow:0 0 8px rgba(255,140,0,.5)}
 .gr{display:flex;align-items:stretch;margin-bottom:14px;transition:var(--tr);padding:4px 0;border-radius:8px}.gr:hover{background:rgba(255,255,255,.02)}
-.grl{width:280px;font-size:22px;padding-right:20px;padding-left:16px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;position:sticky;left:0;z-index:2;background:rgba(255,255,255,.04);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-right:1px solid rgba(255,255,255,.06)}.grl .sl{display:block;font-size:14px;color:var(--txt3);margin-top:4px}
+.grl{width:280px;font-size:22px;padding-right:20px;padding-left:16px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;position:sticky;left:0;z-index:2;background:rgba(255,255,255,.015);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.grl .sl{display:block;font-size:14px;color:var(--txt3);margin-top:4px}
 .gbs{flex:1;display:flex;flex-direction:column;gap:4px;min-width:500px}
 .gb-row{position:relative;height:40px;width:100%}
 .gb{position:absolute;height:40px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 12px;font-size:12px;color:#fff;transition:var(--tr2);cursor:pointer;overflow:hidden}
@@ -1831,7 +1836,7 @@ const _gcMinW=Math.max(280+_ghMonthCount*220+_foldHintW,800);
 h+=`<div class="gs ain d3"><div class="gs-top"><div class="gs-ta"><h3><span style="display:inline-flex;width:24px;height:24px;vertical-align:middle">${SVG_ICONS.chart}</span> 项目甘特图</h3><p>${_gh.rangeLabel} · 全局任务时间线（鼠标悬停查看详细日期）</p></div><div class="gl"><div class="gli"><span class="gld c"></span>已完成</div><div class="gli"><span class="gld i"></span>进行中</div><div class="gli"><span class="gld p"></span>规划中</div></div></div><div class="gc" style="min-width:${_gcMinW}px">`;
 /* 折叠提示条 */
 if(_ganttFoldIdx>0){const _fLabels=_ganttAllMonths.slice(0,_ganttFoldIdx).map(mo=>(mo.getMonth()+1)+'月').join('、');h+=`<div class="gm-fold-hint" onclick="unfoldGantt()"><span class="gm-fold-icon">◁</span> ${_fLabels} 已折叠 <span class="gm-unfold-btn">▷ 展开全部</span></div>`}
-h+=`<div class="gth">${_gh.monthsHtml}</div><div class="gwm">${_gh.weeksHtml}</div>`;
+h+=`<div class="gantt-sentinel"></div><div class="gth">${_gh.monthsHtml}</div><div class="gwm">${_gh.weeksHtml}</div>`;
 D.modules.forEach((m,mi)=>{const cc=cls(m.category);h+=`<div class="gcl ${cc}"><span class="cd"></span>${m.title}</div>`;m.items.forEach(it=>{if(!it.ganttBars||!it.ganttBars.length)return;h+=`<div class="gantt-item-group ${cc}"><div class="gr"><div class="grl">${it.ganttLabel||it.title}<span class="sl">${it.ganttSubLabel||''}</span></div><div class="gbs">`;it.ganttBars.forEach(b=>{const mp=_calcMinPct(b.title,b.start,b.end);const p=gp(b.start,b.end,mp);const et=b.title.replace(/'/g,"\\'");h+=`<div class="gb-row"><div class="gb ${b.status}" style="left:${p.l};width:${p.w}" onmouseenter="showGanttTip(event,'${et}','${b.start}','${b.end}','${b.status}')" onmousemove="moveGanttTip(event)" onmouseleave="hideGanttTip()" ondblclick="ganttBarClick(event,'${m.id}','${it.id}')"><span class="bt">${b.title}</span><span class="bd">${fds(b.start)}-${fds(b.end)}</span></div></div>`;});h+='</div></div></div>';});if(mi<D.modules.length-1)h+='<div class="gdv"></div>';});
 h+='</div></div>';
 const cm={};D.modules.forEach(m=>{cm[m.category]=_getCatColor(m.category).m});
@@ -1885,6 +1890,64 @@ c.innerHTML='<div id="teamInfoBar" class="team-info-float"></div>'+h;document.ge
 const tib=document.getElementById('teamInfoBar');if(tib){const parts=[];if(D.project.animLead)parts.push({t:'动画负责人：'+D.project.animLead});if(D.project.po)parts.push({t:'PO：'+D.project.po});if(D.project.tl)parts.push({t:'TL：'+D.project.tl});if(D.project.reporter)parts.push({t:'PM 负责：'+D.project.reporter,pm:true});tib.innerHTML=parts.length?parts.map(p=>'<span style="padding:2px 8px;background:'+(p.pm?'rgba(255,167,38,.08)':'rgba(255,255,255,.04)')+';border:1px solid '+(p.pm?'rgba(255,167,38,.25)':'var(--bdr)')+';border-radius:10px;font-size:10px;color:'+(p.pm?'#ffa726':'var(--txt2)')+';white-space:nowrap">'+p.t+'</span>').join(''):''}
 document.getElementById('cfgBtn').classList[canE()?'remove':'add']('hidden');
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('ain')}),{threshold:.1});document.querySelectorAll('.ms,.dc,.ts').forEach(el=>obs.observe(el));
+/* === 甘特图时间轴吸顶 === */
+(function initGanttStickyTimeline(){
+const sentinel=document.querySelector('.gantt-sentinel');
+if(!sentinel)return;
+const gsEl=sentinel.closest('.gs');
+if(!gsEl)return;
+const gcEl=gsEl.querySelector('.gc');
+const origGth=gsEl.querySelector('.gth');
+const origGwm=gsEl.querySelector('.gwm');
+if(!origGth||!origGwm)return;
+let stickyBar=null;let stickyInner=null;let _rafId=null;
+function createStickyBar(){
+if(stickyBar)return;
+stickyBar=document.createElement('div');
+stickyBar.className='gantt-sticky-bar';
+stickyInner=document.createElement('div');
+stickyInner.className='gantt-sticky-inner';
+stickyInner.innerHTML=origGth.outerHTML+origGwm.outerHTML;
+stickyBar.appendChild(stickyInner);
+document.body.appendChild(stickyBar);
+syncPosition();
+gsEl.addEventListener('scroll',onGsScroll);
+window.addEventListener('resize',syncPosition);
+}
+function removeStickyBar(){
+if(!stickyBar)return;
+gsEl.removeEventListener('scroll',onGsScroll);
+window.removeEventListener('resize',syncPosition);
+if(_rafId){cancelAnimationFrame(_rafId);_rafId=null}
+stickyBar.remove();stickyBar=null;stickyInner=null;
+}
+function syncPosition(){
+if(!stickyBar)return;
+const r=gsEl.getBoundingClientRect();
+stickyBar.style.left=r.left+'px';
+stickyBar.style.width=r.width+'px';
+stickyInner.style.width=gcEl.scrollWidth+'px';
+stickyInner.style.transform='translateX('+(-(gsEl.scrollLeft))+'px)';
+}
+function onGsScroll(){if(_rafId)return;_rafId=requestAnimationFrame(()=>{syncPosition();_rafId=null})}
+/* 检测 gs 底部是否也滚出了视口（避免已经滚过甘特图区域时仍显示吸顶条） */
+const stickyObs=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(!entry.isIntersecting){
+/* sentinel 离开视口 → 检查是向上滚出还是甘特图区域已完全离开 */
+const gsRect=gsEl.getBoundingClientRect();
+if(gsRect.bottom>80){createStickyBar()}else{removeStickyBar()}
+}else{removeStickyBar()}
+})
+},{threshold:0});
+stickyObs.observe(sentinel);
+/* 也监听页面滚动，当甘特图完全滚过时移除吸顶 */
+window.addEventListener('scroll',function(){
+if(!stickyBar)return;
+const gsRect=gsEl.getBoundingClientRect();
+if(gsRect.bottom<=80)removeStickyBar();
+},{passive:true});
+})()
 /* === Card sequential reveal + arrow animation === */
 initCardArrowAnimation();
 /* === Milestone node entrance === */
