@@ -133,7 +133,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .gld.c{background:linear-gradient(135deg,#00C48C,#00E6A0);box-shadow:0 0 10px rgba(0,196,140,.4)}
 .gld.i{background:linear-gradient(135deg,#FF8C00,#FFB340);box-shadow:0 0 10px rgba(255,140,0,.4)}
 .gld.p{background:transparent;border:2px dashed var(--txt3)}
-.gc{min-width:1100px}.gth{display:flex;border-bottom:1px solid var(--bdr);padding-left:280px;margin-bottom:8px}
+.gc{min-width:800px}.gth{display:flex;border-bottom:1px solid var(--bdr);padding-left:280px;margin-bottom:8px}
 .gm{flex:1;min-width:80px;text-align:center;font-size:13px;color:var(--txt2);padding:12px 0;position:relative}
 .gm::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:16px;background:var(--bdr)}
 .gwm{display:flex;padding-left:280px;margin-bottom:24px}.gwg{flex:1;min-width:80px;display:flex;justify-content:space-around}.gwl{font-size:10px;color:var(--txt3)}
@@ -144,15 +144,15 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .gcl.op{color:#FFB340}.gcl.op .cd{background:var(--warn);box-shadow:0 0 8px rgba(255,140,0,.5)}
 .gr{display:flex;align-items:stretch;margin-bottom:14px;transition:var(--tr);padding:4px 0;border-radius:8px}.gr:hover{background:rgba(255,255,255,.02)}
 .grl{width:280px;font-size:22px;padding-right:20px;padding-left:16px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center}.grl .sl{display:block;font-size:14px;color:var(--txt3);margin-top:4px}
-.gbs{flex:1;display:flex;flex-direction:column;gap:4px;min-width:850px}
-.gb-row{position:relative;height:32px;width:100%}
-.gb{position:absolute;height:32px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 10px;font-size:10px;color:#fff;transition:var(--tr2);cursor:pointer;overflow:hidden}
-.gb::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.2),transparent 60%);border-radius:8px}
+.gbs{flex:1;display:flex;flex-direction:column;gap:4px;min-width:500px}
+.gb-row{position:relative;height:40px;width:100%}
+.gb{position:absolute;height:40px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 12px;font-size:12px;color:#fff;transition:var(--tr2);cursor:pointer;overflow:hidden}
+.gb::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.2),transparent 60%);border-radius:10px}
 .gb:hover{transform:scaleY(1.15) scaleX(1.02);z-index:10}
 .gb.c{background:linear-gradient(135deg,#00C48C,#00E6A0);box-shadow:0 4px 20px rgba(0,196,140,.35)}
 .gb.i{background:linear-gradient(135deg,#FF8C00,#FFB340);box-shadow:0 4px 20px rgba(255,140,0,.35)}
 .gb.p{background:transparent;border:2px dashed var(--txt3);color:var(--txt2)}.gb.p::before{display:none}
-.gb .bt{font-size:10px;white-space:nowrap}.gb .bd{font-size:9px;opacity:.9;white-space:nowrap}
+.gb .bt{font-size:13px;font-weight:600;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.3)}.gb .bd{font-size:11px;opacity:.9;white-space:nowrap}
 .gantt-tip{position:fixed;z-index:1000;padding:10px 16px;background:rgba(12,18,35,.96);border:1px solid rgba(0,163,224,.3);border-radius:12px;backdrop-filter:blur(16px);pointer-events:none;opacity:0;transition:opacity .15s;font-size:12px;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.5);max-width:280px}
 .gantt-tip.show{opacity:1}
 .gantt-tip .tip-title{color:var(--acc2);font-size:13px;margin-bottom:4px}
@@ -162,6 +162,15 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .gantt-date-pair{display:flex;gap:8px;align-items:center}.gantt-date-pair input[type="date"]{flex:1}.gantt-date-pair .date-sep{color:var(--txt3);font-size:12px;flex-shrink:0}
 .gantt-group{border:1px solid rgba(255,107,107,.25);border-radius:12px;padding:16px;margin-bottom:14px;background:rgba(255,255,255,.01);transition:var(--tr)}.gantt-group:hover{border-color:rgba(255,107,107,.4);background:rgba(255,255,255,.02)}
 .gantt-group-label{font-size:13px;font-weight:700;color:var(--acc2);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.05);letter-spacing:.3px}
+.gantt-item-group{border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 12px;margin-bottom:18px;background:rgba(255,255,255,.015);transition:var(--tr);position:relative}
+.gantt-item-group:hover{background:rgba(255,255,255,.03)}
+.gantt-item-group.hw{border-color:rgba(0,102,204,.25);box-shadow:0 2px 16px rgba(0,102,204,.08),inset 0 1px 0 rgba(0,102,204,.1)}
+.gantt-item-group.hw:hover{border-color:rgba(0,102,204,.4);box-shadow:0 4px 24px rgba(0,102,204,.15),inset 0 1px 0 rgba(0,102,204,.15)}
+.gantt-item-group.sw{border-color:rgba(108,92,231,.25);box-shadow:0 2px 16px rgba(108,92,231,.08),inset 0 1px 0 rgba(108,92,231,.1)}
+.gantt-item-group.sw:hover{border-color:rgba(108,92,231,.4);box-shadow:0 4px 24px rgba(108,92,231,.15),inset 0 1px 0 rgba(108,92,231,.15)}
+.gantt-item-group.op{border-color:rgba(255,140,0,.25);box-shadow:0 2px 16px rgba(255,140,0,.08),inset 0 1px 0 rgba(255,140,0,.1)}
+.gantt-item-group.op:hover{border-color:rgba(255,140,0,.4);box-shadow:0 4px 24px rgba(255,140,0,.15),inset 0 1px 0 rgba(255,140,0,.15)}
+.gantt-item-group .gr{margin-bottom:8px}
 .gdv{height:1px;background:var(--bdr);margin:8px 0 16px}
 .ms{margin-bottom:64px;scroll-margin-top:88px}
 .mhc{display:flex;align-items:center;gap:20px;margin-bottom:28px;padding:32px;background:rgba(12,18,35,0.72);border-radius:var(--r-xl);box-shadow:var(--sh-md);border:1px solid rgba(255,255,255,.07);position:relative;overflow:hidden;backdrop-filter:blur(30px) saturate(150%)}
@@ -362,7 +371,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .hd-info-row{gap:4px}
 .ct{padding:16px 12px}.hero{margin-bottom:28px}.hero h2{font-size:18px!important;white-space:nowrap}.hero p{font-size:11px;white-space:nowrap}.hero-line{width:80px}.hero h2::before{inset:-15px -30px}
 .i3d{width:80px;height:80px;border-radius:16px}.i3d .ie{width:36px;height:36px}.ct-t{font-size:15px;white-space:nowrap}.ct-s{font-size:11px;margin-bottom:16px}.pm{width:96px;height:96px}.pm svg{width:96px;height:96px}.pm .pp .pn{font-size:22px}.pm .pp .pl2{font-size:9px}
-.gs{padding:16px 10px;margin-bottom:28px;border-radius:16px}.gs-ta h3{font-size:14px;gap:6px;white-space:nowrap}.gs-ta p{font-size:11px}.gl{gap:12px}.gli{font-size:10px;gap:4px}.gld{width:8px;height:8px;border-radius:3px}.gcl{font-size:13px;letter-spacing:0;padding:6px 0 8px;gap:6px}.grl{width:130px;font-size:12px;padding-left:6px;padding-right:8px}.grl .sl{font-size:10px;margin-top:2px}.gb .bt{font-size:9px}.gb .bd{font-size:8px}
+.gs{padding:16px 10px;margin-bottom:28px;border-radius:16px}.gs-ta h3{font-size:14px;gap:6px;white-space:nowrap}.gs-ta p{font-size:11px}.gl{gap:12px}.gli{font-size:10px;gap:4px}.gld{width:8px;height:8px;border-radius:3px}.gcl{font-size:13px;letter-spacing:0;padding:6px 0 8px;gap:6px}.grl{width:130px;font-size:12px;padding-left:6px;padding-right:8px}.grl .sl{font-size:10px;margin-top:2px}.gb .bt{font-size:11px}.gb .bd{font-size:9px}
 .ms{margin-bottom:32px}.mhc{padding:14px 16px;border-radius:14px}.mi{gap:10px;flex-wrap:wrap}.mn{width:38px;height:38px;border-radius:10px}.mn span{width:18px!important;height:18px!important}.mm h3{font-size:14px;white-space:nowrap}.mm p{font-size:11px;margin-top:2px}.mst-v{font-size:18px}.mst-l{font-size:10px}.mst{gap:18px}
 .dg{gap:14px}.dc{padding:16px;border-radius:14px}.dc h4{font-size:14px;gap:6px}.dc h4 span{font-size:10px!important}.dch{margin-bottom:10px}.dc p{font-size:12px}.pla{font-size:11px}
 .sh2 h2{font-size:14px;gap:8px;white-space:nowrap}.sh2 h2 span{font-size:12px!important}
@@ -1643,8 +1652,53 @@ else{ms.status='p'}
 (async function(){await _initData();let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){/* Superadmin device check on session restore */if(gR(s)==='superadmin'){const devOk=await verifySuperadminDevice(s);if(!devOk){localStorage.removeItem('mocap_cur');localStorage.removeItem('mocap_ioa_id');await startIOAAuth();return}}AU.cur=s;_tryAutoToken();document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
 
 /* ===== HELPERS ===== */
-const GS=new Date('2026-01-01'),GE=new Date('2026-04-30'),GT_=(GE-GS)/864e5;
-function gp(s,e){const a=(new Date(s)-GS)/864e5,b=(new Date(e)-GS)/864e5;return{l:(a/GT_*100).toFixed(2)+'%',w:(Math.max((b-a)/GT_*100,0.8)).toFixed(2)+'%'}}
+/* 动态计算甘特图日期范围 */
+let GS=new Date('2026-01-01'),GE=new Date('2026-04-30'),GT_=(GE-GS)/864e5;
+function _calcGanttRange(){
+let minD=null,maxD=null;
+D.modules.forEach(m=>{m.items.forEach(it=>{if(!it.ganttBars)return;it.ganttBars.forEach(b=>{
+if(b.start&&(!minD||b.start<minD))minD=b.start;
+if(b.end&&(!maxD||b.end>maxD))maxD=b.end;
+});});});
+if(!minD)minD='2026-01-01';
+if(!maxD)maxD='2026-04-30';
+/* 范围扩展到月份的第一天和最后一天 */
+const sd=new Date(minD);GS=new Date(sd.getFullYear(),sd.getMonth(),1);
+const ed=new Date(maxD);GE=new Date(ed.getFullYear(),ed.getMonth()+1,0);/* 月末最后一天 */
+/* 至少覆盖3个月 */
+const minEnd=new Date(GS.getFullYear(),GS.getMonth()+3,0);
+if(GE<minEnd)GE=minEnd;
+GT_=(GE-GS)/864e5;
+}
+function gp(s,e,minPct){const a=(new Date(s)-GS)/864e5,b=(new Date(e)-GS)/864e5;let wp=(b-a)/GT_*100;if(minPct&&wp<minPct)wp=minPct;return{l:(a/GT_*100).toFixed(2)+'%',w:(Math.max(wp,0.8)).toFixed(2)+'%'}}
+/* 根据甘特条标题和日期文字估算最小显示宽度(百分比) */
+function _calcMinPct(title,startStr,endStr){
+/* 标题中文约13px/字，日期约11px×(M/D-M/D≈7-9字符) */
+const titleW=(title||'').length*14+24;/* 标题像素宽 + padding */
+const dateW=((fds(startStr)||'').length+(fds(endStr)||'').length+1)*7+24;
+const needW=Math.max(titleW,dateW);
+/* .gbs容器实际宽度约 1100-280=820px(桌面端) */
+const gbsW=820;
+return Math.max(needW/gbsW*100,3);/* 至少3% */
+}
+/* 生成动态月份头和周标签 HTML */
+function _buildGanttHeader(){
+_calcGanttRange();
+const months=[];let cur=new Date(GS.getFullYear(),GS.getMonth(),1);
+while(cur<=GE){months.push(new Date(cur));cur=new Date(cur.getFullYear(),cur.getMonth()+1,1);}
+let mh='';months.forEach(mo=>{mh+=`<div class="gm">${mo.getMonth()+1}月</div>`;});
+let wh='';months.forEach(mo=>{
+const y=mo.getFullYear(),m=mo.getMonth();
+const lastDay=new Date(y,m+1,0).getDate();
+const weeks=Math.ceil(lastDay/7);
+wh+='<div class="gwg">';
+for(let w=1;w<=weeks;w++)wh+=`<span class="gwl">W${w}</span>`;
+wh+='</div>';});
+const startM=months[0],endM=months[months.length-1];
+const sy=startM.getFullYear(),ey=endM.getFullYear();
+const rangeLabel=sy===ey?`${sy}年${startM.getMonth()+1}月 — ${endM.getMonth()+1}月`:`${sy}年${startM.getMonth()+1}月 — ${ey}年${endM.getMonth()+1}月`;
+return{monthsHtml:mh,weeksHtml:wh,rangeLabel:rangeLabel};
+}
 function fds(d){const t=new Date(d);return(t.getMonth()+1)+'/'+t.getDate()}
 function fdf(d){if(!d)return'';const t=new Date(d);return t.getFullYear()+'年'+(t.getMonth()+1)+'月'+t.getDate()+'日'}
 /* 获取北京时间 ISO 字符串（含时间），格式: YYYY-MM-DDTHH:mm */
@@ -1680,8 +1734,11 @@ h+='</div>';
 /* Arrow connectors - positioned between card gaps, outside .sg grid */
 for(let i=0;i<D.modules.length-1;i++){h+=`<div class="timeline-arrow ta-sw" data-arrow-idx="${i}" style="position:absolute;pointer-events:none;z-index:5"><div class="timeline-arrow-line"></div><div class="timeline-arrow-head"></div></div>`}
 h+=`<div class="photo-divider ain"><div class="photo-divider-img" style="background-image:url('images/mocap_studio1.jpg')"></div><div class="photo-divider-overlay"></div><div class="photo-divider-text"><span>LIGHTSPEED MOCAP</span> · Motion Capture Studio(SZ)</div></div>`;
-h+=`<div class="gs ain d3"><div class="gs-top"><div class="gs-ta"><h3><span style="display:inline-flex;width:24px;height:24px;vertical-align:middle">${SVG_ICONS.chart}</span> 项目甘特图</h3><p>2026年1月 — 4月 · 全局任务时间线（鼠标悬停查看详细日期）</p></div><div class="gl"><div class="gli"><span class="gld c"></span>已完成</div><div class="gli"><span class="gld i"></span>进行中</div><div class="gli"><span class="gld p"></span>规划中</div></div></div><div class="gc"><div class="gth"><div class="gm">1月</div><div class="gm">2月</div><div class="gm">3月</div><div class="gm">4月</div></div><div class="gwm"><div class="gwg"><span class="gwl">W1</span><span class="gwl">W2</span><span class="gwl">W3</span><span class="gwl">W4</span><span class="gwl">W5</span></div><div class="gwg"><span class="gwl">W1</span><span class="gwl">W2</span><span class="gwl">W3</span><span class="gwl">W4</span></div><div class="gwg"><span class="gwl">W1</span><span class="gwl">W2</span><span class="gwl">W3</span><span class="gwl">W4</span></div><div class="gwg"><span class="gwl">W1</span><span class="gwl">W2</span><span class="gwl">W3</span><span class="gwl">W4</span></div></div>`;
-D.modules.forEach((m,mi)=>{const cc=cls(m.category);h+=`<div class="gcl ${cc}"><span class="cd"></span>${m.title}</div>`;m.items.forEach(it=>{if(!it.ganttBars||!it.ganttBars.length)return;h+=`<div class="gr"><div class="grl">${it.ganttLabel||it.title}<span class="sl">${it.ganttSubLabel||''}</span></div><div class="gbs">`;it.ganttBars.forEach(b=>{const p=gp(b.start,b.end);const et=b.title.replace(/'/g,"\\'");h+=`<div class="gb-row"><div class="gb ${b.status}" style="left:${p.l};width:${p.w}" onmouseenter="showGanttTip(event,'${et}','${b.start}','${b.end}','${b.status}')" onmousemove="moveGanttTip(event)" onmouseleave="hideGanttTip()" onclick="ganttBarClick(event,'${m.id}','${it.id}')"><span class="bt">${b.title}</span><span class="bd">${fds(b.start)}-${fds(b.end)}</span></div></div>`;});h+='</div></div>';});if(mi<D.modules.length-1)h+='<div class="gdv"></div>';});
+const _gh=_buildGanttHeader();
+const _ghMonthCount=(_gh.monthsHtml.match(/class="gm"/g)||[]).length;
+const _gcMinW=Math.max(280+_ghMonthCount*220,800);
+h+=`<div class="gs ain d3"><div class="gs-top"><div class="gs-ta"><h3><span style="display:inline-flex;width:24px;height:24px;vertical-align:middle">${SVG_ICONS.chart}</span> 项目甘特图</h3><p>${_gh.rangeLabel} · 全局任务时间线（鼠标悬停查看详细日期）</p></div><div class="gl"><div class="gli"><span class="gld c"></span>已完成</div><div class="gli"><span class="gld i"></span>进行中</div><div class="gli"><span class="gld p"></span>规划中</div></div></div><div class="gc" style="min-width:${_gcMinW}px"><div class="gth">${_gh.monthsHtml}</div><div class="gwm">${_gh.weeksHtml}</div>`;
+D.modules.forEach((m,mi)=>{const cc=cls(m.category);h+=`<div class="gcl ${cc}"><span class="cd"></span>${m.title}</div>`;m.items.forEach(it=>{if(!it.ganttBars||!it.ganttBars.length)return;h+=`<div class="gantt-item-group ${cc}"><div class="gr"><div class="grl">${it.ganttLabel||it.title}<span class="sl">${it.ganttSubLabel||''}</span></div><div class="gbs">`;it.ganttBars.forEach(b=>{const mp=_calcMinPct(b.title,b.start,b.end);const p=gp(b.start,b.end,mp);const et=b.title.replace(/'/g,"\\'");h+=`<div class="gb-row"><div class="gb ${b.status}" style="left:${p.l};width:${p.w}" onmouseenter="showGanttTip(event,'${et}','${b.start}','${b.end}','${b.status}')" onmousemove="moveGanttTip(event)" onmouseleave="hideGanttTip()" onclick="ganttBarClick(event,'${m.id}','${it.id}')"><span class="bt">${b.title}</span><span class="bd">${fds(b.start)}-${fds(b.end)}</span></div></div>`;});h+='</div></div></div>';});if(mi<D.modules.length-1)h+='<div class="gdv"></div>';});
 h+='</div></div>';
 const cm={hardware:'var(--pri)',software:'var(--pur)',operations:'var(--warn)'};
 D.modules.forEach((m,mi)=>{const cc=cls(m.category),si=gi(m.category,'sec');
