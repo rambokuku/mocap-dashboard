@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-18T01:37",
+    "updateDate": "2026-04-18T01:39",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -282,26 +282,26 @@
       "category": "生态合作",
       "title": "生态合作",
       "subtitle": "演员生态拓展",
-      "overallProgress": 0,
-      "status": "planned",
+      "overallProgress": 32,
+      "status": "inprogress",
       "items": [
         {
           "id": "item_1776443823812",
           "title": "发行线演员渠道合作",
-          "dateRange": "",
+          "dateRange": "03.25 - 04.30",
           "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
           "progressLabel": "整体进度",
-          "progress": 0,
-          "progressColor": "pu",
+          "progress": 64,
+          "progressColor": "bl",
           "ganttLabel": "发行线演员渠道合作",
           "ganttSubLabel": "",
           "ganttBars": [
             {
-              "title": "新任务",
-              "start": "",
-              "end": "",
-              "status": "p",
-              "_progress": 0
+              "title": "演员经纪资源梳理",
+              "start": "2026-03-25",
+              "end": "2026-04-30",
+              "status": "i",
+              "_progress": 64
             }
           ]
         },
@@ -433,13 +433,34 @@
       "type": "edit",
       "scope": "生态合作/发行线演员渠道合作",
       "detail": "子项目标题：关子发行线演员渠道合作 → 发行线演员渠道合作"
+    },
+    {
+      "time": "2026-04-18T01:39",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "生态合作/发行线演员渠道合作",
+      "detail": "甘特条标题：新任务 → 演员经纪资源梳理"
+    },
+    {
+      "time": "2026-04-18T01:39",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "生态合作/发行线演员渠道合作",
+      "detail": "「演员经纪资源梳理」开始日期：(空) → 2026-03-25"
+    },
+    {
+      "time": "2026-04-18T01:39",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "生态合作/发行线演员渠道合作",
+      "detail": "「演员经纪资源梳理」结束日期：(空) → 2026-04-30"
     }
   ],
   "dataSnapshots": {
     "2026-04-18": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-18T01:37",
+        "updateDate": "2026-04-18T01:39",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -735,9 +756,9 @@
               "ganttSubLabel": "",
               "ganttBars": [
                 {
-                  "title": "新任务",
-                  "start": "",
-                  "end": "",
+                  "title": "演员经纪资源梳理",
+                  "start": "2026-03-25",
+                  "end": "2026-04-30",
                   "status": "p",
                   "_progress": 0
                 }
