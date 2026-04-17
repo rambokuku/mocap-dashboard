@@ -485,7 +485,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 <div style="font-size:12px;color:var(--txt3);line-height:1.6">仅限腾讯企业微信通讯录成员访问<br>请输入您的企业微信英文名登录</div>
 </div>
 <div style="margin-bottom:16px">
-<input type="text" id="loginNameInput" placeholder="请输入企业微信英文名（如 rambokou）" autocomplete="off" autocapitalize="off" spellcheck="false"
+<input type="text" id="loginNameInput" placeholder="请输入企业微信英文名（如 rambokou）" autocomplete="new-password" autocapitalize="off" spellcheck="false" readonly onfocus="this.removeAttribute('readonly')"
 style="width:100%;padding:14px 18px;border:1px solid var(--bdr);border-radius:12px;font-size:14px;font-family:inherit;font-weight:700;background:rgba(255,255,255,.04);color:var(--txt);outline:none;transition:var(--tr)"
 onfocus="this.style.borderColor='rgba(0,102,204,.5)';this.style.boxShadow='0 0 0 3px rgba(0,102,204,.1)'"
 onblur="this.style.borderColor='var(--bdr)';this.style.boxShadow='none'"
@@ -1414,7 +1414,7 @@ if(IOA_USERS_HASH[hash]){
 const info=decryptUser(IOA_USERS_HASH[hash],savedIOA);
 if(info){RESOLVED_USER={...info,_uid:savedIOA};IOA_CUR_ID=savedIOA;loginForm.style.display='none';ioaResult.style.display='block';showIOAResult();if(savedIOA==='rambokou'){setTimeout(()=>ioaLogin(),600)}return}}}
 loginForm.style.display='block';ioaResult.style.display='none';
-setTimeout(()=>{const inp=document.getElementById('loginNameInput');if(inp)inp.focus()},300);
+setTimeout(()=>{const inp=document.getElementById('loginNameInput');if(inp){inp.value='';inp.focus()}},300);
 }
 async function doNameLogin(){
 const inp=document.getElementById('loginNameInput');
@@ -1748,6 +1748,8 @@ else{ms.status='p'}
 
 /* Auto-login on page load — 必须在 D 和 _initData 定义之后执行 */
 (async function(){await _initData();let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){/* Superadmin device check on session restore */if(gR(s)==='superadmin'){const devOk=await verifySuperadminDevice(s);if(!devOk){localStorage.removeItem('mocap_cur');localStorage.removeItem('mocap_ioa_id');await startIOAAuth();return}}AU.cur=s;_tryAutoToken();document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
+/* Anti-autofill: browsers may fill inputs AFTER JS runs, so schedule a delayed clear */
+[100,500,1500].forEach(t=>setTimeout(()=>{const inp=document.getElementById('loginNameInput');if(inp&&!inp.matches(':focus')&&document.getElementById('loginOv').style.display!=='none'){inp.value=''}},t));
 
 /* ===== HELPERS ===== */
 /* 甘特图折叠：_ganttFoldIdx=N 表示前 N 个月被折叠；_ganttAllMonths 存储完整月份列表 */
