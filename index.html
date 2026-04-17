@@ -145,14 +145,14 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .gr{display:flex;align-items:stretch;margin-bottom:14px;transition:var(--tr);padding:4px 0;border-radius:8px}.gr:hover{background:rgba(255,255,255,.02)}
 .grl{width:280px;font-size:22px;padding-right:20px;padding-left:16px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center}.grl .sl{display:block;font-size:14px;color:var(--txt3);margin-top:4px}
 .gbs{flex:1;display:flex;flex-direction:column;gap:4px;min-width:850px}
-.gb-row{position:relative;height:32px;width:100%}
-.gb{position:absolute;height:32px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 10px;font-size:10px;color:#fff;transition:var(--tr2);cursor:pointer;overflow:hidden}
-.gb::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.2),transparent 60%);border-radius:8px}
+.gb-row{position:relative;height:40px;width:100%}
+.gb{position:absolute;height:40px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 12px;font-size:12px;color:#fff;transition:var(--tr2);cursor:pointer;overflow:hidden}
+.gb::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.2),transparent 60%);border-radius:10px}
 .gb:hover{transform:scaleY(1.15) scaleX(1.02);z-index:10}
 .gb.c{background:linear-gradient(135deg,#00C48C,#00E6A0);box-shadow:0 4px 20px rgba(0,196,140,.35)}
 .gb.i{background:linear-gradient(135deg,#FF8C00,#FFB340);box-shadow:0 4px 20px rgba(255,140,0,.35)}
 .gb.p{background:transparent;border:2px dashed var(--txt3);color:var(--txt2)}.gb.p::before{display:none}
-.gb .bt{font-size:10px;white-space:nowrap}.gb .bd{font-size:9px;opacity:.9;white-space:nowrap}
+.gb .bt{font-size:13px;font-weight:600;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.3)}.gb .bd{font-size:11px;opacity:.9;white-space:nowrap}
 .gantt-tip{position:fixed;z-index:1000;padding:10px 16px;background:rgba(12,18,35,.96);border:1px solid rgba(0,163,224,.3);border-radius:12px;backdrop-filter:blur(16px);pointer-events:none;opacity:0;transition:opacity .15s;font-size:12px;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.5);max-width:280px}
 .gantt-tip.show{opacity:1}
 .gantt-tip .tip-title{color:var(--acc2);font-size:13px;margin-bottom:4px}
@@ -162,6 +162,21 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .gantt-date-pair{display:flex;gap:8px;align-items:center}.gantt-date-pair input[type="date"]{flex:1}.gantt-date-pair .date-sep{color:var(--txt3);font-size:12px;flex-shrink:0}
 .gantt-group{border:1px solid rgba(255,107,107,.25);border-radius:12px;padding:16px;margin-bottom:14px;background:rgba(255,255,255,.01);transition:var(--tr)}.gantt-group:hover{border-color:rgba(255,107,107,.4);background:rgba(255,255,255,.02)}
 .gantt-group-label{font-size:13px;font-weight:700;color:var(--acc2);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.05);letter-spacing:.3px}
+.gantt-item-group{border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 12px;margin-bottom:18px;background:rgba(255,255,255,.015);transition:var(--tr);position:relative}
+.gantt-item-group:hover{background:rgba(255,255,255,.03)}
+.gantt-item-group.hw{border-color:rgba(0,102,204,.25);box-shadow:0 2px 16px rgba(0,102,204,.08),inset 0 1px 0 rgba(0,102,204,.1)}
+.gantt-item-group.hw:hover{border-color:rgba(0,102,204,.4);box-shadow:0 4px 24px rgba(0,102,204,.15),inset 0 1px 0 rgba(0,102,204,.15)}
+.gantt-item-group.sw{border-color:rgba(108,92,231,.25);box-shadow:0 2px 16px rgba(108,92,231,.08),inset 0 1px 0 rgba(108,92,231,.1)}
+.gantt-item-group.sw:hover{border-color:rgba(108,92,231,.4);box-shadow:0 4px 24px rgba(108,92,231,.15),inset 0 1px 0 rgba(108,92,231,.15)}
+.gantt-item-group.op{border-color:rgba(255,140,0,.25);box-shadow:0 2px 16px rgba(255,140,0,.08),inset 0 1px 0 rgba(255,140,0,.1)}
+.gantt-item-group.op:hover{border-color:rgba(255,140,0,.4);box-shadow:0 4px 24px rgba(255,140,0,.15),inset 0 1px 0 rgba(255,140,0,.15)}
+.gantt-item-group .gr{margin-bottom:8px}
+.gb .gb-resize-r,.gb .gb-resize-l{position:absolute;top:0;width:8px;height:100%;cursor:col-resize;z-index:5;opacity:0;transition:opacity .2s}
+.gb .gb-resize-r{right:0;border-radius:0 10px 10px 0}
+.gb .gb-resize-l{left:0;border-radius:10px 0 0 10px}
+.gb:hover .gb-resize-r,.gb:hover .gb-resize-l{opacity:1;background:rgba(255,255,255,.25)}
+.gb.resizing{transition:none!important;transform:none!important;z-index:20}
+.gb.resizing .gb-resize-r,.gb.resizing .gb-resize-l{opacity:1;background:rgba(255,255,255,.4)}
 .gdv{height:1px;background:var(--bdr);margin:8px 0 16px}
 .ms{margin-bottom:64px;scroll-margin-top:88px}
 .mhc{display:flex;align-items:center;gap:20px;margin-bottom:28px;padding:32px;background:rgba(12,18,35,0.72);border-radius:var(--r-xl);box-shadow:var(--sh-md);border:1px solid rgba(255,255,255,.07);position:relative;overflow:hidden;backdrop-filter:blur(30px) saturate(150%)}
@@ -362,7 +377,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .hd-info-row{gap:4px}
 .ct{padding:16px 12px}.hero{margin-bottom:28px}.hero h2{font-size:18px!important;white-space:nowrap}.hero p{font-size:11px;white-space:nowrap}.hero-line{width:80px}.hero h2::before{inset:-15px -30px}
 .i3d{width:80px;height:80px;border-radius:16px}.i3d .ie{width:36px;height:36px}.ct-t{font-size:15px;white-space:nowrap}.ct-s{font-size:11px;margin-bottom:16px}.pm{width:96px;height:96px}.pm svg{width:96px;height:96px}.pm .pp .pn{font-size:22px}.pm .pp .pl2{font-size:9px}
-.gs{padding:16px 10px;margin-bottom:28px;border-radius:16px}.gs-ta h3{font-size:14px;gap:6px;white-space:nowrap}.gs-ta p{font-size:11px}.gl{gap:12px}.gli{font-size:10px;gap:4px}.gld{width:8px;height:8px;border-radius:3px}.gcl{font-size:13px;letter-spacing:0;padding:6px 0 8px;gap:6px}.grl{width:130px;font-size:12px;padding-left:6px;padding-right:8px}.grl .sl{font-size:10px;margin-top:2px}.gb .bt{font-size:9px}.gb .bd{font-size:8px}
+.gs{padding:16px 10px;margin-bottom:28px;border-radius:16px}.gs-ta h3{font-size:14px;gap:6px;white-space:nowrap}.gs-ta p{font-size:11px}.gl{gap:12px}.gli{font-size:10px;gap:4px}.gld{width:8px;height:8px;border-radius:3px}.gcl{font-size:13px;letter-spacing:0;padding:6px 0 8px;gap:6px}.grl{width:130px;font-size:12px;padding-left:6px;padding-right:8px}.grl .sl{font-size:10px;margin-top:2px}.gb .bt{font-size:11px}.gb .bd{font-size:9px}
 .ms{margin-bottom:32px}.mhc{padding:14px 16px;border-radius:14px}.mi{gap:10px;flex-wrap:wrap}.mn{width:38px;height:38px;border-radius:10px}.mn span{width:18px!important;height:18px!important}.mm h3{font-size:14px;white-space:nowrap}.mm p{font-size:11px;margin-top:2px}.mst-v{font-size:18px}.mst-l{font-size:10px}.mst{gap:18px}
 .dg{gap:14px}.dc{padding:16px;border-radius:14px}.dc h4{font-size:14px;gap:6px}.dc h4 span{font-size:10px!important}.dch{margin-bottom:10px}.dc p{font-size:12px}.pla{font-size:11px}
 .sh2 h2{font-size:14px;gap:8px;white-space:nowrap}.sh2 h2 span{font-size:12px!important}
@@ -1643,8 +1658,51 @@ else{ms.status='p'}
 (async function(){await _initData();let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){/* Superadmin device check on session restore */if(gR(s)==='superadmin'){const devOk=await verifySuperadminDevice(s);if(!devOk){localStorage.removeItem('mocap_cur');localStorage.removeItem('mocap_ioa_id');await startIOAAuth();return}}AU.cur=s;_tryAutoToken();document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
 
 /* ===== HELPERS ===== */
-const GS=new Date('2026-01-01'),GE=new Date('2026-04-30'),GT_=(GE-GS)/864e5;
+/* 动态计算甘特图日期范围 */
+let GS=new Date('2026-01-01'),GE=new Date('2026-04-30'),GT_=(GE-GS)/864e5;
+function _calcGanttRange(){
+let minD=null,maxD=null;
+D.modules.forEach(m=>{m.items.forEach(it=>{if(!it.ganttBars)return;it.ganttBars.forEach(b=>{
+if(b.start&&(!minD||b.start<minD))minD=b.start;
+if(b.end&&(!maxD||b.end>maxD))maxD=b.end;
+});});});
+if(!minD)minD='2026-01-01';
+if(!maxD)maxD='2026-04-30';
+/* 范围扩展到月份的第一天和最后一天 */
+const sd=new Date(minD);GS=new Date(sd.getFullYear(),sd.getMonth(),1);
+const ed=new Date(maxD);GE=new Date(ed.getFullYear(),ed.getMonth()+1,0);/* 月末最后一天 */
+/* 至少覆盖3个月 */
+const minEnd=new Date(GS.getFullYear(),GS.getMonth()+3,0);
+if(GE<minEnd)GE=minEnd;
+GT_=(GE-GS)/864e5;
+}
 function gp(s,e){const a=(new Date(s)-GS)/864e5,b=(new Date(e)-GS)/864e5;return{l:(a/GT_*100).toFixed(2)+'%',w:(Math.max((b-a)/GT_*100,0.8)).toFixed(2)+'%'}}
+/* 生成动态月份头和周标签 HTML */
+function _buildGanttHeader(){
+_calcGanttRange();
+const months=[];let cur=new Date(GS.getFullYear(),GS.getMonth(),1);
+while(cur<=GE){months.push(new Date(cur));cur=new Date(cur.getFullYear(),cur.getMonth()+1,1);}
+let mh='';months.forEach(mo=>{mh+=`<div class="gm">${mo.getMonth()+1}月</div>`;});
+let wh='';months.forEach(mo=>{
+const y=mo.getFullYear(),m=mo.getMonth();
+const lastDay=new Date(y,m+1,0).getDate();
+const weeks=Math.ceil(lastDay/7);
+wh+='<div class="gwg">';
+for(let w=1;w<=weeks;w++)wh+=`<span class="gwl">W${w}</span>`;
+wh+='</div>';});
+const startM=months[0],endM=months[months.length-1];
+const sy=startM.getFullYear(),ey=endM.getFullYear();
+const rangeLabel=sy===ey?`${sy}年${startM.getMonth()+1}月 — ${endM.getMonth()+1}月`:`${sy}年${startM.getMonth()+1}月 — ${ey}年${endM.getMonth()+1}月`;
+return{monthsHtml:mh,weeksHtml:wh,rangeLabel:rangeLabel};
+}
+/* 拖拽结束后刷新日期头（不重新渲染整个页面） */
+function _refreshGanttHeader(){
+_calcGanttRange();
+const hdr=_buildGanttHeader();
+const gth=document.querySelector('.gth');if(gth)gth.innerHTML=hdr.monthsHtml;
+const gwm=document.querySelector('.gwm');if(gwm)gwm.innerHTML=hdr.weeksHtml;
+const gsP=document.querySelector('.gs-ta p');if(gsP)gsP.textContent=hdr.rangeLabel+' · 全局任务时间线（鼠标悬停查看详细日期）';
+}
 function fds(d){const t=new Date(d);return(t.getMonth()+1)+'/'+t.getDate()}
 function fdf(d){if(!d)return'';const t=new Date(d);return t.getFullYear()+'年'+(t.getMonth()+1)+'月'+t.getDate()+'日'}
 /* 获取北京时间 ISO 字符串（含时间），格式: YYYY-MM-DDTHH:mm */
@@ -1665,6 +1723,56 @@ function posTip(ev){const tw=tipEl.offsetWidth||200,th=tipEl.offsetHeight||60;le
 function moveGanttTip(ev){posTip(ev)}
 function hideGanttTip(){tipEl.classList.remove('show')}
 
+/* ===== GANTT BAR RESIZE (拖拽调整进度条长度) ===== */
+let _gbResizing=null;
+function startGbResize(ev,side){
+ev.stopPropagation();ev.preventDefault();hideGanttTip();
+const bar=ev.target.closest('.gb');if(!bar)return;
+const mid=bar.dataset.mid,iid=bar.dataset.iid,bi=parseInt(bar.dataset.bi);
+const m=D.modules.find(x=>x.id===mid);if(!m)return;
+const it=m.items.find(x=>x.id===iid);if(!it||!it.ganttBars||!it.ganttBars[bi])return;
+const b=it.ganttBars[bi];if(!b.start||!b.end)return;
+const gbs=bar.closest('.gbs');if(!gbs)return;
+const gbsRect=gbs.getBoundingClientRect();
+bar.classList.add('resizing');
+_gbResizing={bar,b,side,gbsRect,startX:ev.clientX,origStart:b.start,origEnd:b.end,totalDays:GT_,mid,iid,bi};
+document.addEventListener('mousemove',onGbResize);
+document.addEventListener('mouseup',endGbResize);
+}
+function onGbResize(ev){
+if(!_gbResizing)return;
+const {bar,b,side,gbsRect,startX,origStart,origEnd,totalDays}=_gbResizing;
+const dx=ev.clientX-startX;
+const daysPx=gbsRect.width/totalDays;
+const dDays=Math.round(dx/daysPx);
+if(side==='right'){
+const origEndDate=new Date(origEnd);
+const newEnd=new Date(origEndDate.getTime()+dDays*864e5);
+const newEndStr=newEnd.toISOString().slice(0,10);
+if(newEndStr<=b.start)return;
+b.end=newEndStr;
+}else{
+const origStartDate=new Date(origStart);
+const newStart=new Date(origStartDate.getTime()+dDays*864e5);
+const newStartStr=newStart.toISOString().slice(0,10);
+if(newStartStr>=b.end)return;
+b.start=newStartStr;
+}
+const p=gp(b.start,b.end);
+bar.style.left=p.l;bar.style.width=p.w;
+const btEl=bar.querySelector('.bd');
+if(btEl)btEl.textContent=fds(b.start)+'-'+fds(b.end);
+}
+function endGbResize(){
+if(!_gbResizing)return;
+_gbResizing.bar.classList.remove('resizing');
+_gbResizing=null;
+document.removeEventListener('mousemove',onGbResize);
+document.removeEventListener('mouseup',endGbResize);
+/* 重新计算后刷新时间轴头（优化4的动态日期会用到） */
+autoCalc();_refreshGanttHeader();
+}
+
 /* ===== RENDER ===== */
 function render(){autoCalc();const c=document.getElementById('main');if(!AU.cur){c.innerHTML='';return}let h='';
 h+=`<div class="hero ain"><h2>动捕专项<span>整体进展</span></h2><p>${D.modules.map(m=>m.title).join('、')}板块 · 点击模块卡片查看详情</p><div class="hero-line"></div></div>`;
@@ -1680,8 +1788,9 @@ h+='</div>';
 /* Arrow connectors - positioned between card gaps, outside .sg grid */
 for(let i=0;i<D.modules.length-1;i++){h+=`<div class="timeline-arrow ta-sw" data-arrow-idx="${i}" style="position:absolute;pointer-events:none;z-index:5"><div class="timeline-arrow-line"></div><div class="timeline-arrow-head"></div></div>`}
 h+=`<div class="photo-divider ain"><div class="photo-divider-img" style="background-image:url('images/mocap_studio1.jpg')"></div><div class="photo-divider-overlay"></div><div class="photo-divider-text"><span>LIGHTSPEED MOCAP</span> · Motion Capture Studio(SZ)</div></div>`;
-h+=`<div class="gs ain d3"><div class="gs-top"><div class="gs-ta"><h3><span style="display:inline-flex;width:24px;height:24px;vertical-align:middle">${SVG_ICONS.chart}</span> 项目甘特图</h3><p>2026年1月 — 4月 · 全局任务时间线（鼠标悬停查看详细日期）</p></div><div class="gl"><div class="gli"><span class="gld c"></span>已完成</div><div class="gli"><span class="gld i"></span>进行中</div><div class="gli"><span class="gld p"></span>规划中</div></div></div><div class="gc"><div class="gth"><div class="gm">1月</div><div class="gm">2月</div><div class="gm">3月</div><div class="gm">4月</div></div><div class="gwm"><div class="gwg"><span class="gwl">W1</span><span class="gwl">W2</span><span class="gwl">W3</span><span class="gwl">W4</span><span class="gwl">W5</span></div><div class="gwg"><span class="gwl">W1</span><span class="gwl">W2</span><span class="gwl">W3</span><span class="gwl">W4</span></div><div class="gwg"><span class="gwl">W1</span><span class="gwl">W2</span><span class="gwl">W3</span><span class="gwl">W4</span></div><div class="gwg"><span class="gwl">W1</span><span class="gwl">W2</span><span class="gwl">W3</span><span class="gwl">W4</span></div></div>`;
-D.modules.forEach((m,mi)=>{const cc=cls(m.category);h+=`<div class="gcl ${cc}"><span class="cd"></span>${m.title}</div>`;m.items.forEach(it=>{if(!it.ganttBars||!it.ganttBars.length)return;h+=`<div class="gr"><div class="grl">${it.ganttLabel||it.title}<span class="sl">${it.ganttSubLabel||''}</span></div><div class="gbs">`;it.ganttBars.forEach(b=>{const p=gp(b.start,b.end);const et=b.title.replace(/'/g,"\\'");h+=`<div class="gb-row"><div class="gb ${b.status}" style="left:${p.l};width:${p.w}" onmouseenter="showGanttTip(event,'${et}','${b.start}','${b.end}','${b.status}')" onmousemove="moveGanttTip(event)" onmouseleave="hideGanttTip()" onclick="ganttBarClick(event,'${m.id}','${it.id}')"><span class="bt">${b.title}</span><span class="bd">${fds(b.start)}-${fds(b.end)}</span></div></div>`;});h+='</div></div>';});if(mi<D.modules.length-1)h+='<div class="gdv"></div>';});
+const _gh=_buildGanttHeader();
+h+=`<div class="gs ain d3"><div class="gs-top"><div class="gs-ta"><h3><span style="display:inline-flex;width:24px;height:24px;vertical-align:middle">${SVG_ICONS.chart}</span> 项目甘特图</h3><p>${_gh.rangeLabel} · 全局任务时间线（鼠标悬停查看详细日期）</p></div><div class="gl"><div class="gli"><span class="gld c"></span>已完成</div><div class="gli"><span class="gld i"></span>进行中</div><div class="gli"><span class="gld p"></span>规划中</div></div></div><div class="gc"><div class="gth">${_gh.monthsHtml}</div><div class="gwm">${_gh.weeksHtml}</div>`;
+D.modules.forEach((m,mi)=>{const cc=cls(m.category);h+=`<div class="gcl ${cc}"><span class="cd"></span>${m.title}</div>`;m.items.forEach(it=>{if(!it.ganttBars||!it.ganttBars.length)return;h+=`<div class="gantt-item-group ${cc}"><div class="gr"><div class="grl">${it.ganttLabel||it.title}<span class="sl">${it.ganttSubLabel||''}</span></div><div class="gbs">`;it.ganttBars.forEach((b,bi)=>{const p=gp(b.start,b.end);const et=b.title.replace(/'/g,"\\'");h+=`<div class="gb-row"><div class="gb ${b.status}" style="left:${p.l};width:${p.w}" data-mid="${m.id}" data-iid="${it.id}" data-bi="${bi}" onmouseenter="showGanttTip(event,'${et}','${b.start}','${b.end}','${b.status}')" onmousemove="moveGanttTip(event)" onmouseleave="hideGanttTip()" onclick="ganttBarClick(event,'${m.id}','${it.id}')"><div class="gb-resize-l" onmousedown="startGbResize(event,'left')"></div><span class="bt">${b.title}</span><span class="bd">${fds(b.start)}-${fds(b.end)}</span><div class="gb-resize-r" onmousedown="startGbResize(event,'right')"></div></div></div>`;});h+='</div></div></div>';});if(mi<D.modules.length-1)h+='<div class="gdv"></div>';});
 h+='</div></div>';
 const cm={hardware:'var(--pri)',software:'var(--pur)',operations:'var(--warn)'};
 D.modules.forEach((m,mi)=>{const cc=cls(m.category),si=gi(m.category,'sec');
