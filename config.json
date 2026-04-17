@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-18T01:41",
+    "updateDate": "2026-04-18T01:42",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -322,7 +322,7 @@
         {
           "id": "item_1776444240603",
           "title": "影科演员经纪渠道合作",
-          "dateRange": "",
+          "dateRange": "04.18 - 04.20",
           "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
           "progressLabel": "整体进度",
           "progress": 0,
@@ -331,9 +331,9 @@
           "ganttSubLabel": "",
           "ganttBars": [
             {
-              "title": "新任务",
-              "start": "",
-              "end": "",
+              "title": "合同内容梳理",
+              "start": "2026-04-18",
+              "end": "2026-04-20",
               "status": "p",
               "_progress": 0
             }
@@ -482,13 +482,34 @@
       "type": "add",
       "scope": "生态合作/发行线演员渠道合作",
       "detail": "新增甘特条「演员经纪入库」"
+    },
+    {
+      "time": "2026-04-18T01:42",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "生态合作/影科演员经纪渠道合作",
+      "detail": "甘特条标题：新任务 → 合同内容梳理"
+    },
+    {
+      "time": "2026-04-18T01:42",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "生态合作/影科演员经纪渠道合作",
+      "detail": "「合同内容梳理」开始日期：(空) → 2026-04-18"
+    },
+    {
+      "time": "2026-04-18T01:42",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "生态合作/影科演员经纪渠道合作",
+      "detail": "「合同内容梳理」结束日期：(空) → 2026-04-20"
     }
   ],
   "dataSnapshots": {
     "2026-04-18": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-18T01:41",
+        "updateDate": "2026-04-18T01:42",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -769,16 +790,16 @@
           "category": "生态合作",
           "title": "生态合作",
           "subtitle": "演员生态拓展",
-          "overallProgress": 32,
+          "overallProgress": 11,
           "status": "inprogress",
           "items": [
             {
               "id": "item_1776443823812",
               "title": "发行线演员渠道合作",
-              "dateRange": "03.25 - 04.30",
+              "dateRange": "03.25 - 05.31",
               "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
               "progressLabel": "整体进度",
-              "progress": 64,
+              "progress": 21,
               "progressColor": "bl",
               "ganttLabel": "发行线演员渠道合作",
               "ganttSubLabel": "",
@@ -794,13 +815,15 @@
                   "title": "演员经纪资源对齐",
                   "start": "2026-05-06",
                   "end": "2026-05-07",
-                  "status": "p"
+                  "status": "p",
+                  "_progress": 0
                 },
                 {
                   "title": "演员经纪入库",
                   "start": "2026-05-08",
                   "end": "2026-05-31",
-                  "status": "p"
+                  "status": "p",
+                  "_progress": 0
                 }
               ]
             },
@@ -816,9 +839,9 @@
               "ganttSubLabel": "",
               "ganttBars": [
                 {
-                  "title": "新任务",
-                  "start": "",
-                  "end": "",
+                  "title": "合同内容梳理",
+                  "start": "2026-04-18",
+                  "end": "2026-04-20",
                   "status": "p",
                   "_progress": 0
                 }
