@@ -406,6 +406,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
 .hidden{display:none!important}
 </style>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 <div class="photo-bg">
@@ -1493,7 +1494,7 @@ function gi(cat,t,iid){const c=IC[cat]||IC.hardware;let k;if(t==='card')k=c.card
 /* ===== DATA ===== */
 const CC={hardware:{m:'#0066CC',a:'#00A3E0',c:'hw'},software:{m:'#6C5CE7',a:'#A855F7',c:'sw'},operations:{m:'#FF8C00',a:'#FFB340',c:'op'}};
 /* D 的默认值作为最后兜底，正常情况会被 config.json 覆盖 */
-let D={project:{name:"动捕专项整体进展梳理",updateDate:"2026-01-28",reporter:"rambokou(寇启龙)",animLead:"saxonshao(邵雷)",po:"andrewzli(李哲)",tl:"yuanfengxie(谢远锋)"},modules:[{id:'hardware',category:'hardware',title:'硬件建设',subtitle:'03栋云海动捕中棚建设 · 直播空间搭建',overallProgress:90,status:'completed',items:[{id:'hw1',title:'03栋云海动捕中棚建设',dateRange:'01.06 - 02.12',description:'<span class="hl">三维空间设计</span>1月6日完成，<span class="hl">场地装修</span>1月31日完成（delay 5天），<span class="hl">设备安装</span>1月27日启动，2月12日完成。整体于2月17日完成试运营。',progressLabel:'整体进度',progress:100,progressColor:'gn',ganttLabel:'03栋云海动捕中棚',ganttSubLabel:'装修设计/场地装修/设备安装',ganttBars:[{title:'装修设计',start:'2026-01-06',end:'2026-01-26',status:'c'},{title:'场地装修',start:'2026-01-12',end:'2026-01-31',status:'c'},{title:'设备安装',start:'2026-01-27',end:'2026-02-12',status:'c'}]},{id:'hw2',title:'直播空间搭建（新增）',dateRange:'01.15 - 02.10',description:'<span class="hl">装修设计</span>已完成，<span class="hl">场地改造</span>本周内完成所有线下空间改造，<span class="hl">设备安装</span>下周设备到齐。',progressLabel:'整体进度',progress:70,progressColor:'bl',ganttLabel:'直播空间搭建',ganttSubLabel:'装修设计/场地改造/设备安装',ganttBars:[{title:'装修设计',start:'2026-01-15',end:'2026-01-25',status:'c'},{title:'场地改造',start:'2026-01-20',end:'2026-01-28',status:'i'},{title:'设备安装',start:'2026-01-29',end:'2026-02-10',status:'i'}]}]},{id:'software',category:'software',title:'软件开发',subtitle:'动捕流程软件平台 · 动捕排期系统',overallProgress:65,status:'inprogress',items:[{id:'sw1',title:'动捕流程软件平台',dateRange:'01.06 - 03.01',description:'<span class="hl">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等（1月6日-2月14日）<br><span class="hl">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览（1月14日-2月14日）<br><span class="hl">模块3 Publish</span>：待模块1、2流程跑通后启动（2月15日-3月1日）',progressLabel:'模块1&2',progress:100,progressColor:'gn',extraProgress:[{label:'模块3 Publish',value:0,color:'pu'}],ganttLabel:'动捕流程软件',ganttSubLabel:'Realtime/Process/Publish',ganttBars:[{title:'模块1 Realtime',start:'2026-01-06',end:'2026-02-14',status:'c'},{title:'模块2 Process',start:'2026-01-14',end:'2026-02-14',status:'c'},{title:'模块3 Publish',start:'2026-02-15',end:'2026-03-01',status:'i'}]},{id:'sw2',title:'动捕排期系统',dateRange:'01.12 - 03.15',description:'<span class="risk">视觉排期出现delay</span>，下周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。',progressLabel:'整体进度',progress:60,progressColor:'pu',ganttLabel:'动捕排期系统',ganttSubLabel:'交互设计/前后端开发',ganttBars:[{title:'交互设计',start:'2026-01-12',end:'2026-01-21',status:'c'},{title:'前后端开发',start:'2026-01-22',end:'2026-03-15',status:'i'}]}]},{id:'operations',category:'operations',title:'运营推广',subtitle:'云海中棚动捕官方宣传视频',overallProgress:40,status:'inprogress',items:[{id:'ops1',title:'宣传视频拍摄',dateRange:'01.20 - 03.05',description:'<span class="hl">脚本初稿完成</span>，终稿优化中。<span class="risk">费用超出预算</span>，正在商务谈价环节。<br><span class="hl">初定2月11日启动正式拍摄</span>，预计2月18日完成拍摄，3月5日前完成后期制作。',progressLabel:'整体进度',progress:40,progressColor:'or',ganttLabel:'宣传视频',ganttSubLabel:'脚本/拍摄/后期',ganttBars:[{title:'脚本优化',start:'2026-01-20',end:'2026-02-05',status:'i'},{title:'正式拍摄',start:'2026-02-11',end:'2026-02-18',status:'p'},{title:'后期制作',start:'2026-02-19',end:'2026-03-05',status:'p'}]}]}],milestones:[{date:'2026-01-06',title:'三维空间设计完成',desc:'03栋动捕棚三维空间设计稿输出（含元旦假期共9天）',status:'c'},{date:'2026-01-12',title:'排期系统交互设计启动',desc:'动捕排期系统交互设计和前后端开发正式启动',status:'c'},{date:'2026-01-21',title:'交互设计定稿',desc:'动捕排期系统预约日历交互方案确定',status:'c'},{date:'2026-01-26',title:'Logo定稿',desc:'中文"光子动捕"、英文"LightSpeed Mocap"输出并定稿',status:'c'},{date:'2026-01-31',title:'场地装修完成',desc:'完成场地装修所有工作计划（delay 5天，原定1月26日）',status:'c'},{date:'2026-02-12',title:'设备安装完成',desc:'03栋动捕棚1.0所有装修工作完成，试运营启动',status:'c'},{date:'2026-02-11',title:'宣传视频拍摄（规划）',desc:'正式拍摄启动，预计2月18日完成',status:'i'},{date:'2026-03-01',title:'软件平台交付（规划）',desc:'动捕流程软件平台完成交付（考虑过年假期）',status:'p'},{date:'2026-03-05',title:'视频后期完成（规划）',desc:'宣传视频后期制作完成',status:'p'},{date:'2026-03-15',title:'排期系统上线（规划）',desc:'动捕排期系统上线内网（视觉排期有delay）',status:'p'}],dataHistory:[],devHistory:[{ver:'V1.0',date:'2026-01-28',type:'major',desc:'光子动捕管理协作平台初始版本上线',changes:['基础信息展示（项目概览、团队信息）','三大业务模块卡片（硬件建设/软件开发/运营推广）','项目甘特图（进度条+日期轴）','关键里程碑时间线（S曲线展示）','配置面板（基础信息/模块编辑/权限管理）','GitHub数据同步（双向读写）','多角色权限体系（超管/管理员/编辑/浏览）']}],platformVersion:'V1.0'};
+let D={project:{name:"动捕专项整体进展梳理",updateDate:"2026-01-28",reporter:"rambokou(寇启龙)",animLead:"saxonshao(邵雷)",po:"andrewzli(李哲)",tl:"yuanfengxie(谢远锋)"},modules:[{id:'hardware',category:'hardware',title:'硬件建设',subtitle:'03栋云海动捕中棚建设 · 直播空间搭建',overallProgress:90,status:'completed',items:[{id:'hw1',title:'03栋云海动捕中棚建设',dateRange:'01.06 - 02.12',description:'<span class="hl">三维空间设计</span>1月6日完成，<span class="hl">场地装修</span>1月31日完成（delay 5天），<span class="hl">设备安装</span>1月27日启动，2月12日完成。整体于2月17日完成试运营。',progressLabel:'整体进度',progress:100,progressColor:'gn',ganttLabel:'03栋云海动捕中棚',ganttSubLabel:'装修设计/场地装修/设备安装',ganttBars:[{title:'装修设计',start:'2026-01-06',end:'2026-01-26',status:'c'},{title:'场地装修',start:'2026-01-12',end:'2026-01-31',status:'c'},{title:'设备安装',start:'2026-01-27',end:'2026-02-12',status:'c'}]},{id:'hw2',title:'直播空间搭建（新增）',dateRange:'01.15 - 02.10',description:'<span class="hl">装修设计</span>已完成，<span class="hl">场地改造</span>本周内完成所有线下空间改造，<span class="hl">设备安装</span>下周设备到齐。',progressLabel:'整体进度',progress:70,progressColor:'bl',ganttLabel:'直播空间搭建',ganttSubLabel:'装修设计/场地改造/设备安装',ganttBars:[{title:'装修设计',start:'2026-01-15',end:'2026-01-25',status:'c'},{title:'场地改造',start:'2026-01-20',end:'2026-01-28',status:'i'},{title:'设备安装',start:'2026-01-29',end:'2026-02-10',status:'i'}]}]},{id:'software',category:'software',title:'软件开发',subtitle:'动捕流程软件平台 · 动捕排期系统',overallProgress:65,status:'inprogress',items:[{id:'sw1',title:'动捕流程软件平台',dateRange:'01.06 - 03.01',description:'<span class="hl">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等（1月6日-2月14日）<br><span class="hl">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览（1月14日-2月14日）<br><span class="hl">模块3 Publish</span>：待模块1、2流程跑通后启动（2月15日-3月1日）',progressLabel:'模块1&2',progress:100,progressColor:'gn',extraProgress:[{label:'模块3 Publish',value:0,color:'pu'}],ganttLabel:'动捕流程软件',ganttSubLabel:'Realtime/Process/Publish',ganttBars:[{title:'模块1 Realtime',start:'2026-01-06',end:'2026-02-14',status:'c'},{title:'模块2 Process',start:'2026-01-14',end:'2026-02-14',status:'c'},{title:'模块3 Publish',start:'2026-02-15',end:'2026-03-01',status:'i'}]},{id:'sw2',title:'动捕排期系统',dateRange:'01.12 - 03.15',description:'<span class="risk">视觉排期出现delay</span>，下周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。',progressLabel:'整体进度',progress:60,progressColor:'pu',ganttLabel:'动捕排期系统',ganttSubLabel:'交互设计/前后端开发',ganttBars:[{title:'交互设计',start:'2026-01-12',end:'2026-01-21',status:'c'},{title:'前后端开发',start:'2026-01-22',end:'2026-03-15',status:'i'}]}]},{id:'operations',category:'operations',title:'运营推广',subtitle:'云海中棚动捕官方宣传视频',overallProgress:40,status:'inprogress',items:[{id:'ops1',title:'宣传视频拍摄',dateRange:'01.20 - 03.05',description:'<span class="hl">脚本初稿完成</span>，终稿优化中。<span class="risk">费用超出预算</span>，正在商务谈价环节。<br><span class="hl">初定2月11日启动正式拍摄</span>，预计2月18日完成拍摄，3月5日前完成后期制作。',progressLabel:'整体进度',progress:40,progressColor:'or',ganttLabel:'宣传视频',ganttSubLabel:'脚本/拍摄/后期',ganttBars:[{title:'脚本优化',start:'2026-01-20',end:'2026-02-05',status:'i'},{title:'正式拍摄',start:'2026-02-11',end:'2026-02-18',status:'p'},{title:'后期制作',start:'2026-02-19',end:'2026-03-05',status:'p'}]}]}],milestones:[{date:'2026-01-06',title:'三维空间设计完成',desc:'03栋动捕棚三维空间设计稿输出（含元旦假期共9天）',status:'c'},{date:'2026-01-12',title:'排期系统交互设计启动',desc:'动捕排期系统交互设计和前后端开发正式启动',status:'c'},{date:'2026-01-21',title:'交互设计定稿',desc:'动捕排期系统预约日历交互方案确定',status:'c'},{date:'2026-01-26',title:'Logo定稿',desc:'中文"光子动捕"、英文"LightSpeed Mocap"输出并定稿',status:'c'},{date:'2026-01-31',title:'场地装修完成',desc:'完成场地装修所有工作计划（delay 5天，原定1月26日）',status:'c'},{date:'2026-02-12',title:'设备安装完成',desc:'03栋动捕棚1.0所有装修工作完成，试运营启动',status:'c'},{date:'2026-02-11',title:'宣传视频拍摄（规划）',desc:'正式拍摄启动，预计2月18日完成',status:'i'},{date:'2026-03-01',title:'软件平台交付（规划）',desc:'动捕流程软件平台完成交付（考虑过年假期）',status:'p'},{date:'2026-03-05',title:'视频后期完成（规划）',desc:'宣传视频后期制作完成',status:'p'},{date:'2026-03-15',title:'排期系统上线（规划）',desc:'动捕排期系统上线内网（视觉排期有delay）',status:'p'}],dataHistory:[],dataSnapshots:{},devHistory:[{ver:'V1.0',date:'2026-03-29',type:'major',desc:'光子动捕管理协作平台 V1.0 正式上线',changes:['三大业务模块卡片展示（硬件建设/软件开发/运营推广）','项目甘特图可视化（多行分行展示 + Hover Tooltip 详情）','关键里程碑 S 曲线时间线','配置面板三大功能区（基础信息/模块编辑/权限管理）','GitHub API 双向数据同步（ghLoad + ghSave）','多角色权限体系（超管/管理员/编辑/浏览 四级权限）','深色科技风 UI + 玻璃拟态卡片设计','响应式布局适配']},{ver:'V1.1',date:'2026-04-17',type:'minor',desc:'交互体验优化：双击跳转编辑 + 描述纯文本模式',changes:['双击前端页面子模块卡片直接跳转到配置面板对应编辑位置','双击里程碑节点跳转到基础信息里程碑编辑区','描述编辑框改为纯文本模式，去除 HTML 标签干扰','自动高亮闪烁定位到目标编辑区域']},{ver:'V1.2',date:'2026-04-17',type:'minor',desc:'甘特图视觉体验全面升级',changes:['二级子模块进度条标题字号放大（10px→13px），提升可读性','一级子模块新增分组边框阴影效果，按类别（硬件/软件/运营）区分颜色','日期轴动态自适应扩展，自动覆盖所有子模块最远日期范围','进度条最小宽度保证，短时间段也能完整显示文字标题']},{ver:'V1.3',date:'2026-04-17',type:'minor',desc:'配置面板新增「版本管理」模块',changes:['新增一级 Tab「版本管理」（紫色主题）','业务数据历史更新：每次保存自动检测并记录所有业务数据变更','版本开发历史更新：平台功能更新记录 + 版本号自动递增规则','自动变更检测引擎（快照对比：基础信息/模块/子项目/甘特条/里程碑）','版本号规则：一级菜单变更→大版本号递增，二级及以下→小版本号递增']}],platformVersion:'V1.3'};
 /* ===== GitHub API 数据同步配置 ===== */
 const GH_REPO='rambokuku/mocap-dashboard';
 const GH_FILE='config.json';
@@ -1541,7 +1542,7 @@ function _tryAutoToken(){if(_remoteEncToken&&!getGHToken()&&canE()){const t=_dec
 
 /* 构建统一的 config.json 数据格式（包含业务数据+权限+申请队列+版本管理） */
 function buildCfgJSON(){
-const cfg={project:D.project,modules:D.modules,milestones:D.milestones,auth:{users:AU.users},accessRequests:AR,dataHistory:D.dataHistory||[],devHistory:D.devHistory||[],platformVersion:D.platformVersion||'V1.0'};
+const cfg={project:D.project,modules:D.modules,milestones:D.milestones,auth:{users:AU.users},accessRequests:AR,dataHistory:D.dataHistory||[],devHistory:D.devHistory||[],platformVersion:D.platformVersion||'V1.0',dataSnapshots:D.dataSnapshots||{}};
 /* 超管保存时，将 Token 加密后写入 auth.ghToken，供有编辑权限的用户自动获取 */
 const t=getGHToken();if(t)cfg.auth.ghToken=_encToken(t);
 return cfg;
@@ -1558,6 +1559,7 @@ if(cfg.accessRequests){AR=cfg.accessRequests;sReq()}
 if(cfg.dataHistory)D.dataHistory=cfg.dataHistory;
 if(cfg.devHistory)D.devHistory=cfg.devHistory;
 if(cfg.platformVersion)D.platformVersion=cfg.platformVersion;
+if(cfg.dataSnapshots)D.dataSnapshots=cfg.dataSnapshots;
 /* 暂存远程加密 Token，登录后再根据权限下发 */
 if(cfg.auth&&cfg.auth.ghToken)_remoteEncToken=cfg.auth.ghToken;
 }
@@ -3086,32 +3088,64 @@ function switchVerSub(tab,el){_verSubTab=tab;document.querySelectorAll('.ver-sub
 function rVersion(){
 const ct=document.getElementById('versionCfg');if(!ct)return;
 const isManager=canM();
+const isSuperAdmin=isS();
 let h='';
-/* 当前版本号徽标 */
-h+=`<div class="ver-version-badge">🏷️ 当前版本：<strong>${D.platformVersion||'V1.0'}</strong></div>`;
-/* 二级子模块Tab */
+/* 二级子模块Tab（版本徽标不再在这里显示） */
 h+=`<div class="ver-subtab"><button class="ver-subtab-btn${_verSubTab==='data'?' act':''}" onclick="switchVerSub('data',this)">📋 业务数据历史更新</button><button class="ver-subtab-btn${_verSubTab==='dev'?' act':''}" onclick="switchVerSub('dev',this)">🚀 版本开发历史更新</button></div>`;
-/* ===== 子模块1：业务数据历史更新 ===== */
+/* ===== 子模块1：业务数据历史更新（改为日期列表+超管下载Excel） ===== */
 h+=`<div class="ver-sub${_verSubTab==='data'?' act':''}" id="ver-sub-data">`;
-h+='<div style="font-size:11px;color:var(--txt3);margin-bottom:14px;line-height:1.6;padding:10px 14px;background:rgba(255,255,255,.02);border-radius:10px;border:1px solid var(--bdr)">💡 每次通过配置面板保存更改时，系统会自动检测并记录所有业务数据的变更（日期、文字、模块增删等），可在此处追溯完整变更历史。</div>';
+h+='<div style="font-size:11px;color:var(--txt3);margin-bottom:14px;line-height:1.6;padding:10px 14px;background:rgba(255,255,255,.02);border-radius:10px;border:1px solid var(--bdr)">💡 每次通过配置面板保存更改时，系统会自动记录当日的全量业务数据快照。点击对应日期可查看变更详情'+(isSuperAdmin?'，超级管理员可下载对应日期的完整业务数据 Excel 表格。':'。')+'</div>';
 if(!D.dataHistory||!D.dataHistory.length){
 h+='<div class="ver-empty">📭 暂无业务数据变更记录<br><span style="font-size:11px;margin-top:4px;display:block">当您通过配置面板修改并保存数据后，变更记录将自动出现在此处</span></div>';
 }else{
-/* 按时间倒序展示，相同时间戳的分组 */
-const grouped={};D.dataHistory.forEach((entry,idx)=>{
-const key=entry.time||'unknown';
-if(!grouped[key])grouped[key]={time:key,user:entry.user,items:[]};
-grouped[key].items.push({...entry,_idx:idx});
+/* 按日期分组（取 YYYY-MM-DD 部分） */
+const dateGroups={};D.dataHistory.forEach((entry,idx)=>{
+const dateKey=(entry.time||'').substring(0,10)||'unknown';
+if(!dateGroups[dateKey])dateGroups[dateKey]={date:dateKey,entries:[],users:new Set(),snapshots:entry.snapshot?[entry.snapshot]:[]};
+dateGroups[dateKey].entries.push({...entry,_idx:idx});
+dateGroups[dateKey].users.add(entry.user||'unknown');
+if(entry.snapshot)dateGroups[dateKey].snapshots.push(entry.snapshot);
 });
-const groups=Object.values(grouped).sort((a,b)=>b.time.localeCompare(a.time));
-groups.forEach(g=>{
-h+=`<div class="ver-entry"><div class="ver-entry-hd"><div><span class="ver-entry-time">🕐 ${fdfUpdate(g.time)}</span><span style="font-size:11px;color:var(--txt3);margin-left:10px">操作人: ${g.user||'—'}</span></div>`;
-if(isManager){h+=`<button style="background:none;border:none;cursor:pointer;color:var(--txt3);font-size:10px;padding:2px 6px;border-radius:4px" onmouseover="this.style.color='#ff4444'" onmouseout="this.style.color='var(--txt3)'" onclick="delDataHistGroup('${g.time}')">清除该批次</button>`}
-h+=`</div><div class="ver-entry-body">`;
-g.items.forEach(it=>{
+const sortedDates=Object.keys(dateGroups).sort((a,b)=>b.localeCompare(a));
+sortedDates.forEach(dateKey=>{
+const g=dateGroups[dateKey];
+const changeCount=g.entries.length;
+const userStr=[...g.users].join('、');
+const addCount=g.entries.filter(e=>e.type==='add').length;
+const editCount=g.entries.filter(e=>e.type==='edit').length;
+const delCount=g.entries.filter(e=>e.type==='del').length;
+let summaryParts=[];
+if(addCount)summaryParts.push(`<span style="color:#00E6A0">${addCount} 项新增</span>`);
+if(editCount)summaryParts.push(`<span style="color:var(--acc2)">${editCount} 项修改</span>`);
+if(delCount)summaryParts.push(`<span style="color:var(--err)">${delCount} 项删除</span>`);
+h+=`<div class="ver-entry" style="cursor:pointer" onclick="toggleDataDetail('${dateKey}')">`;
+h+=`<div class="ver-entry-hd" style="margin-bottom:0"><div style="display:flex;align-items:center;gap:12px"><span style="font-size:14px;font-weight:700;color:var(--txt)">📅 ${_fmtDateCn(dateKey)}</span><span style="font-size:11px;color:var(--txt3)">${changeCount} 条变更</span></div>`;
+h+=`<div style="display:flex;align-items:center;gap:8px">`;
+if(isSuperAdmin){
+h+=`<button class="abtn" style="margin:0;padding:4px 12px;font-size:11px" onclick="event.stopPropagation();exportDataExcel('${dateKey}')" title="下载该日期全量业务数据"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> 导出Excel</button>`;
+}
+if(isManager){
+h+=`<button style="background:none;border:none;cursor:pointer;color:var(--txt3);font-size:10px;padding:2px 6px;border-radius:4px" onmouseover="this.style.color='#ff4444'" onmouseout="this.style.color='var(--txt3)'" onclick="event.stopPropagation();delDataHistGroup('${dateKey}')">清除</button>`;
+}
+h+=`</div></div>`;
+/* 摘要行 */
+h+=`<div style="margin-top:6px;font-size:11px;color:var(--txt3)">操作人: ${userStr}　|　${summaryParts.join('　')}</div>`;
+/* 详情（默认折叠） */
+h+=`<div class="ver-data-detail" id="data-detail-${dateKey}" style="display:none;margin-top:12px;padding-top:10px;border-top:1px solid var(--bdr)">`;
+/* 按时间分批展示 */
+const timeGroups={};g.entries.forEach(e=>{
+const tk=e.time||'unknown';
+if(!timeGroups[tk])timeGroups[tk]=[];
+timeGroups[tk].push(e);
+});
+Object.keys(timeGroups).sort((a,b)=>b.localeCompare(a)).forEach(tk=>{
+h+=`<div style="margin-bottom:8px"><div style="font-size:10px;color:var(--txt3);margin-bottom:4px">🕐 ${fdfUpdate(tk)}</div>`;
+timeGroups[tk].forEach(it=>{
 const tagCls=it.type==='add'?'add':it.type==='del'?'del':'edit';
 const tagTxt=it.type==='add'?'新增':it.type==='del'?'删除':'修改';
-h+=`<div style="margin-bottom:4px;display:flex;align-items:flex-start;gap:8px"><span class="ver-entry-tag ${tagCls}">${tagTxt}</span><span><span class="field">[${it.scope}]</span> ${it.detail}</span></div>`;
+h+=`<div style="margin-bottom:3px;display:flex;align-items:flex-start;gap:8px;font-size:12px"><span class="ver-entry-tag ${tagCls}">${tagTxt}</span><span><span class="field">[${it.scope}]</span> ${it.detail}</span></div>`;
+});
+h+='</div>';
 });
 h+='</div></div>';
 });
@@ -3119,6 +3153,8 @@ h+='</div></div>';
 h+='</div>';
 /* ===== 子模块2：版本开发历史更新 ===== */
 h+=`<div class="ver-sub${_verSubTab==='dev'?' act':''}" id="ver-sub-dev">`;
+/* 当前版本号徽标（移到这里） */
+h+=`<div class="ver-version-badge">🏷️ 当前版本：<strong>${D.platformVersion||'V1.0'}</strong></div>`;
 h+='<div style="font-size:11px;color:var(--txt3);margin-bottom:14px;line-height:1.6;padding:10px 14px;background:rgba(255,255,255,.02);border-radius:10px;border:1px solid var(--bdr)">💡 记录平台功能更新和开发版本。版本号规则：<br>• 一级子菜单新增/更新 → 大版本号递增（V1.0 → V2.0）<br>• 二级/三级/四级子菜单新增/更新 → 小版本号递增（V1.0 → V1.1）</div>';
 if(isManager){
 h+=`<div style="display:flex;gap:8px;margin-bottom:16px"><button class="abtn" style="margin:0;flex:1;background:linear-gradient(135deg,rgba(162,155,254,.08),rgba(108,92,231,.08));border-color:rgba(162,155,254,.3)" onclick="addDevVersion(true)"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> 发布大版本更新</button><button class="abtn" style="margin:0;flex:1" onclick="addDevVersion(false)"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> 发布小版本更新</button></div>`;
@@ -3147,8 +3183,125 @@ h+='</div></div>';
 h+='</div>';
 ct.innerHTML=h;
 }
-/* 删除某批次数据历史 */
-function delDataHistGroup(time){if(!D.dataHistory)return;if(!confirm('确定删除该批次所有变更记录？'))return;D.dataHistory=D.dataHistory.filter(e=>e.time!==time);rVersion()}
+/* 切换日期详情展开/折叠 */
+function toggleDataDetail(dateKey){
+const el=document.getElementById('data-detail-'+dateKey);
+if(!el)return;
+el.style.display=el.style.display==='none'?'block':'none';
+}
+/* 格式化日期为中文显示（YYYY-MM-DD → YYYY年MM月DD日） */
+function _fmtDateCn(d){
+if(!d||d.length<10)return d||'';
+const parts=d.split('-');
+if(parts.length!==3)return d;
+return parts[0]+'年'+parseInt(parts[1])+'月'+parseInt(parts[2])+'日';
+}
+/* ===== Excel 导出：生成对应日期的全量业务数据 ===== */
+function exportDataExcel(dateKey){
+if(!isS()){showToast('仅超级管理员可导出业务数据',1);return}
+if(typeof XLSX==='undefined'){showToast('Excel 库加载中，请稍后重试',1);return}
+/* 找到该日期对应的数据快照（如果有），否则使用当前数据 */
+let snapshot=null;
+if(D.dataSnapshots&&D.dataSnapshots[dateKey]){
+snapshot=D.dataSnapshots[dateKey];
+}else{
+/* 使用当前数据作为快照 */
+snapshot={project:D.project,modules:D.modules,milestones:D.milestones};
+}
+const wb=XLSX.utils.book_new();
+/* Sheet 1: 项目概览 */
+const overviewData=[
+['项目概览','',''],
+['字段','内容',''],
+['项目名称',snapshot.project.name||'',''],
+['更新日期',snapshot.project.updateDate||'',''],
+['PM 负责',snapshot.project.reporter||'',''],
+['动画负责人',snapshot.project.animLead||'',''],
+['PO',snapshot.project.po||'',''],
+['TL',snapshot.project.tl||'',''],
+];
+const wsOverview=XLSX.utils.aoa_to_sheet(overviewData);
+wsOverview['!cols']=[{wch:16},{wch:40},{wch:20}];
+wsOverview['!merges']=[{s:{r:0,c:0},e:{r:0,c:2}}];
+XLSX.utils.book_append_sheet(wb,wsOverview,'项目概览');
+/* Sheet 2: 业务模块总览 */
+const modRows=[['业务模块总览','','','','',''],['一级模块','副标题','整体进度(%)','状态','子项目数','']];
+(snapshot.modules||[]).forEach(m=>{
+const statusMap={completed:'已完成',inprogress:'进行中',pending:'待启动'};
+modRows.push([m.title||'',m.subtitle||'',m.overallProgress||0,statusMap[m.status]||m.status||'',m.items?m.items.length:0,'']);
+});
+const wsMod=XLSX.utils.aoa_to_sheet(modRows);
+wsMod['!cols']=[{wch:18},{wch:36},{wch:14},{wch:12},{wch:12},{wch:10}];
+wsMod['!merges']=[{s:{r:0,c:0},e:{r:0,c:5}}];
+XLSX.utils.book_append_sheet(wb,wsMod,'业务模块总览');
+/* Sheet 3: 子项目与甘特条详情 */
+const ganttRows=[['子项目与任务详情','','','','','','',''],['一级模块','子项目名称','日期范围','进度(%)','任务名称','开始日期','结束日期','状态']];
+const statusLabels={c:'已完成',i:'进行中',p:'待启动'};
+(snapshot.modules||[]).forEach(m=>{
+(m.items||[]).forEach(it=>{
+if(!it.ganttBars||!it.ganttBars.length){
+ganttRows.push([m.title||'',it.title||'',it.dateRange||'',it.progress||0,'—','—','—','—']);
+}else{
+it.ganttBars.forEach((bar,bi)=>{
+ganttRows.push([
+bi===0?(m.title||''):'',
+bi===0?(it.title||''):'',
+bi===0?(it.dateRange||''):'',
+bi===0?(it.progress||0):'',
+bar.title||'',
+bar.start||'',
+bar.end||'',
+statusLabels[bar.status]||bar.status||''
+]);
+});
+}
+});
+});
+const wsGantt=XLSX.utils.aoa_to_sheet(ganttRows);
+wsGantt['!cols']=[{wch:16},{wch:24},{wch:16},{wch:10},{wch:22},{wch:14},{wch:14},{wch:10}];
+wsGantt['!merges']=[{s:{r:0,c:0},e:{r:0,c:7}}];
+XLSX.utils.book_append_sheet(wb,wsGantt,'子项目与任务详情');
+/* Sheet 4: 子项目描述 */
+const descRows=[['子项目描述信息','',''],['一级模块','子项目名称','描述内容']];
+(snapshot.modules||[]).forEach(m=>{
+(m.items||[]).forEach(it=>{
+const desc=(it.description||'').replace(/<[^>]*>/g,'').replace(/&nbsp;/g,' ');
+descRows.push([m.title||'',it.title||'',desc]);
+});
+});
+const wsDesc=XLSX.utils.aoa_to_sheet(descRows);
+wsDesc['!cols']=[{wch:16},{wch:24},{wch:80}];
+wsDesc['!merges']=[{s:{r:0,c:0},e:{r:0,c:2}}];
+XLSX.utils.book_append_sheet(wb,wsDesc,'子项目描述');
+/* Sheet 5: 关键里程碑 */
+const msRows=[['关键里程碑','','',''],['日期','里程碑名称','描述','状态']];
+const msStatusLabels={c:'已完成',i:'进行中',p:'规划中'};
+(snapshot.milestones||[]).forEach(ms=>{
+msRows.push([ms.date||'',ms.title||'',ms.desc||'',msStatusLabels[ms.status]||ms.status||'']);
+});
+const wsMs=XLSX.utils.aoa_to_sheet(msRows);
+wsMs['!cols']=[{wch:14},{wch:30},{wch:50},{wch:10}];
+wsMs['!merges']=[{s:{r:0,c:0},e:{r:0,c:3}}];
+XLSX.utils.book_append_sheet(wb,wsMs,'关键里程碑');
+/* Sheet 6: 该日期的变更记录 */
+if(D.dataHistory&&D.dataHistory.length){
+const changeRows=[['业务数据变更记录 — '+_fmtDateCn(dateKey),'','','',''],['时间','操作人','变更类型','所属范围','变更详情']];
+const typeLabels={add:'新增',edit:'修改',del:'删除'};
+D.dataHistory.filter(e=>(e.time||'').substring(0,10)===dateKey).forEach(e=>{
+changeRows.push([e.time||'',e.user||'',typeLabels[e.type]||e.type||'',e.scope||'',e.detail||'']);
+});
+const wsChange=XLSX.utils.aoa_to_sheet(changeRows);
+wsChange['!cols']=[{wch:20},{wch:16},{wch:10},{wch:24},{wch:60}];
+wsChange['!merges']=[{s:{r:0,c:0},e:{r:0,c:4}}];
+XLSX.utils.book_append_sheet(wb,wsChange,'变更记录');
+}
+/* 导出 */
+const fileName='光子动捕业务数据_'+dateKey+'.xlsx';
+XLSX.writeFile(wb,fileName);
+showToast('✅ 已导出 '+fileName);
+}
+/* 删除某日期的数据历史 */
+function delDataHistGroup(dateKey){if(!D.dataHistory)return;if(!confirm('确定删除 '+_fmtDateCn(dateKey)+' 的所有变更记录？'))return;D.dataHistory=D.dataHistory.filter(e=>(e.time||'').substring(0,10)!==dateKey);rVersion()}
 function applyCfg(){/* 保存前校验：结束日期不得早于开始日期 */
 let dateErr=false;document.querySelectorAll('.gantt-date-pair').forEach(pair=>{const inputs=pair.querySelectorAll('input[type="date"]');if(inputs.length!==2)return;const sv=inputs[0].value,ev=inputs[1].value;if(sv&&ev&&ev<sv){dateErr=true;inputs[1].style.outline='2px solid #ff4444';inputs[0].style.outline='2px solid #ff4444';setTimeout(()=>{inputs[0].style.outline='';inputs[1].style.outline=''},2000)}});if(dateErr){showToast('⚠️ 结束日期不能早于开始日期，请修正后再保存');return}
 /* 保存时自动记录当前北京时间为更新日期 */D.project.updateDate=getBJNow();D.project.reporter=document.getElementById('cfgRep').value||'rambokou(寇启龙)';D.project.animLead=document.getElementById('cfgAnimLead').value||'';D.project.po=document.getElementById('cfgPO').value||'';D.project.tl=document.getElementById('cfgTL').value||'';document.querySelectorAll('.gdi').forEach(inp=>{const mid=inp.dataset.m,iid=inp.dataset.i,bi=+inp.dataset.b,f=inp.dataset.f,v=inp.value;if(!mid||!iid||!f)return;const m=D.modules.find(x=>x.id===mid);if(m){const it=m.items.find(x=>x.id===iid);if(it&&it.ganttBars[bi]){it.ganttBars[bi][f]=v}}});
@@ -3158,8 +3311,15 @@ const changes=_detectChanges(_prevSnapshot,curSnapshot);
 if(changes.length>0){
 if(!D.dataHistory)D.dataHistory=[];
 D.dataHistory.push(...changes);
+/* 保存当日全量数据快照（用于超管导出Excel） */
+if(!D.dataSnapshots)D.dataSnapshots={};
+const todayKey=getBJNow().substring(0,10);
+D.dataSnapshots[todayKey]=JSON.parse(JSON.stringify(curSnapshot));
 /* 最多保留500条记录，超出则删除最早的 */
 if(D.dataHistory.length>500)D.dataHistory=D.dataHistory.slice(-500);
+/* 快照最多保留30天 */
+const snapKeys=Object.keys(D.dataSnapshots).sort();
+if(snapKeys.length>30){snapKeys.slice(0,snapKeys.length-30).forEach(k=>delete D.dataSnapshots[k])}
 }
 _prevSnapshot=_takeSnapshot();/* 更新快照为当前状态 */
 saveAndSync('chore: 配置面板保存 ('+getBJNow()+')');render();toggleCfg()}
