@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-18T01:43",
+    "updateDate": "2026-04-18T01:44",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -322,7 +322,7 @@
         {
           "id": "item_1776444240603",
           "title": "影科演员经纪渠道合作",
-          "dateRange": "04.18 - 04.23",
+          "dateRange": "04.18 - 04.30",
           "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
           "progressLabel": "整体进度",
           "progress": 0,
@@ -341,6 +341,13 @@
               "title": "财、法、税邮件审批",
               "start": "2026-04-21",
               "end": "2026-04-23",
+              "status": "p",
+              "_progress": 0
+            },
+            {
+              "title": "合同系统流程",
+              "start": "2026-04-23",
+              "end": "2026-04-30",
               "status": "p",
               "_progress": 0
             }
@@ -517,13 +524,20 @@
       "type": "add",
       "scope": "生态合作/影科演员经纪渠道合作",
       "detail": "新增甘特条「财、法、税邮件审批」"
+    },
+    {
+      "time": "2026-04-18T01:44",
+      "user": "rambokou",
+      "type": "add",
+      "scope": "生态合作/影科演员经纪渠道合作",
+      "detail": "新增甘特条「合同系统流程」"
     }
   ],
   "dataSnapshots": {
     "2026-04-18": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-18T01:43",
+        "updateDate": "2026-04-18T01:44",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -844,7 +858,7 @@
             {
               "id": "item_1776444240603",
               "title": "影科演员经纪渠道合作",
-              "dateRange": "04.18 - 04.20",
+              "dateRange": "04.18 - 04.23",
               "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
               "progressLabel": "整体进度",
               "progress": 0,
@@ -863,6 +877,13 @@
                   "title": "财、法、税邮件审批",
                   "start": "2026-04-21",
                   "end": "2026-04-23",
+                  "status": "p",
+                  "_progress": 0
+                },
+                {
+                  "title": "合同系统流程",
+                  "start": "2026-04-23",
+                  "end": "2026-04-30",
                   "status": "p"
                 }
               ]
