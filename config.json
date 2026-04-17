@@ -13,7 +13,7 @@
       "category": "hardware",
       "title": "硬件建设",
       "subtitle": "03栋云海动捕中棚建设 · 直播空间搭建",
-      "overallProgress": 76,
+      "overallProgress": 77,
       "status": "inprogress",
       "items": [
         {
@@ -104,7 +104,7 @@
           "dateRange": "04.09 - 06.22",
           "description": "1. 服采库内直采方案是按照物件数进行实时结算，流程不可用；\n2. 准备启动自采流程（已和服采、集团风控对齐）；\n3. 针对自采明确各自分工后，推动OG 侧走自采流程",
           "progressLabel": "整体进度",
-          "progress": 29,
+          "progress": 32,
           "progressColor": "bl",
           "ganttLabel": "OG 动捕棚需求建设",
           "ganttSubLabel": "",
@@ -114,7 +114,7 @@
               "start": "2026-04-15",
               "end": "2026-04-22",
               "status": "i",
-              "_progress": 14
+              "_progress": 29
             },
             {
               "title": "合作策略确认",
@@ -231,7 +231,7 @@
       "category": "operations",
       "title": "运营推广",
       "subtitle": "云海中棚动捕官方宣传视频",
-      "overallProgress": 44,
+      "overallProgress": 50,
       "status": "inprogress",
       "items": [
         {
@@ -240,7 +240,7 @@
           "dateRange": "04.09 - 04.25",
           "description": "正在和光子市场部沟通后续的视频拍摄需求，正在CP 筛选阶段（确认CP后明确最终排期）。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月底完成拍摄。",
           "progressLabel": "整体进度",
-          "progress": 44,
+          "progress": 50,
           "progressColor": "bl",
           "ganttLabel": "宣传视频",
           "ganttSubLabel": "脚本/拍摄/后期",
@@ -249,8 +249,8 @@
               "title": "脚本优化",
               "start": "2026-04-13",
               "end": "2026-04-17",
-              "status": "i",
-              "_progress": 75
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "正式拍摄",
@@ -325,7 +325,7 @@
       "date": "2026-04-17",
       "title": "动捕流程软件平台完成",
       "desc": "[软件开发] 模块1 Realtime→模块2 Process→模块3 Publish （进度67%）",
-      "status": "p"
+      "status": "c"
     }
   ],
   "auth": {
