@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-18T01:17",
+    "updateDate": "2026-04-18T01:37",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -287,13 +287,13 @@
       "items": [
         {
           "id": "item_1776443823812",
-          "title": "关子发行线演员渠道合作",
+          "title": "发行线演员渠道合作",
           "dateRange": "",
           "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
           "progressLabel": "整体进度",
           "progress": 0,
           "progressColor": "pu",
-          "ganttLabel": "生态合作",
+          "ganttLabel": "发行线演员渠道合作",
           "ganttSubLabel": "",
           "ganttBars": [
             {
@@ -426,13 +426,20 @@
       "type": "add",
       "scope": "模块",
       "detail": "新增一级模块「生态合作」"
+    },
+    {
+      "time": "2026-04-18T01:37",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "生态合作/发行线演员渠道合作",
+      "detail": "子项目标题：关子发行线演员渠道合作 → 发行线演员渠道合作"
     }
   ],
   "dataSnapshots": {
     "2026-04-18": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-18T00:47",
+        "updateDate": "2026-04-18T01:37",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -718,20 +725,21 @@
           "items": [
             {
               "id": "item_1776443823812",
-              "title": "关子发行线演员渠道合作",
+              "title": "发行线演员渠道合作",
               "dateRange": "",
               "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
               "progressLabel": "整体进度",
               "progress": 0,
-              "progressColor": "bl",
-              "ganttLabel": "生态合作",
+              "progressColor": "pu",
+              "ganttLabel": "发行线演员渠道合作",
               "ganttSubLabel": "",
               "ganttBars": [
                 {
                   "title": "新任务",
                   "start": "",
                   "end": "",
-                  "status": "p"
+                  "status": "p",
+                  "_progress": 0
                 }
               ]
             },
@@ -742,7 +750,7 @@
               "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
               "progressLabel": "整体进度",
               "progress": 0,
-              "progressColor": "bl",
+              "progressColor": "pu",
               "ganttLabel": "影科演员经纪渠道合作",
               "ganttSubLabel": "",
               "ganttBars": [
@@ -750,7 +758,8 @@
                   "title": "新任务",
                   "start": "",
                   "end": "",
-                  "status": "p"
+                  "status": "p",
+                  "_progress": 0
                 }
               ]
             }
