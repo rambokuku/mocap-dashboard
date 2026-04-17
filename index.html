@@ -1929,6 +1929,8 @@ const origGth=gsEl.querySelector('.gth');
 const origGwm=gsEl.querySelector('.gwm');
 if(!origGth||!origGwm)return;
 let stickyBar=null;let stickyInner=null;let _rafId=null;
+/* 吸顶条高度（gth+gwm 两行大约 60px，精确值在创建后测量） */
+let barH=60;
 function createStickyBar(){
 if(stickyBar)return;
 stickyBar=document.createElement('div');
@@ -1938,6 +1940,7 @@ stickyInner.className='gantt-sticky-inner';
 stickyInner.innerHTML=origGth.outerHTML+origGwm.outerHTML;
 stickyBar.appendChild(stickyInner);
 document.body.appendChild(stickyBar);
+barH=stickyBar.offsetHeight||60;
 syncPosition();
 gsEl.addEventListener('scroll',onGsScroll);
 window.addEventListener('resize',syncPosition);
@@ -1958,23 +1961,22 @@ stickyInner.style.width=gcEl.scrollWidth+'px';
 stickyInner.style.transform='translateX('+(-(gsEl.scrollLeft))+'px)';
 }
 function onGsScroll(){if(_rafId)return;_rafId=requestAnimationFrame(()=>{syncPosition();_rafId=null})}
-/* 检测 gs 底部是否也滚出了视口（避免已经滚过甘特图区域时仍显示吸顶条） */
-const stickyObs=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(!entry.isIntersecting){
-/* sentinel 离开视口 → 检查是向上滚出还是甘特图区域已完全离开 */
+/* 核心判断：时间轴是否应该吸顶 */
+function checkSticky(){
+const sentinelRect=sentinel.getBoundingClientRect();
 const gsRect=gsEl.getBoundingClientRect();
-if(gsRect.bottom>80){createStickyBar()}else{removeStickyBar()}
-}else{removeStickyBar()}
-})
-},{threshold:0});
-stickyObs.observe(sentinel);
-/* 也监听页面滚动，当甘特图完全滚过时移除吸顶 */
+/* 条件：sentinel 顶部已滚到视口顶部之上（时间轴已滚过去了）
+   且 gs 底部仍在视口内（甘特图区域还没完全滚过） */
+const shouldStick=sentinelRect.top<0&&gsRect.bottom>barH;
+if(shouldStick){createStickyBar()}else{removeStickyBar()}
+}
+/* 监听页面滚动 — 用 RAF 节流 */
+let _scrollRaf=null;
 window.addEventListener('scroll',function(){
-if(!stickyBar)return;
-const gsRect=gsEl.getBoundingClientRect();
-if(gsRect.bottom<=80)removeStickyBar();
+if(_scrollRaf)return;
+_scrollRaf=requestAnimationFrame(()=>{checkSticky();_scrollRaf=null});
 },{passive:true});
+/* 初始不创建吸顶条（页面刚加载时不应该显示） */
 })()
 /* === Card sequential reveal + arrow animation === */
 initCardArrowAnimation();
