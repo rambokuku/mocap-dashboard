@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-18T02:11",
+    "updateDate": "2026-04-18T02:14",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -231,16 +231,16 @@
       "category": "operations",
       "title": "运营推广",
       "subtitle": "云海中棚动捕官方宣传视频",
-      "overallProgress": 50,
+      "overallProgress": 25,
       "status": "inprogress",
       "items": [
         {
           "id": "ops1",
           "title": "宣传视频拍摄",
-          "dateRange": "04.09 - 04.25",
+          "dateRange": "04.13 - 05.01",
           "description": "正在和光子市场部沟通后续的视频拍摄需求，正在CP 筛选阶段（确认CP后明确最终排期）。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月底完成拍摄。",
           "progressLabel": "整体进度",
-          "progress": 50,
+          "progress": 25,
           "progressColor": "bl",
           "ganttLabel": "宣传视频",
           "ganttSubLabel": "脚本/拍摄/后期",
@@ -254,24 +254,24 @@
             },
             {
               "title": "正式拍摄",
-              "start": "2026-04-18",
-              "end": "2026-04-22",
+              "start": "2026-04-21",
+              "end": "2026-04-24",
               "status": "p",
               "_progress": 0
             },
             {
               "title": "后期制作",
-              "start": "2026-04-23",
-              "end": "2026-04-25",
+              "start": "2026-04-27",
+              "end": "2026-05-01",
               "status": "p",
               "_progress": 0
             },
             {
               "title": "CP 确认",
-              "start": "2026-04-09",
-              "end": "2026-04-13",
-              "status": "c",
-              "_progress": 100
+              "start": "2026-04-20",
+              "end": "2026-04-21",
+              "status": "p",
+              "_progress": 0
             }
           ]
         }
@@ -709,13 +709,55 @@
       "type": "add",
       "scope": "里程碑",
       "detail": "新增里程碑「OG 动捕棚需求建设完成」(2026-06-22)"
+    },
+    {
+      "time": "2026-04-18T02:14",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "运营推广/宣传视频拍摄",
+      "detail": "「正式拍摄」开始日期：2026-04-18 → 2026-04-21"
+    },
+    {
+      "time": "2026-04-18T02:14",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "运营推广/宣传视频拍摄",
+      "detail": "「正式拍摄」结束日期：2026-04-22 → 2026-04-24"
+    },
+    {
+      "time": "2026-04-18T02:14",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "运营推广/宣传视频拍摄",
+      "detail": "「后期制作」开始日期：2026-04-23 → 2026-04-27"
+    },
+    {
+      "time": "2026-04-18T02:14",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "运营推广/宣传视频拍摄",
+      "detail": "「后期制作」结束日期：2026-04-25 → 2026-05-01"
+    },
+    {
+      "time": "2026-04-18T02:14",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "运营推广/宣传视频拍摄",
+      "detail": "「CP 确认」开始日期：2026-04-09 → 2026-04-20"
+    },
+    {
+      "time": "2026-04-18T02:14",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "运营推广/宣传视频拍摄",
+      "detail": "「CP 确认」结束日期：2026-04-13 → 2026-04-21"
     }
   ],
   "dataSnapshots": {
     "2026-04-18": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-18T02:11",
+        "updateDate": "2026-04-18T02:14",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -968,22 +1010,22 @@
                 },
                 {
                   "title": "正式拍摄",
-                  "start": "2026-04-18",
-                  "end": "2026-04-22",
+                  "start": "2026-04-21",
+                  "end": "2026-04-24",
                   "status": "p",
                   "_progress": 0
                 },
                 {
                   "title": "后期制作",
-                  "start": "2026-04-23",
-                  "end": "2026-04-25",
+                  "start": "2026-04-27",
+                  "end": "2026-05-01",
                   "status": "p",
                   "_progress": 0
                 },
                 {
                   "title": "CP 确认",
-                  "start": "2026-04-09",
-                  "end": "2026-04-13",
+                  "start": "2026-04-20",
+                  "end": "2026-04-21",
                   "status": "c",
                   "_progress": 100
                 }
