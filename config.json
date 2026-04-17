@@ -387,5 +387,6 @@
       ]
     }
   ],
-  "platformVersion": "V1.0"
+  "platformVersion": "V1.0",
+  "dataSnapshots": {}
 }
