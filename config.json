@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-18T03:41",
+    "updateDate": "2026-04-18T03:43",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -146,7 +146,7 @@
       "category": "software",
       "title": "软件开发",
       "subtitle": "动捕流程软件平台 · 动捕排期系统",
-      "overallProgress": 79,
+      "overallProgress": 78,
       "status": "inprogress",
       "items": [
         {
@@ -155,7 +155,7 @@
           "dateRange": "12.25 - 05.30",
           "description": "<span class=\"hl\">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等功能开发完成，优化问题中（1月6日-2月28日）<br><span class=\"hl\">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览等功能开发完成，优化问题中（1月14日-3月31日）<br><span class=\"hl\">模块3 Publish</span>：待模块1、2流程跑通后启动。",
           "progressLabel": "模块1&2",
-          "progress": 67,
+          "progress": 64,
           "progressColor": "bl",
           "extraProgress": [
             {
@@ -187,6 +187,13 @@
               "end": "2026-05-30",
               "status": "p",
               "_progress": 0
+            },
+            {
+              "title": "模块1 & 模块2 测试",
+              "start": "2026-03-31",
+              "end": "2026-04-30",
+              "status": "i",
+              "_progress": 57
             }
           ]
         },
@@ -772,13 +779,20 @@
       "type": "edit",
       "scope": "硬件建设/直播空间搭建（新增）",
       "detail": "「运营测试」结束日期：2026-04-03 → 2026-04-25"
+    },
+    {
+      "time": "2026-04-18T03:43",
+      "user": "rambokou",
+      "type": "add",
+      "scope": "软件开发/动捕流程软件平台",
+      "detail": "新增甘特条「模块1 & 模块2 测试」"
     }
   ],
   "dataSnapshots": {
     "2026-04-18": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-18T03:41",
+        "updateDate": "2026-04-18T03:43",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -790,7 +804,7 @@
           "category": "hardware",
           "title": "硬件建设",
           "subtitle": "云海动捕中棚建设 · 直播空间搭建",
-          "overallProgress": 77,
+          "overallProgress": 75,
           "status": "inprogress",
           "items": [
             {
@@ -837,11 +851,11 @@
             {
               "id": "hw2",
               "title": "直播空间搭建（新增）",
-              "dateRange": "01.21 - 04.03",
+              "dateRange": "01.21 - 04.25",
               "description": "<span class=\"hl\">装修设计</span>已完成，<span class=\"hl\">场地改造</span>27 号已完成所有线下空间改造，<span class=\"hl\">设备安装</span>设备基本到齐，应正式进入运营测试阶段",
               "progressLabel": "整体进度",
-              "progress": 100,
-              "progressColor": "gn",
+              "progress": 93,
+              "progressColor": "bl",
               "ganttLabel": "直播空间搭建",
               "ganttSubLabel": "装修设计/场地改造/设备安装",
               "ganttBars": [
@@ -870,8 +884,8 @@
                   "title": "运营测试",
                   "start": "2026-03-27",
                   "end": "2026-04-25",
-                  "status": "c",
-                  "_progress": 100
+                  "status": "i",
+                  "_progress": 72
                 }
               ]
             },
@@ -964,6 +978,12 @@
                   "end": "2026-05-30",
                   "status": "p",
                   "_progress": 0
+                },
+                {
+                  "title": "模块1 & 模块2 测试",
+                  "start": "2026-03-31",
+                  "end": "2026-04-30",
+                  "status": "p"
                 }
               ]
             },
