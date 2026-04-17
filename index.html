@@ -522,8 +522,9 @@ const canvas=document.getElementById('particleCanvas');
 if(!canvas)return;
 const ctx=canvas.getContext('2d');
 let W,H,particles=[],nebulae=[];
-const PARTICLE_COUNT=300;
-const NEBULA_COUNT=12;
+const _isMobile=window.innerWidth<=768;
+const PARTICLE_COUNT=_isMobile?80:300;
+const NEBULA_COUNT=_isMobile?4:12;
 const COLORS=['rgba(108,92,231,','rgba(0,102,204,','rgba(0,163,224,','rgba(168,85,247,','rgba(0,212,255,','rgba(80,60,200,','rgba(120,80,255,','rgba(0,180,200,'];
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;nebulae.forEach(n=>n.reset())}
 resize();window.addEventListener('resize',resize);
@@ -1576,27 +1577,33 @@ async function ghLoad(){
 try{
 const headers={'Accept':'application/vnd.github.v3+json'};
 const token=getGHToken();if(token)headers['Authorization']=`token ${token}`;
-const resp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{headers});
+/* 5秒超时，避免移动网络下 GitHub API 无限挂起 */
+const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),5000);
+const resp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{headers,signal:ctrl.signal});
+clearTimeout(timer);
 if(!resp.ok)return null;
 const data=await resp.json();
 const content=JSON.parse(decodeURIComponent(escape(atob(data.content))));
 return{content,sha:data.sha};
-}catch(e){console.warn('GitHub API 加载失败',e);return null}
+}catch(e){console.warn('GitHub API 加载失败（可能超时或网络不通）',e);return null}
 }
 
 /* 保存数据到 GitHub：更新 config.json */
 async function ghSave(jsonData,msg){
 const token=getGHToken();if(!token){console.warn('未配置 GitHub Token，仅本地保存');return false}
 try{
+/* 8秒超时 */
+const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),8000);
 /* 先获取当前文件的 sha */
-const getResp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'}});
-if(!getResp.ok){console.warn('获取文件SHA失败');return false}
+const getResp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'},signal:ctrl.signal});
+if(!getResp.ok){clearTimeout(timer);console.warn('获取文件SHA失败');return false}
 const fileInfo=await getResp.json();
 const content=btoa(unescape(encodeURIComponent(JSON.stringify(jsonData,null,2))));
 const putResp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{method:'PUT',headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},
-body:JSON.stringify({message:msg||'chore: 更新业务数据',content:content,sha:fileInfo.sha})});
+body:JSON.stringify({message:msg||'chore: 更新业务数据',content:content,sha:fileInfo.sha}),signal:ctrl.signal});
+clearTimeout(timer);
 return putResp.ok;
-}catch(e){console.warn('GitHub API 保存失败',e);return false}
+}catch(e){console.warn('GitHub API 保存失败（可能超时）',e);return false}
 }
 
 /* 暂存远程加密Token，登录后根据权限自动下发 */
@@ -1642,7 +1649,7 @@ console.log('✅ 从 GitHub 远程加载最新数据');
 /* 2. GitHub 不可用时，回退到 localStorage */
 if(!loaded){try{const s=localStorage.getItem('mocap_v5');if(s){D=JSON.parse(s);loaded=true;console.log('📦 从 localStorage 加载数据')}}catch(e){}}
 /* 3. 都没有时，从本地 config.json 加载作为初始值 */
-if(!loaded){try{const resp=await fetch('config.json?t='+Date.now());if(resp.ok){const cfg=await resp.json();
+if(!loaded){try{const _c2=new AbortController();const _t2=setTimeout(()=>_c2.abort(),5000);const resp=await fetch('config.json?t='+Date.now(),{signal:_c2.signal});clearTimeout(_t2);if(resp.ok){const cfg=await resp.json();
 /* 兼容旧格式 config.json（只有 gantt/milestones，没有 modules） */
 if(cfg.modules){applyCfgJSON(cfg)}
 else{
@@ -3511,7 +3518,7 @@ if(!v){showToast('请输入有效的 GitHub Token',1);return}
 setGHToken(v);inp.value='••••••••'+v.slice(-4);showToast('✅ GitHub Token 已保存');_updateGHStatus()}
 async function testGHToken(){const st=document.getElementById('ghSyncStatus');if(st)st.innerHTML='<span style="color:var(--txt3)">⏳ 正在测试连接...</span>';
 const token=getGHToken();if(!token){if(st)st.innerHTML='<span style="color:#ff4444">❌ 未配置 Token</span>';return}
-try{const resp=await fetch(`${GH_API}/repos/${GH_REPO}`,{headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'}});
+try{const _tc=new AbortController();const _tt=setTimeout(()=>_tc.abort(),8000);const resp=await fetch(`${GH_API}/repos/${GH_REPO}`,{headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'},signal:_tc.signal});clearTimeout(_tt);
 if(resp.ok){const data=await resp.json();if(st)st.innerHTML=`<span style="color:#00C48C">✅ 连接成功！仓库: ${data.full_name} · 可${data.permissions?.push?'读写':'只读'}</span>`;showToast('✅ GitHub 连接测试成功')}
 else{const err=await resp.json().catch(()=>({}));if(st)st.innerHTML=`<span style="color:#ff4444">❌ 连接失败: ${err.message||resp.status}</span>`;showToast('GitHub 连接失败',1)}}
 catch(e){if(st)st.innerHTML=`<span style="color:#ff4444">❌ 网络错误: ${e.message}</span>`}}
