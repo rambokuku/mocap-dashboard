@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-18T03:43",
+    "updateDate": "2026-04-18T03:47",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -13,7 +13,7 @@
       "category": "hardware",
       "title": "硬件建设",
       "subtitle": "云海动捕中棚建设 · 直播空间搭建",
-      "overallProgress": 75,
+      "overallProgress": 72,
       "status": "inprogress",
       "items": [
         {
@@ -101,10 +101,10 @@
         {
           "id": "item_1775711608512",
           "title": "OG 动捕棚需求建设【新增】",
-          "dateRange": "04.09 - 06.22",
+          "dateRange": "04.09 - 06.30",
           "description": "1. 服采库内直采方案是按照物件数进行实时结算，流程不可用；\n2. 准备启动自采流程（已和服采、集团风控对齐）；\n3. 针对自采明确各自分工后，推动OG 侧走自采流程",
           "progressLabel": "整体进度",
-          "progress": 32,
+          "progress": 22,
           "progressColor": "bl",
           "ganttLabel": "OG 动捕棚需求建设【新增】",
           "ganttSubLabel": "",
@@ -134,6 +134,20 @@
               "title": "付款交付",
               "start": "2026-05-22",
               "end": "2026-06-22",
+              "status": "p",
+              "_progress": 0
+            },
+            {
+              "title": "OG棚启动运营测试",
+              "start": "2026-06-23",
+              "end": "2026-06-30",
+              "status": "p",
+              "_progress": 0
+            },
+            {
+              "title": "OG 棚正式启用",
+              "start": "2026-07-01",
+              "end": "",
               "status": "p",
               "_progress": 0
             }
@@ -786,13 +800,27 @@
       "type": "add",
       "scope": "软件开发/动捕流程软件平台",
       "detail": "新增甘特条「模块1 & 模块2 测试」"
+    },
+    {
+      "time": "2026-04-18T03:47",
+      "user": "rambokou",
+      "type": "add",
+      "scope": "硬件建设/OG 动捕棚需求建设【新增】",
+      "detail": "新增甘特条「OG棚启动运营测试」"
+    },
+    {
+      "time": "2026-04-18T03:47",
+      "user": "rambokou",
+      "type": "add",
+      "scope": "硬件建设/OG 动捕棚需求建设【新增】",
+      "detail": "新增甘特条「OG 棚正式启用」"
     }
   ],
   "dataSnapshots": {
     "2026-04-18": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-18T03:43",
+        "updateDate": "2026-04-18T03:47",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -927,6 +955,18 @@
                   "end": "2026-06-22",
                   "status": "p",
                   "_progress": 0
+                },
+                {
+                  "title": "OG棚启动运营测试",
+                  "start": "2026-06-23",
+                  "end": "2026-06-30",
+                  "status": "p"
+                },
+                {
+                  "title": "OG 棚正式启用",
+                  "start": "2026-07-01",
+                  "end": "",
+                  "status": "p"
                 }
               ]
             }
@@ -937,7 +977,7 @@
           "category": "software",
           "title": "软件开发",
           "subtitle": "动捕流程软件平台 · 动捕排期系统",
-          "overallProgress": 79,
+          "overallProgress": 78,
           "status": "inprogress",
           "items": [
             {
@@ -946,7 +986,7 @@
               "dateRange": "12.25 - 05.30",
               "description": "<span class=\"hl\">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等功能开发完成，优化问题中（1月6日-2月28日）<br><span class=\"hl\">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览等功能开发完成，优化问题中（1月14日-3月31日）<br><span class=\"hl\">模块3 Publish</span>：待模块1、2流程跑通后启动。",
               "progressLabel": "模块1&2",
-              "progress": 67,
+              "progress": 64,
               "progressColor": "bl",
               "extraProgress": [
                 {
@@ -983,7 +1023,8 @@
                   "title": "模块1 & 模块2 测试",
                   "start": "2026-03-31",
                   "end": "2026-04-30",
-                  "status": "p"
+                  "status": "i",
+                  "_progress": 57
                 }
               ]
             },
