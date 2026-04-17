@@ -318,6 +318,19 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .cfg-reset-zone{margin-top:32px;padding-top:20px;border-top:1px solid var(--bdr)}
 .cfg-reset-btn{width:100%;padding:12px 20px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;transition:var(--tr);border:1px solid rgba(255,71,87,.2);font-family:inherit;background:rgba(255,71,87,.06);color:var(--err);display:flex;align-items:center;justify-content:center;gap:8px}
 .cfg-reset-btn:hover{background:rgba(255,71,87,.12);border-color:rgba(255,71,87,.35)}
+/* 重置确认弹窗 */
+.reset-confirm-ov{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.reset-confirm-ov.show{opacity:1}
+.reset-confirm{background:rgba(12,18,35,.96);border:1px solid rgba(255,71,87,.25);border-radius:20px;padding:32px;max-width:400px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(255,71,87,.1);text-align:center;transform:scale(.9);transition:transform .3s}
+.reset-confirm-ov.show .reset-confirm{transform:scale(1)}
+.reset-confirm h3{font-size:18px;color:var(--err);margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px}
+.reset-confirm p{font-size:13px;color:var(--txt2);line-height:1.7;margin-bottom:24px}
+.reset-confirm .rc-btns{display:flex;gap:12px}
+.reset-confirm .rc-btn{flex:1;padding:12px 20px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;border:none;font-family:inherit;transition:var(--tr)}
+.reset-confirm .rc-cancel{background:linear-gradient(135deg,var(--pri),var(--acc));color:#fff;box-shadow:0 4px 20px rgba(0,102,204,.4)}
+.reset-confirm .rc-cancel:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,102,204,.5)}
+.reset-confirm .rc-ok{background:rgba(255,71,87,.08);color:var(--err);border:1px solid rgba(255,71,87,.2)}
+.reset-confirm .rc-ok:hover{background:rgba(255,71,87,.15);border-color:rgba(255,71,87,.35)}
 .btn{flex:1;padding:12px 20px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;transition:var(--tr);border:none;font-family:inherit}
 .btn-p{background:linear-gradient(135deg,var(--pri),var(--acc));color:#fff}.btn-p:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,102,204,.4)}
 .btn-s{background:rgba(255,255,255,.05);color:var(--txt);border:1px solid var(--bdr)}.btn-s:hover{background:rgba(255,255,255,.08)}
@@ -449,6 +462,9 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 <div class="amb"><div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
 <div class="grid-bg"></div><div class="noise"></div>
 <div class="toast" id="toast"></div>
+<div class="reset-confirm-ov" id="resetConfirmOv" onclick="if(event.target===this)closeResetConfirm()">
+<div class="reset-confirm"><h3>⚠️ 确认要重置所有数据吗？</h3><p>重置将清除当前所有业务数据（模块、里程碑、权限等），恢复为系统默认值。<br><br>重置前系统会自动保存一份完整数据快照，您可以在「版本管理」→「业务数据历史更新」中一键恢复。</p><div class="rc-btns"><button class="rc-btn rc-cancel" onclick="closeResetConfirm()">取消重置</button><button class="rc-btn rc-ok" onclick="doResetCfg()">确认重置</button></div></div>
+</div>
 <div class="gantt-tip" id="ganttTip"><div class="tip-title"></div><div class="tip-date"></div><div class="tip-st"></div></div>
 <div class="wxwork-picker-overlay" id="wxPickerOv" onclick="if(event.target===this)closeWxPicker()">
 <div class="wxwork-picker">
@@ -506,25 +522,37 @@ const canvas=document.getElementById('particleCanvas');
 if(!canvas)return;
 const ctx=canvas.getContext('2d');
 let W,H,particles=[],nebulae=[];
-const PARTICLE_COUNT=150;
-const NEBULA_COUNT=6;
-const COLORS=['rgba(108,92,231,','rgba(0,102,204,','rgba(0,163,224,','rgba(168,85,247,','rgba(0,212,255,','rgba(80,60,200,'];
+const PARTICLE_COUNT=300;
+const NEBULA_COUNT=12;
+const COLORS=['rgba(108,92,231,','rgba(0,102,204,','rgba(0,163,224,','rgba(168,85,247,','rgba(0,212,255,','rgba(80,60,200,','rgba(120,80,255,','rgba(0,180,200,'];
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;nebulae.forEach(n=>n.reset())}
 resize();window.addEventListener('resize',resize);
-/* Nebula cloud - soft large glowing region */
+/* Nebula cloud - soft large glowing region (多层次大小差异) */
 class Nebula{
-constructor(){this.reset()}
-reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*200+100;this.vx=(Math.random()-0.5)*0.08;this.vy=(Math.random()-0.5)*0.06;this.alpha=Math.random()*0.04+0.01;this.alphaDir=Math.random()*0.0003+0.0001;this.color=COLORS[Math.floor(Math.random()*COLORS.length)]}
-update(){this.x+=this.vx;this.y+=this.vy;this.alpha+=this.alphaDir;if(this.alpha>0.06||this.alpha<0.008)this.alphaDir*=-1;if(this.x<-300)this.x=W+300;if(this.x>W+300)this.x=-300;if(this.y<-300)this.y=H+300;if(this.y>H+300)this.y=-300}
-draw(){const g=ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.r);g.addColorStop(0,this.color+this.alpha+')');g.addColorStop(0.5,this.color+(this.alpha*0.4)+')');g.addColorStop(1,this.color+'0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fill()}
+constructor(tier){this.tier=tier||0;this.reset()}
+reset(){this.x=Math.random()*W;this.y=Math.random()*H;
+/* 3种层级星云：大/中/小，营造深度感 */
+if(this.tier===0){this.r=Math.random()*300+200;this.alpha=Math.random()*0.03+0.008;this.alphaDir=Math.random()*0.00015+0.00005;this.vx=(Math.random()-0.5)*0.04;this.vy=(Math.random()-0.5)*0.03}
+else if(this.tier===1){this.r=Math.random()*150+80;this.alpha=Math.random()*0.05+0.015;this.alphaDir=Math.random()*0.0004+0.0001;this.vx=(Math.random()-0.5)*0.08;this.vy=(Math.random()-0.5)*0.06}
+else{this.r=Math.random()*80+40;this.alpha=Math.random()*0.07+0.02;this.alphaDir=Math.random()*0.0006+0.0002;this.vx=(Math.random()-0.5)*0.12;this.vy=(Math.random()-0.5)*0.09}
+this.color=COLORS[Math.floor(Math.random()*COLORS.length)]}
+update(){this.x+=this.vx;this.y+=this.vy;this.alpha+=this.alphaDir;const maxA=this.tier===0?0.04:this.tier===1?0.07:0.10;const minA=this.tier===0?0.005:this.tier===1?0.01:0.015;if(this.alpha>maxA||this.alpha<minA)this.alphaDir*=-1;if(this.x<-400)this.x=W+400;if(this.x>W+400)this.x=-400;if(this.y<-400)this.y=H+400;if(this.y>H+400)this.y=-400}
+draw(){const g=ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.r);g.addColorStop(0,this.color+this.alpha+')');g.addColorStop(0.4,this.color+(this.alpha*0.5)+')');g.addColorStop(1,this.color+'0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fill()}
 }
+/* 粒子 - 3种类型：微尘/标准/亮星 */
 class Particle{
 constructor(){this.reset()}
-reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*2.5+0.3;this.vx=(Math.random()-0.5)*0.25;this.vy=(Math.random()-0.5)*0.15-0.03;this.alpha=Math.random()*0.5+0.1;this.alphaDir=Math.random()*0.003+0.001;this.color=COLORS[Math.floor(Math.random()*COLORS.length)];this.life=Math.random()*500+200;this.maxLife=this.life;this.glow=Math.random()>0.6}
-update(){this.x+=this.vx;this.y+=this.vy;this.life--;this.alpha+=this.alphaDir;if(this.alpha>0.7||this.alpha<0.05)this.alphaDir*=-1;if(this.life<60)this.alpha*=0.97;if(this.life<=0||this.x<-50||this.x>W+50||this.y<-50||this.y>H+50)this.reset()}
-draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=this.color+this.alpha+')';ctx.fill();if(this.glow&&this.r>1){ctx.beginPath();ctx.arc(this.x,this.y,this.r*4,0,Math.PI*2);ctx.fillStyle=this.color+(this.alpha*0.1)+')';ctx.fill()}}
+reset(){this.x=Math.random()*W;this.y=Math.random()*H;
+const type=Math.random();
+if(type<0.5){/* 微尘 50% - 极小极暗 */this.r=Math.random()*0.8+0.2;this.alpha=Math.random()*0.25+0.05;this.alphaDir=Math.random()*0.002+0.0005;this.glow=false}
+else if(type<0.85){/* 标准星 35% */this.r=Math.random()*2+0.8;this.alpha=Math.random()*0.45+0.15;this.alphaDir=Math.random()*0.004+0.001;this.glow=Math.random()>0.5}
+else{/* 亮星 15% - 大且亮 */this.r=Math.random()*3+2;this.alpha=Math.random()*0.5+0.3;this.alphaDir=Math.random()*0.006+0.002;this.glow=true}
+this.vx=(Math.random()-0.5)*0.2;this.vy=(Math.random()-0.5)*0.12-0.02;
+this.color=COLORS[Math.floor(Math.random()*COLORS.length)];this.life=Math.random()*600+200;this.maxLife=this.life}
+update(){this.x+=this.vx;this.y+=this.vy;this.life--;this.alpha+=this.alphaDir;if(this.alpha>0.8||this.alpha<0.03)this.alphaDir*=-1;if(this.life<80)this.alpha*=0.96;if(this.life<=0||this.x<-50||this.x>W+50||this.y<-50||this.y>H+50)this.reset()}
+draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=this.color+this.alpha+')';ctx.fill();if(this.glow&&this.r>0.8){ctx.beginPath();ctx.arc(this.x,this.y,this.r*5,0,Math.PI*2);ctx.fillStyle=this.color+(this.alpha*0.08)+')';ctx.fill()}}
 }
-for(let i=0;i<NEBULA_COUNT;i++)nebulae.push(new Nebula());
+for(let i=0;i<NEBULA_COUNT;i++){const tier=i<4?0:i<8?1:2;nebulae.push(new Nebula(tier))}
 for(let i=0;i<PARTICLE_COUNT;i++)particles.push(new Particle());
 function animate(){ctx.clearRect(0,0,W,H);nebulae.forEach(n=>{n.update();n.draw()});particles.forEach(p=>{p.update();p.draw()});requestAnimationFrame(animate)}
 animate();
@@ -3209,6 +3237,21 @@ h+=`<div class="ver-subtab"><button class="ver-subtab-btn${_verSubTab==='data'?'
 /* ===== 子模块1：业务数据历史更新（改为日期列表+超管下载Excel） ===== */
 h+=`<div class="ver-sub${_verSubTab==='data'?' act':''}" id="ver-sub-data">`;
 h+='<div style="font-size:11px;color:var(--txt3);margin-bottom:14px;line-height:1.6;padding:10px 14px;background:rgba(255,255,255,.02);border-radius:10px;border:1px solid var(--bdr)">💡 每次通过配置面板保存更改时，系统会自动记录当日的全量业务数据快照。点击对应日期可查看变更详情'+(isSuperAdmin?'，超级管理员可下载对应日期的完整业务数据 Excel 表格。':'。')+'</div>';
+/* 重置快照恢复区 */
+if(D.dataSnapshots&&isSuperAdmin){
+const resetKeys=Object.keys(D.dataSnapshots).filter(k=>k.startsWith('_reset_')).sort((a,b)=>b.localeCompare(a));
+if(resetKeys.length){
+h+='<div style="margin-bottom:16px;padding:14px;border:1px solid rgba(255,71,87,.2);border-radius:14px;background:rgba(255,71,87,.03)">';
+h+='<div style="font-size:13px;font-weight:700;color:var(--err);margin-bottom:10px;display:flex;align-items:center;gap:6px">🔄 重置数据恢复点</div>';
+resetKeys.forEach(k=>{
+const timeStr=k.replace('_reset_','').replace(/-/g,':').replace(':','-').replace(':','-').replace(':','T').replace(':',':');
+h+=`<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:rgba(255,255,255,.02);border-radius:10px;margin-bottom:6px;border:1px solid var(--bdr)">`;
+h+=`<span style="font-size:12px;color:var(--txt2)">📦 ${k.replace('_reset_','重置快照 ')}</span>`;
+h+=`<button class="abtn" style="margin:0;padding:4px 14px;font-size:11px;background:rgba(0,196,140,.1);border-color:rgba(0,196,140,.3);color:#00E6A0" onclick="event.stopPropagation();restoreSnapshot('${k}')">🔄 一键恢复</button>`;
+h+='</div>';
+});
+h+='</div>';
+}}
 if(!D.dataHistory||!D.dataHistory.length){
 h+='<div class="ver-empty">📭 暂无业务数据变更记录<br><span style="font-size:11px;margin-top:4px;display:block">当您通过配置面板修改并保存数据后，变更记录将自动出现在此处</span></div>';
 }else{
@@ -3433,7 +3476,33 @@ if(snapKeys.length>30){snapKeys.slice(0,snapKeys.length-30).forEach(k=>delete D.
 }
 _prevSnapshot=_takeSnapshot();/* 更新快照为当前状态 */
 saveAndSync('chore: 配置面板保存 ('+getBJNow()+')');render();toggleCfg()}
-function resetCfg(){if(!isS()){showToast('仅超级管理员可执行此操作',1);return}if(!confirm('⚠️ 危险操作！\n\n「重置数据」将清除当前浏览器中保存的所有业务数据（模块、里程碑、权限等），恢复为系统默认值。\n\n确定要继续吗？'))return;if(!confirm('⚠️ 二次确认！\n\n此操作不可撤销！确定要重置所有数据？'))return;localStorage.removeItem('mocap_v5');localStorage.removeItem('mocap_auth_v2');localStorage.removeItem('mocap_access_req');localStorage.removeItem('mocap_ioa_id');location.reload()}
+function resetCfg(){if(!isS()){showToast('仅超级管理员可执行此操作',1);return}const ov=document.getElementById('resetConfirmOv');if(ov){ov.classList.add('show')}}
+function closeResetConfirm(){const ov=document.getElementById('resetConfirmOv');if(ov)ov.classList.remove('show')}
+function doResetCfg(){
+/* 重置前自动保存完整数据快照到 dataSnapshots（带 _reset 标记） */
+if(!D.dataSnapshots)D.dataSnapshots={};
+const resetKey='_reset_'+getBJNow().replace(/[T:]/g,'-');
+D.dataSnapshots[resetKey]=JSON.parse(JSON.stringify({project:D.project,modules:D.modules,milestones:D.milestones}));
+/* 记录一条重置事件到 dataHistory */
+if(!D.dataHistory)D.dataHistory=[];
+D.dataHistory.push({time:getBJNow(),user:AU.cur||'unknown',type:'del',scope:'全局',detail:'执行「重置所有数据」操作（重置前数据已保存快照 '+resetKey+'）'});
+/* 先同步保存快照到 GitHub，再清除本地 */
+saveAndSync('chore: 重置前数据快照 ('+getBJNow()+')');
+setTimeout(()=>{localStorage.removeItem('mocap_v5');localStorage.removeItem('mocap_auth_v2');localStorage.removeItem('mocap_access_req');localStorage.removeItem('mocap_ioa_id');location.reload()},1500);
+closeResetConfirm();showToast('正在保存数据快照并重置...')}
+/* 从数据快照恢复业务数据 */
+function restoreSnapshot(snapKey){
+if(!D.dataSnapshots||!D.dataSnapshots[snapKey]){showToast('找不到对应的数据快照',1);return}
+if(!confirm('确定要从快照「'+snapKey+'」恢复所有业务数据？\n\n当前数据将被覆盖。'))return;
+const snap=D.dataSnapshots[snapKey];
+if(snap.project)D.project=JSON.parse(JSON.stringify(snap.project));
+if(snap.modules)D.modules=JSON.parse(JSON.stringify(snap.modules));
+if(snap.milestones)D.milestones=JSON.parse(JSON.stringify(snap.milestones));
+/* 记录恢复事件 */
+if(!D.dataHistory)D.dataHistory=[];
+D.dataHistory.push({time:getBJNow(),user:AU.cur||'unknown',type:'edit',scope:'全局',detail:'从快照「'+snapKey+'」恢复全部业务数据'});
+_prevSnapshot=_takeSnapshot();
+saveAndSync('chore: 从快照恢复数据 ('+getBJNow()+')');render();rVersion();showToast('✅ 数据已从快照恢复')}
 /* ===== GitHub Token 配置函数 ===== */
 function cfgGHToken(){const inp=document.getElementById('ghTokenInput');if(!inp)return;let v=inp.value.trim();if(v.startsWith('••'))v='';/* 防止误保存掩码值 */
 if(!v){showToast('请输入有效的 GitHub Token',1);return}
