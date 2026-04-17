@@ -136,6 +136,18 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .gc{min-width:800px}.gth{display:flex;border-bottom:1px solid var(--bdr);padding-left:280px;margin-bottom:8px}
 .gm{flex:1;min-width:80px;text-align:center;font-size:13px;color:var(--txt2);padding:12px 0;position:relative}
 .gm::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:16px;background:var(--bdr)}
+/* 折叠按钮：悬停月份时显示 */
+.gm-fold-btn{display:none;position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);font-size:10px;color:var(--acc2);cursor:pointer;padding:2px 8px;border-radius:8px;background:rgba(0,102,204,.08);border:1px solid rgba(0,102,204,.25);white-space:nowrap;z-index:3;transition:all .3s;animation:ganttFoldGlow 2s ease-in-out infinite}
+.gm:hover .gm-fold-btn{display:block}
+.gm-fold-btn:hover{background:rgba(0,102,204,.18);border-color:var(--acc2);box-shadow:0 0 14px rgba(0,102,204,.4);transform:translateX(-50%) scale(1.05)}
+@keyframes ganttFoldGlow{0%,100%{box-shadow:0 0 4px rgba(0,102,204,.2),0 0 8px rgba(0,102,204,.1)}50%{box-shadow:0 0 10px rgba(0,102,204,.45),0 0 20px rgba(0,102,204,.2)}}
+/* 折叠提示条 */
+.gm-fold-hint{display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;background:rgba(0,102,204,.04);border:1px solid rgba(0,102,204,.15);border-radius:10px;padding:8px 20px;margin:0 0 8px 280px;transition:all .3s;font-size:12px;color:var(--txt3)}
+.gm-fold-hint:hover{background:rgba(0,102,204,.1);border-color:var(--acc2)}
+.gm-fold-icon{color:var(--acc2);animation:ganttFoldPulse 1.5s ease-in-out infinite}
+.gm-unfold-btn{color:var(--acc2);font-weight:700;background:rgba(0,102,204,.1);padding:3px 10px;border-radius:6px;transition:all .2s;margin-left:4px}
+.gm-unfold-btn:hover{background:rgba(0,102,204,.2)}
+@keyframes ganttFoldPulse{0%,100%{opacity:.5}50%{opacity:1}}
 .gwm{display:flex;padding-left:280px;margin-bottom:24px}.gwg{flex:1;min-width:80px;display:flex;justify-content:space-around}.gwl{font-size:10px;color:var(--txt3)}
 .gcl{font-size:22px;text-transform:uppercase;letter-spacing:1.5px;padding:12px 0 16px;display:flex;align-items:center;gap:10px}
 .gcl .cd{width:10px;height:10px;border-radius:3px}
@@ -1694,6 +1706,8 @@ else{ms.status='p'}
 (async function(){await _initData();let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){/* Superadmin device check on session restore */if(gR(s)==='superadmin'){const devOk=await verifySuperadminDevice(s);if(!devOk){localStorage.removeItem('mocap_cur');localStorage.removeItem('mocap_ioa_id');await startIOAAuth();return}}AU.cur=s;_tryAutoToken();document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
 
 /* ===== HELPERS ===== */
+/* 甘特图折叠：_ganttFoldIdx=N 表示前 N 个月被折叠；_ganttAllMonths 存储完整月份列表 */
+let _ganttFoldIdx=0,_ganttAllMonths=[];
 /* 动态计算甘特图日期范围 */
 let GS=new Date('2026-01-01'),GE=new Date('2026-04-30'),GT_=(GE-GS)/864e5;
 function _calcGanttRange(){
@@ -1704,15 +1718,19 @@ if(b.end&&(!maxD||b.end>maxD))maxD=b.end;
 });});});
 if(!minD)minD='2026-01-01';
 if(!maxD)maxD='2026-04-30';
-/* 范围扩展到月份的第一天和最后一天 */
-const sd=new Date(minD);GS=new Date(sd.getFullYear(),sd.getMonth(),1);
-const ed=new Date(maxD);GE=new Date(ed.getFullYear(),ed.getMonth()+1,0);/* 月末最后一天 */
-/* 至少覆盖3个月 */
-const minEnd=new Date(GS.getFullYear(),GS.getMonth()+3,0);
+/* 完整范围 */
+const sd=new Date(minD);const _fullGS=new Date(sd.getFullYear(),sd.getMonth(),1);
+const ed=new Date(maxD);GE=new Date(ed.getFullYear(),ed.getMonth()+1,0);
+const minEnd=new Date(_fullGS.getFullYear(),_fullGS.getMonth()+3,0);
 if(GE<minEnd)GE=minEnd;
+/* 构建完整月份列表 */
+_ganttAllMonths=[];let cur=new Date(_fullGS);
+while(cur<=GE){_ganttAllMonths.push(new Date(cur));cur=new Date(cur.getFullYear(),cur.getMonth()+1,1)}
+/* 折叠后调整 GS：跳过前 _ganttFoldIdx 个月 */
+if(_ganttFoldIdx>0&&_ganttFoldIdx<_ganttAllMonths.length){GS=new Date(_ganttAllMonths[_ganttFoldIdx])}else{GS=_fullGS;_ganttFoldIdx=0}
 GT_=(GE-GS)/864e5;
 }
-function gp(s,e,minPct){const a=(new Date(s)-GS)/864e5,b=(new Date(e)-GS)/864e5;let wp=(b-a)/GT_*100;if(minPct&&wp<minPct)wp=minPct;return{l:(a/GT_*100).toFixed(2)+'%',w:(Math.max(wp,0.8)).toFixed(2)+'%'}}
+function gp(s,e,minPct){const a=(new Date(s)-GS)/864e5,b=(new Date(e)-GS)/864e5;let lPct=a/GT_*100;let wp=(b-a)/GT_*100;if(minPct&&wp<minPct)wp=minPct;/* 折叠裁剪：起始在可见范围之前 */if(lPct<0){wp+=lPct;lPct=0}/* 结束在可见范围之前则完全隐藏 */if(b<0)return{l:'-999%',w:'0%'};return{l:lPct.toFixed(2)+'%',w:(Math.max(wp,0.8)).toFixed(2)+'%'}}
 /* 根据甘特条标题和日期文字估算最小显示宽度(百分比) */
 function _calcMinPct(title,startStr,endStr){
 /* 标题中文约13px/字，日期约11px×(M/D-M/D≈7-9字符) */
@@ -1726,21 +1744,32 @@ return Math.max(needW/gbsW*100,3);/* 至少3% */
 /* 生成动态月份头和周标签 HTML */
 function _buildGanttHeader(){
 _calcGanttRange();
-const months=[];let cur=new Date(GS.getFullYear(),GS.getMonth(),1);
-while(cur<=GE){months.push(new Date(cur));cur=new Date(cur.getFullYear(),cur.getMonth()+1,1);}
-let mh='';months.forEach(mo=>{mh+=`<div class="gm">${mo.getMonth()+1}月</div>`;});
-let wh='';months.forEach(mo=>{
+/* 可见月份 = 折叠后的剩余月份 */
+const visMonths=_ganttAllMonths.slice(_ganttFoldIdx);
+let mh='';
+visMonths.forEach((mo,idx)=>{
+const globalIdx=_ganttFoldIdx+idx;
+const label=(mo.getMonth()+1)+'月';
+/* 只有非首个可见月份才能折叠（折叠=隐藏该月之前的所有月份） */
+const foldBtn=globalIdx>0?`<span class="gm-fold-btn" data-fold-idx="${globalIdx}" onclick="event.stopPropagation();foldGantt(${globalIdx})" title="折叠${label}之前的月份">◀ 折叠</span>`:'';
+mh+=`<div class="gm" data-month-idx="${globalIdx}">${label}${foldBtn}</div>`;
+});
+let wh='';visMonths.forEach(mo=>{
 const y=mo.getFullYear(),m=mo.getMonth();
 const lastDay=new Date(y,m+1,0).getDate();
 const weeks=Math.ceil(lastDay/7);
 wh+='<div class="gwg">';
 for(let w=1;w<=weeks;w++)wh+=`<span class="gwl">W${w}</span>`;
 wh+='</div>';});
-const startM=months[0],endM=months[months.length-1];
+const startM=visMonths[0],endM=visMonths[visMonths.length-1];
 const sy=startM.getFullYear(),ey=endM.getFullYear();
 const rangeLabel=sy===ey?`${sy}年${startM.getMonth()+1}月 — ${endM.getMonth()+1}月`:`${sy}年${startM.getMonth()+1}月 — ${ey}年${endM.getMonth()+1}月`;
 return{monthsHtml:mh,weeksHtml:wh,rangeLabel:rangeLabel};
 }
+/* 折叠甘特图：隐藏 idx 之前的所有月份 */
+function foldGantt(idx){_ganttFoldIdx=idx;render();showToast('已折叠前 '+idx+' 个月份，点击左侧可展开')}
+/* 展开甘特图：恢复所有月份 */
+function unfoldGantt(){_ganttFoldIdx=0;render();showToast('已展开全部月份')}
 function fds(d){const t=new Date(d);return(t.getMonth()+1)+'/'+t.getDate()}
 function fdf(d){if(!d)return'';const t=new Date(d);return t.getFullYear()+'年'+(t.getMonth()+1)+'月'+t.getDate()+'日'}
 /* 获取北京时间 ISO 字符串（含时间），格式: YYYY-MM-DDTHH:mm */
@@ -1795,8 +1824,12 @@ for(let i=0;i<D.modules.length-1;i++){h+=`<div class="timeline-arrow ta-sw" data
 h+=`<div class="photo-divider ain"><div class="photo-divider-img" style="background-image:url('images/mocap_studio1.jpg')"></div><div class="photo-divider-overlay"></div><div class="photo-divider-text"><span>LIGHTSPEED MOCAP</span> · Motion Capture Studio(SZ)</div></div>`;
 const _gh=_buildGanttHeader();
 const _ghMonthCount=(_gh.monthsHtml.match(/class="gm"/g)||[]).length;
-const _gcMinW=Math.max(280+_ghMonthCount*220,800);
-h+=`<div class="gs ain d3"><div class="gs-top"><div class="gs-ta"><h3><span style="display:inline-flex;width:24px;height:24px;vertical-align:middle">${SVG_ICONS.chart}</span> 项目甘特图</h3><p>${_gh.rangeLabel} · 全局任务时间线（鼠标悬停查看详细日期）</p></div><div class="gl"><div class="gli"><span class="gld c"></span>已完成</div><div class="gli"><span class="gld i"></span>进行中</div><div class="gli"><span class="gld p"></span>规划中</div></div></div><div class="gc" style="min-width:${_gcMinW}px"><div class="gth">${_gh.monthsHtml}</div><div class="gwm">${_gh.weeksHtml}</div>`;
+const _foldHintW=_ganttFoldIdx>0?60:0;/* 折叠提示条宽度 */
+const _gcMinW=Math.max(280+_ghMonthCount*220+_foldHintW,800);
+h+=`<div class="gs ain d3"><div class="gs-top"><div class="gs-ta"><h3><span style="display:inline-flex;width:24px;height:24px;vertical-align:middle">${SVG_ICONS.chart}</span> 项目甘特图</h3><p>${_gh.rangeLabel} · 全局任务时间线（鼠标悬停查看详细日期）</p></div><div class="gl"><div class="gli"><span class="gld c"></span>已完成</div><div class="gli"><span class="gld i"></span>进行中</div><div class="gli"><span class="gld p"></span>规划中</div></div></div><div class="gc" style="min-width:${_gcMinW}px">`;
+/* 折叠提示条 */
+if(_ganttFoldIdx>0){const _fLabels=_ganttAllMonths.slice(0,_ganttFoldIdx).map(mo=>(mo.getMonth()+1)+'月').join('、');h+=`<div class="gm-fold-hint" onclick="unfoldGantt()"><span class="gm-fold-icon">◁</span> ${_fLabels} 已折叠 <span class="gm-unfold-btn">▷ 展开全部</span></div>`}
+h+=`<div class="gth">${_gh.monthsHtml}</div><div class="gwm">${_gh.weeksHtml}</div>`;
 D.modules.forEach((m,mi)=>{const cc=cls(m.category);h+=`<div class="gcl ${cc}"><span class="cd"></span>${m.title}</div>`;m.items.forEach(it=>{if(!it.ganttBars||!it.ganttBars.length)return;h+=`<div class="gantt-item-group ${cc}"><div class="gr"><div class="grl">${it.ganttLabel||it.title}<span class="sl">${it.ganttSubLabel||''}</span></div><div class="gbs">`;it.ganttBars.forEach(b=>{const mp=_calcMinPct(b.title,b.start,b.end);const p=gp(b.start,b.end,mp);const et=b.title.replace(/'/g,"\\'");h+=`<div class="gb-row"><div class="gb ${b.status}" style="left:${p.l};width:${p.w}" onmouseenter="showGanttTip(event,'${et}','${b.start}','${b.end}','${b.status}')" onmousemove="moveGanttTip(event)" onmouseleave="hideGanttTip()" ondblclick="ganttBarClick(event,'${m.id}','${it.id}')"><span class="bt">${b.title}</span><span class="bd">${fds(b.start)}-${fds(b.end)}</span></div></div>`;});h+='</div></div></div>';});if(mi<D.modules.length-1)h+='<div class="gdv"></div>';});
 h+='</div></div>';
 const cm={};D.modules.forEach(m=>{cm[m.category]=_getCatColor(m.category).m});
