@@ -382,12 +382,12 @@
       "title": "渠道拓展",
       "subtitle": "海外拓展",
       "overallProgress": 0,
-      "status": "planned",
+      "status": "inprogress",
       "items": [
         {
           "id": "item_1776527268227",
           "title": "渠道拓展 - carson 商务拓展",
-          "dateRange": "",
+          "dateRange": "04.18 - 05.18",
           "description": "carson 商用规划",
           "progressLabel": "整体进度",
           "progress": 0,
@@ -397,9 +397,9 @@
           "ganttBars": [
             {
               "title": "新任务",
-              "start": "",
-              "end": "",
-              "status": "p",
+              "start": "2026-04-18",
+              "end": "2026-05-18",
+              "status": "i",
               "_progress": 0
             }
           ]
@@ -851,13 +851,27 @@
       "type": "edit",
       "scope": "硬件建设/OG 动捕棚需求建设【新增】",
       "detail": "「OG 棚正式启用」结束日期：(空) → 2026-08-01"
+    },
+    {
+      "time": "2026-04-18T23:49",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "渠道拓展/渠道拓展 - carson 商务拓展",
+      "detail": "「新任务」开始日期：(空) → 2026-04-18"
+    },
+    {
+      "time": "2026-04-18T23:49",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "渠道拓展/渠道拓展 - carson 商务拓展",
+      "detail": "「新任务」结束日期：(空) → 2026-05-18"
     }
   ],
   "dataSnapshots": {
     "2026-04-18": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-18T03:47",
+        "updateDate": "2026-04-18T23:49",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -869,7 +883,7 @@
           "category": "hardware",
           "title": "硬件建设",
           "subtitle": "云海动捕中棚建设 · 直播空间搭建",
-          "overallProgress": 72,
+          "overallProgress": 73,
           "status": "inprogress",
           "items": [
             {
@@ -919,7 +933,7 @@
               "dateRange": "01.21 - 04.25",
               "description": "<span class=\"hl\">装修设计</span>已完成，<span class=\"hl\">场地改造</span>27 号已完成所有线下空间改造，<span class=\"hl\">设备安装</span>设备基本到齐，应正式进入运营测试阶段",
               "progressLabel": "整体进度",
-              "progress": 93,
+              "progress": 94,
               "progressColor": "bl",
               "ganttLabel": "直播空间搭建",
               "ganttSubLabel": "装修设计/场地改造/设备安装",
@@ -950,17 +964,17 @@
                   "start": "2026-03-27",
                   "end": "2026-04-25",
                   "status": "i",
-                  "_progress": 72
+                  "_progress": 76
                 }
               ]
             },
             {
               "id": "item_1775711608512",
               "title": "OG 动捕棚需求建设【新增】",
-              "dateRange": "04.09 - 06.30",
+              "dateRange": "04.09 - 08.01",
               "description": "1. 服采库内直采方案是按照物件数进行实时结算，流程不可用；\n2. 准备启动自采流程（已和服采、集团风控对齐）；\n3. 针对自采明确各自分工后，推动OG 侧走自采流程",
               "progressLabel": "整体进度",
-              "progress": 22,
+              "progress": 24,
               "progressColor": "bl",
               "ganttLabel": "OG 动捕棚需求建设【新增】",
               "ganttSubLabel": "",
@@ -970,7 +984,7 @@
                   "start": "2026-04-15",
                   "end": "2026-04-22",
                   "status": "i",
-                  "_progress": 29
+                  "_progress": 43
                 },
                 {
                   "title": "合作策略确认",
@@ -1016,7 +1030,7 @@
           "category": "software",
           "title": "软件开发",
           "subtitle": "动捕流程软件平台 · 动捕排期系统",
-          "overallProgress": 78,
+          "overallProgress": 79,
           "status": "inprogress",
           "items": [
             {
@@ -1025,7 +1039,7 @@
               "dateRange": "12.25 - 05.30",
               "description": "<span class=\"hl\">模块1 Realtime</span>：电子场记记录、工程预设、SDK数据流对接触发、四分屏等功能开发完成，优化问题中（1月6日-2月28日）<br><span class=\"hl\">模块2 Process</span>：数据过滤筛选、动画快速3D查看预览等功能开发完成，优化问题中（1月14日-3月31日）<br><span class=\"hl\">模块3 Publish</span>：待模块1、2流程跑通后启动。",
               "progressLabel": "模块1&2",
-              "progress": 64,
+              "progress": 65,
               "progressColor": "bl",
               "extraProgress": [
                 {
@@ -1063,7 +1077,7 @@
                   "start": "2026-03-31",
                   "end": "2026-04-30",
                   "status": "i",
-                  "_progress": 57
+                  "_progress": 60
                 }
               ]
             },
@@ -1073,7 +1087,7 @@
               "dateRange": "12.25 - 04.24",
               "description": "<span class=\"risk\">最新视觉完成 90%</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
               "progressLabel": "整体进度",
-              "progress": 91,
+              "progress": 92,
               "progressColor": "bl",
               "ganttLabel": "动捕排期系统",
               "ganttSubLabel": "交互设计/前后端开发",
@@ -1097,7 +1111,7 @@
                   "start": "2026-03-29",
                   "end": "2026-04-24",
                   "status": "i",
-                  "_progress": 73
+                  "_progress": 77
                 }
               ]
             }
@@ -1168,7 +1182,7 @@
               "dateRange": "03.25 - 05.31",
               "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
               "progressLabel": "整体进度",
-              "progress": 21,
+              "progress": 22,
               "progressColor": "bl",
               "ganttLabel": "发行线演员渠道合作",
               "ganttSubLabel": "",
@@ -1178,7 +1192,7 @@
                   "start": "2026-03-25",
                   "end": "2026-04-30",
                   "status": "i",
-                  "_progress": 64
+                  "_progress": 67
                 },
                 {
                   "title": "演员经纪资源对齐",
@@ -1211,7 +1225,7 @@
                   "title": "合同内容梳理",
                   "start": "2026-04-18",
                   "end": "2026-04-20",
-                  "status": "p",
+                  "status": "i",
                   "_progress": 0
                 },
                 {
@@ -1225,6 +1239,36 @@
                   "title": "合同系统流程",
                   "start": "2026-04-23",
                   "end": "2026-04-30",
+                  "status": "p",
+                  "_progress": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mod_1776527268227",
+          "category": "渠道拓展",
+          "title": "渠道拓展",
+          "subtitle": "海外拓展",
+          "overallProgress": 0,
+          "status": "planned",
+          "items": [
+            {
+              "id": "item_1776527268227",
+              "title": "渠道拓展 - carson 商务拓展",
+              "dateRange": "",
+              "description": "carson 商用规划",
+              "progressLabel": "整体进度",
+              "progress": 0,
+              "progressColor": "pu",
+              "ganttLabel": "渠道拓展 - carson 商务拓展",
+              "ganttSubLabel": "",
+              "ganttBars": [
+                {
+                  "title": "新任务",
+                  "start": "2026-04-18",
+                  "end": "2026-05-18",
                   "status": "p",
                   "_progress": 0
                 }
