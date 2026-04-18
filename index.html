@@ -276,10 +276,10 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .cpH{display:flex;justify-content:space-between;align-items:center;padding:28px 32px 20px;border-bottom:1px solid var(--bdr);flex-shrink:0}.cpH h3{font-size:22px}
 .ccl{height:38px;padding:0 18px;border-radius:10px;border:1px solid rgba(255,71,87,.25);background:rgba(255,71,87,.08);cursor:pointer;color:#ff4757;font-size:15px;font-weight:700;font-family:inherit;letter-spacing:1px;display:flex;align-items:center;justify-content:center;transition:var(--tr)}.ccl:hover{background:rgba(255,71,87,.18);border-color:rgba(255,71,87,.4)}
 .ctabs{display:flex;gap:4px;background:rgba(255,255,255,.03);border-radius:12px;padding:4px;flex-wrap:wrap;margin:16px 32px;flex-shrink:0}
-.ctab{flex:1;padding:12px 14px;border-radius:10px;border:none;background:transparent;color:var(--txt2);font-size:14px;font-weight:700;cursor:pointer;transition:var(--tr);font-family:inherit;white-space:nowrap;letter-spacing:.5px}
-.ctab.act{background:rgba(0,102,204,.15);color:var(--acc2)}.ctab:hover:not(.act){background:rgba(255,255,255,.03)}
+.ctab{flex:1;padding:14px 16px;border-radius:10px;border:none;background:transparent;color:var(--txt2);font-size:15px;font-weight:700;cursor:pointer;transition:var(--tr);font-family:inherit;white-space:nowrap;letter-spacing:.5px}
+.ctab.act{background:rgba(255,255,255,.06);color:rgba(255,255,255,.88)}.ctab:hover:not(.act){background:rgba(255,255,255,.03)}
 .ctab[data-tab="basic"]{color:#00C48C}.ctab[data-tab="modules"]{color:#FF9F43}.ctab[data-tab="perms"]{color:#FF6B6B}.ctab[data-tab="version"]{color:#A29BFE}
-.ctab.act[data-tab="basic"]{color:#00E6A0;background:rgba(0,196,140,.12)}.ctab.act[data-tab="modules"]{color:#FFB366;background:rgba(255,159,67,.12)}.ctab.act[data-tab="perms"]{color:#FF8585;background:rgba(255,107,107,.12)}.ctab.act[data-tab="version"]{color:#C4B5FD;background:rgba(162,155,254,.12)}
+.ctab.act[data-tab="basic"],.ctab.act[data-tab="modules"],.ctab.act[data-tab="perms"],.ctab.act[data-tab="version"]{color:rgba(255,255,255,.88);background:rgba(255,255,255,.06)}
 /* === 版本管理面板样式 === */
 .ver-subtab{display:flex;gap:4px;margin-bottom:18px;background:rgba(255,255,255,.02);border-radius:10px;padding:3px}
 .ver-subtab-btn{flex:1;padding:10px 12px;border-radius:8px;border:none;background:transparent;color:var(--txt2);font-size:13px;font-weight:700;cursor:pointer;transition:var(--tr);font-family:inherit}
@@ -519,7 +519,7 @@ onkeydown="if(event.key==='Enter')doNameLogin()">
 <div class="ctc" id="tab-modules"><div id="addModBtn"></div><div id="moduleCfg"></div></div>
 <div class="ctc" id="tab-perms"><div id="permCfg"></div></div>
 <div class="ctc" id="tab-version"><div id="versionCfg"></div></div>
-</div><div class="cfg-apply-float" id="cfgApplyFloat" style="display:none"><button class="btn btn-p cfg-apply-btn" onclick="applyCfg()"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> 应用更改</button></div></div>
+</div><div class="cfg-apply-float" id="cfgApplyFloat" style="display:none"><button class="btn btn-p cfg-apply-btn" onclick="applyCfg()"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> 确认更改</button></div></div>
 <script>
 /* ===== PARTICLE NEBULA SYSTEM ===== */
 (function initParticles(){
