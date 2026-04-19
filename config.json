@@ -3257,6 +3257,17 @@
       "status": "approved",
       "approvedRole": "editor",
       "processedDate": "2026-04-19"
+    },
+    {
+      "ioaId": "ramboli",
+      "name": "噜噜噜",
+      "dept": "未指定部门",
+      "empType": "vgang",
+      "empTypeName": "V岗",
+      "requestedRole": "viewer",
+      "reason": "无",
+      "date": "2026-04-19",
+      "status": "pending"
     }
   ],
   "dataHistory": [
