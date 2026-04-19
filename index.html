@@ -1670,13 +1670,16 @@ function _encToken(t){if(!t)return'';let r='';for(let i=0;i<t.length;i++)r+=Stri
 function _decToken(e){if(!e)return'';try{const d=atob(e);let r='';for(let i=0;i<d.length;i++)r+=String.fromCharCode(d.charCodeAt(i)^_TK.charCodeAt(i%_TK.length));return r}catch(x){return''}}
 
 /* 从 GitHub API 获取最新 config.json（公开仓库无需Token即可读取） */
-async function ghLoad(){
+async function ghLoad(noCache){
 try{
 const headers={'Accept':'application/vnd.github.v3+json'};
 const token=getGHToken();if(token)headers['Authorization']=`token ${token}`;
+/* noCache 模式：绕过 GitHub CDN 缓存（用于轮询场景） */
+if(noCache){headers['If-None-Match']='';headers['Cache-Control']='no-cache'}
 /* 5秒超时，避免移动网络下 GitHub API 无限挂起 */
 const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),5000);
-const resp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{headers,signal:ctrl.signal});
+const url=`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`+(noCache?`?_t=${Date.now()}`:'');
+const resp=await fetch(url,{headers,signal:ctrl.signal,cache:noCache?'no-store':'default'});
 clearTimeout(timer);
 if(!resp.ok)return null;
 const data=await resp.json();
@@ -4108,7 +4111,7 @@ if(!AU.cur)return;/* 未登录不轮询 */
 if(!canM())return;/* 非管理员不需要轮询 */
 try{
 _polling=true;
-const ghData=await ghLoad();
+const ghData=await ghLoad(true);/* noCache=true 绕过 CDN 缓存 */
 if(ghData&&ghData.content){
 const newAR=ghData.content.accessRequests||[];
 const newPending=newAR.filter(r=>r.status==='pending').length;
