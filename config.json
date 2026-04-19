@@ -3274,6 +3274,17 @@
       "status": "approved",
       "approvedRole": "viewer",
       "processedDate": "2026-04-19"
+    },
+    {
+      "ioaId": "shireywu",
+      "name": "李大大",
+      "dept": "未指定部门",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "viewer",
+      "reason": "学习了解",
+      "date": "2026-04-20",
+      "status": "pending"
     }
   ],
   "dataHistory": [
