@@ -3284,7 +3284,9 @@
       "requestedRole": "viewer",
       "reason": "学习了解",
       "date": "2026-04-20",
-      "status": "pending"
+      "status": "rejected",
+      "rejectReason": "业务相关性弱",
+      "processedDate": "2026-04-20"
     }
   ],
   "dataHistory": [
