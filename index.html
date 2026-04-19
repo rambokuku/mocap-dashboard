@@ -411,6 +411,14 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .req-form textarea{min-height:80px}
 /* Pending requests badge */
 .pending-badge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:11px;margin-left:8px;animation:pd 2s infinite}
+.notify-banner{display:flex;align-items:center;gap:14px;padding:14px 20px;margin-bottom:20px;background:linear-gradient(135deg,rgba(255,140,0,.08),rgba(255,180,64,.04));border:1px solid rgba(255,140,0,.2);border-radius:16px;cursor:pointer;transition:var(--tr);position:relative;overflow:hidden}
+.notify-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,140,0,.06),transparent);pointer-events:none}
+.notify-banner:hover{border-color:rgba(255,140,0,.4);box-shadow:0 4px 24px rgba(255,140,0,.1);transform:translateY(-1px)}
+.notify-banner-icon{font-size:22px;flex-shrink:0;animation:nb-bell 3s ease-in-out infinite}
+.notify-banner-text{flex:1;line-height:1.5}.notify-banner-text strong{display:block;font-size:14px;color:#FFB340;margin-bottom:2px}.notify-banner-text span{font-size:12px;color:var(--txt3)}
+.notify-banner-badge{min-width:24px;height:24px;padding:0 8px;border-radius:12px;background:linear-gradient(135deg,#FF8C00,#FFB340);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(255,140,0,.3);animation:pd 2s infinite}
+.notify-banner-arrow{font-size:20px;color:rgba(255,140,0,.4);font-weight:300;transition:var(--tr)}.notify-banner:hover .notify-banner-arrow{color:#FFB340;transform:translateX(3px)}
+@keyframes nb-bell{0%,100%{transform:rotate(0)}5%{transform:rotate(15deg)}10%{transform:rotate(-12deg)}15%{transform:rotate(8deg)}20%{transform:rotate(-5deg)}25%{transform:rotate(0)}}
 .toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-20px);padding:12px 28px;border-radius:12px;background:rgba(0,196,140,.15);border:1px solid rgba(0,196,140,.3);color:#00E6A0;font-size:13px;opacity:0;transition:var(--tr);z-index:300;pointer-events:none;backdrop-filter:blur(10px)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.toast.error{background:rgba(255,71,87,.15);border-color:rgba(255,71,87,.3);color:var(--err)}
 .ptr-indicator{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:8px;padding:0;height:0;overflow:hidden;background:rgba(0,102,204,.1);border-bottom:1px solid rgba(0,102,204,.2);color:var(--acc2);font-size:12px;font-weight:600;z-index:600;transition:height .2s ease,opacity .2s ease;opacity:0;backdrop-filter:blur(10px);pointer-events:none}
 .ptr-indicator.active{opacity:1}.ptr-indicator.refreshing span{display:none}
@@ -423,6 +431,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 @media(max-width:768px){
 .hd{padding:0 16px;height:auto;min-height:60px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.hd h1{font-size:14px;white-space:nowrap}.hd-logo{width:90px;height:32px;border-radius:10px}.hd-r{gap:6px;font-size:11px;flex-wrap:wrap;justify-content:flex-end}.hd-tag{padding:3px 10px;font-size:10px}.ubadge{padding:3px 10px;font-size:10px}.hd-logout-btn{padding:3px 10px;font-size:10px}
 .team-info-float{font-size:9px!important;gap:4px!important;margin-top:0!important;padding:6px 0 8px!important}
+.notify-banner{padding:12px 16px;gap:10px;margin-bottom:16px;border-radius:12px}.notify-banner-icon{font-size:18px}.notify-banner-text strong{font-size:13px}.notify-banner-text span{font-size:11px}.notify-banner-badge{min-width:22px;height:22px;font-size:12px}
 .team-info-float span{font-size:9px!important;padding:1px 6px!important}
 .ct{padding:24px 16px}.hero{margin-bottom:36px}.hero::before{display:none}.hero h2{font-size:24px!important;white-space:nowrap}.hero p{font-size:13px;white-space:nowrap}.hero-line{width:120px}
 .sg{grid-template-columns:repeat(2,1fr)!important;gap:16px!important}
@@ -440,6 +449,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .photo-divider{height:60px;margin:12px 0 24px;border-radius:12px}.photo-divider-text{font-size:9px;left:12px;bottom:10px;letter-spacing:1px}
 .hd{padding:0 10px;height:auto;min-height:50px;padding-top:6px;padding-bottom:6px}.hd h1{font-size:12px;white-space:nowrap}.hd-logo{width:72px;height:26px;border-radius:8px}.hd-r{gap:4px;font-size:9px}.hd-tag{padding:2px 6px;font-size:9px}.hd-tag svg{width:9px;height:9px}.ubadge{padding:2px 7px;font-size:9px}.hd-logout-btn{padding:2px 7px;font-size:9px}.hd-logout-btn svg{width:10px;height:10px}
 .team-info-float{font-size:8px;padding:4px 0 4px;margin-top:0!important}
+.notify-banner{padding:10px 12px;gap:8px;margin-bottom:12px;border-radius:10px}.notify-banner-icon{font-size:16px}.notify-banner-text strong{font-size:12px}.notify-banner-text span{font-size:10px}.notify-banner-badge{min-width:20px;height:20px;font-size:11px;padding:0 6px}.notify-banner-arrow{font-size:16px}
 .hd-info-row{gap:4px}
 .ct{padding:16px 10px}.hero{margin-bottom:20px}.hero h2{font-size:18px!important;white-space:nowrap}.hero p{font-size:11px;white-space:nowrap}.hero-line{width:80px}.hero h2::before{inset:-15px -30px}
 .sg{grid-template-columns:repeat(2,1fr)!important;gap:10px!important}
@@ -1940,6 +1950,15 @@ _css+=`.gantt-item-group.${cl}{border-color:${cm}40;box-shadow:0 2px 16px ${cm}1
 _css+=`.gantt-item-group.${cl}:hover{border-color:${cm}66;box-shadow:0 4px 24px ${cm}26,inset 0 1px 0 ${cm}26}`;
 });_dynEl.textContent=_css;
 let h='';
+/* === 前端页面待审批通知提醒（仅超管/管理员可见） === */
+const _pendingN=AR.filter(r=>r.status==='pending').length;
+if(_pendingN>0&&canM()){
+h+=`<div class="notify-banner ain" onclick="toggleCfg();setTimeout(()=>stab('notify',null),200)">
+<div class="notify-banner-icon">🔔</div>
+<div class="notify-banner-text"><strong>${_pendingN} 条权限申请待审批</strong><span>点击前往处理</span></div>
+<div class="notify-banner-badge">${_pendingN}</div>
+<div class="notify-banner-arrow">›</div>
+</div>`;}
 h+=`<div class="hero ain"><h2>动捕专项<span>整体进展</span></h2><p>${D.modules.map(m=>m.title).join('、')} · 单击查看详情 · 双击编辑</p><div class="hero-line"></div></div>`;
 /* 一级模块排版：一排最多5个；超5个时均分两排（每排个数相等，奇数时上排多1） */
 const _modN=D.modules.length;let _cols;if(_modN<=5){_cols=_modN||1}else{_cols=Math.ceil(_modN/2)}
