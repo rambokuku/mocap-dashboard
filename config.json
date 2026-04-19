@@ -3244,6 +3244,17 @@
       "status": "approved",
       "approvedRole": "editor",
       "processedDate": "2026-04-19"
+    },
+    {
+      "ioaId": "irisdeng",
+      "name": "邓莹婷",
+      "dept": "未指定部门",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "editor",
+      "reason": "无",
+      "date": "2026-04-19",
+      "status": "pending"
     }
   ],
   "dataHistory": [
