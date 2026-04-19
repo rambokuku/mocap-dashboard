@@ -1525,7 +1525,7 @@ h+=`<div class="req-form">
 <div style="text-align:center;margin-top:16px"><button style="background:none;border:none;color:var(--txt3);font-size:12px;cursor:pointer;font-family:inherit;font-weight:700;text-decoration:underline" onclick="switchIOAUser()">切换账号</button></div>`;
 actionEl.innerHTML=h;
 }
-function submitAccessReq(){
+async function submitAccessReq(){
 const role=document.getElementById('reqRole').value;
 const cnName=document.getElementById('reqCnName').value.trim();
 const dept=document.getElementById('reqDept').value.trim();
@@ -1536,8 +1536,38 @@ const empTypeNames={fulltime:'正编',subsidiary:'子公司',vgang:'V岗',intern
 /* Remove any old rejected request from same user */
 AR=AR.filter(r=>!(r.ioaId===IOA_CUR_ID && (r.status==='rejected')));
 AR.push({ioaId:IOA_CUR_ID,name:cnName,dept:dept||'未指定部门',empType:empType,empTypeName:empTypeNames[empType]||empType,requestedRole:role,reason:reason||'无',date:getBJDate(),status:'pending'});
-sReq();showToast('权限申请已提交！等待寇启龙审批');
+localStorage.setItem('mocap_access_req',JSON.stringify(AR));
+/* 关键：申请人没有Token，需要用远程下发的加密Token临时解密后写入GitHub */
+const pushed=await _pushAccessReq('chore: 新权限申请 from '+IOA_CUR_ID+' ('+getBJNow()+')');
+if(pushed){showToast('权限申请已提交！等待寇启龙审批')}
+else{showToast('申请已记录，审批人打开页面后可见',0)}
 showIOAResult();
+}
+/* 申请人专用：用远程加密Token临时写入GitHub，解决无Token用户申请不可见的问题 */
+async function _pushAccessReq(msg){
+/* 优先用本地Token（编辑者/超管） */
+let token=getGHToken();
+/* 本地没有Token时，尝试解密远程下发的Token */
+if(!token&&_remoteEncToken){token=_decToken(_remoteEncToken)}
+if(!token){console.warn('无可用Token，申请仅存本地');return false}
+try{
+const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),8000);
+const headers={'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'};
+/* 先获取最新的config.json（含sha和当前数据） */
+const getResp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{headers,signal:ctrl.signal});
+if(!getResp.ok){clearTimeout(timer);return false}
+const fileInfo=await getResp.json();
+/* 解析当前远程数据，只更新 accessRequests 字段，其他字段保持不变 */
+let remoteCfg;
+try{remoteCfg=JSON.parse(decodeURIComponent(escape(atob(fileInfo.content))))}catch(e){clearTimeout(timer);return false}
+remoteCfg.accessRequests=AR;
+const content=btoa(unescape(encodeURIComponent(JSON.stringify(remoteCfg,null,2))));
+const putResp=await fetch(`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`,{method:'PUT',headers:{...headers,'Content-Type':'application/json'},
+body:JSON.stringify({message:msg,content:content,sha:fileInfo.sha}),signal:ctrl.signal});
+clearTimeout(timer);
+if(putResp.ok){console.log('✅ 权限申请已同步到 GitHub');return true}
+return false;
+}catch(e){console.warn('申请同步到GitHub失败',e);return false}
 }
 function switchIOAUser(){
 /* Go back to the name input form */
