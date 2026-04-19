@@ -2549,7 +2549,7 @@ sAuth();
 /* Update request status */
 const origIdx=AR.findIndex(r=>r===req);
 if(origIdx>-1){AR[origIdx].status='approved';AR[origIdx].approvedRole=role;AR[origIdx].processedDate=getBJDate()}
-sReq();rNotify();rPerm();showToast('已通过 '+cnName+'('+uid+') 的权限申请，授予'+RL[role].l);
+sReq();rNotify();rPerm();_syncBannerAfterAction();showToast('已通过 '+cnName+'('+uid+') 的权限申请，授予'+RL[role].l);
 }
 function rejectReq(idx){
 const pendingReqs=AR.filter(r=>r.status==='pending');
@@ -2558,7 +2558,7 @@ const req=pendingReqs[idx];
 const reason=prompt('请输入拒绝原因（可选）：');
 const origIdx=AR.findIndex(r=>r===req);
 if(origIdx>-1){AR[origIdx].status='rejected';AR[origIdx].rejectReason=reason||'审批人未通过';AR[origIdx].processedDate=getBJDate()}
-sReq();rNotify();rPerm();showToast('已拒绝 '+req.name+' 的权限申请');
+sReq();rNotify();rPerm();_syncBannerAfterAction();showToast('已拒绝 '+req.name+' 的权限申请');
 }
 function addU(){const ni=document.getElementById('nuName'),rs=document.getElementById('nuRole'),n=ni.value.trim(),r=rs.value;if(!n){showToast('请输入姓名',1);return}if(AU.users[n]){showToast('用户已存在',1);return}if(!isS()&&(r==='superadmin'||r==='admin')){showToast('无权添加此角色',1);return}/* 安全检查：黑名单用户，超管添加时自动移出黑名单 */if(AU.blocked&&AU.blocked[n]){if(isS()){delete AU.blocked[n]}else{showToast(n+' 已被删除，需超管操作才能重新添加',1);return}}AU.users[n]={role:r,added:new Date().toISOString().slice(0,10)};sAuth();rPerm();showToast(n+' 已添加为'+RL[r].l)}
 
@@ -4091,12 +4091,12 @@ indicator.style.height='0px';indicator.classList.remove('active');
 })();
 render();
 
-/* ===== 后台轮询：定时检测新权限申请（30s 间隔） ===== */
-(function initPollNotify(){
-const POLL_INTERVAL=3000;/* 3 秒 */
-let _pollTimer=null;
-let _lastPendingCount=AR.filter(r=>r.status==='pending').length;
-/* 局部更新通知条 DOM，不做完整 render */
+/* ===== 后台轮询：实时检测权限申请变化（全局可访问） ===== */
+var _pollInterval=3000;/* 3 秒 */
+var _pollTimer=null;
+var _lastPendingCount=-1;/* -1 表示尚未初始化，首次轮询时会自动校准 */
+var _pollStarted=false;
+/* 局部更新通知条 DOM，不做完整 render — 全局函数，审批后也可调用 */
 function _updateBannerDOM(newCount){
 const main=document.getElementById('main');if(!main)return;
 const existing=main.querySelector('.notify-banner');
@@ -4105,6 +4105,12 @@ const bannerHtml=`<div class="notify-banner ain" onclick="toggleCfg();setTimeout
 if(existing){existing.outerHTML=bannerHtml}
 else{const hero=main.querySelector('.hero');if(hero){hero.insertAdjacentHTML('beforebegin',bannerHtml)}}
 }else{if(existing)existing.remove()}
+}
+/* 同步 _lastPendingCount 并更新通知条（审批/拒绝后调用） */
+function _syncBannerAfterAction(){
+const c=AR.filter(r=>r.status==='pending').length;
+_lastPendingCount=c;
+_updateBannerDOM(c);
 }
 async function _pollOnce(){
 if(!AU.cur)return;/* 未登录不轮询 */
@@ -4115,6 +4121,8 @@ const ghData=await ghLoad(true);/* noCache=true 绕过 CDN 缓存 */
 if(ghData&&ghData.content){
 const newAR=ghData.content.accessRequests||[];
 const newPending=newAR.filter(r=>r.status==='pending').length;
+/* 首次轮询时初始化 _lastPendingCount */
+if(_lastPendingCount===-1){_lastPendingCount=newPending;_updateBannerDOM(newPending);console.log('🔄 轮询初始化: pending='+newPending);return}
 if(newPending!==_lastPendingCount){
 /* 有变化：更新 AR 并刷新通知条 */
 AR=newAR;sReq();/* _polling=true 阻止回写 */
@@ -4128,15 +4136,24 @@ console.log('🔄 轮询检测到申请变化: pending='+newPending);
 }catch(e){console.warn('轮询失败',e)}
 finally{_polling=false}
 }
-function _startPoll(){if(_pollTimer)return;_pollTimer=setInterval(_pollOnce,POLL_INTERVAL)}
+function _startPoll(){if(_pollTimer)return;_pollTimer=setInterval(_pollOnce,_pollInterval);_pollStarted=true}
 function _stopPoll(){if(_pollTimer){clearInterval(_pollTimer);_pollTimer=null}}
 /* 页面可见性切换：不可见时暂停轮询，可见时恢复 */
 document.addEventListener('visibilitychange',function(){
+if(!_pollStarted)return;
 if(document.hidden){_stopPoll()}else{_startPoll();_pollOnce()/* 切回时立即检查一次 */}
 });
-_startPoll();
-console.log('✅ 后台轮询已启动（每'+POLL_INTERVAL/1000+'秒检查新申请）');
-})();
+/* 延迟启动：等待 Auto-login IIFE 完成后再开始轮询（2 秒后检查登录状态） */
+setTimeout(function _tryStartPoll(){
+if(AU.cur&&canM()){
+_lastPendingCount=AR.filter(r=>r.status==='pending').length;
+_startPoll();_pollOnce();
+console.log('✅ 后台轮询已启动（每'+_pollInterval/1000+'秒检查新申请，当前pending='+_lastPendingCount+'）');
+}else if(!AU.cur){
+/* 还没登录，继续等 */
+setTimeout(_tryStartPoll,1000);
+}/* 非管理员不启动轮询 */
+},2000);
 </script>
 </body>
 </html>
