@@ -3183,6 +3183,10 @@
       "ztsun": {
         "role": "viewer",
         "added": "2026-04-19"
+      },
+      "ansonzliang": {
+        "role": "viewer",
+        "added": "2026-04-19"
       }
     },
     "ghToken": "CgcTPiMVVDEqOQwuEh8VGXhRRkYHOwctNWgxOCQNDipQGlVfS0Nxfg=="
@@ -4610,6 +4614,13 @@
       "dept": "未指定部门",
       "type": "vstaff",
       "typeName": "V岗",
+      "avatar": "#0066CC"
+    },
+    "ansonzliang": {
+      "name": "梁泽锋",
+      "dept": "互动娱乐/光子工作室群/技术美术中心/其他",
+      "type": "正式员工",
+      "typeName": "员工",
       "avatar": "#0066CC"
     }
   }
