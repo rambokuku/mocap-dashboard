@@ -3287,6 +3287,17 @@
       "status": "rejected",
       "rejectReason": "审批人未通过",
       "processedDate": "2026-04-20"
+    },
+    {
+      "ioaId": "timsgehduc",
+      "name": "测试账号",
+      "dept": "未指定部门",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "viewer",
+      "reason": "无",
+      "date": "2026-04-20",
+      "status": "pending"
     }
   ],
   "dataHistory": [
