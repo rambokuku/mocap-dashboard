@@ -3277,16 +3277,14 @@
     },
     {
       "ioaId": "shireywu",
-      "name": "啦啦打",
+      "name": "拉拉呱",
       "dept": "技术发展部",
       "empType": "fulltime",
       "empTypeName": "正编",
       "requestedRole": "viewer",
-      "reason": "有业务关联性",
+      "reason": "无",
       "date": "2026-04-20",
-      "status": "rejected",
-      "rejectReason": "不想",
-      "processedDate": "2026-04-20"
+      "status": "pending"
     }
   ],
   "dataHistory": [
