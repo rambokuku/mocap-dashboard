@@ -3196,16 +3196,14 @@
   "accessRequests": [
     {
       "ioaId": "rambozhang",
-      "name": "寇启迪",
+      "name": "寇启迪2",
       "dept": "未指定部门",
       "empType": "fulltime",
       "empTypeName": "正编",
       "requestedRole": "viewer",
-      "reason": "学习了解",
+      "reason": "学习而已",
       "date": "2026-04-19",
-      "status": "rejected",
-      "rejectReason": "审批人未通过",
-      "processedDate": "2026-04-19"
+      "status": "pending"
     }
   ],
   "dataHistory": [
