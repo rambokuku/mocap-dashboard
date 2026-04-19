@@ -3284,7 +3284,9 @@
       "requestedRole": "viewer",
       "reason": "有业务关联性",
       "date": "2026-04-20",
-      "status": "pending"
+      "status": "rejected",
+      "rejectReason": "不想",
+      "processedDate": "2026-04-20"
     }
   ],
   "dataHistory": [
