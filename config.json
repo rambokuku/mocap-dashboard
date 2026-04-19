@@ -3277,16 +3277,14 @@
     },
     {
       "ioaId": "shireywu",
-      "name": "绿卡来",
+      "name": "露露卡拉动",
       "dept": "技术发展部",
       "empType": "fulltime",
       "empTypeName": "正编",
       "requestedRole": "viewer",
       "reason": "无",
       "date": "2026-04-20",
-      "status": "rejected",
-      "rejectReason": "审批人未通过",
-      "processedDate": "2026-04-20"
+      "status": "pending"
     }
   ],
   "dataHistory": [
