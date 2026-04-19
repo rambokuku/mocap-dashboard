@@ -3183,10 +3183,6 @@
       "ztsun": {
         "role": "viewer",
         "added": "2026-04-19"
-      },
-      "ramboli": {
-        "role": "viewer",
-        "added": "2026-04-19"
       }
     },
     "blocked": {
@@ -3203,6 +3199,10 @@
         "removedAt": "2026-04-19"
       },
       "irisdeng": {
+        "removedBy": "rambokou",
+        "removedAt": "2026-04-19"
+      },
+      "ramboli": {
         "removedBy": "rambokou",
         "removedAt": "2026-04-19"
       }
