@@ -3210,6 +3210,17 @@
       "status": "approved",
       "approvedRole": "viewer",
       "processedDate": "2026-04-19"
+    },
+    {
+      "ioaId": "rambokuku",
+      "name": "酷酷龙",
+      "dept": "未指定部门",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "viewer",
+      "reason": "就看看而已",
+      "date": "2026-04-19",
+      "status": "pending"
     }
   ],
   "dataHistory": [
