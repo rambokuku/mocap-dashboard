@@ -3183,6 +3183,10 @@
       "ztsun": {
         "role": "viewer",
         "added": "2026-04-19"
+      },
+      "irisdeng": {
+        "role": "editor",
+        "added": "2026-04-19"
       }
     },
     "blocked": {
@@ -3237,7 +3241,9 @@
       "requestedRole": "editor",
       "reason": "无",
       "date": "2026-04-19",
-      "status": "pending"
+      "status": "approved",
+      "approvedRole": "editor",
+      "processedDate": "2026-04-19"
     }
   ],
   "dataHistory": [
@@ -4694,6 +4700,13 @@
     },
     "rambokuku": {
       "name": "酷酷龙",
+      "dept": "未指定部门",
+      "type": "fulltime",
+      "typeName": "正编",
+      "avatar": "#0066CC"
+    },
+    "irisdeng": {
+      "name": "邓莹婷",
       "dept": "未指定部门",
       "type": "fulltime",
       "typeName": "正编",
