@@ -3184,10 +3184,6 @@
         "role": "viewer",
         "added": "2026-04-19"
       },
-      "rambozhang": {
-        "role": "viewer",
-        "added": "2026-04-19"
-      },
       "rambokuku": {
         "role": "viewer",
         "added": "2026-04-19"
@@ -3195,6 +3191,10 @@
     },
     "blocked": {
       "ansonzliang": {
+        "removedBy": "rambokou",
+        "removedAt": "2026-04-19"
+      },
+      "rambozhang": {
         "removedBy": "rambokou",
         "removedAt": "2026-04-19"
       }
