@@ -4093,7 +4093,7 @@ render();
 
 /* ===== 后台轮询：定时检测新权限申请（30s 间隔） ===== */
 (function initPollNotify(){
-const POLL_INTERVAL=1000;/* 1 秒 */
+const POLL_INTERVAL=3000;/* 3 秒 */
 let _pollTimer=null;
 let _lastPendingCount=AR.filter(r=>r.status==='pending').length;
 /* 局部更新通知条 DOM，不做完整 render */
