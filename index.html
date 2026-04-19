@@ -2197,7 +2197,7 @@ group.style.boxShadow='0 0 20px rgba(0,163,224,.2)';
 setTimeout(()=>{group.style.borderColor='';group.style.boxShadow=''},2000);
 break}}},200)},100)}
 function toggleCfg(){if(!canE()){showToast('您没有编辑权限',1);return}document.getElementById('cfgP').classList.toggle('open');document.getElementById('cfgOv').classList.toggle('open');const isOpen=document.getElementById('cfgP').classList.contains('open');const fab=document.getElementById('cfgApplyFloat');const cfgBtn=document.getElementById('cfgBtn');if(isOpen){_prevSnapshot=_takeSnapshot();renderCfg();if(fab)fab.style.display='flex';if(cfgBtn)cfgBtn.style.display='none'}else{if(fab)fab.style.display='none';if(cfgBtn)cfgBtn.style.display=''}}
-function rTabs(){const t=document.getElementById('cfgTabs');const pendingCount=AR.filter(r=>r.status==='pending').length;let h='<button class="ctab act" data-tab="basic" onclick="stab(\'basic\',this)">基础信息</button><button class="ctab" data-tab="modules" onclick="stab(\'modules\',this)">模块编辑</button>';if(canM())h+=`<button class="ctab" data-tab="perms" onclick="stab('perms',this)">权限管理${pendingCount>0?'<span class="pending-badge">'+pendingCount+'</span>':''}</button>`;if(canE())h+=`<button class="ctab" data-tab="version" onclick="stab('version',this)">版本管理</button>`;t.innerHTML=h}
+function rTabs(){const t=document.getElementById('cfgTabs');const pendingCount=AR.filter(r=>r.status==='pending').length;let h='<button class="ctab act" data-tab="basic" onclick="stab(\'basic\',this)">基础信息</button><button class="ctab" data-tab="modules" onclick="stab(\'modules\',this)">模块编辑</button>';if(canM())h+=`<button class="ctab" data-tab="perms" onclick="stab('perms',this)">通讯录管理${pendingCount>0?'<span class="pending-badge">'+pendingCount+'</span>':''}</button>`;if(canE())h+=`<button class="ctab" data-tab="version" onclick="stab('version',this)">版本管理</button>`;t.innerHTML=h}
 function stab(n,el){document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('act'));document.querySelectorAll('.ctc').forEach(t=>t.classList.remove('act'));if(el){el.classList.add('act')}else{const btn=document.querySelector('.ctab[data-tab="'+n+'"]');if(btn)btn.classList.add('act')}document.getElementById('tab-'+n).classList.add('act');const ab=document.getElementById('cfgApplyFloat');if(ab)ab.style.display=n==='version'?'none':'flex'}
 /* === 双击一级模块卡片 → 跳转配置面板模块编辑并定位到该模块 === */
 function jumpToModCfg(mid){if(!canE()){showToast('您没有编辑权限',1);return}const p=document.getElementById('cfgP');const isOpen=p.classList.contains('open');if(!isOpen){document.getElementById('cfgP').classList.add('open');document.getElementById('cfgOv').classList.add('open');renderCfg()}stab('modules',null);setTimeout(()=>{const target=document.querySelector('.cmc[data-mod-id="'+mid+'"]');if(target){target.scrollIntoView({behavior:'smooth',block:'start'});target.style.outline='2px solid var(--acc2)';target.style.outlineOffset='4px';target.style.transition='outline-color 2s';setTimeout(()=>{target.style.outline='';target.style.outlineOffset=''},2500)}},200)}
@@ -2209,10 +2209,9 @@ function renderCfg(){rTabs();document.getElementById('cfgDate').value=fdfUpdate(
 /* GitHub 同步区域仅超管可见 */
 const ghSec=document.getElementById('ghSyncSec');if(ghSec){if(isS()){ghSec.style.display='';const ti=document.getElementById('ghTokenInput');if(ti){const t=getGHToken();ti.value=t?'••••••••'+t.slice(-4):'';}_updateGHStatus()}else{ghSec.style.display='none'}}
 rGantt();rMilestonesCfg();rMod();if(canM()){rPerm()}if(canE()){rVersion()}
-/* 超管专属：在基础信息/模块编辑/权限管理 Tab 底部注入「重置数据」按钮 */
+/* rambokou专属：在基础信息/模块编辑/通讯录管理 Tab 底部注入「重置数据」按钮 */
 _injectResetBtn()}
-function _injectResetBtn(){document.querySelectorAll('.cfg-reset-zone').forEach(el=>el.remove());if(!isS())return;const resetHtml='<div class="cfg-reset-zone"><div style="font-size:11px;color:var(--txt3);margin-bottom:10px;text-align:center">⚠️ 危险操作 · 仅超级管理员可见</div><button class="cfg-reset-btn" onclick="resetCfg()"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg> 重置所有数据</button></div>';['tab-basic','tab-modules','tab-perms'].forEach(id=>{const tab=document.getElementById(id);if(tab){tab.insertAdjacentHTML('beforeend',resetHtml)}})}
-function rGantt(){let h='';const isManager=canM();D.modules.forEach(m=>{/* 模块分组容器 */
+function _injectResetBtn(){document.querySelectorAll('.cfg-reset-zone').forEach(el=>el.remove());if(AU.cur!=='rambokou')return;const resetHtml='<div class="cfg-reset-zone"><div style="font-size:11px;color:var(--txt3);margin-bottom:10px;text-align:center">⚠️ 危险操作 · 仅超级管理员可见</div><button class="cfg-reset-btn" onclick="resetCfg()"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg> 重置所有数据</button></div>';['tab-basic','tab-modules','tab-perms'].forEach(id=>{const tab=document.getElementById(id);if(tab){tab.insertAdjacentHTML('beforeend',resetHtml)}})}function rGantt(){let h='';const isManager=canM();D.modules.forEach(m=>{/* 模块分组容器 */
 h+=`<div class="gantt-mod-group" style="margin-bottom:20px;padding:16px;border:1px solid rgba(255,179,64,.15);border-radius:14px;background:rgba(255,179,64,.02)">`;
 h+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06);gap:12px;flex-wrap:nowrap"><span style="font-size:14px;font-weight:700;color:var(--acc2);white-space:nowrap;flex-shrink:0">${m.title}</span>`;
 if(isManager){h+=`<button class="abtn" style="margin:0;font-size:11px;padding:4px 10px;white-space:nowrap;flex-shrink:0" onclick="addGanttItem('${m.id}')"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>新增子项目</button>`;}
@@ -2351,31 +2350,89 @@ h+=`<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border
 h+='</div></div>';
 }
 }
-['superadmin','admin','editor','viewer'].forEach(role=>{const us=Object.entries(AU.users).filter(([,u])=>u.role===role);if(!us.length)return;h+=`<div style="margin-bottom:16px"><h4 style="font-size:13px;color:var(--txt2);margin-bottom:10px;display:flex;align-items:center;gap:8px">${RI[role]} ${RL[role].l} <span class="rtag ${role}">${us.length}人</span></h4>`;us.forEach(([uid,u])=>{const dn=getDisplayName(uid);const cd=canDel(uid),cc=canCh(uid);h+=`<div class="urow"><div class="ui"><div class="uav" style="background:${RL[role].c}30;border:1px solid ${RL[role].c}40">${dn[0]}</div><div><div style="font-size:13px">${uid}(${dn})</div><div style="font-size:11px;color:var(--txt2)">${u.added||''}</div></div></div><div class="ua">`;if(cc){h+=`<select style="padding:4px 8px;border-radius:6px;border:1px solid var(--bdr);background:rgba(255,255,255,.03);color:var(--txt);font-size:11px;font-family:inherit;font-weight:700" onchange="chRole('${uid}',this.value)">`;if(isS())['superadmin','admin','editor','viewer'].forEach(r=>{h+=`<option value="${r}"${u.role===r?' selected':''}>${RL[r].l}</option>`;});else['editor','viewer'].forEach(r=>{h+=`<option value="${r}"${u.role===r?' selected':''}>${RL[r].l}</option>`;});h+='</select>'}if(cd)h+=`<button class="mdel" onclick="rmUser('${uid}')"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>`;h+='</div></div>';});h+='</div>';});
-if(canM()){h+=`<div class="csec"><h4>➕ 从企业微信添加新成员</h4><p style="font-size:12px;color:var(--txt3);margin-bottom:12px;line-height:1.6">仅支持腾讯正式员工、子公司员工及V岗员工，需从企业微信通讯录中选取</p><div style="display:flex;gap:10px;align-items:center"><select id="nuRole" style="width:120px;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;font-size:13px;font-family:inherit;font-weight:700;background:rgba(255,255,255,.03);color:var(--txt)">`;if(isS())h+='<option value="admin">管理员</option><option value="editor">编辑权限</option><option value="viewer" selected>仅浏览</option>';else h+='<option value="editor">编辑权限</option><option value="viewer" selected>仅浏览</option>';h+=`</select><button class="btn btn-p" style="flex:1;padding:10px 16px;font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px" onclick="openWxPicker()"><span style="font-size:16px">💼</span> 从企业微信通讯录选取</button></div></div>`}
-h+=`<div style="margin-top:24px;text-align:center"><button class="btn btn-d" style="width:auto;padding:10px 24px;flex:none" onclick="logout()">退出登录</button></div>`;
-/* === 通讯录管理（仅超管） === */
+/* ========== 通讯录管理 · 三大功能模块合并 ========== */
+const _totalMembers=Object.keys(AU.users).length;
+/* --- 模块1: 添加成员（超管+管理员可用） --- */
+if(canM()){
+h+=`<div class="csec" style="margin-top:8px;border:1px solid rgba(0,196,140,.15);border-radius:16px;padding:20px;background:rgba(0,196,140,.03)">
+<h4 style="display:flex;align-items:center;gap:8px;margin-bottom:4px">➕ 添加成员 <span style="font-size:11px;color:var(--txt3);font-weight:400">（添加新成员并设置权限类型）</span></h4>
+<p style="font-size:12px;color:var(--txt2);margin-bottom:14px;line-height:1.6">从企业微信通讯录中选取成员，同时完成权限类型确认。仅支持腾讯正式员工、子公司员工及V岗员工。</p>
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><select id="nuRole" style="width:140px;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;font-size:13px;font-family:inherit;font-weight:700;background:rgba(255,255,255,.03);color:var(--txt)">`;
+if(isS())h+='<option value="admin">管理员</option><option value="editor">编辑权限</option><option value="viewer" selected>仅浏览</option>';
+else h+='<option value="editor">编辑权限</option><option value="viewer" selected>仅浏览</option>';
+h+=`</select><button class="btn btn-p" style="flex:1;padding:10px 16px;font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px;min-width:200px" onclick="openWxPicker()"><span style="font-size:16px">💼</span> 从企业微信通讯录选取</button></div>`;
+/* 超管额外可添加动态通讯录成员 */
+if(isS()){
+h+=`<div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">
+<p style="font-size:12px;color:var(--txt2);margin-bottom:10px;line-height:1.6">💡 如成员不在内置通讯录中，可手动添加到动态通讯录（自动同步到GitHub）：</p>
+<button class="btn" style="padding:8px 16px;font-size:12px;background:rgba(0,163,224,.08);border:1px solid rgba(0,163,224,.2);color:var(--acc2)" onclick="openDirAddDialog()">✏️ 手动添加成员到通讯录</button>
+</div>`;}
+h+=`</div>`;}
+/* --- 模块2: 库内成员编辑 --- */
+h+=`<div class="csec" style="margin-top:20px;border:1px solid rgba(0,163,224,.15);border-radius:16px;padding:20px;background:rgba(0,163,224,.03)">
+<h4 style="display:flex;align-items:center;gap:8px;margin-bottom:4px">📋 库内成员编辑 <span style="font-size:11px;color:var(--txt3);font-weight:400">（调整权限类型 / 删除成员）</span></h4>
+<p style="font-size:12px;color:var(--txt2);margin-bottom:14px;line-height:1.6">${isS()?'超级管理员可调整所有成员权限并删除成员。':'管理员可调整编辑/浏览成员的权限类型，不可删除成员。'} 共 <b style="color:var(--acc2)">${_totalMembers}</b> 名成员。</p>`;
+['superadmin','admin','editor','viewer'].forEach(role=>{const us=Object.entries(AU.users).filter(([,u])=>u.role===role);if(!us.length)return;h+=`<div style="margin-bottom:16px"><h4 style="font-size:13px;color:var(--txt2);margin-bottom:10px;display:flex;align-items:center;gap:8px">${RI[role]} ${RL[role].l} <span class="rtag ${role}">${us.length}人</span></h4>`;us.forEach(([uid,u])=>{const dn=getDisplayName(uid);const cd=_canDelMember(uid),cc=_canChMember(uid);h+=`<div class="urow"><div class="ui"><div class="uav" style="background:${RL[role].c}30;border:1px solid ${RL[role].c}40">${dn[0]}</div><div><div style="font-size:13px">${uid}(${dn})</div><div style="font-size:11px;color:var(--txt2)">${u.added||''}</div></div></div><div class="ua">`;if(cc){h+=`<select style="padding:4px 8px;border-radius:6px;border:1px solid var(--bdr);background:rgba(255,255,255,.03);color:var(--txt);font-size:11px;font-family:inherit;font-weight:700" onchange="chRole('${uid}',this.value)">`;if(isS())['superadmin','admin','editor','viewer'].forEach(r=>{h+=`<option value="${r}"${u.role===r?' selected':''}>${RL[r].l}</option>`;});else['editor','viewer'].forEach(r=>{h+=`<option value="${r}"${u.role===r?' selected':''}>${RL[r].l}</option>`;});h+='</select>'}if(cd)h+=`<button class="mdel" onclick="rmUser('${uid}')"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>`;h+='</div></div>';});h+='</div>';});
+/* 动态通讯录成员列表（仅超管可见） */
 if(isS()){
 const dynCount=Object.keys(DYNAMIC_DIR).length;
-h+=`<div class="csec" style="margin-top:28px;border:1px solid rgba(0,163,224,.15);border-radius:16px;padding:20px;background:rgba(0,163,224,.03)">
-<h4 style="display:flex;align-items:center;gap:8px;margin-bottom:4px">📋 通讯录管理 <span style="font-size:11px;color:var(--txt3);font-weight:400">（动态添加的成员，自动同步到GitHub）</span></h4>
-<p style="font-size:12px;color:var(--txt2);margin-bottom:16px;line-height:1.6">在此添加/移除的成员无需修改代码，保存后自动生效。已内置的 ${789} 名静态通讯录成员不在此列。</p>
-<div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
-<button class="btn btn-p" style="padding:8px 16px;font-size:12px" onclick="openDirAddDialog()">➕ 添加成员</button>
-<button class="btn" style="padding:8px 16px;font-size:12px;background:rgba(255,255,255,.05);border:1px solid var(--bdr)" onclick="exportDirExcel()">📥 导出Excel</button>
-<span style="font-size:12px;color:var(--txt3);display:flex;align-items:center">共 ${dynCount} 人</span>
+if(dynCount>0){
+h+=`<div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">
+<div style="font-size:12px;color:var(--txt2);margin-bottom:10px;display:flex;align-items:center;gap:6px">📎 动态通讯录成员 <span style="font-size:11px;color:var(--txt3)">(${dynCount}人，自动同步到GitHub)</span></div>
+<div id="dirList" style="max-height:300px;overflow-y:auto"></div>
+</div>`;}}
+h+=`</div>`;
+/* --- 模块3: 库内成员下载（仅超管） --- */
+if(isS()){
+h+=`<div class="csec" style="margin-top:20px;border:1px solid rgba(108,92,231,.15);border-radius:16px;padding:20px;background:rgba(108,92,231,.03)">
+<h4 style="display:flex;align-items:center;gap:8px;margin-bottom:4px">📥 库内成员下载 <span style="font-size:11px;color:var(--txt3);font-weight:400">（仅超级管理员可下载）</span></h4>
+<p style="font-size:12px;color:var(--txt2);margin-bottom:14px;line-height:1.6">将平台所有已授权成员名单导出为 Excel 文档（CSV格式，兼容Excel打开）。</p>
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+<button class="btn btn-p" style="padding:10px 20px;font-size:13px;display:flex;align-items:center;gap:8px" onclick="exportAllMembersExcel()">📥 导出全部成员名单</button>
+<span style="font-size:12px;color:var(--txt3)">共 ${_totalMembers} 名授权成员</span>
 </div>
-<div id="dirList" style="max-height:400px;overflow-y:auto"></div>
-</div>`;
-}
+</div>`;}
+h+=`<div style="margin-top:24px;text-align:center"><button class="btn btn-d" style="width:auto;padding:10px 24px;flex:none" onclick="logout()">退出登录</button></div>`;
 ct.innerHTML=h;
-/* 渲染通讯录列表 */
+/* 渲染动态通讯录列表 */
 if(isS())rDirList();
 }
 function canDel(n){if(n===AU.cur||n==='rambokou')return false;return gRL(AU.cur)>gRL(n)}
 function canCh(n){if(n==='rambokou'&&AU.cur!=='rambokou')return false;if(n===AU.cur)return false;return gRL(AU.cur)>gRL(n)}
-function chRole(n,r){if(!canCh(n)){showToast('无权修改',1);return}if(!isS()&&(r==='superadmin'||r==='admin')){showToast('无权设置此角色',1);rPerm();return}AU.users[n].role=r;sAuth();rPerm();showToast('角色已更新')}
-function rmUser(n){if(!canDel(n)){showToast('无法移除',1);return}const dn=getDisplayName(n);if(!confirm('确定移除 '+dn+'('+n+')？'))return;delete AU.users[n];sAuth();rPerm();showToast(dn+' 已移除')}
+/* 库内成员编辑专用权限判断 */
+/* 删除成员：仅超管可删除，且不能删自己和rambokou */
+function _canDelMember(n){if(!isS())return false;if(n===AU.cur||n==='rambokou')return false;return true}
+/* 修改权限：超管可改所有人（除自己）；管理员只能改编辑/浏览权限的人（不能改超管和其他管理员） */
+function _canChMember(n){if(n==='rambokou'&&AU.cur!=='rambokou')return false;if(n===AU.cur)return false;if(isS())return true;if(canM()){const targetRole=gR(n);return targetRole==='editor'||targetRole==='viewer'}return false}
+/* 库内成员下载：导出全部已授权成员名单 */
+function exportAllMembersExcel(){
+const entries=Object.entries(AU.users);
+if(!entries.length){showToast('暂无授权成员可导出',1);return}
+let csv='\uFEFF英文名,中文姓名,权限类型,添加日期\n';
+entries.sort((a,b)=>{const la=RL[a[1].role]?.lv||0,lb=RL[b[1].role]?.lv||0;return lb-la||a[0].localeCompare(b[0])});
+entries.forEach(([uid,u])=>{
+const dn=getDisplayName(uid);
+const roleName=RL[u.role]?RL[u.role].l:u.role;
+const added=u.added||'-';
+csv+=`${uid},${dn},${roleName},${added}\n`;
+});
+/* 如果有动态通讯录成员且未授权，也附加输出 */
+const dynEntries=Object.entries(DYNAMIC_DIR).filter(([eid])=>!AU.users[eid]);
+if(dynEntries.length){
+csv+='\n--- 动态通讯录（未授权）---\n英文名,中文姓名,部门,员工类型\n';
+dynEntries.sort((a,b)=>a[0].localeCompare(b[0]));
+dynEntries.forEach(([eid,u])=>{csv+=`${eid},${u.name},"${u.dept}",${u.typeName||u.type}\n`});
+}
+const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');
+a.href=url;a.download='动捕平台成员名单_'+getBJDate()+'.csv';
+document.body.appendChild(a);a.click();document.body.removeChild(a);
+URL.revokeObjectURL(url);
+showToast('已导出 '+entries.length+' 名授权成员');
+}
+function chRole(n,r){if(!_canChMember(n)){showToast('无权修改',1);return}if(!isS()&&(r==='superadmin'||r==='admin')){showToast('无权设置此角色',1);rPerm();return}AU.users[n].role=r;sAuth();rPerm();showToast('角色已更新')}
+function rmUser(n){if(!_canDelMember(n)){showToast('仅超级管理员可删除成员',1);return}const dn=getDisplayName(n);if(!confirm('确定移除 '+dn+'('+n+')？'))return;delete AU.users[n];sAuth();rPerm();showToast(dn+' 已移除')}
 /* ===== Access Request Approval ===== */
 function approveReq(idx){
 const pendingReqs=AR.filter(r=>r.status==='pending');
@@ -2436,7 +2493,8 @@ ov.innerHTML=`<div style="background:var(--bg2,#0c1223);border:1px solid var(--b
 <div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">中文姓名 <span style="color:#FF4757">*</span></label><input type="text" id="dirAddName" placeholder="如 寇启龙" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit"></div>
 <div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">部门</label><input type="text" id="dirAddDept" placeholder="如 IEG/光子工作室群/光子艺术部" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit"></div>
 <div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">员工类型</label><select id="dirAddType" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit;font-weight:700"><option value="fulltime">正式员工</option><option value="outsource">外包员工</option><option value="intern">实习生</option></select></div>
-<div style="margin-top:4px;padding:10px 14px;background:rgba(255,180,64,.05);border:1px solid rgba(255,180,64,.12);border-radius:10px;font-size:11px;color:rgba(255,200,100,.7);line-height:1.6">💡 添加后，该成员即可用企业微信英文名登录本平台。<br>如需授予编辑/管理员权限，请在上方「已授权用户」区域单独设置。</div>
+<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">权限类型 <span style="color:#FF4757">*</span></label><select id="dirAddRole" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit;font-weight:700"><option value="viewer" selected>仅浏览</option><option value="editor">编辑权限</option><option value="admin">管理员</option></select></div>
+<div style="margin-top:4px;padding:10px 14px;background:rgba(255,180,64,.05);border:1px solid rgba(255,180,64,.12);border-radius:10px;font-size:11px;color:rgba(255,200,100,.7);line-height:1.6">💡 添加后，该成员即可用企业微信英文名登录本平台，权限类型自动生效。</div>
 </div>
 <div style="display:flex;gap:10px;margin-top:16px">
 <button class="btn" style="flex:1;padding:10px;background:rgba(255,255,255,.05);border:1px solid var(--bdr)" onclick="closeDirAddDialog()">取消</button>
@@ -2453,6 +2511,7 @@ const eid=document.getElementById('dirAddEid').value.trim().toLowerCase();
 const name=document.getElementById('dirAddName').value.trim();
 const dept=document.getElementById('dirAddDept').value.trim()||'未指定部门';
 const type=document.getElementById('dirAddType').value;
+const role=document.getElementById('dirAddRole').value;
 const typeNames={fulltime:'正式员工',outsource:'外包员工',intern:'实习生'};
 if(!eid){showToast('请输入英文名',1);return}
 if(!name){showToast('请输入中文姓名',1);return}
@@ -2462,11 +2521,14 @@ const hash=await sha256(eid);
 if(IOA_USERS_HASH[hash]){showToast(eid+' 已在内置通讯录中，无需重复添加',1);return}
 if(DYNAMIC_DIR[eid]){showToast(eid+' 已在动态通讯录中',1);return}
 DYNAMIC_DIR[eid]={name:name,dept:dept,type:type,typeName:typeNames[type]||'员工',avatar:'#0066CC'};
+/* 同时授权 */
+AU.users[eid]={role:role,added:getBJDate()};
+sAuth();
 await _rebuildDynHash();
 _saveDynDir();
 closeDirAddDialog();
 rPerm();
-showToast(name+'('+eid+') 已添加到通讯录');
+showToast(name+'('+eid+') 已添加到通讯录，权限：'+RL[role].l);
 }
 async function rmDirUser(eid){
 const u=DYNAMIC_DIR[eid];
