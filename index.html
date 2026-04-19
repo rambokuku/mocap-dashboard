@@ -584,7 +584,7 @@ function getBJDate(){const n=new Date(),u=n.getTime()+n.getTimezoneOffset()*6000
 /* ===== AUTH ===== */
 const RL={superadmin:{l:'超级管理员',c:'#FFD700',lv:4},admin:{l:'管理员',c:'#00E6A0',lv:3},editor:{l:'编辑权限',c:'#00D4FF',lv:2},viewer:{l:'仅浏览',c:'#8892A8',lv:1}};
 const RI={superadmin:'<span style="display:inline-flex;width:14px;height:14px;vertical-align:middle"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4l4 8 8 2-6 6 2 8-8-4-8 4 2-8-6-6 8-2z" fill="rgba(255,215,0,.6)" stroke="rgba(255,215,0,.8)" stroke-width="1"/></svg></span>',admin:'<span style="display:inline-flex;width:14px;height:14px;vertical-align:middle"><svg viewBox="0 0 32 32" fill="none"><path d="M16 3L5 8v7c0 7.5 4.7 14.5 11 17 6.3-2.5 11-9.5 11-17V8L16 3z" fill="rgba(0,196,140,.3)" stroke="rgba(0,196,140,.6)" stroke-width="1.2"/></svg></span>',editor:'<span style="display:inline-flex;width:14px;height:14px;vertical-align:middle"><svg viewBox="0 0 32 32" fill="none"><path d="M22 4l6 6L12 26H6v-6L22 4z" fill="rgba(0,163,224,.25)" stroke="rgba(0,163,224,.6)" stroke-width="1.2"/></svg></span>',viewer:'<span style="display:inline-flex;width:14px;height:14px;vertical-align:middle"><svg viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="16" rx="12" ry="7" fill="rgba(136,146,168,.15)" stroke="rgba(136,146,168,.5)" stroke-width="1.2"/><circle cx="16" cy="16" r="3.5" fill="rgba(136,146,168,.3)" stroke="rgba(136,146,168,.5)" stroke-width="1"/></svg></span>'};
-let AU={users:{'rambokou':{role:'superadmin',added:'2026-01-01'}},cur:null};
+let AU={users:{'rambokou':{role:'superadmin',added:'2026-01-01'}},cur:null,blocked:{}};
 /* ===== HASH & DECRYPT HELPERS ===== */
 async function sha256(str){const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str.toLowerCase()));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('')}
 function xorDecrypt(b64,key){const keyBytes=new TextEncoder().encode(key.toLowerCase());const encrypted=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));const decrypted=new Uint8Array(encrypted.length);for(let i=0;i<encrypted.length;i++)decrypted[i]=encrypted[i]^keyBytes[i%keyBytes.length];return new TextDecoder().decode(decrypted)}
@@ -603,11 +603,11 @@ function isDeviceAuthorized(){return localStorage.getItem(DEVICE_KEY_NAME)==='1'
 async function verifySuperadminDevice(uid){if(gR(uid)!=='superadmin')return true;return isDeviceAuthorized()}
 /* Verify device auth password and bind device if correct */
 async function verifyDeviceAuthCode(code){const h=await sha256(code);if(h===SA_AUTH_HASH){localStorage.setItem(DEVICE_KEY_NAME,'1');return true}return false}
-try{const s=localStorage.getItem('mocap_auth_v2');if(s){const p=JSON.parse(s);AU.users=p.users||AU.users}}catch(e){}
+try{const s=localStorage.getItem('mocap_auth_v2');if(s){const p=JSON.parse(s);AU.users=p.users||AU.users;AU.blocked=p.blocked||AU.blocked||{}}}catch(e){}
 /* Access request queue */
 let AR=[];
 try{const s=localStorage.getItem('mocap_access_req');if(s)AR=JSON.parse(s)}catch(e){}
-function sAuth(){localStorage.setItem('mocap_auth_v2',JSON.stringify({users:AU.users}));_syncGH('chore: 权限变更')}
+function sAuth(){localStorage.setItem('mocap_auth_v2',JSON.stringify({users:AU.users,blocked:AU.blocked||{}}));_syncGH('chore: 权限变更')}
 function sReq(){localStorage.setItem('mocap_access_req',JSON.stringify(AR));_syncGH('chore: 权限申请更新')}
 /* 防抖：权限变更频繁时合并 GitHub 同步请求 */
 let _ghSyncTimer=null;
@@ -622,7 +622,8 @@ if(ok)console.log('✅ 权限数据已同步到 GitHub');
 },1500);
 }
 let _hashCache={};async function _cacheHash(n){if(!_hashCache[n])_hashCache[n]=await sha256(n.toLowerCase());return _hashCache[n]}
-function gR(n){if(AU.users[n]?.role)return AU.users[n].role;if(_hashCache[n]&&(IOA_USERS_HASH[_hashCache[n]]||DYNAMIC_USERS_HASH[_hashCache[n]]))return'viewer';return null}
+/* 权限判断：① 黑名单优先拒绝 ② AU.users 白名单 ③ 通讯录哈希表隐式 viewer */
+function gR(n){if(AU.blocked&&AU.blocked[n])return null;if(AU.users[n]?.role)return AU.users[n].role;if(_hashCache[n]&&(IOA_USERS_HASH[_hashCache[n]]||DYNAMIC_USERS_HASH[_hashCache[n]]))return'viewer';return null}
 function gRL(n){const r=gR(n);return r?RL[r].lv:0}
 function canE(){return gRL(AU.cur)>=2}
 function canM(){return gRL(AU.cur)>=3}
@@ -1643,7 +1644,7 @@ function _tryAutoToken(){if(_remoteEncToken&&!getGHToken()&&canE()){const t=_dec
 
 /* 构建统一的 config.json 数据格式（包含业务数据+权限+申请队列+版本管理） */
 function buildCfgJSON(){
-const cfg={project:D.project,modules:D.modules,milestones:D.milestones,auth:{users:AU.users},accessRequests:AR,dataHistory:D.dataHistory||[],dataSnapshots:D.dataSnapshots||{},directory:DYNAMIC_DIR};
+const cfg={project:D.project,modules:D.modules,milestones:D.milestones,auth:{users:AU.users,blocked:AU.blocked||{}},accessRequests:AR,dataHistory:D.dataHistory||[],dataSnapshots:D.dataSnapshots||{},directory:DYNAMIC_DIR};
 /* 超管保存时，将 Token 加密后写入 auth.ghToken，供有编辑权限的用户自动获取 */
 const t=getGHToken();if(t)cfg.auth.ghToken=_encToken(t);
 return cfg;
@@ -1654,7 +1655,7 @@ function applyCfgJSON(cfg){
 if(cfg.project)D.project=cfg.project;
 if(cfg.modules)D.modules=cfg.modules;
 if(cfg.milestones)D.milestones=cfg.milestones;
-if(cfg.auth&&cfg.auth.users){AU.users=cfg.auth.users;sAuth()}
+if(cfg.auth&&cfg.auth.users){AU.users=cfg.auth.users;if(cfg.auth.blocked){AU.blocked=cfg.auth.blocked}sAuth()}
 if(cfg.accessRequests){AR=cfg.accessRequests;sReq()}
 /* 版本管理数据恢复 */
 if(cfg.dataHistory)D.dataHistory=cfg.dataHistory;
@@ -2429,7 +2430,9 @@ URL.revokeObjectURL(url);
 showToast('已导出 '+entries.length+' 名授权成员');
 }
 function chRole(n,r){if(!_canChMember(n)){showToast('无权修改',1);return}if(!isS()&&(r==='superadmin'||r==='admin')){showToast('无权设置此角色',1);rPerm();return}AU.users[n].role=r;sAuth();rPerm();showToast('角色已更新')}
-function rmUser(n){if(!_canDelMember(n)){showToast('仅超级管理员可删除成员',1);return}const dn=getDisplayName(n);if(!confirm('确定移除 '+dn+'('+n+')？'))return;delete AU.users[n];sAuth();rPerm();showToast(dn+' 已移除')}
+function rmUser(n){if(!_canDelMember(n)){showToast('仅超级管理员可删除成员',1);return}const dn=getDisplayName(n);if(!confirm('确定移除 '+dn+'('+n+')？\n\n移除后该用户将无法再登录平台。'))return;delete AU.users[n];if(!AU.blocked)AU.blocked={};AU.blocked[n]={removedBy:AU.cur,removedAt:getBJDate()};sAuth();rPerm();showToast(dn+' 已移除并禁止登录')}
+/* 从黑名单恢复用户，重新授予 viewer 权限 */
+function unblockUser(uid){if(!isS()){showToast('仅超级管理员可恢复用户',1);return}if(!AU.blocked||!AU.blocked[uid])return;const dn=_getMemberDisplayName(uid);if(!confirm('确定恢复 '+dn+'('+uid+') 的访问权限？'))return;delete AU.blocked[uid];AU.users[uid]={role:'viewer',added:getBJDate()};sAuth();rPerm();showToast(dn+' 已恢复访问权限（默认为仅浏览）');/* 刷新搜索结果 */const si=document.getElementById('memberSearchInput');if(si&&si.value.trim())_doMemberSearch(si.value)}
 /* ===== Access Request Approval ===== */
 function approveReq(idx){
 const pendingReqs=AR.filter(r=>r.status==='pending');
@@ -2533,7 +2536,9 @@ if(!u){showToast('未找到该成员',1);return}
 if(!confirm('确定从通讯录中移除 '+u.name+'('+eid+')？\n移除后该成员将无法登录本平台。'))return;
 delete DYNAMIC_DIR[eid];
 /* 同时移除已授权权限（如果有） */
-if(AU.users[eid]){delete AU.users[eid];sAuth()}
+if(AU.users[eid]){delete AU.users[eid]}
+if(!AU.blocked)AU.blocked={};AU.blocked[eid]={removedBy:AU.cur,removedAt:getBJDate()};
+sAuth();
 await _rebuildDynHash();
 _saveDynDir();
 rPerm();
@@ -2645,10 +2650,17 @@ return uid.toLowerCase().includes(kw)||dn.includes(kw);
 /* Step2: 如果 AU.users 没找到，尝试精确匹配哈希表（处理隐式 viewer 用户） */
 if(!results.length && /^[a-z][\w]*$/.test(kw)){
 const hash=await sha256(kw);
-let found=false;
-if(IOA_USERS_HASH[hash]){found=true;const info=decryptUser(IOA_USERS_HASH[hash],kw);if(info){if(!AU.users[kw]){AU.users[kw]={role:'viewer',added:getBJDate()};sAuth()}if(!DYNAMIC_DIR[kw]&&info.name){DYNAMIC_DIR[kw]={name:info.name,dept:info.dept||'未指定部门',type:info.type||'fulltime',typeName:info.typeName||'员工',avatar:'#0066CC'};_saveDynDir();_rebuildDynHash()}console.log('✅ 搜索补录: 隐式用户 '+kw+' ('+info.name+') 已自动注册')}}
-if(DYNAMIC_USERS_HASH[hash]){found=true;const info=decryptUser(DYNAMIC_USERS_HASH[hash],kw);if(info){if(!AU.users[kw]){AU.users[kw]={role:'viewer',added:getBJDate()};sAuth()}console.log('✅ 搜索补录: 动态用户 '+kw+' 已自动注册')}}
-if(found&&AU.users[kw]){results=[[kw,AU.users[kw]]]}
+let found=false;let blockedHit=!!(AU.blocked&&AU.blocked[kw]);
+if(IOA_USERS_HASH[hash]){found=true;const info=decryptUser(IOA_USERS_HASH[hash],kw);if(info){if(!blockedHit&&!AU.users[kw]){AU.users[kw]={role:'viewer',added:getBJDate()};sAuth()}if(!DYNAMIC_DIR[kw]&&info.name){DYNAMIC_DIR[kw]={name:info.name,dept:info.dept||'未指定部门',type:info.type||'fulltime',typeName:info.typeName||'员工',avatar:'#0066CC'};_saveDynDir();_rebuildDynHash()}console.log('✅ 搜索'+(blockedHit?'命中(已禁止)':'补录')+': '+kw+' ('+info.name+')')}}
+if(DYNAMIC_USERS_HASH[hash]){found=true;const info=decryptUser(DYNAMIC_USERS_HASH[hash],kw);if(info){if(!blockedHit&&!AU.users[kw]){AU.users[kw]={role:'viewer',added:getBJDate()};sAuth()}console.log('✅ 搜索'+(blockedHit?'命中(已禁止)':'补录')+': 动态用户 '+kw)}}
+if(found){
+if(blockedHit){
+/* 黑名单用户：显示特殊提示，提供恢复选项 */
+const dn=_getMemberDisplayName(kw);
+ct.innerHTML='<div style="text-align:center;padding:20px;color:var(--txt3);font-size:13px"><div style="font-size:24px;margin-bottom:8px">🚫</div><b style="color:var(--err)">'+dn+'('+kw+') 已被移除</b><div style="margin-top:6px;font-size:12px">移除人：'+(AU.blocked[kw].removedBy||'未知')+'<br>移除时间：'+(AU.blocked[kw].removedAt||'未知')+'</div>'+(isS()?'<button onclick="unblockUser(\''+kw+'\')" style="margin-top:12px;padding:6px 16px;background:var(--ok);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px">恢复该用户的访问权限</button>':'')+'</div>';
+return}
+if(AU.users[kw]){results=[[kw,AU.users[kw]]]}
+}
 }
 if(!results.length){ct.innerHTML='<div style="text-align:center;padding:16px;color:var(--txt3);font-size:12px">未找到匹配的库内成员</div>';return}
 let h='';
