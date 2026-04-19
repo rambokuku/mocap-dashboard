@@ -2350,39 +2350,36 @@ h+=`<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border
 h+='</div></div>';
 }
 }
-/* ========== 通讯录管理 · 三大功能模块合并 ========== */
+/* ========== 通讯录管理 · 重构后的模块 ========== */
 const _totalMembers=Object.keys(AU.users).length;
+const _viewerCount=Object.entries(AU.users).filter(([,u])=>u.role==='viewer').length;
+const _visibleCount=_totalMembers-_viewerCount;
 /* --- 模块1: 添加成员（超管+管理员可用） --- */
 if(canM()){
 h+=`<div class="csec" style="margin-top:8px;border:1px solid rgba(0,196,140,.15);border-radius:16px;padding:20px;background:rgba(0,196,140,.03)">
-<h4 style="display:flex;align-items:center;gap:8px;margin-bottom:4px">➕ 添加成员 <span style="font-size:11px;color:var(--txt3);font-weight:400">（添加新成员并设置权限类型）</span></h4>
-<p style="font-size:12px;color:var(--txt2);margin-bottom:14px;line-height:1.6">从企业微信通讯录中选取成员，同时完成权限类型确认。仅支持腾讯正式员工、子公司员工及V岗员工。</p>
-<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><select id="nuRole" style="width:140px;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;font-size:13px;font-family:inherit;font-weight:700;background:rgba(255,255,255,.03);color:var(--txt)">`;
-if(isS())h+='<option value="admin">管理员</option><option value="editor">编辑权限</option><option value="viewer" selected>仅浏览</option>';
-else h+='<option value="editor">编辑权限</option><option value="viewer" selected>仅浏览</option>';
-h+=`</select><button class="btn btn-p" style="flex:1;padding:10px 16px;font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px;min-width:200px" onclick="openWxPicker()"><span style="font-size:16px">💼</span> 从企业微信通讯录选取</button></div>`;
-/* 超管额外可添加动态通讯录成员 */
-if(isS()){
-h+=`<div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">
-<p style="font-size:12px;color:var(--txt2);margin-bottom:10px;line-height:1.6">💡 如成员不在内置通讯录中，可手动添加到动态通讯录（自动同步到GitHub）：</p>
-<button class="btn" style="padding:8px 16px;font-size:12px;background:rgba(0,163,224,.08);border:1px solid rgba(0,163,224,.2);color:var(--acc2)" onclick="openDirAddDialog()">✏️ 手动添加成员到通讯录</button>
+<h4 style="display:flex;align-items:center;gap:8px;margin-bottom:12px">➕ 添加成员 <span style="font-size:11px;color:var(--txt3);font-weight:400">（添加新成员并设置权限类型）</span></h4>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<button class="btn btn-p" style="flex:1;min-width:160px;padding:12px 20px;font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px" onclick="openDirAddDialog()"><span style="font-size:16px">✏️</span> 手动添加成员</button>
+<button class="btn" style="flex:1;min-width:160px;padding:12px 20px;font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(108,92,231,.08);border:1px solid rgba(108,92,231,.2);color:#A78BFA" onclick="openBatchAddDialog()"><span style="font-size:16px">📋</span> 批量添加成员</button>
+</div>
 </div>`;}
-h+=`</div>`;}
-/* --- 模块2: 库内成员编辑 --- */
+/* --- 模块2: 库内成员列表（仅显示超管/管理员/编辑） --- */
 h+=`<div class="csec" style="margin-top:20px;border:1px solid rgba(0,163,224,.15);border-radius:16px;padding:20px;background:rgba(0,163,224,.03)">
-<h4 style="display:flex;align-items:center;gap:8px;margin-bottom:4px">📋 库内成员编辑 <span style="font-size:11px;color:var(--txt3);font-weight:400">（调整权限类型 / 删除成员）</span></h4>
-<p style="font-size:12px;color:var(--txt2);margin-bottom:14px;line-height:1.6">${isS()?'超级管理员可调整所有成员权限并删除成员。':'管理员可调整编辑/浏览成员的权限类型，不可删除成员。'} 共 <b style="color:var(--acc2)">${_totalMembers}</b> 名成员。</p>`;
-['superadmin','admin','editor','viewer'].forEach(role=>{const us=Object.entries(AU.users).filter(([,u])=>u.role===role);if(!us.length)return;h+=`<div style="margin-bottom:16px"><h4 style="font-size:13px;color:var(--txt2);margin-bottom:10px;display:flex;align-items:center;gap:8px">${RI[role]} ${RL[role].l} <span class="rtag ${role}">${us.length}人</span></h4>`;us.forEach(([uid,u])=>{const dn=getDisplayName(uid);const cd=_canDelMember(uid),cc=_canChMember(uid);h+=`<div class="urow"><div class="ui"><div class="uav" style="background:${RL[role].c}30;border:1px solid ${RL[role].c}40">${dn[0]}</div><div><div style="font-size:13px">${uid}(${dn})</div><div style="font-size:11px;color:var(--txt2)">${u.added||''}</div></div></div><div class="ua">`;if(cc){h+=`<select style="padding:4px 8px;border-radius:6px;border:1px solid var(--bdr);background:rgba(255,255,255,.03);color:var(--txt);font-size:11px;font-family:inherit;font-weight:700" onchange="chRole('${uid}',this.value)">`;if(isS())['superadmin','admin','editor','viewer'].forEach(r=>{h+=`<option value="${r}"${u.role===r?' selected':''}>${RL[r].l}</option>`;});else['editor','viewer'].forEach(r=>{h+=`<option value="${r}"${u.role===r?' selected':''}>${RL[r].l}</option>`;});h+='</select>'}if(cd)h+=`<button class="mdel" onclick="rmUser('${uid}')"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>`;h+='</div></div>';});h+='</div>';});
-/* 动态通讯录成员列表（仅超管可见） */
-if(isS()){
-const dynCount=Object.keys(DYNAMIC_DIR).length;
-if(dynCount>0){
-h+=`<div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">
-<div style="font-size:12px;color:var(--txt2);margin-bottom:10px;display:flex;align-items:center;gap:6px">📎 动态通讯录成员 <span style="font-size:11px;color:var(--txt3)">(${dynCount}人，自动同步到GitHub)</span></div>
-<div id="dirList" style="max-height:300px;overflow-y:auto"></div>
-</div>`;}}
+<h4 style="display:flex;align-items:center;gap:8px;margin-bottom:4px">👥 成员概览 <span style="font-size:11px;color:var(--txt3);font-weight:400">（超管 / 管理员 / 编辑权限）</span></h4>
+<p style="font-size:12px;color:var(--txt2);margin-bottom:14px;line-height:1.6">以下仅展示超级管理员、管理员和编辑权限成员。仅浏览权限成员（${_viewerCount}人）可通过「库内成员管理」搜索查看。共 <b style="color:var(--acc2)">${_totalMembers}</b> 名库内成员。</p>`;
+['superadmin','admin','editor'].forEach(role=>{const us=Object.entries(AU.users).filter(([,u])=>u.role===role);if(!us.length)return;h+=`<div style="margin-bottom:16px"><h4 style="font-size:13px;color:var(--txt2);margin-bottom:10px;display:flex;align-items:center;gap:8px">${RI[role]} ${RL[role].l} <span class="rtag ${role}">${us.length}人</span></h4>`;us.forEach(([uid,u])=>{const dn=getDisplayName(uid);h+=`<div class="urow"><div class="ui"><div class="uav" style="background:${RL[role].c}30;border:1px solid ${RL[role].c}40">${dn[0]}</div><div><div style="font-size:13px">${uid}(${dn})</div><div style="font-size:11px;color:var(--txt2)">${u.added||''}</div></div></div></div>`;});h+='</div>';});
 h+=`</div>`;
-/* --- 模块3: 库内成员下载（仅超管） --- */
+/* --- 模块3: 库内成员管理（搜索+编辑+删除） --- */
+if(canM()){
+h+=`<div class="csec" style="margin-top:20px;border:1px solid rgba(255,140,0,.15);border-radius:16px;padding:20px;background:rgba(255,140,0,.03)">
+<h4 style="display:flex;align-items:center;gap:8px;margin-bottom:4px">🔍 库内成员管理 <span style="font-size:11px;color:var(--txt3);font-weight:400">（搜索 / 编辑 / 删除）</span></h4>
+<p style="font-size:12px;color:var(--txt2);margin-bottom:14px;line-height:1.6">${isS()?'超级管理员可编辑和删除任何库内成员。':'管理员可编辑成员信息，不可删除成员。'}支持英文名或中文名搜索。</p>
+<div style="display:flex;gap:10px;align-items:center">
+<input type="text" id="memberSearchInput" placeholder="输入英文名或中文名搜索..." style="flex:1;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit" oninput="_doMemberSearch(this.value)">
+</div>
+<div id="memberSearchResult" style="margin-top:14px"></div>
+</div>`;}
+/* --- 模块4: 库内成员下载（仅超管） --- */
 if(isS()){
 h+=`<div class="csec" style="margin-top:20px;border:1px solid rgba(108,92,231,.15);border-radius:16px;padding:20px;background:rgba(108,92,231,.03)">
 <h4 style="display:flex;align-items:center;gap:8px;margin-bottom:4px">📥 库内成员下载 <span style="font-size:11px;color:var(--txt3);font-weight:400">（仅超级管理员可下载）</span></h4>
@@ -2394,8 +2391,6 @@ h+=`<div class="csec" style="margin-top:20px;border:1px solid rgba(108,92,231,.1
 </div>`;}
 h+=`<div style="margin-top:24px;text-align:center"><button class="btn btn-d" style="width:auto;padding:10px 24px;flex:none" onclick="logout()">退出登录</button></div>`;
 ct.innerHTML=h;
-/* 渲染动态通讯录列表 */
-if(isS())rDirList();
 }
 function canDel(n){if(n===AU.cur||n==='rambokou')return false;return gRL(AU.cur)>gRL(n)}
 function canCh(n){if(n==='rambokou'&&AU.cur!=='rambokou')return false;if(n===AU.cur)return false;return gRL(AU.cur)>gRL(n)}
@@ -2486,15 +2481,15 @@ function openDirAddDialog(){
 const ov=document.createElement('div');
 ov.id='dirAddOv';
 ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:10000;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)';
+const _roleOpts=isS()?'<option value="viewer" selected>仅浏览</option><option value="editor">编辑权限</option><option value="admin">管理员</option>':'<option value="viewer" selected>仅浏览</option><option value="editor">编辑权限</option>';
 ov.innerHTML=`<div style="background:var(--bg2,#0c1223);border:1px solid var(--bdr);border-radius:20px;padding:24px;width:92%;max-width:420px;max-height:85vh;overflow-y:auto">
-<h3 style="margin-bottom:16px;font-size:16px">➕ 添加新成员到通讯录</h3>
+<h3 style="margin-bottom:16px;font-size:16px">✏️ 手动添加成员</h3>
 <div style="display:flex;flex-direction:column;gap:12px">
-<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">企业微信英文名 <span style="color:#FF4757">*</span></label><input type="text" id="dirAddEid" placeholder="如 rambokou" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit"></div>
+<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">英文名 <span style="color:#FF4757">*</span></label><input type="text" id="dirAddEid" placeholder="如 rambokou" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit"></div>
 <div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">中文姓名 <span style="color:#FF4757">*</span></label><input type="text" id="dirAddName" placeholder="如 寇启龙" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit"></div>
-<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">部门</label><input type="text" id="dirAddDept" placeholder="如 IEG/光子工作室群/光子艺术部" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit"></div>
-<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">员工类型</label><select id="dirAddType" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit;font-weight:700"><option value="fulltime">正式员工</option><option value="outsource">外包员工</option><option value="intern">实习生</option></select></div>
-<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">权限类型 <span style="color:#FF4757">*</span></label><select id="dirAddRole" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit;font-weight:700"><option value="viewer" selected>仅浏览</option><option value="editor">编辑权限</option><option value="admin">管理员</option></select></div>
-<div style="margin-top:4px;padding:10px 14px;background:rgba(255,180,64,.05);border:1px solid rgba(255,180,64,.12);border-radius:10px;font-size:11px;color:rgba(255,200,100,.7);line-height:1.6">💡 添加后，该成员即可用企业微信英文名登录本平台，权限类型自动生效。</div>
+<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">部门 <span style="font-size:10px;color:var(--txt3)">（选填）</span></label><input type="text" id="dirAddDept" placeholder="如 IEG/光子工作室群/光子艺术部" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit"></div>
+<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">员工类型 <span style="font-size:10px;color:var(--txt3)">（选填）</span></label><select id="dirAddType" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit;font-weight:700"><option value="fulltime">正编</option><option value="subsidiary">子岗</option><option value="vstaff">V岗</option><option value="intern">实习生</option></select></div>
+<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">权限类型 <span style="color:#FF4757">*</span></label><select id="dirAddRole" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit;font-weight:700">${_roleOpts}</select></div>
 </div>
 <div style="display:flex;gap:10px;margin-top:16px">
 <button class="btn" style="flex:1;padding:10px;background:rgba(255,255,255,.05);border:1px solid var(--bdr)" onclick="closeDirAddDialog()">取消</button>
@@ -2512,7 +2507,7 @@ const name=document.getElementById('dirAddName').value.trim();
 const dept=document.getElementById('dirAddDept').value.trim()||'未指定部门';
 const type=document.getElementById('dirAddType').value;
 const role=document.getElementById('dirAddRole').value;
-const typeNames={fulltime:'正式员工',outsource:'外包员工',intern:'实习生'};
+const typeNames={fulltime:'正编',subsidiary:'子岗',vstaff:'V岗',intern:'实习生'};
 if(!eid){showToast('请输入英文名',1);return}
 if(!name){showToast('请输入中文姓名',1);return}
 if(!/^[a-zA-Z][\w]*$/.test(eid)){showToast('英文名格式不正确',1);return}
@@ -2560,6 +2555,187 @@ a.href=url;a.download='动捕平台通讯录_'+getBJDate()+'.csv';
 document.body.appendChild(a);a.click();document.body.removeChild(a);
 URL.revokeObjectURL(url);
 showToast('已导出 '+entries.length+' 条记录');
+}
+/* ===== 批量添加成员对话框 ===== */
+function openBatchAddDialog(){
+const ov=document.createElement('div');
+ov.id='batchAddOv';
+ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:10000;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)';
+ov.innerHTML=`<div style="background:var(--bg2,#0c1223);border:1px solid var(--bdr);border-radius:20px;padding:24px;width:92%;max-width:520px;max-height:85vh;overflow-y:auto">
+<h3 style="margin-bottom:16px;font-size:16px">📋 批量添加成员</h3>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">成员列表 <span style="color:#FF4757">*</span></label>
+<textarea id="batchAddInput" rows="5" placeholder="格式：英文名(中文名)&#10;多个成员用英文分号 ; 隔开&#10;示例：rambokou(寇启龙);channinglin(林展宁);v_yyyilin(林依琳)" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit;line-height:1.6;resize:vertical"></textarea>
+<div style="font-size:11px;color:var(--txt3);line-height:1.5;margin-top:2px">格式：<code style="background:rgba(255,255,255,.06);padding:2px 6px;border-radius:4px;font-size:11px">英文名(中文名)</code>，多人之间用英文分号 <code style="background:rgba(255,255,255,.06);padding:2px 6px;border-radius:4px">;</code> 隔开</div></div>
+<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">部门 <span style="font-size:10px;color:var(--txt3)">（选填，统一设置）</span></label><input type="text" id="batchAddDept" placeholder="如 IEG/光子工作室群/光子艺术部" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit"></div>
+<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">员工类型 <span style="font-size:10px;color:var(--txt3)">（选填，统一设置）</span></label><select id="batchAddType" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit;font-weight:700"><option value="fulltime">正编</option><option value="subsidiary">子岗</option><option value="vstaff">V岗</option><option value="intern">实习生</option></select></div>
+<div style="padding:10px 14px;background:rgba(0,163,224,.05);border:1px solid rgba(0,163,224,.12);border-radius:10px;font-size:11px;color:rgba(100,200,255,.7);line-height:1.6">💡 批量添加的所有成员默认「仅浏览」权限。添加后可在「库内成员管理」中单独调整。</div>
+</div>
+<div style="display:flex;gap:10px;margin-top:16px">
+<button class="btn" style="flex:1;padding:10px;background:rgba(255,255,255,.05);border:1px solid var(--bdr)" onclick="closeBatchAddDialog()">取消</button>
+<button class="btn btn-p" style="flex:1;padding:10px" onclick="submitBatchAdd()">确认批量添加</button>
+</div>
+</div>`;
+document.body.appendChild(ov);
+ov.addEventListener('click',e=>{if(e.target===ov)closeBatchAddDialog()});
+setTimeout(()=>{const ta=document.getElementById('batchAddInput');if(ta)ta.focus()},200);
+}
+function closeBatchAddDialog(){const ov=document.getElementById('batchAddOv');if(ov)ov.remove()}
+async function submitBatchAdd(){
+const raw=document.getElementById('batchAddInput').value.trim();
+const dept=document.getElementById('batchAddDept').value.trim()||'未指定部门';
+const type=document.getElementById('batchAddType').value;
+const typeNames={fulltime:'正编',subsidiary:'子岗',vstaff:'V岗',intern:'实习生'};
+if(!raw){showToast('请输入成员列表',1);return}
+/* 解析 英文名(中文名);英文名(中文名) 格式 */
+const parts=raw.split(';').map(s=>s.trim()).filter(Boolean);
+const parsed=[];const errors=[];
+parts.forEach(p=>{
+const m=p.match(/^([a-zA-Z][\w]*)\s*[(\uff08]\s*(.+?)\s*[)\uff09]$/);
+if(m){parsed.push({eid:m[1].toLowerCase(),name:m[2]})}
+else{errors.push(p)}
+});
+if(!parsed.length){showToast('未能解析到有效成员，请检查格式',1);return}
+if(errors.length){if(!confirm('以下条目格式不正确将被跳过：\\n'+errors.join('\\n')+'\\n\\n是否继续添加 '+parsed.length+' 名有效成员？'))return}
+let added=0,skipped=0;
+for(const u of parsed){
+/* 检查是否已在库内 */
+if(AU.users[u.eid]){skipped++;continue}
+/* 添加到动态通讯录 */
+if(!DYNAMIC_DIR[u.eid]){
+const hash=await sha256(u.eid);
+if(!IOA_USERS_HASH[hash]){
+DYNAMIC_DIR[u.eid]={name:u.name,dept:dept,type:type,typeName:typeNames[type]||'员工',avatar:'#0066CC'};
+}}
+/* 授权 */
+AU.users[u.eid]={role:'viewer',added:getBJDate()};
+added++;
+}
+if(added>0){sAuth();await _rebuildDynHash();_saveDynDir()}
+closeBatchAddDialog();
+rPerm();
+if(skipped>0)showToast('已添加 '+added+' 人，跳过 '+skipped+' 人（已在库内）');
+else showToast('已批量添加 '+added+' 名成员（默认仅浏览权限）');
+}
+/* ===== 库内成员管理 · 搜索+编辑+删除 ===== */
+let _memberSearchTimer=null;
+function _doMemberSearch(kw){
+clearTimeout(_memberSearchTimer);
+_memberSearchTimer=setTimeout(()=>_renderMemberSearch(kw),200);
+}
+function _renderMemberSearch(kw){
+const ct=document.getElementById('memberSearchResult');if(!ct)return;
+kw=kw.trim().toLowerCase();
+if(!kw){ct.innerHTML='<div style="text-align:center;padding:16px;color:var(--txt3);font-size:12px">输入关键词开始搜索…</div>';return}
+const results=Object.entries(AU.users).filter(([uid])=>{
+const dn=getDisplayName(uid).toLowerCase();
+return uid.toLowerCase().includes(kw)||dn.includes(kw);
+});
+if(!results.length){ct.innerHTML='<div style="text-align:center;padding:16px;color:var(--txt3);font-size:12px">未找到匹配的库内成员</div>';return}
+let h='';
+results.forEach(([uid,u])=>{
+const dn=getDisplayName(uid);
+const role=u.role;
+const cd=_canDelMember(uid);
+const cc=_canChMember(uid);
+const dynInfo=DYNAMIC_DIR[uid];
+h+=`<div style="background:rgba(255,255,255,.02);border:1px solid var(--bdr);border-radius:12px;padding:14px;margin-bottom:8px;transition:var(--tr)">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:${cc||cd?'12px':'0'}">
+<div class="uav" style="background:${RL[role].c}30;border:1px solid ${RL[role].c}40;width:36px;height:36px;flex-shrink:0">${dn[0]}</div>
+<div style="flex:1;min-width:0">
+<div style="font-size:13px">${uid}<span style="color:var(--txt2)">(${dn})</span></div>
+<div style="font-size:11px;color:var(--txt3);display:flex;align-items:center;gap:6px;flex-wrap:wrap">${dynInfo?dynInfo.dept:'—'} · ${dynInfo?(dynInfo.typeName||dynInfo.type):'—'} · <span class="rtag ${role}">${RL[role].l}</span>${u.added?' · '+u.added:''}</div>
+</div></div>`;
+if(cc||cd){
+h+=`<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">`;
+/* 编辑区域 */
+if(cc){
+h+=`<div style="display:flex;gap:6px;align-items:center;flex:1;min-width:200px">
+<label style="font-size:11px;color:var(--txt3);white-space:nowrap">权限</label>
+<select style="padding:4px 8px;border-radius:6px;border:1px solid var(--bdr);background:rgba(255,255,255,.03);color:var(--txt);font-size:11px;font-family:inherit;font-weight:700;flex:1" onchange="chRole('${uid}',this.value)">`;
+if(isS())['superadmin','admin','editor','viewer'].forEach(r=>{h+=`<option value="${r}"${u.role===r?' selected':''}>${RL[r].l}</option>`;});
+else['editor','viewer'].forEach(r=>{h+=`<option value="${r}"${u.role===r?' selected':''}>${RL[r].l}</option>`;});
+h+=`</select></div>`;
+/* 编辑英文名、中文名、部门、员工类型 */
+h+=`<button class="btn" style="padding:4px 12px;font-size:11px;background:rgba(0,163,224,.08);border:1px solid rgba(0,163,224,.2);color:var(--acc2)" onclick="_openEditMemberDialog('${uid}')">编辑信息</button>`;
+}
+if(cd){
+h+=`<button class="mdel" style="margin-left:auto" onclick="rmUser('${uid}')"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>`;
+}
+h+=`</div>`;}
+h+=`</div>`;
+});
+ct.innerHTML=h;
+}
+/* 编辑成员信息对话框 */
+function _openEditMemberDialog(uid){
+const u=AU.users[uid];if(!u)return;
+const dn=getDisplayName(uid);
+const dynInfo=DYNAMIC_DIR[uid]||{};
+const ov=document.createElement('div');
+ov.id='editMemberOv';
+ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:10001;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)';
+const _roleOpts2=isS()?['superadmin','admin','editor','viewer']:['editor','viewer'];
+let roleOptHtml='';_roleOpts2.forEach(r=>{roleOptHtml+=`<option value="${r}"${u.role===r?' selected':''}>${RL[r].l}</option>`});
+ov.innerHTML=`<div style="background:var(--bg2,#0c1223);border:1px solid var(--bdr);border-radius:20px;padding:24px;width:92%;max-width:420px;max-height:85vh;overflow-y:auto">
+<h3 style="margin-bottom:16px;font-size:16px">✏️ 编辑成员信息 · ${uid}</h3>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">英文名</label><input type="text" id="editMEid" value="${uid}" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit"></div>
+<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">中文姓名</label><input type="text" id="editMName" value="${dynInfo.name||dn}" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit"></div>
+<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">部门</label><input type="text" id="editMDept" value="${dynInfo.dept||''}" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit"></div>
+<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">员工类型</label><select id="editMType" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit;font-weight:700"><option value="fulltime"${(dynInfo.type||'')==='fulltime'?' selected':''}>正编</option><option value="subsidiary"${(dynInfo.type||'')==='subsidiary'?' selected':''}>子岗</option><option value="vstaff"${(dynInfo.type||'')==='vstaff'?' selected':''}>V岗</option><option value="intern"${(dynInfo.type||'')==='intern'?' selected':''}>实习生</option></select></div>
+<div><label style="font-size:12px;color:var(--txt2);margin-bottom:4px;display:block">权限类型</label><select id="editMRole" style="width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit;font-weight:700">${roleOptHtml}</select></div>
+</div>
+<div style="display:flex;gap:10px;margin-top:16px">
+<button class="btn" style="flex:1;padding:10px;background:rgba(255,255,255,.05);border:1px solid var(--bdr)" onclick="_closeEditMemberDialog()">取消</button>
+<button class="btn btn-p" style="flex:1;padding:10px" onclick="_submitEditMember('${uid}')">保存修改</button>
+</div>
+</div>`;
+document.body.appendChild(ov);
+ov.addEventListener('click',e=>{if(e.target===ov)_closeEditMemberDialog()});
+}
+function _closeEditMemberDialog(){const ov=document.getElementById('editMemberOv');if(ov)ov.remove()}
+async function _submitEditMember(oldUid){
+const newEid=document.getElementById('editMEid').value.trim().toLowerCase();
+const newName=document.getElementById('editMName').value.trim();
+const newDept=document.getElementById('editMDept').value.trim()||'未指定部门';
+const newType=document.getElementById('editMType').value;
+const newRole=document.getElementById('editMRole').value;
+const typeNames={fulltime:'正编',subsidiary:'子岗',vstaff:'V岗',intern:'实习生'};
+if(!newEid||!newName){showToast('英文名和中文姓名为必填',1);return}
+if(!/^[a-zA-Z][\w]*$/.test(newEid)){showToast('英文名格式不正确',1);return}
+/* 如果英文名改变了 */
+const eidChanged=newEid!==oldUid;
+if(eidChanged){
+if(AU.users[newEid]){showToast(newEid+' 已存在于库内',1);return}
+/* 迁移用户数据 */
+AU.users[newEid]={...AU.users[oldUid],role:newRole};
+delete AU.users[oldUid];
+/* 迁移动态通讯录 */
+if(DYNAMIC_DIR[oldUid]){
+DYNAMIC_DIR[newEid]={...DYNAMIC_DIR[oldUid],name:newName,dept:newDept,type:newType,typeName:typeNames[newType]||'员工'};
+delete DYNAMIC_DIR[oldUid];
+} else {
+DYNAMIC_DIR[newEid]={name:newName,dept:newDept,type:newType,typeName:typeNames[newType]||'员工',avatar:'#0066CC'};
+}
+} else {
+AU.users[oldUid].role=newRole;
+/* 更新动态通讯录信息 */
+if(DYNAMIC_DIR[oldUid]){
+DYNAMIC_DIR[oldUid].name=newName;
+DYNAMIC_DIR[oldUid].dept=newDept;
+DYNAMIC_DIR[oldUid].type=newType;
+DYNAMIC_DIR[oldUid].typeName=typeNames[newType]||'员工';
+} else {
+DYNAMIC_DIR[oldUid]={name:newName,dept:newDept,type:newType,typeName:typeNames[newType]||'员工',avatar:'#0066CC'};
+}
+}
+sAuth();
+await _rebuildDynHash();
+_saveDynDir();
+_closeEditMemberDialog();
+rPerm();
+showToast(newName+'('+newEid+') 信息已更新');
 }
 
 /* ===== WeChat Work Contact Picker (Enterprise WeChat Simulation) ===== */
