@@ -4618,9 +4618,9 @@
     },
     "ansonzliang": {
       "name": "梁泽锋",
-      "dept": "互动娱乐/光子工作室群/技术美术中心/其他",
-      "type": "正式员工",
-      "typeName": "员工",
+      "dept": "其他",
+      "type": "fulltime",
+      "typeName": "正编",
       "avatar": "#0066CC"
     }
   }
