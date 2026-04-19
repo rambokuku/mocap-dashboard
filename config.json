@@ -3183,6 +3183,10 @@
       "ztsun": {
         "role": "viewer",
         "added": "2026-04-19"
+      },
+      "rambozhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
       }
     },
     "blocked": {
@@ -3203,7 +3207,9 @@
       "requestedRole": "viewer",
       "reason": "学习而已",
       "date": "2026-04-19",
-      "status": "pending"
+      "status": "approved",
+      "approvedRole": "viewer",
+      "processedDate": "2026-04-19"
     }
   ],
   "dataHistory": [
@@ -4647,6 +4653,13 @@
     "ansonzliang": {
       "name": "梁泽锋",
       "dept": "其他",
+      "type": "fulltime",
+      "typeName": "正编",
+      "avatar": "#0066CC"
+    },
+    "rambozhang": {
+      "name": "寇启迪2",
+      "dept": "未指定部门",
       "type": "fulltime",
       "typeName": "正编",
       "avatar": "#0066CC"
