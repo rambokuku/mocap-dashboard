@@ -3187,6 +3187,10 @@
       "rambozhang": {
         "role": "viewer",
         "added": "2026-04-19"
+      },
+      "rambokuku": {
+        "role": "viewer",
+        "added": "2026-04-19"
       }
     },
     "blocked": {
@@ -3220,7 +3224,9 @@
       "requestedRole": "viewer",
       "reason": "就看看而已",
       "date": "2026-04-19",
-      "status": "pending"
+      "status": "approved",
+      "approvedRole": "viewer",
+      "processedDate": "2026-04-19"
     }
   ],
   "dataHistory": [
@@ -4670,6 +4676,13 @@
     },
     "rambozhang": {
       "name": "寇启迪2",
+      "dept": "未指定部门",
+      "type": "fulltime",
+      "typeName": "正编",
+      "avatar": "#0066CC"
+    },
+    "rambokuku": {
+      "name": "酷酷龙",
       "dept": "未指定部门",
       "type": "fulltime",
       "typeName": "正编",
