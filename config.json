@@ -3277,16 +3277,14 @@
     },
     {
       "ioaId": "shireywu",
-      "name": "李大大",
-      "dept": "未指定部门",
+      "name": "啦啦打",
+      "dept": "技术发展部",
       "empType": "fulltime",
       "empTypeName": "正编",
       "requestedRole": "viewer",
-      "reason": "学习了解",
+      "reason": "有业务关联性",
       "date": "2026-04-20",
-      "status": "rejected",
-      "rejectReason": "业务相关性弱",
-      "processedDate": "2026-04-20"
+      "status": "pending"
     }
   ],
   "dataHistory": [
