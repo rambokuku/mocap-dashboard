@@ -3203,7 +3203,9 @@
       "requestedRole": "viewer",
       "reason": "学习了解",
       "date": "2026-04-19",
-      "status": "pending"
+      "status": "rejected",
+      "rejectReason": "审批人未通过",
+      "processedDate": "2026-04-19"
     }
   ],
   "dataHistory": [
