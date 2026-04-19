@@ -1669,6 +1669,7 @@ if(cfg.directory){DYNAMIC_DIR=cfg.directory;_rebuildDynHash()}
 
 /* 数据加载优先级：GitHub远程 > localStorage > config.json本地文件 > 硬编码默认值 */
 let _dataReady=false;
+let _authFromRemote=false;/* 标记权限数据是否从远程加载成功（用于 auto-login 安全判断） */
 async function _initData(){
 let loaded=false;
 /* 1. 尝试从 GitHub API 加载最新数据（需要已配置 token） */
@@ -1676,7 +1677,7 @@ const ghData=await ghLoad();
 if(ghData&&ghData.content){
 applyCfgJSON(ghData.content);
 save();/* 同步到 localStorage */
-loaded=true;
+loaded=true;_authFromRemote=true;
 console.log('✅ 从 GitHub 远程加载最新数据');
 }
 /* 2. GitHub 不可用时，回退到 localStorage */
@@ -1778,7 +1779,7 @@ else{ms.status='p'}
 }
 
 /* Auto-login on page load — 必须在 D 和 _initData 定义之后执行 */
-(async function(){await _initData();let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);if(gR(s)){/* 关键修复：恢复会话时，确保隐式用户也在 AU.users 中 */if(!AU.users[s]){AU.users[s]={role:gR(s)||'viewer',added:getBJDate()};const _h=_hashCache[s];if(_h&&!DYNAMIC_DIR[s]){const _ioaE=IOA_USERS_HASH[_h];const _dynE=DYNAMIC_USERS_HASH[_h];const _info=_ioaE?decryptUser(_ioaE,s):(_dynE?decryptUser(_dynE,s):null);if(_info&&_info.name){DYNAMIC_DIR[s]={name:_info.name,dept:_info.dept||'未指定部门',type:_info.type||'fulltime',typeName:_info.typeName||'员工',avatar:'#0066CC'};_rebuildDynHash();_saveDynDir()}}sAuth();console.log('✅ 会话恢复: 隐式用户 '+s+' 已自动注册到 AU.users')}/* Superadmin device check on session restore */if(gR(s)==='superadmin'){const devOk=await verifySuperadminDevice(s);if(!devOk){localStorage.removeItem('mocap_cur');localStorage.removeItem('mocap_ioa_id');await startIOAAuth();return}}AU.cur=s;_tryAutoToken();document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
+(async function(){await _initData();let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);/* 安全策略：远程数据未加载时，只信任 AU.users 白名单（不走哈希表路径，避免黑名单被绕过） */const role=_authFromRemote?gR(s):(AU.users[s]?.role||null);if(role){/* 关键修复：恢复会话时，确保隐式用户也在 AU.users 中 */if(!AU.users[s]){AU.users[s]={role:role,added:getBJDate()};const _h=_hashCache[s];if(_h&&!DYNAMIC_DIR[s]){const _ioaE=IOA_USERS_HASH[_h];const _dynE=DYNAMIC_USERS_HASH[_h];const _info=_ioaE?decryptUser(_ioaE,s):(_dynE?decryptUser(_dynE,s):null);if(_info&&_info.name){DYNAMIC_DIR[s]={name:_info.name,dept:_info.dept||'未指定部门',type:_info.type||'fulltime',typeName:_info.typeName||'员工',avatar:'#0066CC'};_rebuildDynHash();_saveDynDir()}}sAuth();console.log('✅ 会话恢复: 隐式用户 '+s+' 已自动注册到 AU.users')}/* Superadmin device check on session restore */if(gR(s)==='superadmin'){const devOk=await verifySuperadminDevice(s);if(!devOk){localStorage.removeItem('mocap_cur');localStorage.removeItem('mocap_ioa_id');await startIOAAuth();return}}AU.cur=s;_tryAutoToken();document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
 /* Anti-autofill: browsers may fill inputs AFTER JS runs, so schedule a delayed clear */
 [100,500,1500].forEach(t=>setTimeout(()=>{const inp=document.getElementById('loginNameInput');if(inp&&!inp.matches(':focus')&&document.getElementById('loginOv').style.display!=='none'){inp.value=''}},t));
 
@@ -2440,6 +2441,8 @@ if(idx>=pendingReqs.length)return;
 const req=pendingReqs[idx];
 const roleSelect=document.getElementById('approveRole_'+idx);
 const role=roleSelect?roleSelect.value:req.requestedRole;
+/* 安全检查：如果该用户在黑名单中，批准时自动移出黑名单 */
+if(AU.blocked&&AU.blocked[req.name]){delete AU.blocked[req.name]}
 /* Add user to authorized list */
 AU.users[req.name]={role:role,added:getBJDate()};
 sAuth();
@@ -2457,7 +2460,7 @@ const origIdx=AR.findIndex(r=>r===req);
 if(origIdx>-1){AR[origIdx].status='rejected';AR[origIdx].rejectReason=reason||'审批人未通过';AR[origIdx].processedDate=getBJDate()}
 sReq();rPerm();showToast('已拒绝 '+req.name+' 的权限申请');
 }
-function addU(){const ni=document.getElementById('nuName'),rs=document.getElementById('nuRole'),n=ni.value.trim(),r=rs.value;if(!n){showToast('请输入姓名',1);return}if(AU.users[n]){showToast('用户已存在',1);return}if(!isS()&&(r==='superadmin'||r==='admin')){showToast('无权添加此角色',1);return}AU.users[n]={role:r,added:new Date().toISOString().slice(0,10)};sAuth();rPerm();showToast(n+' 已添加为'+RL[r].l)}
+function addU(){const ni=document.getElementById('nuName'),rs=document.getElementById('nuRole'),n=ni.value.trim(),r=rs.value;if(!n){showToast('请输入姓名',1);return}if(AU.users[n]){showToast('用户已存在',1);return}if(!isS()&&(r==='superadmin'||r==='admin')){showToast('无权添加此角色',1);return}/* 安全检查：黑名单用户，超管添加时自动移出黑名单 */if(AU.blocked&&AU.blocked[n]){if(isS()){delete AU.blocked[n]}else{showToast(n+' 已被删除，需超管操作才能重新添加',1);return}}AU.users[n]={role:r,added:new Date().toISOString().slice(0,10)};sAuth();rPerm();showToast(n+' 已添加为'+RL[r].l)}
 
 /* ===== Directory Management (通讯录管理) ===== */
 function rDirList(){
@@ -2520,6 +2523,8 @@ if(!/^[a-zA-Z][\w]*$/.test(eid)){showToast('英文名格式不正确',1);return}
 const hash=await sha256(eid);
 if(IOA_USERS_HASH[hash]){showToast(eid+' 已在内置通讯录中，无需重复添加',1);return}
 if(DYNAMIC_DIR[eid]){showToast(eid+' 已在动态通讯录中',1);return}
+/* 安全检查：黑名单用户，超管添加时自动移出黑名单，非超管提示 */
+if(AU.blocked&&AU.blocked[eid]){if(isS()){delete AU.blocked[eid]}else{showToast(eid+' 已被删除，需超管操作才能重新添加',1);return}}
 DYNAMIC_DIR[eid]={name:name,dept:dept,type:type,typeName:typeNames[type]||'员工',avatar:'#0066CC'};
 /* 同时授权 */
 AU.users[eid]={role:role,added:getBJDate()};
@@ -3574,7 +3579,7 @@ h+='<span class="wx-type '+c.type+'">'+c.typeName+'</span>';
 h+='</div>';});h+='</div></div>'});ct.innerHTML=h}
 function toggleWxContact(el,name){const idx=wxSelectedNames.indexOf(name);if(idx>-1){wxSelectedNames.splice(idx,1);el.classList.remove('selected');el.querySelector('.wx-check').textContent=''}else{wxSelectedNames.push(name);el.classList.add('selected');el.querySelector('.wx-check').textContent='✓'}updateWxFooter()}
 function updateWxFooter(){document.getElementById('wxSelectedCount').textContent=wxSelectedNames.length;document.getElementById('wxConfirmBtn').disabled=wxSelectedNames.length===0}
-function confirmWxPick(){if(!wxSelectedNames.length)return;const rs=document.getElementById('nuRole');const role=rs?rs.value:'viewer';let added=0;wxSelectedNames.forEach(uid=>{if(AU.users[uid])return;if(!isS()&&(role==='superadmin'||role==='admin'))return;AU.users[uid]={role:role,added:new Date().toISOString().slice(0,10),displayName:uid};added++});sAuth();closeWxPicker();rPerm();if(added>0)showToast(`已从企业微信添加 ${added} 名${RL[role].l}成员`);else showToast('所选成员已存在或无权添加',1)}
+function confirmWxPick(){if(!wxSelectedNames.length)return;const rs=document.getElementById('nuRole');const role=rs?rs.value:'viewer';let added=0;let blockedSkip=[];wxSelectedNames.forEach(uid=>{if(AU.users[uid])return;if(!isS()&&(role==='superadmin'||role==='admin'))return;/* 安全检查：如果在黑名单中，超管添加时自动移出黑名单，非超管跳过 */if(AU.blocked&&AU.blocked[uid]){if(isS()){delete AU.blocked[uid]}else{blockedSkip.push(uid);return}}AU.users[uid]={role:role,added:new Date().toISOString().slice(0,10),displayName:uid};added++});sAuth();closeWxPicker();rPerm();if(blockedSkip.length)showToast(blockedSkip.join(',')+'在黑名单中，需超管添加',1);else if(added>0)showToast(`已从企业微信添加 ${added} 名${RL[role].l}成员`);else showToast('所选成员已存在或无权添加',1)}
 function umf(mid,f,v){const m=D.modules.find(x=>x.id===mid);if(m)m[f]=v}
 function _stripHtml(s){if(!s)return'';return s.replace(/<br\s*\/?>/gi,'\n').replace(/<[^>]+>/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#39;/g,"'")}
 function _buildCatOptions(cur){const cats=new Set();D.modules.forEach(m=>cats.add(m.category));cats.add('hardware');cats.add('software');cats.add('operations');const labels={hardware:'硬件建设',software:'软件开发',operations:'运营推广'};let h='';cats.forEach(c=>{const l=labels[c]||c;h+=`<option value="${c}"${c===cur?' selected':''}>${l}</option>`;});h+='<option value="__custom">+ 新建类别...</option>';return h}
