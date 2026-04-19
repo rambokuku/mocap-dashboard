@@ -1675,7 +1675,7 @@ try{
 const headers={'Accept':'application/vnd.github.v3+json'};
 const token=getGHToken();if(token)headers['Authorization']=`token ${token}`;
 /* noCache 模式：绕过 GitHub CDN 缓存（用于轮询场景） */
-if(noCache){headers['If-None-Match']='';headers['Cache-Control']='no-cache'}
+if(noCache){headers['Cache-Control']='no-cache, no-store, must-revalidate';headers['Pragma']='no-cache'}
 /* 5秒超时，避免移动网络下 GitHub API 无限挂起 */
 const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),5000);
 const url=`${GH_API}/repos/${GH_REPO}/contents/${GH_FILE}`+(noCache?`?_t=${Date.now()}`:'');
@@ -4112,29 +4112,34 @@ const c=AR.filter(r=>r.status==='pending').length;
 _lastPendingCount=c;
 _updateBannerDOM(c);
 }
+var _pollBusy=false;/* 防止并发轮询（上一次还没结束时跳过） */
+var _pollFailCount=0;/* 连续失败计数 */
 async function _pollOnce(){
-if(!AU.cur)return;/* 未登录不轮询 */
-if(!canM())return;/* 非管理员不需要轮询 */
+if(_pollBusy)return;/* 上一次轮询还没结束，跳过 */
+if(!AU.cur){console.log('⏭️ 轮询跳过: AU.cur 为空');return}
+if(!canM()){console.log('⏭️ 轮询跳过: 非管理员');return}
+if(!getGHToken()){console.warn('⏭️ 轮询跳过: 无 GitHub Token（未认证限额仅60次/小时，不够轮询）');_stopPoll();return}
+_pollBusy=true;
 try{
 _polling=true;
 const ghData=await ghLoad(true);/* noCache=true 绕过 CDN 缓存 */
-if(ghData&&ghData.content){
+if(!ghData){_pollFailCount++;console.warn('⏭️ 轮询: ghLoad 返回 null (连续失败'+_pollFailCount+'次)');if(_pollFailCount>=10){console.error('❌ 轮询连续失败10次，暂停轮询');_stopPoll()}return}
+_pollFailCount=0;/* 成功则重置 */
+if(!ghData.content){console.warn('⏭️ 轮询: ghData.content 为空');return}
 const newAR=ghData.content.accessRequests||[];
 const newPending=newAR.filter(r=>r.status==='pending').length;
-/* 首次轮询时初始化 _lastPendingCount */
-if(_lastPendingCount===-1){_lastPendingCount=newPending;_updateBannerDOM(newPending);console.log('🔄 轮询初始化: pending='+newPending);return}
+console.log('🔄 轮询检查: 远端pending='+newPending+', 本地记录='+_lastPendingCount);
 if(newPending!==_lastPendingCount){
 /* 有变化：更新 AR 并刷新通知条 */
 AR=newAR;sReq();/* _polling=true 阻止回写 */
 _updateBannerDOM(newPending);
 /* 如果新增了申请，弹 toast 提醒 */
-if(newPending>_lastPendingCount){showToast('🔔 收到 '+(newPending-_lastPendingCount)+' 条新权限申请')}
+if(newPending>_lastPendingCount&&_lastPendingCount!==-1){showToast('🔔 收到 '+(newPending-_lastPendingCount)+' 条新权限申请')}
 _lastPendingCount=newPending;
-console.log('🔄 轮询检测到申请变化: pending='+newPending);
-}
+console.log('🔄 轮询检测到变化: pending 更新为 '+newPending);
 }
 }catch(e){console.warn('轮询失败',e)}
-finally{_polling=false}
+finally{_polling=false;_pollBusy=false}
 }
 function _startPoll(){if(_pollTimer)return;_pollTimer=setInterval(_pollOnce,_pollInterval);_pollStarted=true}
 function _stopPoll(){if(_pollTimer){clearInterval(_pollTimer);_pollTimer=null}}
@@ -4143,16 +4148,30 @@ document.addEventListener('visibilitychange',function(){
 if(!_pollStarted)return;
 if(document.hidden){_stopPoll()}else{_startPoll();_pollOnce()/* 切回时立即检查一次 */}
 });
-/* 延迟启动：等待 Auto-login IIFE 完成后再开始轮询（2 秒后检查登录状态） */
+/* 延迟启动：等待 Auto-login IIFE 完成后再开始轮询 */
+var _tryStartPollCount=0;
 setTimeout(function _tryStartPoll(){
+_tryStartPollCount++;
+console.log('🔧 _tryStartPoll 第'+_tryStartPollCount+'次检查: AU.cur='+AU.cur+', canM()='+(AU.cur?canM():'N/A')+', hasToken='+(!!getGHToken())+', _dataReady='+_dataReady);
 if(AU.cur&&canM()){
+if(!getGHToken()){
+console.warn('⚠️ 管理员已登录但无 GitHub Token，轮询无法启动（未认证 API 限额仅60次/小时）');
+/* 再等几秒，给 _tryAutoToken 时间 */
+if(_tryStartPollCount<10){setTimeout(_tryStartPoll,1000);return}
+console.warn('❌ 等待 Token 超时，轮询不启动');
+return;
+}
 _lastPendingCount=AR.filter(r=>r.status==='pending').length;
-_startPoll();_pollOnce();
+_startPoll();
 console.log('✅ 后台轮询已启动（每'+_pollInterval/1000+'秒检查新申请，当前pending='+_lastPendingCount+'）');
-}else if(!AU.cur){
-/* 还没登录，继续等 */
+/* 立即执行第一次轮询 */
+_pollOnce();
+}else if(!AU.cur&&_tryStartPollCount<30){
+/* 还没登录，继续等（最多重试30次=30秒） */
 setTimeout(_tryStartPoll,1000);
-}/* 非管理员不启动轮询 */
+}else{
+console.log('ℹ️ 轮询未启动: '+(AU.cur?'非管理员':'超时未登录'));
+}
 },2000);
 </script>
 </body>
