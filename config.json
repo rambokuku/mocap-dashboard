@@ -3183,6 +3183,10 @@
       "ztsun": {
         "role": "viewer",
         "added": "2026-04-19"
+      },
+      "irisdeng": {
+        "role": "editor",
+        "added": "2026-04-19"
       }
     },
     "blocked": {
@@ -3195,10 +3199,6 @@
         "removedAt": "2026-04-19"
       },
       "rambokuku": {
-        "removedBy": "rambokou",
-        "removedAt": "2026-04-19"
-      },
-      "irisdeng": {
         "removedBy": "rambokou",
         "removedAt": "2026-04-19"
       }
@@ -3254,7 +3254,9 @@
       "requestedRole": "editor",
       "reason": "无",
       "date": "2026-04-19",
-      "status": "pending"
+      "status": "approved",
+      "approvedRole": "editor",
+      "processedDate": "2026-04-19"
     }
   ],
   "dataHistory": [
