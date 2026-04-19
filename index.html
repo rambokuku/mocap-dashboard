@@ -627,7 +627,8 @@ try{const s=localStorage.getItem('mocap_auth_v2');if(s){const p=JSON.parse(s);AU
 let AR=[];
 try{const s=localStorage.getItem('mocap_access_req');if(s)AR=JSON.parse(s)}catch(e){}
 function sAuth(){localStorage.setItem('mocap_auth_v2',JSON.stringify({users:AU.users,blocked:AU.blocked||{}}));_syncGH('chore: 权限变更')}
-function sReq(){localStorage.setItem('mocap_access_req',JSON.stringify(AR));_syncGH('chore: 权限申请更新')}
+let _polling=false;/* 轮询模式标志：为 true 时 sReq() 跳过 _syncGH 回写，避免死循环 */
+function sReq(){localStorage.setItem('mocap_access_req',JSON.stringify(AR));if(!_polling)_syncGH('chore: 权限申请更新')}
 /* 防抖：权限变更频繁时合并 GitHub 同步请求 */
 let _ghSyncTimer=null;
 function _syncGH(msg){
@@ -4086,6 +4087,53 @@ indicator.style.height='0px';indicator.classList.remove('active');
 },{passive:true});
 })();
 render();
+
+/* ===== 后台轮询：定时检测新权限申请（30s 间隔） ===== */
+(function initPollNotify(){
+const POLL_INTERVAL=30000;/* 30 秒 */
+let _pollTimer=null;
+let _lastPendingCount=AR.filter(r=>r.status==='pending').length;
+/* 局部更新通知条 DOM，不做完整 render */
+function _updateBannerDOM(newCount){
+const main=document.getElementById('main');if(!main)return;
+const existing=main.querySelector('.notify-banner');
+if(newCount>0&&canM()){
+const bannerHtml=`<div class="notify-banner ain" onclick="toggleCfg();setTimeout(()=>stab('notify',null),200)"><div class="notify-banner-icon">🔔</div><div class="notify-banner-text"><strong>${newCount} 条权限申请待审批</strong><span>点击前往处理</span></div><div class="notify-banner-badge">${newCount}</div><div class="notify-banner-arrow">›</div></div>`;
+if(existing){existing.outerHTML=bannerHtml}
+else{const hero=main.querySelector('.hero');if(hero){hero.insertAdjacentHTML('beforebegin',bannerHtml)}}
+}else{if(existing)existing.remove()}
+}
+async function _pollOnce(){
+if(!AU.cur)return;/* 未登录不轮询 */
+if(!canM())return;/* 非管理员不需要轮询 */
+try{
+_polling=true;
+const ghData=await ghLoad();
+if(ghData&&ghData.content){
+const newAR=ghData.content.accessRequests||[];
+const newPending=newAR.filter(r=>r.status==='pending').length;
+if(newPending!==_lastPendingCount){
+/* 有变化：更新 AR 并刷新通知条 */
+AR=newAR;sReq();/* _polling=true 阻止回写 */
+_updateBannerDOM(newPending);
+/* 如果新增了申请，弹 toast 提醒 */
+if(newPending>_lastPendingCount){showToast('🔔 收到 '+(newPending-_lastPendingCount)+' 条新权限申请')}
+_lastPendingCount=newPending;
+console.log('🔄 轮询检测到申请变化: pending='+newPending);
+}
+}
+}catch(e){console.warn('轮询失败',e)}
+finally{_polling=false}
+}
+function _startPoll(){if(_pollTimer)return;_pollTimer=setInterval(_pollOnce,POLL_INTERVAL)}
+function _stopPoll(){if(_pollTimer){clearInterval(_pollTimer);_pollTimer=null}}
+/* 页面可见性切换：不可见时暂停轮询，可见时恢复 */
+document.addEventListener('visibilitychange',function(){
+if(document.hidden){_stopPoll()}else{_startPoll();_pollOnce()/* 切回时立即检查一次 */}
+});
+_startPoll();
+console.log('✅ 后台轮询已启动（每'+POLL_INTERVAL/1000+'秒检查新申请）');
+})();
 </script>
 </body>
 </html>
