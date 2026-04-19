@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-19T21:46",
+    "updateDate": "2026-04-19T22:16",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -3183,10 +3183,6 @@
       "ztsun": {
         "role": "viewer",
         "added": "2026-04-19"
-      },
-      "rambokuku": {
-        "role": "viewer",
-        "added": "2026-04-19"
       }
     },
     "blocked": {
@@ -3195,6 +3191,10 @@
         "removedAt": "2026-04-19"
       },
       "rambozhang": {
+        "removedBy": "rambokou",
+        "removedAt": "2026-04-19"
+      },
+      "rambokuku": {
         "removedBy": "rambokou",
         "removedAt": "2026-04-19"
       }
