@@ -3193,7 +3193,19 @@
     },
     "ghToken": "CgcTPiMVVDEqOQwuEh8VGXhRRkYHOwctNWgxOCQNDipQGlVfS0Nxfg=="
   },
-  "accessRequests": [],
+  "accessRequests": [
+    {
+      "ioaId": "rambozhang",
+      "name": "寇启迪",
+      "dept": "未指定部门",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "viewer",
+      "reason": "学习了解",
+      "date": "2026-04-19",
+      "status": "pending"
+    }
+  ],
   "dataHistory": [
     {
       "time": "2026-04-18T00:47",
