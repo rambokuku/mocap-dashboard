@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-20T13:40",
+    "updateDate": "2026-04-20T13:41",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -369,56 +369,6 @@
               "title": "合同系统流程",
               "start": "2026-04-23",
               "end": "2026-04-30",
-              "status": "p",
-              "_progress": 0
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "mod_1776663551786",
-      "category": "lalalhezuo",
-      "title": "lalalhezuo",
-      "subtitle": "请编辑",
-      "overallProgress": 0,
-      "status": "inprogress",
-      "items": [
-        {
-          "id": "item_1776663551786",
-          "title": "lalalhezuo - 新子项目",
-          "dateRange": "04.20 - 04.23",
-          "description": "请编辑描述",
-          "progressLabel": "整体进度",
-          "progress": 0,
-          "progressColor": "pu",
-          "ganttLabel": "lalalhezuo",
-          "ganttSubLabel": "",
-          "ganttBars": [
-            {
-              "title": "新任务",
-              "start": "2026-04-20",
-              "end": "2026-04-23",
-              "status": "i",
-              "_progress": 0
-            }
-          ]
-        },
-        {
-          "id": "item_1776663560484",
-          "title": "lala 合作 1",
-          "dateRange": "04.21 - 05.07",
-          "description": "请编辑描述待会说大派送多久啊啥的加上",
-          "progressLabel": "整体进度",
-          "progress": 0,
-          "progressColor": "pu",
-          "ganttLabel": "lala 合作 1",
-          "ganttSubLabel": "",
-          "ganttBars": [
-            {
-              "title": "lala 合作 1",
-              "start": "2026-04-21",
-              "end": "2026-05-07",
               "status": "p",
               "_progress": 0
             }
@@ -3751,6 +3701,13 @@
       "type": "edit",
       "scope": "lalalhezuo/lala 合作 1",
       "detail": "「lala 合作 1」结束日期：(空) → 2026-05-07"
+    },
+    {
+      "time": "2026-04-20T13:41",
+      "user": "rambokou",
+      "type": "del",
+      "scope": "模块",
+      "detail": "删除一级模块「lalalhezuo」"
     }
   ],
   "dataSnapshots": {
@@ -4665,7 +4622,7 @@
     "2026-04-20": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-20T13:40",
+        "updateDate": "2026-04-20T13:41",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -5033,56 +4990,6 @@
                   "title": "合同系统流程",
                   "start": "2026-04-23",
                   "end": "2026-04-30",
-                  "status": "p",
-                  "_progress": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "mod_1776663551786",
-          "category": "lalalhezuo",
-          "title": "lalalhezuo",
-          "subtitle": "请编辑",
-          "overallProgress": 0,
-          "status": "planned",
-          "items": [
-            {
-              "id": "item_1776663551786",
-              "title": "lalalhezuo - 新子项目",
-              "dateRange": "",
-              "description": "请编辑描述",
-              "progressLabel": "整体进度",
-              "progress": 0,
-              "progressColor": "pu",
-              "ganttLabel": "lalalhezuo",
-              "ganttSubLabel": "",
-              "ganttBars": [
-                {
-                  "title": "新任务",
-                  "start": "2026-04-20",
-                  "end": "2026-04-23",
-                  "status": "p",
-                  "_progress": 0
-                }
-              ]
-            },
-            {
-              "id": "item_1776663560484",
-              "title": "lala 合作 1",
-              "dateRange": "",
-              "description": "请编辑描述待会说大派送多久啊啥的加上",
-              "progressLabel": "整体进度",
-              "progress": 0,
-              "progressColor": "pu",
-              "ganttLabel": "lala 合作 1",
-              "ganttSubLabel": "",
-              "ganttBars": [
-                {
-                  "title": "lala 合作 1",
-                  "start": "2026-04-21",
-                  "end": "2026-05-07",
                   "status": "p",
                   "_progress": 0
                 }
