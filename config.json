@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-19T23:56",
+    "updateDate": "2026-04-20T13:39",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -369,6 +369,56 @@
               "title": "合同系统流程",
               "start": "2026-04-23",
               "end": "2026-04-30",
+              "status": "p",
+              "_progress": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mod_1776663551786",
+      "category": "lalalhezuo",
+      "title": "lalalhezuo",
+      "subtitle": "请编辑",
+      "overallProgress": 0,
+      "status": "planned",
+      "items": [
+        {
+          "id": "item_1776663551786",
+          "title": "lalalhezuo - 新子项目",
+          "dateRange": "",
+          "description": "请编辑描述",
+          "progressLabel": "整体进度",
+          "progress": 0,
+          "progressColor": "pu",
+          "ganttLabel": "lalalhezuo",
+          "ganttSubLabel": "",
+          "ganttBars": [
+            {
+              "title": "新任务",
+              "start": "",
+              "end": "",
+              "status": "p",
+              "_progress": 0
+            }
+          ]
+        },
+        {
+          "id": "item_1776663560484",
+          "title": "lala 合作 1",
+          "dateRange": "",
+          "description": "请编辑描述待会说大派送多久啊啥的加上",
+          "progressLabel": "整体进度",
+          "progress": 0,
+          "progressColor": "pu",
+          "ganttLabel": "lala 合作 1",
+          "ganttSubLabel": "",
+          "ganttBars": [
+            {
+              "title": "lala 合作 1",
+              "start": "",
+              "end": "",
               "status": "p",
               "_progress": 0
             }
