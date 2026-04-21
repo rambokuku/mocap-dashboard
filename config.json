@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-21T14:34",
+    "updateDate": "2026-04-21T14:38",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -368,36 +368,6 @@
             {
               "title": "合同系统流程",
               "start": "2026-04-23",
-              "end": "2026-04-30",
-              "status": "p",
-              "_progress": 0
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "mod_1776753268718",
-      "category": "___1",
-      "title": "新模块1",
-      "subtitle": "请编辑",
-      "overallProgress": 0,
-      "status": "planned",
-      "items": [
-        {
-          "id": "item_1776753268718",
-          "title": "新模块1 - 新子项目",
-          "dateRange": "04.22 - 04.30",
-          "description": "11111111",
-          "progressLabel": "整体进度",
-          "progress": 0,
-          "progressColor": "pu",
-          "ganttLabel": "新模块1",
-          "ganttSubLabel": "",
-          "ganttBars": [
-            {
-              "title": "新任务",
-              "start": "2026-04-22",
               "end": "2026-04-30",
               "status": "p",
               "_progress": 0
@@ -3772,6 +3742,13 @@
       "type": "edit",
       "scope": "新模块1/新模块1 - 新子项目",
       "detail": "「新任务」结束日期：(空) → 2026-04-30"
+    },
+    {
+      "time": "2026-04-21T14:38",
+      "user": "rambokou",
+      "type": "del",
+      "scope": "模块",
+      "detail": "删除一级模块「新模块1」"
     }
   ],
   "dataSnapshots": {
@@ -5140,7 +5117,7 @@
     "2026-04-21": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-21T14:34",
+        "updateDate": "2026-04-21T14:38",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -5507,36 +5484,6 @@
                 {
                   "title": "合同系统流程",
                   "start": "2026-04-23",
-                  "end": "2026-04-30",
-                  "status": "p",
-                  "_progress": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "mod_1776753268718",
-          "category": "___1",
-          "title": "新模块1",
-          "subtitle": "请编辑",
-          "overallProgress": 0,
-          "status": "planned",
-          "items": [
-            {
-              "id": "item_1776753268718",
-              "title": "新模块1 - 新子项目",
-              "dateRange": "",
-              "description": "11111111",
-              "progressLabel": "整体进度",
-              "progress": 0,
-              "progressColor": "pu",
-              "ganttLabel": "新模块1",
-              "ganttSubLabel": "",
-              "ganttBars": [
-                {
-                  "title": "新任务",
-                  "start": "2026-04-22",
                   "end": "2026-04-30",
                   "status": "p",
                   "_progress": 0
