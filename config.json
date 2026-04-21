@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-21T13:57",
+    "updateDate": "2026-04-21T14:34",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -369,6 +369,36 @@
               "title": "合同系统流程",
               "start": "2026-04-23",
               "end": "2026-04-30",
+              "status": "p",
+              "_progress": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mod_1776753268718",
+      "category": "___1",
+      "title": "新模块1",
+      "subtitle": "请编辑",
+      "overallProgress": 0,
+      "status": "planned",
+      "items": [
+        {
+          "id": "item_1776753268718",
+          "title": "新模块1 - 新子项目",
+          "dateRange": "",
+          "description": "11111111",
+          "progressLabel": "整体进度",
+          "progress": 0,
+          "progressColor": "pu",
+          "ganttLabel": "新模块1",
+          "ganttSubLabel": "",
+          "ganttBars": [
+            {
+              "title": "新任务",
+              "start": "",
+              "end": "",
               "status": "p",
               "_progress": 0
             }
