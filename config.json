@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-21T19:41",
+    "updateDate": "2026-04-21T19:43",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -395,13 +395,13 @@
       "items": [
         {
           "id": "item_1776771317893",
-          "title": "数据精修 - 搭建策略确认",
+          "title": "搭建策略确认",
           "dateRange": "",
           "description": "数据精修搭建方案确认：基地 or CP承建方案可行性调研",
           "progressLabel": "整体进度",
           "progress": 0,
           "progressColor": "pu",
-          "ganttLabel": "数据精修 - 搭建策略确认",
+          "ganttLabel": "搭建策略确认",
           "ganttSubLabel": "",
           "ganttBars": [
             {
@@ -3842,6 +3842,13 @@
       "type": "add",
       "scope": "模块",
       "detail": "新增一级模块「数据精修」"
+    },
+    {
+      "time": "2026-04-21T19:43",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "数据精修/搭建策略确认",
+      "detail": "子项目标题：数据精修 - 搭建策略确认 → 搭建策略确认"
     }
   ],
   "dataSnapshots": {
@@ -5210,7 +5217,7 @@
     "2026-04-21": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-21T19:41",
+        "updateDate": "2026-04-21T19:43",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -5604,20 +5611,21 @@
           "items": [
             {
               "id": "item_1776771317893",
-              "title": "数据精修 - 搭建策略确认",
+              "title": "搭建策略确认",
               "dateRange": "",
               "description": "数据精修搭建方案确认：基地 or CP承建方案可行性调研",
               "progressLabel": "整体进度",
               "progress": 0,
-              "progressColor": "bl",
-              "ganttLabel": "数据精修 - 搭建策略确认",
+              "progressColor": "pu",
+              "ganttLabel": "搭建策略确认",
               "ganttSubLabel": "",
               "ganttBars": [
                 {
                   "title": "新任务",
                   "start": "",
                   "end": "",
-                  "status": "p"
+                  "status": "p",
+                  "_progress": 0
                 }
               ]
             },
@@ -5628,7 +5636,7 @@
               "description": "招聘子岗团队为监修主力，撬动CP实现精修业务的量产，降本增效",
               "progressLabel": "整体进度",
               "progress": 0,
-              "progressColor": "bl",
+              "progressColor": "pu",
               "ganttLabel": "精修人员招聘",
               "ganttSubLabel": "",
               "ganttBars": [
@@ -5636,7 +5644,8 @@
                   "title": "精修人员招聘",
                   "start": "",
                   "end": "",
-                  "status": "p"
+                  "status": "p",
+                  "_progress": 0
                 }
               ]
             },
@@ -5647,7 +5656,7 @@
               "description": "对精修团队进行系统的专业赋能培训",
               "progressLabel": "整体进度",
               "progress": 0,
-              "progressColor": "bl",
+              "progressColor": "pu",
               "ganttLabel": "精修团队培训规划",
               "ganttSubLabel": "",
               "ganttBars": [
@@ -5655,7 +5664,8 @@
                   "title": "精修团队培训规划",
                   "start": "",
                   "end": "",
-                  "status": "p"
+                  "status": "p",
+                  "_progress": 0
                 }
               ]
             }
