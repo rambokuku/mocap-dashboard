@@ -461,12 +461,12 @@
       "title": "11111111",
       "subtitle": "请编辑",
       "overallProgress": 0,
-      "status": "planned",
+      "status": "inprogress",
       "items": [
         {
           "id": "item_1776773597160",
           "title": "11111111 - 新子项目",
-          "dateRange": "",
+          "dateRange": "04.21 - 05.01",
           "description": "dbjkqbdqwkd",
           "progressLabel": "整体进度",
           "progress": 0,
@@ -476,9 +476,9 @@
           "ganttBars": [
             {
               "title": "新任务",
-              "start": "",
-              "end": "",
-              "status": "p",
+              "start": "2026-04-21",
+              "end": "2026-05-01",
+              "status": "i",
               "_progress": 0
             }
           ]
@@ -3963,6 +3963,20 @@
       "type": "add",
       "scope": "模块",
       "detail": "新增一级模块「11111111」"
+    },
+    {
+      "time": "2026-04-21T20:13",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "11111111/11111111 - 新子项目",
+      "detail": "「新任务」开始日期：(空) → 2026-04-21"
+    },
+    {
+      "time": "2026-04-21T20:13",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "11111111/11111111 - 新子项目",
+      "detail": "「新任务」结束日期：(空) → 2026-05-01"
     }
   ],
   "dataSnapshots": {
@@ -5800,15 +5814,16 @@
               "description": "dbjkqbdqwkd",
               "progressLabel": "整体进度",
               "progress": 0,
-              "progressColor": "bl",
+              "progressColor": "pu",
               "ganttLabel": "11111111",
               "ganttSubLabel": "",
               "ganttBars": [
                 {
                   "title": "新任务",
-                  "start": "",
-                  "end": "",
-                  "status": "p"
+                  "start": "2026-04-21",
+                  "end": "2026-05-01",
+                  "status": "p",
+                  "_progress": 0
                 }
               ]
             }
