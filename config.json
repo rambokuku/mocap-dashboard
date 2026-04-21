@@ -3179,6 +3179,10 @@
       "ztsun": {
         "role": "viewer",
         "added": "2026-04-19"
+      },
+      "tinayue": {
+        "role": "viewer",
+        "added": "2026-04-21"
       }
     },
     "blocked": {
@@ -3201,10 +3205,6 @@
       "ramboli": {
         "removedBy": "rambokou",
         "removedAt": "2026-04-19"
-      },
-      "tinayue": {
-        "removedBy": "rambokou",
-        "removedAt": "2026-04-21"
       }
     },
     "ghToken": "CgcTPiMVVDEqOQwuEh8VGXhRRkYHOwctNWgxOCQNDipQGlVfS0Nxfg=="
@@ -3310,7 +3310,9 @@
       "requestedRole": "viewer",
       "reason": "求求了",
       "date": "2026-04-21",
-      "status": "pending"
+      "status": "approved",
+      "approvedRole": "viewer",
+      "processedDate": "2026-04-21"
     }
   ],
   "dataHistory": [
@@ -5734,6 +5736,13 @@
       "dept": "未指定部门",
       "type": "vgang",
       "typeName": "V岗",
+      "avatar": "#0066CC"
+    },
+    "tinayue": {
+      "name": "岳婷",
+      "dept": "互动娱乐/光子工作室群/技术美术中心/其他",
+      "type": "fulltime",
+      "typeName": "正编",
       "avatar": "#0066CC"
     }
   }
