@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-21T14:38",
+    "updateDate": "2026-04-21T19:29",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -3749,6 +3749,13 @@
       "type": "del",
       "scope": "模块",
       "detail": "删除一级模块「新模块1」"
+    },
+    {
+      "time": "2026-04-21T19:29",
+      "user": "rambokou",
+      "type": "del",
+      "scope": "模块",
+      "detail": "删除一级模块「新模块」"
     }
   ],
   "dataSnapshots": {
@@ -5117,7 +5124,7 @@
     "2026-04-21": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-21T14:38",
+        "updateDate": "2026-04-21T19:29",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
