@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-21T20:13",
+    "updateDate": "2026-04-21T20:14",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -445,15 +445,6 @@
           ]
         }
       ]
-    },
-    {
-      "id": "mod_1776773570993",
-      "category": "mod_1776773570993",
-      "title": "新模块",
-      "subtitle": "请编辑",
-      "overallProgress": 0,
-      "status": "planned",
-      "items": []
     },
     {
       "id": "mod_1776773597160",
@@ -3977,6 +3968,13 @@
       "type": "edit",
       "scope": "11111111/11111111 - 新子项目",
       "detail": "「新任务」结束日期：(空) → 2026-05-01"
+    },
+    {
+      "time": "2026-04-21T20:14",
+      "user": "rambokou",
+      "type": "del",
+      "scope": "模块",
+      "detail": "删除一级模块「新模块」"
     }
   ],
   "dataSnapshots": {
@@ -5345,7 +5343,7 @@
     "2026-04-21": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-21T20:13",
+        "updateDate": "2026-04-21T20:14",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -5791,26 +5789,17 @@
           ]
         },
         {
-          "id": "mod_1776773570993",
-          "category": "mod_1776773570993",
-          "title": "新模块",
-          "subtitle": "请编辑",
-          "overallProgress": 0,
-          "status": "planned",
-          "items": []
-        },
-        {
           "id": "mod_1776773597160",
           "category": "11111111",
           "title": "11111111",
           "subtitle": "请编辑",
           "overallProgress": 0,
-          "status": "planned",
+          "status": "inprogress",
           "items": [
             {
               "id": "item_1776773597160",
               "title": "11111111 - 新子项目",
-              "dateRange": "",
+              "dateRange": "04.21 - 05.01",
               "description": "dbjkqbdqwkd",
               "progressLabel": "整体进度",
               "progress": 0,
@@ -5822,7 +5811,7 @@
                   "title": "新任务",
                   "start": "2026-04-21",
                   "end": "2026-05-01",
-                  "status": "p",
+                  "status": "i",
                   "_progress": 0
                 }
               ]
