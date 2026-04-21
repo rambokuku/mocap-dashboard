@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-21T19:43",
+    "updateDate": "2026-04-21T19:45",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -396,7 +396,7 @@
         {
           "id": "item_1776771317893",
           "title": "搭建策略确认",
-          "dateRange": "",
+          "dateRange": "04.22 - 05.22",
           "description": "数据精修搭建方案确认：基地 or CP承建方案可行性调研",
           "progressLabel": "整体进度",
           "progress": 0,
@@ -405,9 +405,9 @@
           "ganttSubLabel": "",
           "ganttBars": [
             {
-              "title": "新任务",
-              "start": "",
-              "end": "",
+              "title": "搭建策略确认",
+              "start": "2026-04-22",
+              "end": "2026-05-22",
               "status": "p",
               "_progress": 0
             }
@@ -416,7 +416,7 @@
         {
           "id": "item_1776771527748",
           "title": "精修人员招聘",
-          "dateRange": "",
+          "dateRange": "05.07 - 07.07",
           "description": "招聘子岗团队为监修主力，撬动CP实现精修业务的量产，降本增效",
           "progressLabel": "整体进度",
           "progress": 0,
@@ -426,8 +426,8 @@
           "ganttBars": [
             {
               "title": "精修人员招聘",
-              "start": "",
-              "end": "",
+              "start": "2026-05-07",
+              "end": "2026-07-07",
               "status": "p",
               "_progress": 0
             }
@@ -436,7 +436,7 @@
         {
           "id": "item_1776771631190",
           "title": "精修团队培训规划",
-          "dateRange": "",
+          "dateRange": "04.22 - 07.14",
           "description": "对精修团队进行系统的专业赋能培训",
           "progressLabel": "整体进度",
           "progress": 0,
@@ -446,8 +446,8 @@
           "ganttBars": [
             {
               "title": "精修团队培训规划",
-              "start": "",
-              "end": "",
+              "start": "2026-04-22",
+              "end": "2026-07-14",
               "status": "p",
               "_progress": 0
             }
@@ -3849,6 +3849,55 @@
       "type": "edit",
       "scope": "数据精修/搭建策略确认",
       "detail": "子项目标题：数据精修 - 搭建策略确认 → 搭建策略确认"
+    },
+    {
+      "time": "2026-04-21T19:45",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "数据精修/搭建策略确认",
+      "detail": "甘特条标题：新任务 → 搭建策略确认"
+    },
+    {
+      "time": "2026-04-21T19:45",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "数据精修/搭建策略确认",
+      "detail": "「搭建策略确认」开始日期：(空) → 2026-04-22"
+    },
+    {
+      "time": "2026-04-21T19:45",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "数据精修/搭建策略确认",
+      "detail": "「搭建策略确认」结束日期：(空) → 2026-05-22"
+    },
+    {
+      "time": "2026-04-21T19:45",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "数据精修/精修人员招聘",
+      "detail": "「精修人员招聘」开始日期：(空) → 2026-05-07"
+    },
+    {
+      "time": "2026-04-21T19:45",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "数据精修/精修人员招聘",
+      "detail": "「精修人员招聘」结束日期：(空) → 2026-07-07"
+    },
+    {
+      "time": "2026-04-21T19:45",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "数据精修/精修团队培训规划",
+      "detail": "「精修团队培训规划」开始日期：(空) → 2026-04-22"
+    },
+    {
+      "time": "2026-04-21T19:45",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "数据精修/精修团队培训规划",
+      "detail": "「精修团队培训规划」结束日期：(空) → 2026-07-14"
     }
   ],
   "dataSnapshots": {
@@ -5217,7 +5266,7 @@
     "2026-04-21": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-21T19:43",
+        "updateDate": "2026-04-21T19:45",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -5621,9 +5670,9 @@
               "ganttSubLabel": "",
               "ganttBars": [
                 {
-                  "title": "新任务",
-                  "start": "",
-                  "end": "",
+                  "title": "搭建策略确认",
+                  "start": "2026-04-22",
+                  "end": "2026-05-22",
                   "status": "p",
                   "_progress": 0
                 }
@@ -5642,8 +5691,8 @@
               "ganttBars": [
                 {
                   "title": "精修人员招聘",
-                  "start": "",
-                  "end": "",
+                  "start": "2026-05-07",
+                  "end": "2026-07-07",
                   "status": "p",
                   "_progress": 0
                 }
@@ -5662,8 +5711,8 @@
               "ganttBars": [
                 {
                   "title": "精修团队培训规划",
-                  "start": "",
-                  "end": "",
+                  "start": "2026-04-22",
+                  "end": "2026-07-14",
                   "status": "p",
                   "_progress": 0
                 }
