@@ -445,36 +445,6 @@
           ]
         }
       ]
-    },
-    {
-      "id": "mod_1776773597160",
-      "category": "11111111",
-      "title": "11111111",
-      "subtitle": "请编辑",
-      "overallProgress": 0,
-      "status": "inprogress",
-      "items": [
-        {
-          "id": "item_1776773597160",
-          "title": "11111111 - 新子项目",
-          "dateRange": "04.21 - 05.01",
-          "description": "dbjkqbdqwkd",
-          "progressLabel": "整体进度",
-          "progress": 0,
-          "progressColor": "pu",
-          "ganttLabel": "11111111",
-          "ganttSubLabel": "",
-          "ganttBars": [
-            {
-              "title": "新任务",
-              "start": "2026-04-21",
-              "end": "2026-05-01",
-              "status": "i",
-              "_progress": 0
-            }
-          ]
-        }
-      ]
     }
   ],
   "milestones": [
@@ -3975,6 +3945,13 @@
       "type": "del",
       "scope": "模块",
       "detail": "删除一级模块「新模块」"
+    },
+    {
+      "time": "2026-04-21T20:14",
+      "user": "rambokou",
+      "type": "del",
+      "scope": "模块",
+      "detail": "删除一级模块「11111111」"
     }
   ],
   "dataSnapshots": {
@@ -5782,36 +5759,6 @@
                   "start": "2026-04-23",
                   "end": "2026-04-30",
                   "status": "p",
-                  "_progress": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "mod_1776773597160",
-          "category": "11111111",
-          "title": "11111111",
-          "subtitle": "请编辑",
-          "overallProgress": 0,
-          "status": "inprogress",
-          "items": [
-            {
-              "id": "item_1776773597160",
-              "title": "11111111 - 新子项目",
-              "dateRange": "04.21 - 05.01",
-              "description": "dbjkqbdqwkd",
-              "progressLabel": "整体进度",
-              "progress": 0,
-              "progressColor": "pu",
-              "ganttLabel": "11111111",
-              "ganttSubLabel": "",
-              "ganttBars": [
-                {
-                  "title": "新任务",
-                  "start": "2026-04-21",
-                  "end": "2026-05-01",
-                  "status": "i",
                   "_progress": 0
                 }
               ]
