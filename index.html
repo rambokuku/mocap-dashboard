@@ -55,7 +55,6 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .ubadge.admin{background:rgba(0,196,140,.1);border:1px solid rgba(0,196,140,.2);color:#00E6A0}
 .ubadge.editor{background:rgba(0,163,224,.1);border:1px solid rgba(0,163,224,.2);color:var(--acc2)}
 .ubadge.viewer{background:rgba(136,146,168,.1);border:1px solid rgba(136,146,168,.2);color:var(--txt2)}
-.hd-logout-btn{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:20px;font-size:12px;cursor:pointer;transition:var(--tr);font-family:inherit;font-weight:600;border:1px solid rgba(255,71,87,.2);background:rgba(255,71,87,.08);color:rgba(255,120,130,.9)}.hd-logout-btn:hover{background:rgba(255,71,87,.15);border-color:rgba(255,71,87,.35);color:#FF4757}.hd-logout-btn svg{flex-shrink:0}
 .ct{max-width:1400px;margin:0 auto;padding:48px;position:relative;z-index:2;overflow:visible}
 .hero{margin-bottom:56px;text-align:center;position:relative;padding:20px 0}.hero::before{content:'';position:absolute;inset:-40px -80px;background:url('images/mocap_studio2.jpg') center/cover no-repeat;filter:saturate(.15) brightness(.12) blur(3px) hue-rotate(-15deg);border-radius:40px;opacity:.6;z-index:-2;mask-image:radial-gradient(ellipse 70% 80% at center,rgba(0,0,0,.7) 0%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 70% 80% at center,rgba(0,0,0,.7) 0%,transparent 100%)}.hero h2{font-size:47px;margin-bottom:16px;opacity:0;animation:heroTitleIn 1.2s cubic-bezier(.25,.46,.45,.94) .3s forwards;position:relative;display:inline-block}
 .hero h2 span{background:linear-gradient(135deg,#00A3E0,#0066CC,#6C5CE7,#00A3E0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:300% 300%;animation:gs 8s ease-in-out infinite}
@@ -65,19 +64,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 @keyframes heroGlow{0%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.1)}100%{opacity:.7;transform:scale(1)}}
 .hero p{font-size:15px;color:var(--txt2);opacity:0;animation:fu .7s ease .8s forwards}.hero-line{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);width:200px;height:3px;background:linear-gradient(90deg,transparent,var(--pri),var(--acc),var(--pur),transparent);border-radius:2px;opacity:0;animation:heroLineIn 1s ease 1s forwards}
 @keyframes heroLineIn{0%{opacity:0;width:0}100%{opacity:1;width:200px}}
-/* === Timeline Arrow Animation === */
-.timeline-arrow{position:absolute;top:50%;left:0;right:0;height:48px;z-index:0;pointer-events:none;overflow:visible;margin-top:-24px}
-.timeline-arrow-line{position:absolute;top:0;left:0;height:100%;width:0;border-radius:24px;transition:none}
-.timeline-arrow-head{position:absolute;top:50%;width:24px;height:28px;opacity:0;transform:translateY(-50%);transition:none}
-.timeline-arrow-head::before,.timeline-arrow-head::after{content:'';position:absolute;width:16px;height:3px;border-radius:2px;right:0}
-.timeline-arrow-head::before{top:6px;transform:rotate(30deg);transform-origin:right center}
-.timeline-arrow-head::after{bottom:6px;transform:rotate(-30deg);transform-origin:right center}
-.ta-hw .timeline-arrow-line{background:linear-gradient(90deg,rgba(0,102,204,.06),rgba(0,163,224,.12),rgba(0,102,204,.06));border:1px solid rgba(0,163,224,.15);backdrop-filter:blur(4px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(0,0,0,.05)}
-.ta-hw .timeline-arrow-head::before,.ta-hw .timeline-arrow-head::after{background:rgba(0,163,224,.5)}
-.ta-sw .timeline-arrow-line{background:linear-gradient(90deg,rgba(108,92,231,.06),rgba(168,85,247,.12),rgba(108,92,231,.06));border:1px solid rgba(168,85,247,.15);backdrop-filter:blur(4px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(0,0,0,.05)}
-.ta-sw .timeline-arrow-head::before,.ta-sw .timeline-arrow-head::after{background:rgba(168,85,247,.5)}
-.ta-op .timeline-arrow-line{background:linear-gradient(90deg,rgba(255,140,0,.06),rgba(255,179,64,.12),rgba(255,140,0,.06));border:1px solid rgba(255,179,64,.15);backdrop-filter:blur(4px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(0,0,0,.05)}
-.ta-op .timeline-arrow-head::before,.ta-op .timeline-arrow-head::after{background:rgba(255,179,64,.5)}
+/* === Timeline Arrow Animation === REMOVED: arrows between module cards deleted per user request */
 /* === Photo Divider Strip === */
 .photo-divider{position:relative;height:120px;margin:24px 0 48px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.05)}
 .photo-divider-img{position:absolute;inset:0;background-size:cover;background-position:center 40%;filter:saturate(.2) brightness(.2) hue-rotate(-10deg);transition:transform 8s ease}
@@ -87,7 +74,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .photo-divider-text span{color:rgba(255,255,255,.55);font-weight:700}
 /* Card sequential reveal */
 .sc.card-reveal{opacity:0;transform:translateY(60px) scale(.8)}
-.sc.card-revealed{opacity:1;transform:translateY(0) scale(1);transition:opacity 1.2s cubic-bezier(.25,.46,.45,.94),transform 1.4s cubic-bezier(.34,1.56,.64,1)}
+.sc.card-revealed{opacity:1;transform:translateY(0) scale(1);transition:opacity .5s cubic-bezier(.25,.46,.45,.94),transform .6s cubic-bezier(.34,1.56,.64,1)}
 .sg{display:grid;gap:28px;margin-bottom:64px;position:relative}
 .sc{position:relative;z-index:1;background:rgba(12,18,35,0.75);border-radius:var(--r-xl);padding:36px 32px 32px;cursor:pointer;transition:var(--tr);border:1px solid rgba(255,255,255,.08);overflow:hidden;backdrop-filter:blur(30px) saturate(150%)}
 .sc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
@@ -389,7 +376,7 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .wxwork-picker-footer .wxw-btn.confirm{background:linear-gradient(135deg,#07C160,#06AD56);color:#fff}
 .wxwork-picker-footer .wxw-btn.confirm:hover{box-shadow:0 4px 16px rgba(7,193,96,.4)}
 .wxwork-picker-footer .wxw-btn.confirm:disabled{opacity:.4;cursor:not-allowed}
-.lov{position:fixed;inset:0;background:rgba(6,10,20,.85);backdrop-filter:blur(10px);z-index:500;display:flex;align-items:center;justify-content:center;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:20px 0}
+.lov{position:fixed;inset:0;background:rgba(6,10,20,.85);backdrop-filter:blur(10px);z-index:500;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .lcard{background:rgba(12,18,35,0.8);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-xl);padding:48px 40px;width:480px;max-width:90vw;backdrop-filter:blur(40px) saturate(150%);position:relative;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.6),0 0 120px rgba(108,92,231,.08)}
 .lcard::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(0,102,204,.08),transparent,rgba(108,92,231,.05),transparent);animation:lr 10s linear infinite}
 @keyframes lr{to{transform:rotate(360deg)}}
@@ -411,27 +398,14 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .req-form textarea{min-height:80px}
 /* Pending requests badge */
 .pending-badge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:11px;margin-left:8px;animation:pd 2s infinite}
-.notify-banner{display:flex;align-items:center;gap:14px;padding:14px 20px;margin-bottom:20px;background:linear-gradient(135deg,rgba(255,140,0,.08),rgba(255,180,64,.04));border:1px solid rgba(255,140,0,.2);border-radius:16px;cursor:pointer;transition:var(--tr);position:relative;overflow:hidden}
-.notify-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,140,0,.06),transparent);pointer-events:none}
-.notify-banner:hover{border-color:rgba(255,140,0,.4);box-shadow:0 4px 24px rgba(255,140,0,.1);transform:translateY(-1px)}
-.notify-banner-icon{font-size:22px;flex-shrink:0;animation:nb-bell 3s ease-in-out infinite}
-.notify-banner-text{flex:1;line-height:1.5}.notify-banner-text strong{display:block;font-size:14px;color:#FFB340;margin-bottom:2px}.notify-banner-text span{font-size:12px;color:var(--txt3)}
-.notify-banner-badge{min-width:24px;height:24px;padding:0 8px;border-radius:12px;background:linear-gradient(135deg,#FF8C00,#FFB340);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(255,140,0,.3);animation:pd 2s infinite}
-.notify-banner-arrow{font-size:20px;color:rgba(255,140,0,.4);font-weight:300;transition:var(--tr)}.notify-banner:hover .notify-banner-arrow{color:#FFB340;transform:translateX(3px)}
-@keyframes nb-bell{0%,100%{transform:rotate(0)}5%{transform:rotate(15deg)}10%{transform:rotate(-12deg)}15%{transform:rotate(8deg)}20%{transform:rotate(-5deg)}25%{transform:rotate(0)}}
 .toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-20px);padding:12px 28px;border-radius:12px;background:rgba(0,196,140,.15);border:1px solid rgba(0,196,140,.3);color:#00E6A0;font-size:13px;opacity:0;transition:var(--tr);z-index:300;pointer-events:none;backdrop-filter:blur(10px)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.toast.error{background:rgba(255,71,87,.15);border-color:rgba(255,71,87,.3);color:var(--err)}
-.ptr-indicator{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:8px;padding:0;height:0;overflow:hidden;background:rgba(0,102,204,.1);border-bottom:1px solid rgba(0,102,204,.2);color:var(--acc2);font-size:12px;font-weight:600;z-index:600;transition:height .2s ease,opacity .2s ease;opacity:0;backdrop-filter:blur(10px);pointer-events:none}
-.ptr-indicator.active{opacity:1}.ptr-indicator.refreshing span{display:none}
-.ptr-spinner{width:18px;height:18px;border:2px solid rgba(0,102,204,.3);border-top-color:var(--acc2);border-radius:50%;animation:none}.ptr-indicator.refreshing .ptr-spinner{animation:ptr-spin .8s linear infinite}
-@keyframes ptr-spin{to{transform:rotate(360deg)}}
 @keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .ain{opacity:0;animation:fu .7s cubic-bezier(.25,.46,.45,.94) forwards}.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}
 @media(max-width:1200px){.sg{grid-template-columns:repeat(2,1fr)!important}.dg{grid-template-columns:1fr}.mst{display:none}.photo-divider{height:80px;margin:16px 0 32px}.photo-divider-text{font-size:11px;left:20px;bottom:14px}}
 /* === Tablet === */
 @media(max-width:768px){
-.hd{padding:0 16px;height:auto;min-height:60px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.hd h1{font-size:14px;white-space:nowrap}.hd-logo{width:90px;height:32px;border-radius:10px}.hd-r{gap:6px;font-size:11px;flex-wrap:wrap;justify-content:flex-end}.hd-tag{padding:3px 10px;font-size:10px}.ubadge{padding:3px 10px;font-size:10px}.hd-logout-btn{padding:3px 10px;font-size:10px}
+.hd{padding:0 16px;height:auto;min-height:60px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.hd h1{font-size:14px;white-space:nowrap}.hd-logo{width:90px;height:32px;border-radius:10px}.hd-r{gap:6px;font-size:11px;flex-wrap:wrap;justify-content:flex-end}.hd-tag{padding:3px 10px;font-size:10px}.ubadge{padding:3px 10px;font-size:10px}
 .team-info-float{font-size:9px!important;gap:4px!important;margin-top:0!important;padding:6px 0 8px!important}
-.notify-banner{padding:12px 16px;gap:10px;margin-bottom:16px;border-radius:12px}.notify-banner-icon{font-size:18px}.notify-banner-text strong{font-size:13px}.notify-banner-text span{font-size:11px}.notify-banner-badge{min-width:22px;height:22px;font-size:12px}
 .team-info-float span{font-size:9px!important;padding:1px 6px!important}
 .ct{padding:24px 16px}.hero{margin-bottom:36px}.hero::before{display:none}.hero h2{font-size:24px!important;white-space:nowrap}.hero p{font-size:13px;white-space:nowrap}.hero-line{width:120px}
 .sg{grid-template-columns:repeat(2,1fr)!important;gap:16px!important}
@@ -441,15 +415,13 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .dc{padding:20px}.dc h4{font-size:16px}
 .sh2 h2{font-size:18px;white-space:nowrap}.ms-node{width:220px}.ms-card{padding:22px 16px 16px}.ms-title{font-size:14px}.ms-date{font-size:11px}.ms-desc{font-size:11px}.ms-dot{width:34px;height:34px;font-size:14px;top:-17px}.milestone-scurve{padding:30px 10px 10px}
 .cp{width:100%;right:-100%}.cpH h3{font-size:17px}
-.lov{align-items:flex-start;padding:20px 0}.lcard{padding:36px 28px;margin:auto 0}
 .cfg-apply-float{padding:12px 20px 16px}
 }
 /* === Mobile === */
 @media(max-width:480px){
 .photo-divider{height:60px;margin:12px 0 24px;border-radius:12px}.photo-divider-text{font-size:9px;left:12px;bottom:10px;letter-spacing:1px}
-.hd{padding:0 10px;height:auto;min-height:50px;padding-top:6px;padding-bottom:6px}.hd h1{font-size:12px;white-space:nowrap}.hd-logo{width:72px;height:26px;border-radius:8px}.hd-r{gap:4px;font-size:9px}.hd-tag{padding:2px 6px;font-size:9px}.hd-tag svg{width:9px;height:9px}.ubadge{padding:2px 7px;font-size:9px}.hd-logout-btn{padding:2px 7px;font-size:9px}.hd-logout-btn svg{width:10px;height:10px}
+.hd{padding:0 10px;height:auto;min-height:50px;padding-top:6px;padding-bottom:6px}.hd h1{font-size:12px;white-space:nowrap}.hd-logo{width:72px;height:26px;border-radius:8px}.hd-r{gap:4px;font-size:9px}.hd-tag{padding:2px 6px;font-size:9px}.hd-tag svg{width:9px;height:9px}.ubadge{padding:2px 7px;font-size:9px}
 .team-info-float{font-size:8px;padding:4px 0 4px;margin-top:0!important}
-.notify-banner{padding:10px 12px;gap:8px;margin-bottom:12px;border-radius:10px}.notify-banner-icon{font-size:16px}.notify-banner-text strong{font-size:12px}.notify-banner-text span{font-size:10px}.notify-banner-badge{min-width:20px;height:20px;font-size:11px;padding:0 6px}.notify-banner-arrow{font-size:16px}
 .hd-info-row{gap:4px}
 .ct{padding:16px 10px}.hero{margin-bottom:20px}.hero h2{font-size:18px!important;white-space:nowrap}.hero p{font-size:11px;white-space:nowrap}.hero-line{width:80px}.hero h2::before{inset:-15px -30px}
 .sg{grid-template-columns:repeat(2,1fr)!important;gap:10px!important}
@@ -465,9 +437,8 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .ms-node{position:relative!important;left:auto!important;top:auto!important;width:100%!important;opacity:1!important;transform:none!important;margin-bottom:16px}.ms-node.ms-visible{animation:none}
 .ms-card{padding:18px 16px 14px;border-radius:12px}.ms-dot{width:30px;height:30px;font-size:12px;top:-15px}.ms-title{font-size:13px;margin-bottom:4px}.ms-date{font-size:10px;margin-top:6px}.ms-desc{font-size:11px;line-height:1.5}
 .cp{width:100%;right:-100%}.cpH{margin-bottom:16px;padding-bottom:14px}.cpH h3{font-size:16px}
-.lov{align-items:flex-start;padding:16px 0}.lcard{padding:28px 20px;margin:auto 0}.lcard h2{font-size:20px}.lcard .ll{font-size:36px}.lcard .ls{font-size:12px}
-.req-form .cg{margin-bottom:8px}.req-form .cg label{font-size:12px}.req-form input,.req-form select,.req-form textarea{font-size:12px!important;padding:8px 12px!important}
-.timeline-arrow{height:32px;margin-top:-16px}.timeline-arrow-line{height:100%}.timeline-arrow-head{width:18px;height:20px}
+.lcard h2{font-size:20px}.lcard .ll{font-size:36px}.lcard .ls{font-size:12px}
+
 }
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
 .hidden{display:none!important}
@@ -487,7 +458,6 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 <div class="amb"><div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
 <div class="grid-bg"></div><div class="noise"></div>
 <div class="toast" id="toast"></div>
-<div class="ptr-indicator" id="ptrIndicator"><div class="ptr-spinner"></div><span>释放刷新</span></div>
 <div class="reset-confirm-ov" id="resetConfirmOv" onclick="if(event.target===this)closeResetConfirm()">
 <div class="reset-confirm"><h3>⚠️ 确认要重置所有数据吗？</h3><p>重置将清除当前所有业务数据（模块、里程碑、权限等），恢复为系统默认值。<br><br>重置前系统会自动保存一份完整数据快照，您可以在「版本管理」→「业务数据历史更新」中一键恢复。</p><div class="rc-btns"><button class="rc-btn rc-cancel" onclick="closeResetConfirm()">取消重置</button><button class="rc-btn rc-ok" onclick="doResetCfg()">确认重置</button></div></div>
 </div>
@@ -532,7 +502,7 @@ onkeydown="if(event.key==='Enter')doNameLogin()">
 <div id="ioaAction"></div>
 </div>
 </div></div></div>
-<header class="hd"><div class="hd-c"><div class="hd-l"><div class="hd-logo"><img src="images/mocap-logo.png" alt="光子动捕"></div><h1>管理协作</h1></div><div class="hd-r"><div class="hd-info-row"><span class="hd-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span id="updateDate"></span></span></div><span class="ubadge" id="userBadge" onclick="toggleCfg()" title="点击打开配置"></span><button class="hd-logout-btn" id="hdLogoutBtn" onclick="logout()" title="退出登录" style="display:none"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span>退出</span></button></div></div></header>
+<header class="hd"><div class="hd-c"><div class="hd-l"><div class="hd-logo"><img src="images/mocap-logo.png" alt="光子动捕"></div><h1>管理协作</h1></div><div class="hd-r"><div class="hd-info-row"><span class="hd-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span id="updateDate"></span></span></div><span class="ubadge" id="userBadge" onclick="toggleCfg()" title="点击打开配置"></span></div></div></header>
 <main class="ct" id="main"><div id="teamInfoBar" class="team-info-float"></div></main>
 <footer class="ft"><p>动捕专项整体进展梳理 · 更新于 <span id="footerDate"></span></p><p style="opacity:.5">LightSpeed Mocap · Project Dashboard</p></footer>
 <button class="cb" id="cfgBtn" onclick="toggleCfg()"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg></button>
@@ -1615,8 +1585,8 @@ document.getElementById('loginOv').style.display='none';
 uBadge();render();showToast('欢迎回来，'+user.name+'！IOA认证登录成功');
 }
 function doLogin(){ioaLogin()}
-function logout(){AU.cur=null;localStorage.removeItem('mocap_cur');IOA_CUR_ID=null;localStorage.removeItem('mocap_ioa_id');const lb=document.getElementById('hdLogoutBtn');if(lb)lb.style.display='none';document.getElementById('loginOv').style.display='flex';document.getElementById('ioaLoginForm').style.display='block';document.getElementById('ioaResult').style.display='none';document.getElementById('loginNameInput').value='';document.getElementById('loginError').style.display='none';setTimeout(()=>{document.getElementById('loginNameInput').focus()},300)}
-function uBadge(){const b=document.getElementById('userBadge');const lb=document.getElementById('hdLogoutBtn');if(!AU.cur){b.textContent='';b.className='ubadge';if(lb)lb.style.display='none';return}const r=gR(AU.cur);const dn=getDisplayName(AU.cur);b.className='ubadge '+r;b.innerHTML=RI[r]+' '+dn+' <span class="rtag '+r+'">'+RL[r].l+'</span>';if(lb)lb.style.display='inline-flex'}
+function logout(){AU.cur=null;localStorage.removeItem('mocap_cur');IOA_CUR_ID=null;localStorage.removeItem('mocap_ioa_id');document.getElementById('loginOv').style.display='flex';document.getElementById('ioaLoginForm').style.display='block';document.getElementById('ioaResult').style.display='none';document.getElementById('loginNameInput').value='';document.getElementById('loginError').style.display='none';setTimeout(()=>{document.getElementById('loginNameInput').focus()},300)}
+function uBadge(){const b=document.getElementById('userBadge');if(!AU.cur){b.textContent='';b.className='ubadge';return}const r=gR(AU.cur);const dn=getDisplayName(AU.cur);b.className='ubadge '+r;b.innerHTML=RI[r]+' '+dn+' <span class="rtag '+r+'">'+RL[r].l+'</span>'}
 /* Auto-login IIFE 已移到 D 和 _initData 定义之后，避免 let D 的 TDZ 问题 */
 
 /* ===== SVG ICON SYSTEM — soft matte 3D fluid style ===== */
@@ -1950,15 +1920,6 @@ _css+=`.gantt-item-group.${cl}{border-color:${cm}40;box-shadow:0 2px 16px ${cm}1
 _css+=`.gantt-item-group.${cl}:hover{border-color:${cm}66;box-shadow:0 4px 24px ${cm}26,inset 0 1px 0 ${cm}26}`;
 });_dynEl.textContent=_css;
 let h='';
-/* === 前端页面待审批通知提醒（仅超管/管理员可见） === */
-const _pendingN=AR.filter(r=>r.status==='pending').length;
-if(_pendingN>0&&canM()){
-h+=`<div class="notify-banner ain" onclick="toggleCfg();setTimeout(()=>stab('notify',null),200)">
-<div class="notify-banner-icon">🔔</div>
-<div class="notify-banner-text"><strong>${_pendingN} 条权限申请待审批</strong><span>点击前往处理</span></div>
-<div class="notify-banner-badge">${_pendingN}</div>
-<div class="notify-banner-arrow">›</div>
-</div>`;}
 h+=`<div class="hero ain"><h2>动捕专项<span>整体进展</span></h2><p>${D.modules.map(m=>m.title).join('、')} · 单击查看详情 · 双击编辑</p><div class="hero-line"></div></div>`;
 /* 一级模块排版：一排最多5个；超5个时均分两排（每排个数相等，奇数时上排多1） */
 const _modN=D.modules.length;let _cols;if(_modN<=5){_cols=_modN||1}else{_cols=Math.ceil(_modN/2)}
@@ -1972,8 +1933,7 @@ D.modules.forEach((m,i)=>{const cc=cls(m.category),sc=stc(m.status),sl=stl(m.sta
 const subCnt=m.items?m.items.length:0;
 h+=`<div class="sc ${cc} card-reveal" data-card-idx="${i}" data-mod-id="${m.id}" onclick="scrollToMod('${m.id}')" ondblclick="jumpToModCfg('${m.id}')"><div class="sc-in"><div class="ct-top"><div class="i3d ${cc}"><span class="ie">${ic}</span></div><div class="ct-sub-cnt"><span class="ct-sub-num">${subCnt}</span><span class="ct-sub-lbl">子项目</span></div></div><div class="ct-t">${m.title}</div><div class="ct-s">${m.subtitle}</div><div class="ct-b"><span class="st ${sc}"><span class="sd"></span>${sl}</span><div class="pm"><svg viewBox="0 0 36 36"><circle class="pt" cx="18" cy="18" r="15.9"/><circle class="pv" cx="18" cy="18" r="15.9" stroke="url(#progGrad${i})" stroke-dasharray="100" stroke-dashoffset="${off}"/></svg><span class="pp"><span class="pn">${m.overallProgress}%</span><span class="pl2">完成率</span></span></div></div></div></div>`;});
 h+='</div>';
-/* Arrow connectors - positioned between card gaps, outside .sg grid */
-for(let i=0;i<D.modules.length-1;i++){h+=`<div class="timeline-arrow ta-sw" data-arrow-idx="${i}" style="position:absolute;pointer-events:none;z-index:5"><div class="timeline-arrow-line"></div><div class="timeline-arrow-head"></div></div>`}
+/* Arrow connectors removed */
 h+=`<div class="photo-divider ain"><div class="photo-divider-img" style="background-image:url('images/mocap_studio1.jpg')"></div><div class="photo-divider-overlay"></div><div class="photo-divider-text"><span>LIGHTSPEED MOCAP</span> · Motion Capture Studio(SZ)</div></div>`;
 const _gh=_buildGanttHeader();
 const _ghMonthCount=(_gh.monthsHtml.match(/class="gm"/g)||[]).length;
@@ -2096,7 +2056,7 @@ _scrollRaf=requestAnimationFrame(()=>{checkSticky();_scrollRaf=null});
 },{passive:true});
 /* 初始不创建吸顶条（页面刚加载时不应该显示） */
 })()
-/* === Card sequential reveal + arrow animation === */
+/* === Card sequential reveal (arrows removed) === */
 initCardArrowAnimation();
 /* === Milestone node entrance === */
 initMilestoneAnimation();
@@ -2106,42 +2066,19 @@ if(canE()){document.querySelectorAll('.gb').forEach(gb=>{gb.title='双击编辑�
 
 function initCardArrowAnimation(){
 const cards=document.querySelectorAll('.sc.card-reveal');
-const arrows=document.querySelectorAll('.timeline-arrow');
 if(!cards.length)return;
 const grid=document.getElementById('moduleGrid');
 if(!grid)return;
-const gridObs=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){gridObs.disconnect();runCardSequence(cards,arrows)}})},{threshold:.2});
+const gridObs=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){gridObs.disconnect();runCardSequence(cards)}})},{threshold:.2});
 gridObs.observe(grid)}
 
-function runCardSequence(cards,arrows){
+function runCardSequence(cards){
 const totalCards=cards.length;let step=0;
 function nextStep(){
 if(step<totalCards){
-/* Reveal card with enhanced scale entrance */
 const card=cards[step];card.classList.add('card-revealed');
-/* Animate arrow to next card (arrow appears after card) */
-if(step>0 && arrows[step-1]){animateArrow(arrows[step-1],cards[step-1],cards[step])}
-step++;setTimeout(nextStep,1500)}
-else if(step===totalCards&&arrows.length>0){/* last arrow already handled */}}
-/* Start: first reveal + first arrow simultaneously */
+step++;setTimeout(nextStep,400)}}
 nextStep()}
-
-function animateArrow(arrowEl,fromCard,toCard){
-const line=arrowEl.querySelector('.timeline-arrow-line');
-const head=arrowEl.querySelector('.timeline-arrow-head');
-const fromRect=fromCard.getBoundingClientRect();const toRect=toCard.getBoundingClientRect();const mainRect=document.getElementById('main').getBoundingClientRect();
-/* Arrow strictly between cards - starts at right edge of from-card, ends at left edge of to-card */
-const gapPad=6;/* tiny inset so arrow doesn't touch card borders */
-const startX=fromRect.right-mainRect.left+gapPad;const endX=toRect.left-mainRect.left-gapPad;
-const midY=fromRect.top+fromRect.height/2-mainRect.top;
-const w=Math.max(endX-startX,0);
-arrowEl.style.position='absolute';arrowEl.style.top=midY+'px';arrowEl.style.left=startX+'px';arrowEl.style.width=w+'px';arrowEl.style.height='48px';
-/* Animate line drawing - extended to 1.2s */
-line.style.width='0';line.style.height='100%';
-requestAnimationFrame(()=>{requestAnimationFrame(()=>{line.style.transition='width 1.2s cubic-bezier(.25,.46,.45,.94)';line.style.width=w+'px'})});
-/* Show arrowhead after line finishes */
-head.style.left=(w-10)+'px';
-setTimeout(()=>{head.style.opacity='1';head.style.transition='opacity .4s'},1100)}
 
 function initMilestoneAnimation(){
 const nodes=document.querySelectorAll('.ms-node');
@@ -2545,7 +2482,7 @@ sAuth();
 /* Update request status */
 const origIdx=AR.findIndex(r=>r===req);
 if(origIdx>-1){AR[origIdx].status='approved';AR[origIdx].approvedRole=role;AR[origIdx].processedDate=getBJDate()}
-sReq();rNotify();rPerm();render();showToast('已通过 '+cnName+'('+uid+') 的权限申请，授予'+RL[role].l);
+sReq();rNotify();rPerm();showToast('已通过 '+cnName+'('+uid+') 的权限申请，授予'+RL[role].l);
 }
 function rejectReq(idx){
 const pendingReqs=AR.filter(r=>r.status==='pending');
@@ -2554,7 +2491,7 @@ const req=pendingReqs[idx];
 const reason=prompt('请输入拒绝原因（可选）：');
 const origIdx=AR.findIndex(r=>r===req);
 if(origIdx>-1){AR[origIdx].status='rejected';AR[origIdx].rejectReason=reason||'审批人未通过';AR[origIdx].processedDate=getBJDate()}
-sReq();rNotify();rPerm();render();showToast('已拒绝 '+req.name+' 的权限申请');
+sReq();rNotify();rPerm();showToast('已拒绝 '+req.name+' 的权限申请');
 }
 function addU(){const ni=document.getElementById('nuName'),rs=document.getElementById('nuRole'),n=ni.value.trim(),r=rs.value;if(!n){showToast('请输入姓名',1);return}if(AU.users[n]){showToast('用户已存在',1);return}if(!isS()&&(r==='superadmin'||r==='admin')){showToast('无权添加此角色',1);return}/* 安全检查：黑名单用户，超管添加时自动移出黑名单 */if(AU.blocked&&AU.blocked[n]){if(isS()){delete AU.blocked[n]}else{showToast(n+' 已被删除，需超管操作才能重新添加',1);return}}AU.users[n]={role:r,added:new Date().toISOString().slice(0,10)};sAuth();rPerm();showToast(n+' 已添加为'+RL[r].l)}
 
@@ -4044,47 +3981,6 @@ else{const err=await resp.json().catch(()=>({}));if(st)st.innerHTML=`<span style
 catch(e){if(st)st.innerHTML=`<span style="color:#ff4444">❌ 网络错误: ${e.message}</span>`}}
 function _updateGHStatus(){const st=document.getElementById('ghSyncStatus');if(!st)return;const t=getGHToken();st.innerHTML=t?'<span style="color:#00C48C">🔗 Token 已配置（尾号 '+t.slice(-4)+'）· 数据将自动同步</span>':'<span style="color:var(--txt3)">⚠️ 未配置 Token · 数据仅保存在当前浏览器</span>'}
 function showToast(msg,err){const t=document.getElementById('toast');t.textContent=msg;t.className='toast'+(err?' error':'');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
-/* ===== PULL-TO-REFRESH (mobile) ===== */
-(function initPullToRefresh(){
-if(!('ontouchstart' in window))return;
-const indicator=document.getElementById('ptrIndicator');
-if(!indicator)return;
-let startY=0,currentY=0,pulling=false,threshold=80;
-function getScrollTop(){
-const lov=document.getElementById('loginOv');
-if(lov&&lov.style.display!=='none')return lov.scrollTop;
-return window.scrollY||document.documentElement.scrollTop||0;
-}
-document.addEventListener('touchstart',function(e){
-if(getScrollTop()>5)return;
-startY=e.touches[0].clientY;pulling=true;currentY=startY;
-},{passive:true});
-document.addEventListener('touchmove',function(e){
-if(!pulling)return;
-currentY=e.touches[0].clientY;
-const dy=currentY-startY;
-if(dy>0&&getScrollTop()<=0){
-const progress=Math.min(dy/threshold,1);
-const h=Math.min(dy*0.5,50);
-indicator.style.height=h+'px';
-indicator.classList.toggle('active',progress>0.3);
-indicator.querySelector('span').textContent=progress>=1?'释放刷新':'下拉刷新';
-}else{
-indicator.style.height='0px';indicator.classList.remove('active');
-}
-},{passive:true});
-document.addEventListener('touchend',function(){
-if(!pulling)return;pulling=false;
-const dy=currentY-startY;
-if(dy>=threshold&&getScrollTop()<=0){
-indicator.classList.add('refreshing');
-indicator.style.height='44px';
-setTimeout(function(){location.reload()},600);
-}else{
-indicator.style.height='0px';indicator.classList.remove('active');
-}
-},{passive:true});
-})();
 render();
 </script>
 </body>
