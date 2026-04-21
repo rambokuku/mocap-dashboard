@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-21T19:45",
+    "updateDate": "2026-04-21T19:46",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -375,15 +375,6 @@
           ]
         }
       ]
-    },
-    {
-      "id": "mod_1776771179533",
-      "category": "mod_1776771179533",
-      "title": "新模块",
-      "subtitle": "请编辑",
-      "overallProgress": 0,
-      "status": "planned",
-      "items": []
     },
     {
       "id": "mod_1776771317893",
@@ -3898,6 +3889,13 @@
       "type": "edit",
       "scope": "数据精修/精修团队培训规划",
       "detail": "「精修团队培训规划」结束日期：(空) → 2026-07-14"
+    },
+    {
+      "time": "2026-04-21T19:46",
+      "user": "rambokou",
+      "type": "del",
+      "scope": "模块",
+      "detail": "删除一级模块「新模块」"
     }
   ],
   "dataSnapshots": {
@@ -5266,7 +5264,7 @@
     "2026-04-21": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-21T19:45",
+        "updateDate": "2026-04-21T19:46",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -5642,15 +5640,6 @@
           ]
         },
         {
-          "id": "mod_1776771179533",
-          "category": "mod_1776771179533",
-          "title": "新模块",
-          "subtitle": "请编辑",
-          "overallProgress": 0,
-          "status": "planned",
-          "items": []
-        },
-        {
           "id": "mod_1776771317893",
           "category": "数据精修",
           "title": "数据精修",
@@ -5661,7 +5650,7 @@
             {
               "id": "item_1776771317893",
               "title": "搭建策略确认",
-              "dateRange": "",
+              "dateRange": "04.22 - 05.22",
               "description": "数据精修搭建方案确认：基地 or CP承建方案可行性调研",
               "progressLabel": "整体进度",
               "progress": 0,
@@ -5681,7 +5670,7 @@
             {
               "id": "item_1776771527748",
               "title": "精修人员招聘",
-              "dateRange": "",
+              "dateRange": "05.07 - 07.07",
               "description": "招聘子岗团队为监修主力，撬动CP实现精修业务的量产，降本增效",
               "progressLabel": "整体进度",
               "progress": 0,
@@ -5701,7 +5690,7 @@
             {
               "id": "item_1776771631190",
               "title": "精修团队培训规划",
-              "dateRange": "",
+              "dateRange": "04.22 - 07.14",
               "description": "对精修团队进行系统的专业赋能培训",
               "progressLabel": "整体进度",
               "progress": 0,
