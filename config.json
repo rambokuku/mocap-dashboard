@@ -3300,6 +3300,17 @@
       "status": "rejected",
       "rejectReason": "审批人未通过",
       "processedDate": "2026-04-20"
+    },
+    {
+      "ioaId": "tinayue",
+      "name": "岳婷",
+      "dept": "互动娱乐/光子工作室群/技术美术中心/其他",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "viewer",
+      "reason": "求求了",
+      "date": "2026-04-21",
+      "status": "pending"
     }
   ],
   "dataHistory": [
