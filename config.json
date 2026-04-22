@@ -13,7 +13,7 @@
       "category": "hardware",
       "title": "硬件建设",
       "subtitle": "云海动捕中棚建设 · 直播空间搭建",
-      "overallProgress": 76,
+      "overallProgress": 77,
       "status": "inprogress",
       "items": [
         {
@@ -63,7 +63,7 @@
           "dateRange": "01.21 - 04.25",
           "description": "<span class=\"hl\">装修设计</span>已完成，<span class=\"hl\">场地改造</span>27 号已完成所有线下空间改造，<span class=\"hl\">设备安装</span>设备基本到齐，应正式进入运营测试阶段",
           "progressLabel": "整体进度",
-          "progress": 97,
+          "progress": 98,
           "progressColor": "bl",
           "ganttLabel": "直播空间搭建",
           "ganttSubLabel": "装修设计/场地改造/设备安装",
@@ -94,7 +94,7 @@
               "start": "2026-03-27",
               "end": "2026-04-25",
               "status": "i",
-              "_progress": 86
+              "_progress": 90
             }
           ]
         },
@@ -104,7 +104,7 @@
           "dateRange": "04.09 - 08.01",
           "description": "1. 服采库内直采方案是按照物件数进行实时结算，流程不可用；\n2. 准备启动自采流程（已和服采、集团风控对齐）；\n3. 针对自采明确各自分工后，推动OG 侧走自采流程",
           "progressLabel": "整体进度",
-          "progress": 31,
+          "progress": 33,
           "progressColor": "bl",
           "ganttLabel": "OG 动捕棚需求建设",
           "ganttSubLabel": "",
@@ -113,8 +113,8 @@
               "title": "合同签约",
               "start": "2026-04-15",
               "end": "2026-04-22",
-              "status": "i",
-              "_progress": 86
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "合作策略确认",
@@ -127,7 +127,7 @@
               "title": "流程推进",
               "start": "2026-04-22",
               "end": "2026-05-22",
-              "status": "p",
+              "status": "i",
               "_progress": 0
             },
             {
@@ -160,7 +160,7 @@
       "category": "software",
       "title": "软件开发",
       "subtitle": "动捕流程软件平台 · 动捕排期系统",
-      "overallProgress": 82,
+      "overallProgress": 83,
       "status": "inprogress",
       "items": [
         {
@@ -207,7 +207,7 @@
               "start": "2026-03-31",
               "end": "2026-04-30",
               "status": "i",
-              "_progress": 70
+              "_progress": 73
             }
           ]
         },
@@ -217,7 +217,7 @@
           "dateRange": "12.25 - 04.24",
           "description": "<span class=\"risk\">最新视觉完成 90%</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
           "progressLabel": "整体进度",
-          "progress": 96,
+          "progress": 97,
           "progressColor": "bl",
           "ganttLabel": "动捕排期系统",
           "ganttSubLabel": "交互设计/前后端开发",
@@ -241,7 +241,7 @@
               "start": "2026-03-29",
               "end": "2026-04-24",
               "status": "i",
-              "_progress": 88
+              "_progress": 92
             }
           ]
         }
@@ -252,7 +252,7 @@
       "category": "operations",
       "title": "运营推广",
       "subtitle": "企鹅岛03栋云海中棚动捕官方宣传视频拍摄",
-      "overallProgress": 50,
+      "overallProgress": 58,
       "status": "inprogress",
       "items": [
         {
@@ -261,7 +261,7 @@
           "dateRange": "04.13 - 05.01",
           "description": "正在和光子市场部沟通后续的视频拍摄需求，正在CP 筛选阶段（确认CP后明确最终排期）。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月底完成拍摄。",
           "progressLabel": "整体进度",
-          "progress": 50,
+          "progress": 58,
           "progressColor": "bl",
           "ganttLabel": "宣传视频",
           "ganttSubLabel": "脚本/拍摄/后期",
@@ -278,7 +278,7 @@
               "start": "2026-04-21",
               "end": "2026-04-24",
               "status": "i",
-              "_progress": 0
+              "_progress": 33
             },
             {
               "title": "后期制作",
@@ -304,7 +304,7 @@
       "title": "数据精修",
       "subtitle": "实现动捕数据处理的最后一公里交付",
       "overallProgress": 0,
-      "status": "planned",
+      "status": "inprogress",
       "items": [
         {
           "id": "item_1776771317893",
@@ -321,7 +321,7 @@
               "title": "搭建策略确认",
               "start": "2026-04-22",
               "end": "2026-05-22",
-              "status": "p",
+              "status": "i",
               "_progress": 0
             }
           ]
@@ -361,7 +361,7 @@
               "title": "精修团队培训规划",
               "start": "2026-04-22",
               "end": "2026-07-14",
-              "status": "p",
+              "status": "i",
               "_progress": 0
             }
           ]
@@ -373,7 +373,7 @@
       "category": "生态合作",
       "title": "生态合作",
       "subtitle": "动捕人力拓展（动作指导、摄制组、威亚师等）",
-      "overallProgress": 35,
+      "overallProgress": 41,
       "status": "inprogress",
       "items": [
         {
@@ -382,7 +382,7 @@
           "dateRange": "03.25 - 05.31",
           "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
           "progressLabel": "整体进度",
-          "progress": 25,
+          "progress": 26,
           "progressColor": "bl",
           "ganttLabel": "发行线演员渠道合作",
           "ganttSubLabel": "",
@@ -392,7 +392,7 @@
               "start": "2026-03-25",
               "end": "2026-04-30",
               "status": "i",
-              "_progress": 75
+              "_progress": 78
             },
             {
               "title": "演员经纪资源对齐",
@@ -416,7 +416,7 @@
           "dateRange": "04.18 - 04.30",
           "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
           "progressLabel": "整体进度",
-          "progress": 44,
+          "progress": 56,
           "progressColor": "bl",
           "ganttLabel": "影科演员经纪渠道合作",
           "ganttSubLabel": "",
@@ -433,7 +433,7 @@
               "start": "2026-04-20",
               "end": "2026-04-23",
               "status": "i",
-              "_progress": 33
+              "_progress": 67
             },
             {
               "title": "合同系统流程",
@@ -482,7 +482,7 @@
       "date": "2026-04-22",
       "title": "数据精修启动",
       "desc": "数据精修 — 首个任务开始",
-      "status": "p"
+      "status": "c"
     },
     {
       "date": "2026-04-24",
