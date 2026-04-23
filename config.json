@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-23T14:19",
+    "updateDate": "2026-04-23T14:20",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -102,7 +102,7 @@
           "id": "item_1775711608512",
           "title": "OG 动捕棚需求建设",
           "dateRange": "04.09 - 08.01",
-          "description": "1. 已确认正式走艺术部自采流程；<br>2. 正在合同细节梳理阶段（已和服采、集团风控对齐）；<br>3. 合同梳理完成后，下周启动财、法邮件审批",
+          "description": "1. 已确认正式走艺术部自采流程；<br>2. 正在合同细节梳理阶段，等待陈总确认反馈场地细节信息（已和服采、集团风控对齐）；<br>3. 合同梳理完成后，下周启动财、法邮件审批",
           "progressLabel": "整体进度",
           "progress": 26,
           "progressColor": "bl",
