@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-23T14:25",
+    "updateDate": "2026-04-23T14:27",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -259,7 +259,7 @@
           "id": "ops1",
           "title": "宣传视频拍摄",
           "dateRange": "04.13 - 05.22",
-          "description": "正在和光子市场部沟通后续的视频拍摄需求，正在CP 筛选阶段（确认CP后明确最终排期）。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月底完成拍摄。",
+          "description": "市场部沟通后续的视频拍摄需求，市场部内部汇报后决定更改视频拍摄方案，已卷入sam，支持内部升级拍摄方案，目前荔枝牵头阿坤团队优化脚本中",
           "progressLabel": "整体进度",
           "progress": 56,
           "progressColor": "bl",
