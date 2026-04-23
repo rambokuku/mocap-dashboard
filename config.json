@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-23T14:16",
+    "updateDate": "2026-04-23T14:18",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -102,7 +102,7 @@
           "id": "item_1775711608512",
           "title": "OG 动捕棚需求建设",
           "dateRange": "04.09 - 08.01",
-          "description": "1. 服采库内直采方案是按照物件数进行实时结算，流程不可用；\n2. 准备启动自采流程（已和服采、集团风控对齐）；\n3. 针对自采明确各自分工后，推动OG 侧走自采流程",
+          "description": "1. 已确认正式走艺术部自采流程；<br>2. 正在合同细节梳理阶段（已和服采、集团风控对齐）；<br>3. 合同梳理完成后，下周启动财、法邮件审批",
           "progressLabel": "整体进度",
           "progress": 34,
           "progressColor": "bl",
