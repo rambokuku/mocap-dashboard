@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-21T20:16",
+    "updateDate": "2026-04-23T14:16",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -13,7 +13,7 @@
       "category": "hardware",
       "title": "硬件建设",
       "subtitle": "云海动捕中棚建设 · 直播空间搭建",
-      "overallProgress": 77,
+      "overallProgress": 78,
       "status": "inprogress",
       "items": [
         {
@@ -60,11 +60,11 @@
         {
           "id": "hw2",
           "title": "直播空间搭建",
-          "dateRange": "01.21 - 04.25",
+          "dateRange": "01.21 - 04.23",
           "description": "<span class=\"hl\">装修设计</span>已完成，<span class=\"hl\">场地改造</span>27 号已完成所有线下空间改造，<span class=\"hl\">设备安装</span>设备基本到齐，应正式进入运营测试阶段",
           "progressLabel": "整体进度",
-          "progress": 98,
-          "progressColor": "bl",
+          "progress": 100,
+          "progressColor": "gn",
           "ganttLabel": "直播空间搭建",
           "ganttSubLabel": "装修设计/场地改造/设备安装",
           "ganttBars": [
@@ -92,9 +92,9 @@
             {
               "title": "运营测试",
               "start": "2026-03-27",
-              "end": "2026-04-25",
-              "status": "i",
-              "_progress": 93
+              "end": "2026-04-23",
+              "status": "c",
+              "_progress": 100
             }
           ]
         },
@@ -543,6 +543,2870 @@
       "title": "OG 动捕棚需求建设完成",
       "desc": "[硬件建设] 合同签约→合作策略确认→流程推进→付款交付→OG棚启动运营测试→OG 棚正式启用 （进度31%）",
       "status": "p"
+    }
+  ],
+  "auth": {
+    "users": {
+      "rambokou": {
+        "role": "superadmin",
+        "added": "2026-01-01",
+        "displayName": "寇启龙"
+      },
+      "channinglin": {
+        "role": "admin",
+        "added": "2026-03-29",
+        "displayName": "channinglin"
+      },
+      "v_yyyilin": {
+        "role": "admin",
+        "added": "2026-03-29",
+        "displayName": "v_yyyilin"
+      },
+      "saxonshao": {
+        "role": "admin",
+        "added": "2026-03-29",
+        "displayName": "saxonshao"
+      },
+      "wasabiwang": {
+        "role": "editor",
+        "added": "2026-03-29",
+        "displayName": "wasabiwang"
+      },
+      "mandydxwang": {
+        "role": "editor",
+        "added": "2026-03-30",
+        "displayName": "mandydxwang"
+      },
+      "qqxie": {
+        "role": "viewer",
+        "added": "2026-03-30",
+        "displayName": "谢晴"
+      },
+      "nicoleyhguo": {
+        "role": "viewer",
+        "added": "2026-04-19",
+        "displayName": "郭宇辉"
+      },
+      "alinachen": {
+        "role": "viewer",
+        "added": "2026-04-19",
+        "displayName": "陈雯"
+      },
+      "peternzhao": {
+        "role": "viewer",
+        "added": "2026-04-19",
+        "displayName": "赵宁"
+      },
+      "alisaxiao": {
+        "role": "viewer",
+        "added": "2026-04-19",
+        "displayName": "肖丽"
+      },
+      "alexzjzhou": {
+        "role": "viewer",
+        "added": "2026-04-19",
+        "displayName": "周杰"
+      },
+      "coracai": {
+        "role": "viewer",
+        "added": "2026-04-19",
+        "displayName": "蔡依然"
+      },
+      "lemonwu": {
+        "role": "viewer",
+        "added": "2026-04-19",
+        "displayName": "吴晓翔"
+      },
+      "miroshi": {
+        "role": "viewer",
+        "added": "2026-04-19",
+        "displayName": "施锦羚"
+      },
+      "zoeyzshi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "aarontyu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "abehu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "adairxjwu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "adomyip": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "adonwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "aidenlee": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "aimeeliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "aimuliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ainkychen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "akunhaowang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "alanlliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "alisonhe": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "alixli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "amilydai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "amuzhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "andrewzli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "annxiawang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "annyni": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ansonjflin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "anxuanzhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "apofxliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "appleehuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ariegong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "aronzywang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "arseneli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "artemisbi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "arthurswang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "aryaqin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ashencheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "askylarwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "astresli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "astrogao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "aurorazhao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "axiang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ayaanlee": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ayadeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "baijxiong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "bardyydsliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "baronlhxu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "baypezhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "bearqin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "beiyucai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "bertramzhao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "bihezheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "billybowu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "bingbingjia": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "bingxingli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "binyuanguo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "birdyliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "bohengsun": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "bojianboli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "bokaisu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "bomliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "bonecui": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "bowennwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "boyangbao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "boyiliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "brianhsu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "calvingu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "camusjiang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "caoqichen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "cashchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "catguyweng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "celiazhuo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "celinezhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "celmychen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "cenhoye": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "chaceqian": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "chaimliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "chancezhao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "chaselcwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "chengxsun": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "cherrilwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "chokwanli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "chrissim": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "chuyuezhong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "cicheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ckkchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "claudesun": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "colazhao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "colyerdeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "corlechen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "costzhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "cuncunwei": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "cyggzhao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "daanhuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "dadazhchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "daiqilli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "daiyuwei": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "danielhgao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "danielkyan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "dapengzhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "darkowang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "darleenwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "daryawang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "daveqin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "deerjiang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "derekrwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "designzeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "devoncong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "didivili": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "dontian": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "doudouhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "duduliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "echoning": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "eddiesfeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "elnayang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "elvaxia": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "emberyu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "emohuo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "enyanhao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ericwqzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "errorshi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ethanyfxue": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "evandyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "evanouyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "eyvanlu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "faryao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "fengfenghe": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "fengxzeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "fenixzhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "finlayliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "fliangwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "fristieli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "fruitchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "funzzfang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "fzd": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "gandalfmu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "gavenwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "georgemei": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "gileszhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "gisellehqli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "grimeszhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "guoweiwguo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "guoxichen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hahuhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "haihuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hallong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hanahan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hanaliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hangruihu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hanyuzhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "haochengzuo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "haopujiang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "haowenwen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "harleymeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "harrietwen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hawaiixia": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "heidizdhe": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "helmzheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hengxilin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hermanlai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hidefang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hisokazheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "honggeunim": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hongpengliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hpingwei": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hsiaofeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "huaintian": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "huayulong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hughxzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hugoghzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "huifeibao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "hulkliang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ianliang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "insectyliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jacklyndu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jacksonhe": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jadebywang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jaffhan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jakirofeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jamieshi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "janeyyjian": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "janxu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jasongao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jasonzxwu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jasonzyxie": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jaxonjian": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jeanhchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jeasonqiu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jeennycui": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jeffjfsong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jeffkang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jennyai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jiajiexiong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jiallguo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jiaminnchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jianchizhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jiangqicao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jianhuizhao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jianweigong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jiaxuchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jieflu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jillxia": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jingyaoxu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jinxuanye": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jobschkong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jobyfpeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jocelynhao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jodazhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "joelgao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "joesonlin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "johnkim": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jojodchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jorawinglin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jorenchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "joshuayu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "joshxchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jovianyou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "judgepan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "junjjtan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "junshzhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "juntaozhai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "jxinzhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kaidixiang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kaijunfan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kaisalee": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kaixizhao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kaiyiqiu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kakapan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kangkang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kanongao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "karakang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "karayueguan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "karlicai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kawenwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kaymao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kaynkim": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kayuehu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kbooowang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kelliang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kellytian": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kennyzhliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kevzheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "keyjiang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "keykiyan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "keymeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kieranyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kikilli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kilinguo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kirarzhong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kittyjdhe": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kktaozhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kleezhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "koalaxu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kokiliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "konglin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kovzhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "krispeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kristian": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "kuli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lanxinzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lareinadeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "layneyue": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "layta": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lcxmkyi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lcxxli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "leechaoxu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "legionfu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "leishuoniu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lencheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "leojthuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "leosqzhao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "leticialei": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "levilai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "levinqu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "levyin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "liamhli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "liangyixia": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "licheeyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lierrezhao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lightbai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lilililili": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lilitli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "linshenliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "linyingxie": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "liondeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "liorzheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lisenhuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "liyinglv": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lizysyao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ljuanjiang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lloydlu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "loganluo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "loganqinli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "logotang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "loishu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lokzhong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lookinglu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lorenzohe": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lstarwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "luciennwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "luckyhlwu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lukezhan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lumenchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lunaylwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "luyuzheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lvanchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lysali": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "lysonlin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "macma": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "macsyzhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mandyfang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mandysu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mandyyzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "manrana": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "maoyuwen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "marsdai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "marvinyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "masonnmei": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "maxchoi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "menghailu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mengzhoyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "merryma": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "messchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mhkchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "miccallwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mikechao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "miltionwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mingcanshi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mingkehong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "minodeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "minwoojung": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mirage": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "miriamzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "missmeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mitistan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mmyxzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "molinyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "momili": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "momokazeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "momokoliao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "monqiu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "moranguo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "morszhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "moruomili": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "moxuanzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mrossafi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "musiwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mustang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "mutianshi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "muyuzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "naiwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "nelwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "neozfzheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "nestoryao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "nianwu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "nicoleqxliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "nirenzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "novemberliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "nukeli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "nyckhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "oajimchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "oakeymeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "oakxiao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ocarmihe": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "olicwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "orangeluo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "padaxu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "pandanyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "pangrentan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "patientli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "paulwu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "pavowang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "peipeizhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "penlu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "phantawang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "pillarchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "pixxiao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "porcojiang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "qifanpan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "qizoezheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "qqiuyuewang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "quanwuyao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "quintyqu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "qyqingyulu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "rayclyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "rchzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "reesesqlin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "reginaxia": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "reiguan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "renjiezhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "reyma": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "riabai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "richardcawu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "richzeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "rikkadong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "rjoosten": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "rongfali": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "rongyeliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "rosewan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "roycezheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_lanruiyin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "rumdeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ruoyanchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "samhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sancheswang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sandylin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sanooye": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sansszhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "scottpark": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "seekgao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sekihuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sendowu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shabririguo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shanqian": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shaochuanzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shaunxlin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shawnxing": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shelbyma": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shenggu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shengxzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shentiancai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shigedeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shihongluo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shimousu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shinyxia": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shiqihuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shitingqin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shiweiyu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "shuaihuayan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sidseo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "simonxmhan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "simoowang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sinliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "skali": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "skihoteyan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "skywardwu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "snoopyhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "soleneqin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "songsong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sonialin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "spikelian": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ssirili": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "staceyshu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "stanliang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "stewieli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "stingpang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "stitchhuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sudajiang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sukhaduan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sumengzheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sumenliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sumirezhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sunnyfjxie": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sunnyqi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sunnyqiu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sxiaoliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "synkzhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "sysu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "szhaozechen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tanyyzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tbagzhong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "techozhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "teddyli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tedpark": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "teemoliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tianhehan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "timzxye": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tinakim": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tingtingguo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tkjlma": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tobyteng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tommylinglu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "traviscui": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "trigeryao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tusdong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tuzkishen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tylerzeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tylqhuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tynewei": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ubikshen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ullali": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_chjchchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_dtingdeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_hbinhe": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_huihyyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_hyilan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_jgengfang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_jiaphe": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_jiaqlliao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_jieppeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_jjszhuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_junjjyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_junlljli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_junzewang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_jweilai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_jyiwan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_lfeihu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_lijinwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_likama": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_lilyzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_linvzhong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_lixxzheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_llljiang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_longhwu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_luqhuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_meiqhong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_mvmhuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_mzhudeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_niansun": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_pengpzang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_pengrchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_ppkaiwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_qiqvan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_qiuplu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_qqqitang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_shiymao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_taotttian": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_txouyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_vjhhaozhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_vmeitxie": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_vvjianlin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_vxiaxiao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_vxlinchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_vzhzhuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_weihliang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_weijffeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_wubque": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_wwhaopan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_wyunzeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_xinyyye": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_xttvzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_xueqtan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_xyanyan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_xyvvwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_yanlmao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_ybinli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_ychyao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_yixxhuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_yjiyin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_ylixiao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_yoveyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_yuntliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_yuwanliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_yyiyihe": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_yyiyuli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_yyjieli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_yyqingliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_zehonghu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_zhidyuan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_zhlliang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_zhuwwen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "v_zkangye": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "vanwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "venierli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ventureyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "victorfeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "vinanlv": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "violinapeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "vivazeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "vvzhao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "warepan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "weekendli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "weichaohong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "weijianxu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "weixiangyu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "weizhiwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "wenbindai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "wenkangying": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "wenqianluo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "werrawang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "willjyli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "winbhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "wonjuntae": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "wrennwu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "wxiaoyingwu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xaogangpang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xianghuishi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xiaobozhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xiaofezhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xiaohaoliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xiaohechen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xiaolixue": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xiaoqianhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xiaorizheng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xiaoruiyu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xiaoyingshi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xiiianxian": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ximingzhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xindizhu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xinhailili": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xinyazili": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xinyucaicai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xiyangzhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xuanhaowang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xuchuangao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xurongge": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xxxkunli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "xzhenzeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yaajinglu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yagoyu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yanshouwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yanylluo": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yanyyao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yaoni": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yaoqiyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yasilin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yatinglin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yauqiu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ycoyan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yehcoyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yepingliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ygggao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yhongyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yidingwei": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yihuikkllyi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yijieyi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yingjoulee": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yingleiwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yingxiren": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yinxuanzeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yiuduzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yjianwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yongkunxu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yuanfengxie": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yuebai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yueyuiwu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yukeewang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yumylin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yunhuiqiu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yunshizhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yunyunyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yuongfeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yurannzou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yutongzhou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yuxunliao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yuyiizhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yuzhepan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yvanliao": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yvonnefan": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yyixinzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "yzzzzzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zachcyzhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zachfang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zainwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zeddli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zejiecai": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zeldawu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zemuchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zenhaozhang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zequnchen": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zeyonlu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zhaoyangdu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zhihanlin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zhihuizhong": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zhijiefu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zhiyangxue": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zhuolyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zianwang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zibinjia": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zihouhuang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zihuayang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zipengdeng": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ziqiwei": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zixliu": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ziyihou": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zongpengli": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zorashi": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zowielin": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "zsyang": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "ztsun": {
+        "role": "viewer",
+        "added": "2026-04-19"
+      },
+      "tinayue": {
+        "role": "viewer",
+        "added": "2026-04-21"
+      }
+    },
+    "blocked": {
+      "ansonzliang": {
+        "removedBy": "rambokou",
+        "removedAt": "2026-04-19"
+      },
+      "rambozhang": {
+        "removedBy": "rambokou",
+        "removedAt": "2026-04-19"
+      },
+      "rambokuku": {
+        "removedBy": "rambokou",
+        "removedAt": "2026-04-19"
+      },
+      "irisdeng": {
+        "removedBy": "rambokou",
+        "removedAt": "2026-04-19"
+      },
+      "ramboli": {
+        "removedBy": "rambokou",
+        "removedAt": "2026-04-19"
+      }
+    },
+    "ghToken": "CgcTPiMVVDEqOQwuEh8VGXhRRkYHOwctNWgxOCQNDipQGlVfS0Nxfg=="
+  },
+  "accessRequests": [
+    {
+      "ioaId": "rambozhang",
+      "name": "寇启迪2",
+      "dept": "未指定部门",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "viewer",
+      "reason": "学习而已",
+      "date": "2026-04-19",
+      "status": "approved",
+      "approvedRole": "viewer",
+      "processedDate": "2026-04-19"
+    },
+    {
+      "ioaId": "rambokuku",
+      "name": "酷酷龙",
+      "dept": "未指定部门",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "viewer",
+      "reason": "就看看而已",
+      "date": "2026-04-19",
+      "status": "approved",
+      "approvedRole": "viewer",
+      "processedDate": "2026-04-19"
+    },
+    {
+      "ioaId": "irisdeng",
+      "name": "邓莹婷",
+      "dept": "未指定部门",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "editor",
+      "reason": "无",
+      "date": "2026-04-19",
+      "status": "approved",
+      "approvedRole": "editor",
+      "processedDate": "2026-04-19"
+    },
+    {
+      "ioaId": "irisdeng",
+      "name": "邓莹婷",
+      "dept": "未指定部门",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "editor",
+      "reason": "无",
+      "date": "2026-04-19",
+      "status": "approved",
+      "approvedRole": "editor",
+      "processedDate": "2026-04-19"
+    },
+    {
+      "ioaId": "ramboli",
+      "name": "噜噜噜",
+      "dept": "未指定部门",
+      "empType": "vgang",
+      "empTypeName": "V岗",
+      "requestedRole": "viewer",
+      "reason": "无",
+      "date": "2026-04-19",
+      "status": "approved",
+      "approvedRole": "viewer",
+      "processedDate": "2026-04-19"
+    },
+    {
+      "ioaId": "shireywu",
+      "name": "露露卡拉动",
+      "dept": "技术发展部",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "viewer",
+      "reason": "无",
+      "date": "2026-04-20",
+      "status": "rejected",
+      "rejectReason": "审批人未通过",
+      "processedDate": "2026-04-20"
+    },
+    {
+      "ioaId": "timsgehduc",
+      "name": "测试账号",
+      "dept": "未指定部门",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "viewer",
+      "reason": "无",
+      "date": "2026-04-20",
+      "status": "rejected",
+      "rejectReason": "审批人未通过",
+      "processedDate": "2026-04-20"
+    },
+    {
+      "ioaId": "tinayue",
+      "name": "岳婷",
+      "dept": "互动娱乐/光子工作室群/技术美术中心/其他",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "viewer",
+      "reason": "求求了",
+      "date": "2026-04-21",
+      "status": "approved",
+      "approvedRole": "viewer",
+      "processedDate": "2026-04-21"
     }
   ],
   "dataHistory": [
@@ -3002,72 +5866,5 @@
       ]
     }
   },
-  "devHistory": [
-    {
-      "ver": "V1.0",
-      "date": "2026-04-17",
-      "type": "major",
-      "desc": "光子动捕管理协作平台 V1.0 正式上线",
-      "changes": [
-        "三大业务模块卡片展示（硬件建设/软件开发/运营推广）",
-        "项目甘特图可视化（多行分行展示 + Hover Tooltip 详情）",
-        "关键里程碑 S 曲线时间线",
-        "配置面板四大功能区（基础信息/模块编辑/权限管理/版本管理）",
-        "GitHub API 双向数据同步（ghLoad + ghSave）",
-        "多角色权限体系（超管/管理员/编辑/浏览 四级权限）",
-        "深色科技风 UI + 玻璃拟态卡片设计",
-        "双击卡片/里程碑跳转到配置面板对应编辑位置",
-        "甘特图分组边框 + 动态日期轴 + 标题字号优化",
-        "业务数据变更自动检测与历史记录",
-        "版本开发历史自动生成（基于 AI 沟通记录）",
-        "超管专属业务数据 Excel 导出功能",
-        "响应式布局适配"
-      ]
-    },
-    {
-      "ver": "V1.1",
-      "date": "2026-04-18",
-      "type": "major",
-      "desc": "交互体验与性能大幅升级",
-      "changes": [
-        "修复模块卡片颜色硬编码残留，统一使用 _getCatColor() 动态分配",
-        "一级模块排版优化：≤5个一排显示，>5个均分两排",
-        "子项目与甘特条双向同步（新增/删除/改名自动联动）",
-        "配置面板 Tab 栏固定顶部，内容区独立滚动",
-        "模块编辑\"新增模块\"按钮移到顶部 sticky 悬浮",
-        "双击卡片精准跳转配置面板对应位置（data-mod-id 精确匹配）",
-        "甘特图时间轴折叠功能（鼠标悬停月份 → 点击折叠前 N 个月）",
-        "甘特图横向滚动 + 标题 sticky 固定 + 毛玻璃透明效果",
-        "甘特图时间轴吸顶（scroll 事件 + getBoundingClientRect 精确判断）",
-        "甘特条子项按开始日期自动排序",
-        "重置数据二次确认弹窗 + 快照恢复功能",
-        "星云动效增强（粒子翻倍 + 三层级星云 + 8色颜色池）",
-        "移动端 GitHub API 超时降级（5s 超时 → localStorage 兜底）",
-        "移动端粒子性能优化（300→80 粒子防止 GPU 过载）",
-        "移动端排版优化（两列模块布局 + 组件缩小适配）",
-        "生态合作配色从桃红调整为灰蓝石板色",
-        "登录框反自动填充（三重清空机制）",
-        "修复 .reset-confirm-ov 遮罩层缺少 pointer-events:none 导致全站点击失效"
-      ]
-    },
-    {
-      "ver": "V1.2",
-      "date": "2026-04-19",
-      "type": "minor",
-      "desc": "配置面板 UI 精细打磨",
-      "changes": [
-        "一级模块卡片显示子项目数量（右上角大号数字方块）",
-        "Logo 替换为光子动捕官方 Logo + 玻璃磨砂效果",
-        "配置面板\"应用更改\"改为\"确认更改\"，不再自动关闭面板",
-        "退出按钮从图标改为文字，面板宽度扩至 50vw",
-        "Tab 标题放大 + 颜色去花哨改为性冷淡白灰风",
-        "配置面板全面性冷淡风换色（10+ 处彩色→灰白层次）",
-        "基础信息模块标题防换行（white-space:nowrap + flex-shrink:0）",
-        "删除子项/新增甘特条按钮防换行",
-        "新增 8 名成员到企业微信通讯录（viewer 权限）",
-        "Tab 标题字号优化（不超过配置面板标题大小）"
-      ]
-    }
-  ],
-  "platformVersion": "V1.2"
+  "directory": {}
 }
