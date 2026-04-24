@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-24T11:14",
+    "updateDate": "2026-04-24T11:25",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -213,13 +213,13 @@
         },
         {
           "id": "sw2",
-          "title": "动捕排期系统（delay 半个月）",
+          "title": "动捕排期系统",
           "dateRange": "12.25 - 04.24",
           "description": "<span class=\"risk\">最新视觉完成 90%</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
           "progressLabel": "整体进度",
           "progress": 100,
           "progressColor": "gn",
-          "ganttLabel": "动捕排期系统（delay 半个月）",
+          "ganttLabel": "动捕排期系统",
           "ganttSubLabel": "交互设计/前后端开发",
           "ganttBars": [
             {
@@ -4053,6 +4053,13 @@
       "type": "edit",
       "scope": "硬件建设/OG 动捕外建动捕合作",
       "detail": "子项目标题：OG 动捕棚需求建设 → OG 动捕外建动捕合作"
+    },
+    {
+      "time": "2026-04-24T11:25",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "软件开发/动捕排期系统",
+      "detail": "子项目标题：动捕排期系统（delay 半个月） → 动捕排期系统"
     }
   ],
   "dataSnapshots": {
@@ -6493,7 +6500,7 @@
     "2026-04-24": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-24T11:14",
+        "updateDate": "2026-04-24T11:25",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -6705,13 +6712,13 @@
             },
             {
               "id": "sw2",
-              "title": "动捕排期系统（delay 半个月）",
+              "title": "动捕排期系统",
               "dateRange": "12.25 - 04.24",
               "description": "<span class=\"risk\">最新视觉完成 90%</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
               "progressLabel": "整体进度",
               "progress": 100,
               "progressColor": "gn",
-              "ganttLabel": "动捕排期系统（delay 半个月）",
+              "ganttLabel": "动捕排期系统",
               "ganttSubLabel": "交互设计/前后端开发",
               "ganttBars": [
                 {
