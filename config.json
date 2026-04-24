@@ -13,7 +13,7 @@
       "category": "hardware",
       "title": "硬件建设",
       "subtitle": "云海动捕中棚建设 · 直播空间搭建",
-      "overallProgress": 75,
+      "overallProgress": 76,
       "status": "inprogress",
       "items": [
         {
@@ -104,7 +104,7 @@
           "dateRange": "04.09 - 08.01",
           "description": "1. 已确认正式走艺术部自采流程；<br>2. 正在合同细节梳理阶段，等待陈总确认反馈场地细节信息（已和服采、集团风控对齐）；<br>3. 合同梳理完成后，下周启动财、法邮件审批",
           "progressLabel": "整体进度",
-          "progress": 26,
+          "progress": 27,
           "progressColor": "bl",
           "ganttLabel": "OG 动捕棚需求建设",
           "ganttSubLabel": "",
@@ -114,7 +114,7 @@
               "start": "2026-04-15",
               "end": "2026-04-29",
               "status": "i",
-              "_progress": 57
+              "_progress": 64
             },
             {
               "title": "合作策略确认",
@@ -160,7 +160,7 @@
       "category": "software",
       "title": "软件开发",
       "subtitle": "动捕流程软件平台 · 动捕排期系统",
-      "overallProgress": 84,
+      "overallProgress": 85,
       "status": "inprogress",
       "items": [
         {
@@ -169,7 +169,7 @@
           "dateRange": "12.25 - 05.30",
           "description": "模块1 Realtime：电子场记记录、工程预设、SDK数据流对接触发、四分屏等功能开发完成，前期bug修复完成。（1月6日-2月28日）<br>模块2 Process：数据过滤筛选、动画快速3D查看预览等功能开发完成，前期bug修复完成。（1月14日-3月31日）<br>模块1&2整体试用中。<br>模块3 Publish：待模块1、2流程跑通后启动。",
           "progressLabel": "模块1&2",
-          "progress": 69,
+          "progress": 70,
           "progressColor": "bl",
           "extraProgress": [
             {
@@ -207,7 +207,7 @@
               "start": "2026-03-31",
               "end": "2026-04-30",
               "status": "i",
-              "_progress": 77
+              "_progress": 80
             }
           ]
         },
@@ -217,8 +217,8 @@
           "dateRange": "12.25 - 04.24",
           "description": "<span class=\"risk\">最新视觉完成 90%</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
           "progressLabel": "整体进度",
-          "progress": 99,
-          "progressColor": "bl",
+          "progress": 100,
+          "progressColor": "gn",
           "ganttLabel": "动捕排期系统（delay 半个月）",
           "ganttSubLabel": "交互设计/前后端开发",
           "ganttBars": [
@@ -240,8 +240,8 @@
               "title": "运营测试",
               "start": "2026-03-29",
               "end": "2026-04-24",
-              "status": "i",
-              "_progress": 96
+              "status": "c",
+              "_progress": 100
             }
           ]
         }
@@ -252,7 +252,7 @@
       "category": "operations",
       "title": "运营推广",
       "subtitle": "企鹅岛03栋云海中棚动捕官方宣传视频拍摄",
-      "overallProgress": 56,
+      "overallProgress": 57,
       "status": "inprogress",
       "items": [
         {
@@ -261,7 +261,7 @@
           "dateRange": "04.13 - 05.22",
           "description": "市场部沟通后续的视频拍摄需求，市场部内部汇报后决定更改视频拍摄方案，已卷入sam，支持内部升级拍摄方案，目前荔枝牵头阿坤团队优化脚本中",
           "progressLabel": "整体进度",
-          "progress": 56,
+          "progress": 57,
           "progressColor": "bl",
           "ganttLabel": "宣传视频拍摄（delay 1 周）",
           "ganttSubLabel": "脚本/拍摄/后期",
@@ -285,7 +285,7 @@
               "start": "2026-04-14",
               "end": "2026-05-22",
               "status": "i",
-              "_progress": 24
+              "_progress": 26
             },
             {
               "title": "CP 确认",
@@ -303,7 +303,7 @@
       "category": "生态合作",
       "title": "生态合作",
       "subtitle": "动捕人力拓展（动作指导、摄制组、威亚师等）",
-      "overallProgress": 47,
+      "overallProgress": 50,
       "status": "inprogress",
       "items": [
         {
@@ -312,7 +312,7 @@
           "dateRange": "03.25 - 05.31",
           "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
           "progressLabel": "整体进度",
-          "progress": 27,
+          "progress": 28,
           "progressColor": "bl",
           "ganttLabel": "发行线演员渠道合作",
           "ganttSubLabel": "",
@@ -322,7 +322,7 @@
               "start": "2026-03-25",
               "end": "2026-04-30",
               "status": "i",
-              "_progress": 81
+              "_progress": 83
             },
             {
               "title": "演员经纪资源对齐",
@@ -346,7 +346,7 @@
           "dateRange": "04.18 - 04.30",
           "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
           "progressLabel": "整体进度",
-          "progress": 67,
+          "progress": 71,
           "progressColor": "bl",
           "ganttLabel": "影科演员经纪渠道合作",
           "ganttSubLabel": "",
@@ -370,7 +370,7 @@
               "start": "2026-04-23",
               "end": "2026-04-30",
               "status": "i",
-              "_progress": 0
+              "_progress": 14
             }
           ]
         }
@@ -381,7 +381,7 @@
       "category": "数据精修",
       "title": "数据精修",
       "subtitle": "实现动捕数据处理的最后一公里交付",
-      "overallProgress": 1,
+      "overallProgress": 3,
       "status": "inprogress",
       "items": [
         {
@@ -390,7 +390,7 @@
           "dateRange": "04.22 - 05.22",
           "description": "数据精修搭建方案确认：基地 or CP承建方案可行性调研",
           "progressLabel": "整体进度",
-          "progress": 3,
+          "progress": 7,
           "progressColor": "bl",
           "ganttLabel": "搭建策略确认",
           "ganttSubLabel": "",
@@ -400,7 +400,7 @@
               "start": "2026-04-22",
               "end": "2026-05-22",
               "status": "i",
-              "_progress": 3
+              "_progress": 7
             }
           ]
         },
@@ -430,7 +430,7 @@
           "dateRange": "04.22 - 07.14",
           "description": "对精修团队进行系统的专业赋能培训",
           "progressLabel": "整体进度",
-          "progress": 1,
+          "progress": 2,
           "progressColor": "bl",
           "ganttLabel": "精修团队培训规划",
           "ganttSubLabel": "",
@@ -440,7 +440,7 @@
               "start": "2026-04-22",
               "end": "2026-07-14",
               "status": "i",
-              "_progress": 1
+              "_progress": 2
             }
           ]
         }
@@ -488,7 +488,7 @@
       "date": "2026-04-24",
       "title": "动捕排期系统完成",
       "desc": "[软件开发] 交互设计→前后端开发→运营测试 （进度96%）",
-      "status": "p"
+      "status": "c"
     },
     {
       "date": "2026-04-25",
