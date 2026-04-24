@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-24T11:29",
+    "updateDate": "2026-04-24T11:35",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -252,7 +252,7 @@
       "category": "operations",
       "title": "运营推广",
       "subtitle": "企鹅岛03栋云海中棚动捕官方宣传视频拍摄",
-      "overallProgress": 57,
+      "overallProgress": 52,
       "status": "inprogress",
       "items": [
         {
@@ -261,7 +261,7 @@
           "dateRange": "04.13 - 05.22",
           "description": "市场部沟通后续的视频拍摄需求，市场部内部汇报后决定更改视频拍摄方案，已卷入sam，支持内部升级拍摄方案，目前荔枝牵头阿坤团队优化脚本中",
           "progressLabel": "整体进度",
-          "progress": 57,
+          "progress": 52,
           "progressColor": "bl",
           "ganttLabel": "宣传视频拍摄",
           "ganttSubLabel": "脚本/拍摄/后期",
@@ -282,10 +282,10 @@
             },
             {
               "title": "后期制作",
-              "start": "2026-04-14",
+              "start": "2026-04-22",
               "end": "2026-05-22",
               "status": "i",
-              "_progress": 26
+              "_progress": 7
             },
             {
               "title": "CP 确认",
@@ -4067,6 +4067,13 @@
       "type": "edit",
       "scope": "运营推广/宣传视频拍摄",
       "detail": "子项目标题：宣传视频拍摄（delay 1 周） → 宣传视频拍摄"
+    },
+    {
+      "time": "2026-04-24T11:35",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "运营推广/宣传视频拍摄",
+      "detail": "「后期制作」开始日期：2026-04-14 → 2026-04-22"
     }
   ],
   "dataSnapshots": {
@@ -6507,7 +6514,7 @@
     "2026-04-24": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-24T11:29",
+        "updateDate": "2026-04-24T11:35",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -6788,7 +6795,7 @@
                 },
                 {
                   "title": "后期制作",
-                  "start": "2026-04-14",
+                  "start": "2026-04-22",
                   "end": "2026-05-22",
                   "status": "i",
                   "_progress": 26
