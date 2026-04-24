@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-24T11:25",
+    "updateDate": "2026-04-24T11:29",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -257,13 +257,13 @@
       "items": [
         {
           "id": "ops1",
-          "title": "宣传视频拍摄（delay 1 周）",
+          "title": "宣传视频拍摄",
           "dateRange": "04.13 - 05.22",
           "description": "市场部沟通后续的视频拍摄需求，市场部内部汇报后决定更改视频拍摄方案，已卷入sam，支持内部升级拍摄方案，目前荔枝牵头阿坤团队优化脚本中",
           "progressLabel": "整体进度",
           "progress": 57,
           "progressColor": "bl",
-          "ganttLabel": "宣传视频拍摄（delay 1 周）",
+          "ganttLabel": "宣传视频拍摄",
           "ganttSubLabel": "脚本/拍摄/后期",
           "ganttBars": [
             {
@@ -4060,6 +4060,13 @@
       "type": "edit",
       "scope": "软件开发/动捕排期系统",
       "detail": "子项目标题：动捕排期系统（delay 半个月） → 动捕排期系统"
+    },
+    {
+      "time": "2026-04-24T11:29",
+      "user": "rambokou",
+      "type": "edit",
+      "scope": "运营推广/宣传视频拍摄",
+      "detail": "子项目标题：宣传视频拍摄（delay 1 周） → 宣传视频拍摄"
     }
   ],
   "dataSnapshots": {
@@ -6500,7 +6507,7 @@
     "2026-04-24": {
       "project": {
         "name": "动捕专项整体进展梳理",
-        "updateDate": "2026-04-24T11:25",
+        "updateDate": "2026-04-24T11:29",
         "reporter": "rambokou(寇启龙)",
         "animLead": "saxonshao(邵雷)",
         "po": "andrewzli(李哲)",
@@ -6756,13 +6763,13 @@
           "items": [
             {
               "id": "ops1",
-              "title": "宣传视频拍摄（delay 1 周）",
+              "title": "宣传视频拍摄",
               "dateRange": "04.13 - 05.22",
               "description": "市场部沟通后续的视频拍摄需求，市场部内部汇报后决定更改视频拍摄方案，已卷入sam，支持内部升级拍摄方案，目前荔枝牵头阿坤团队优化脚本中",
               "progressLabel": "整体进度",
               "progress": 57,
               "progressColor": "bl",
-              "ganttLabel": "宣传视频拍摄（delay 1 周）",
+              "ganttLabel": "宣传视频拍摄",
               "ganttSubLabel": "脚本/拍摄/后期",
               "ganttBars": [
                 {
