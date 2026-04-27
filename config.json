@@ -3417,7 +3417,9 @@
       "requestedRole": "viewer",
       "reason": "无",
       "date": "2026-04-27",
-      "status": "pending"
+      "status": "rejected",
+      "rejectReason": "继续测试",
+      "processedDate": "2026-04-27"
     }
   ],
   "dataHistory": [
