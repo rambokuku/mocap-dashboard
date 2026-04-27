@@ -2446,9 +2446,9 @@ h+=`</div>`;
 if(canM()){
 h+=`<div class="csec" style="margin-top:20px;border:1px solid rgba(255,140,0,.15);border-radius:16px;padding:20px;background:rgba(255,140,0,.03)">
 <h4 style="display:flex;align-items:center;gap:8px;margin-bottom:4px">🔍 库内成员管理 <span style="font-size:11px;color:var(--txt3);font-weight:400">（搜索 / 编辑 / 删除）</span></h4>
-<p style="font-size:12px;color:var(--txt2);margin-bottom:14px;line-height:1.6">${isS()?'超级管理员可编辑和删除任何库内成员。':'管理员可编辑成员信息，不可删除成员。'}支持英文名或中文名搜索。</p>
+<p style="font-size:12px;color:var(--txt2);margin-bottom:14px;line-height:1.6">${isS()?'超级管理员可编辑和删除任何库内成员。':'管理员可编辑成员信息，不可删除成员。'}支持英文名搜索全部成员，已登录/已添加的成员也支持中文名搜索。</p>
 <div style="display:flex;gap:10px;align-items:center">
-<input type="text" id="memberSearchInput" placeholder="输入英文名或中文名搜索..." style="flex:1;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit" oninput="_doMemberSearch(this.value)">
+<input type="text" id="memberSearchInput" placeholder="输入英文名（全员）或中文名（已登录成员）..." style="flex:1;padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(255,255,255,.03);color:var(--txt);font-size:13px;font-family:inherit" oninput="_doMemberSearch(this.value)">
 </div>
 <div id="memberSearchResult" style="margin-top:14px"></div>
 </div>`;}
@@ -2499,7 +2499,7 @@ document.body.appendChild(a);a.click();document.body.removeChild(a);
 URL.revokeObjectURL(url);
 showToast('已导出 '+entries.length+' 名授权成员');
 }
-function chRole(n,r){if(!_canChMember(n)){showToast('无权修改',1);return}if(!isS()&&(r==='superadmin'||r==='admin')){showToast('无权设置此角色',1);rPerm();return}AU.users[n].role=r;sAuth();rPerm();showToast('角色已更新')}
+function chRole(n,r){if(!_canChMember(n)){showToast('无权修改',1);return}if(!isS()&&(r==='superadmin'||r==='admin')){showToast('无权设置此角色',1);rPerm();return}if(!AU.users[n]){AU.users[n]={role:'viewer',added:getBJDate()}}AU.users[n].role=r;sAuth();rPerm();showToast('角色已更新')}
 function rmUser(n){if(!_canDelMember(n)){showToast('仅超级管理员可删除成员',1);return}const dn=getDisplayName(n);if(!confirm('确定移除 '+dn+'('+n+')？\n\n移除后该用户将无法再登录平台。'))return;delete AU.users[n];if(!AU.blocked)AU.blocked={};AU.blocked[n]={removedBy:AU.cur,removedAt:getBJDate()};sAuth();rPerm();showToast(dn+' 已移除并禁止登录')}
 /* 从黑名单恢复用户，重新授予 viewer 权限 */
 function unblockUser(uid){if(!isS()){showToast('仅超级管理员可恢复用户',1);return}if(!AU.blocked||!AU.blocked[uid])return;const dn=_getMemberDisplayName(uid);if(!confirm('确定恢复 '+dn+'('+uid+') 的访问权限？'))return;delete AU.blocked[uid];AU.users[uid]={role:'viewer',added:getBJDate()};sAuth();rPerm();showToast(dn+' 已恢复访问权限（默认为仅浏览）');/* 刷新搜索结果 */const si=document.getElementById('memberSearchInput');if(si&&si.value.trim())_doMemberSearch(si.value)}
@@ -2769,15 +2769,32 @@ _memberSearchTimer=setTimeout(()=>_renderMemberSearchAsync(kw),200);
 /* 异步搜索：同时查 AU.users + IOA/DYNAMIC 哈希表，确保可登录用户一定能搜到 */
 async function _renderMemberSearchAsync(kw){
 const ct=document.getElementById('memberSearchResult');if(!ct)return;
-kw=kw.trim().toLowerCase();
+const rawKw=kw.trim();
+kw=rawKw.toLowerCase();
 if(!kw){ct.innerHTML='<div style="text-align:center;padding:16px;color:var(--txt3);font-size:12px">输入关键词开始搜索…</div>';return}
+/* 判断是否为纯中文搜索（至少含一个中文字符且无英文字母） */
+const hasChinese=/[\u4e00-\u9fa5]/.test(rawKw);
+const hasLatin=/[a-z]/i.test(rawKw);
 /* Step1: 从 AU.users 中搜索（英文名 or 中文名匹配） */
 let results=Object.entries(AU.users).filter(([uid])=>{
 const dn=_getMemberDisplayName(uid).toLowerCase();
 return uid.toLowerCase().includes(kw)||dn.includes(kw);
 });
-/* Step2: 如果 AU.users 没找到，尝试精确匹配哈希表（处理隐式 viewer 用户） */
-if(!results.length && /^[a-z][\w]*$/.test(kw)){
+/* Step1.5: 扩展搜索 DYNAMIC_DIR（覆盖已添加但可能未在 AU.users 中的成员；只展示不自动持久化） */
+if(DYNAMIC_DIR&&typeof DYNAMIC_DIR==='object'){
+Object.entries(DYNAMIC_DIR).forEach(([uid,info])=>{
+if(!info||!info.name)return;
+if(AU.users[uid])return;/* 已在 Step1 处理 */
+if(AU.blocked&&AU.blocked[uid])return;/* 黑名单跳过，交给 Step2 精确匹配处理 */
+const matched=uid.toLowerCase().includes(kw)||info.name.toLowerCase().includes(kw)||(info.dept&&info.dept.toLowerCase().includes(kw));
+if(matched){
+/* 临时展示条目（_transient 标记表示尚未持久化到 AU.users，渲染端判断是否显示"加入"按钮） */
+results.push([uid,{role:'viewer',added:getBJDate(),_transient:true}]);
+}
+});
+}
+/* Step2: 如果仍未命中，且关键词是纯英文，尝试精确匹配加密哈希表 */
+if(!results.length && !hasChinese && /^[a-z][\w.-]*$/.test(kw)){
 const hash=await sha256(kw);
 let found=false;let blockedHit=!!(AU.blocked&&AU.blocked[kw]);
 if(IOA_USERS_HASH[hash]){found=true;const info=decryptUser(IOA_USERS_HASH[hash],kw);if(info){if(!blockedHit&&!AU.users[kw]){AU.users[kw]={role:'viewer',added:getBJDate()};sAuth()}if(!DYNAMIC_DIR[kw]&&info.name){DYNAMIC_DIR[kw]={name:info.name,dept:info.dept||'未指定部门',type:info.type||'fulltime',typeName:info.typeName||'员工',avatar:'#0066CC'};_saveDynDir();_rebuildDynHash()}console.log('✅ 搜索'+(blockedHit?'命中(已禁止)':'补录')+': '+kw+' ('+info.name+')')}}
@@ -2791,7 +2808,16 @@ return}
 if(AU.users[kw]){results=[[kw,AU.users[kw]]]}
 }
 }
-if(!results.length){ct.innerHTML='<div style="text-align:center;padding:16px;color:var(--txt3);font-size:12px">未找到匹配的库内成员</div>';return}
+if(!results.length){
+if(hasChinese&&!hasLatin){
+/* 纯中文搜索未命中：明确说明原因（加密通讯录无法反查） */
+ct.innerHTML='<div style="text-align:center;padding:20px;color:var(--txt3);font-size:12px;line-height:1.7"><div style="font-size:22px;margin-bottom:8px">🔐</div><b style="color:var(--txt2);font-size:13px">未找到「'+rawKw+'」的库内记录</b><div style="margin-top:8px;color:var(--txt3)">中文名搜索仅覆盖<b style="color:var(--acc2)">已登录过</b>或<b style="color:var(--acc2)">已被添加</b>的成员。<br>若对方从未登录过看板，请改用<b style="color:var(--txt)">企业微信英文名</b>（如 rambokou）搜索。</div></div>';
+return;
+}
+ct.innerHTML='<div style="text-align:center;padding:16px;color:var(--txt3);font-size:12px">未找到匹配的库内成员</div>';return;
+}
+/* 排序：已授权成员在前，通讯录匹配（transient）在后 */
+results.sort((a,b)=>{const ta=a[1]._transient?1:0;const tb=b[1]._transient?1:0;return ta-tb});
 let h='';
 results.forEach(([uid,u])=>{
 const dn=_getMemberDisplayName(uid);
@@ -2799,12 +2825,13 @@ const role=u.role;
 const cd=_canDelMember(uid);
 const cc=_canChMember(uid);
 const dynInfo=DYNAMIC_DIR[uid];
-h+=`<div style="background:rgba(255,255,255,.02);border:1px solid var(--bdr);border-radius:12px;padding:14px;margin-bottom:8px;transition:var(--tr)">
+const isTransient=!!u._transient;
+h+=`<div style="background:rgba(255,255,255,${isTransient?'.01':'.02'});border:1px dashed ${isTransient?'rgba(255,180,64,.25)':'var(--bdr)'};${isTransient?'':'border-style:solid;'}border-radius:12px;padding:14px;margin-bottom:8px;transition:var(--tr)">
 <div style="display:flex;align-items:center;gap:12px;margin-bottom:${cc||cd?'12px':'0'}">
 <div class="uav" style="background:${RL[role].c}30;border:1px solid ${RL[role].c}40;width:36px;height:36px;flex-shrink:0">${dn[0]}</div>
 <div style="flex:1;min-width:0">
-<div style="font-size:13px">${uid}<span style="color:var(--txt2)">(${dn})</span></div>
-<div style="font-size:11px;color:var(--txt3);display:flex;align-items:center;gap:6px;flex-wrap:wrap">${dynInfo?dynInfo.dept:'—'} · ${dynInfo?(dynInfo.typeName||dynInfo.type):'—'} · <span class="rtag ${role}">${RL[role].l}</span>${u.added?' · '+u.added:''}</div>
+<div style="font-size:13px">${uid}<span style="color:var(--txt2)">(${dn})</span>${isTransient?'<span style="margin-left:6px;padding:1px 6px;background:rgba(255,180,64,.1);border:1px solid rgba(255,180,64,.25);border-radius:4px;font-size:10px;color:rgba(255,200,100,.85);font-weight:400">通讯录匹配</span>':''}</div>
+<div style="font-size:11px;color:var(--txt3);display:flex;align-items:center;gap:6px;flex-wrap:wrap">${dynInfo?dynInfo.dept:'—'} · ${dynInfo?(dynInfo.typeName||dynInfo.type):'—'} · <span class="rtag ${role}">${RL[role].l}</span>${isTransient?' · <span style="color:rgba(255,200,100,.7)">尚未授权，修改权限即可激活</span>':(u.added?' · '+u.added:'')}</div>
 </div></div>`;
 if(cc||cd){
 h+=`<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">`;
@@ -2829,6 +2856,7 @@ ct.innerHTML=h;
 }
 /* 编辑成员信息对话框 */
 function _openEditMemberDialog(uid){
+if(!AU.users[uid]){AU.users[uid]={role:'viewer',added:getBJDate()};sAuth()}
 const u=AU.users[uid];if(!u)return;
 const dn=_getMemberDisplayName(uid);
 const dynInfo=DYNAMIC_DIR[uid]||{};
