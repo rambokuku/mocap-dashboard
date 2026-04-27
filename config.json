@@ -3407,6 +3407,17 @@
       "status": "approved",
       "approvedRole": "viewer",
       "processedDate": "2026-04-21"
+    },
+    {
+      "ioaId": "tinayue",
+      "name": "岳婷",
+      "dept": "互动娱乐/光子工作室群/技术美术中心/其他",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "viewer",
+      "reason": "无",
+      "date": "2026-04-27",
+      "status": "pending"
     }
   ],
   "dataHistory": [
