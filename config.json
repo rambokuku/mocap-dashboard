@@ -3269,10 +3269,6 @@
       "ztsun": {
         "role": "viewer",
         "added": "2026-04-19"
-      },
-      "tinayue": {
-        "role": "viewer",
-        "added": "2026-04-21"
       }
     },
     "blocked": {
@@ -3297,6 +3293,10 @@
         "removedAt": "2026-04-19"
       },
       "tinakim": {
+        "removedBy": "rambokou",
+        "removedAt": "2026-04-27"
+      },
+      "tinayue": {
         "removedBy": "rambokou",
         "removedAt": "2026-04-27"
       }
