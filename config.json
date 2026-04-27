@@ -2462,10 +2462,6 @@
         "role": "viewer",
         "added": "2026-04-19"
       },
-      "tinakim": {
-        "role": "viewer",
-        "added": "2026-04-19"
-      },
       "tingtingguo": {
         "role": "viewer",
         "added": "2026-04-19"
@@ -3299,6 +3295,10 @@
       "ramboli": {
         "removedBy": "rambokou",
         "removedAt": "2026-04-19"
+      },
+      "tinakim": {
+        "removedBy": "rambokou",
+        "removedAt": "2026-04-27"
       }
     },
     "ghToken": "CgcTPiMVVDEqOQwuEh8VGXhRRkYHOwctNWgxOCQNDipQGlVfS0Nxfg=="
