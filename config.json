@@ -3268,6 +3268,38 @@
       "channinglin": {
         "role": "admin",
         "added": "2026-04-28"
+      },
+      "eliothou": {
+        "role": "viewer",
+        "added": "2026-04-28"
+      },
+      "limkozhang": {
+        "role": "viewer",
+        "added": "2026-04-28"
+      },
+      "novaxia": {
+        "role": "viewer",
+        "added": "2026-04-28"
+      },
+      "sandyjinsun": {
+        "role": "viewer",
+        "added": "2026-04-28"
+      },
+      "tinakim": {
+        "role": "viewer",
+        "added": "2026-04-28"
+      },
+      "tinayue": {
+        "role": "viewer",
+        "added": "2026-04-28"
+      },
+      "v_guilfan": {
+        "role": "viewer",
+        "added": "2026-04-28"
+      },
+      "v_yfanghou": {
+        "role": "viewer",
+        "added": "2026-04-28"
       }
     },
     "blocked": {
@@ -7126,6 +7158,34 @@
       "dept": "互动娱乐/光子工作室群/技术美术中心/其他",
       "type": "subsidiary",
       "typeName": "子公司",
+      "avatar": "#0066CC"
+    },
+    "eliothou": {
+      "name": "候张鑫",
+      "dept": "光子艺术部",
+      "type": "fulltime",
+      "typeName": "正编",
+      "avatar": "#0066CC"
+    },
+    "novaxia": {
+      "name": "夏颖珊",
+      "dept": "光子艺术部",
+      "type": "fulltime",
+      "typeName": "正编",
+      "avatar": "#0066CC"
+    },
+    "v_guilfan": {
+      "name": "范桂龙",
+      "dept": "光子艺术部",
+      "type": "fulltime",
+      "typeName": "正编",
+      "avatar": "#0066CC"
+    },
+    "v_yfanghou": {
+      "name": "侯圆方",
+      "dept": "光子艺术部",
+      "type": "fulltime",
+      "typeName": "正编",
       "avatar": "#0066CC"
     }
   }
