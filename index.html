@@ -426,6 +426,13 @@ body{font-family:'TencentSans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 .req-form textarea{min-height:80px}
 /* Pending requests badge */
 .pending-badge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:11px;margin-left:8px;animation:pd 2s infinite}
+/* Notification bell in header */
+.notify-bell{position:relative;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,140,0,.1);border:1px solid rgba(255,140,0,.2);cursor:pointer;transition:var(--tr);margin-right:8px;color:#FFB340;flex-shrink:0}
+.notify-bell:hover{background:rgba(255,140,0,.2);border-color:rgba(255,140,0,.35);transform:scale(1.08)}
+.notify-bell:active{transform:scale(.95)}
+.notify-dot{position:absolute;top:4px;right:4px;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:#FF4757;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(255,71,87,.5);animation:pd 2s infinite}
+@media(max-width:768px){.notify-bell{width:28px;height:28px;margin-right:4px}.notify-bell svg{width:14px;height:14px}.notify-dot{top:2px;right:2px;min-width:14px;height:14px;font-size:9px}}
+@media(max-width:480px){.notify-bell{width:24px;height:24px;margin-right:2px}.notify-bell svg{width:12px;height:12px}.notify-dot{top:1px;right:1px;min-width:12px;height:12px;font-size:8px}}
 .toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-20px);padding:12px 28px;border-radius:12px;background:rgba(0,196,140,.15);border:1px solid rgba(0,196,140,.3);color:#00E6A0;font-size:13px;opacity:0;transition:var(--tr);z-index:300;pointer-events:none;backdrop-filter:blur(10px)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.toast.error{background:rgba(255,71,87,.15);border-color:rgba(255,71,87,.3);color:var(--err)}
 @keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .ain{opacity:0;animation:fu .7s cubic-bezier(.25,.46,.45,.94) forwards}.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}
@@ -533,7 +540,7 @@ onkeydown="if(event.key==='Enter')doNameLogin()">
 <div id="ioaAction"></div>
 </div>
 </div></div></div>
-<header class="hd"><div class="hd-c"><div class="hd-l"><a class="hd-logo" href="https://lightspeedmocap.woa.com/home/personal/profile" target="_blank" rel="noopener" title="打开光子动捕预约网站"><img src="images/mocap-logo.png" alt="光子动捕"></a><h1>管理协作</h1></div><div class="hd-r"><div class="hd-info-row"><span class="hd-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span id="updateDate"></span></span></div><span class="ubadge" id="userBadge" onclick="toggleCfg()" title="点击打开配置"></span></div></div></header>
+<header class="hd"><div class="hd-c"><div class="hd-l"><a class="hd-logo" href="https://lightspeedmocap.woa.com/home/personal/profile" target="_blank" rel="noopener" title="打开光子动捕预约网站"><img src="images/mocap-logo.png" alt="光子动捕"></a><h1>管理协作</h1></div><div class="hd-r"><div class="hd-info-row"><span class="hd-tag"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span id="updateDate"></span></span></div><span class="notify-bell" id="notifyBell" style="display:none" onclick="_openNotifyPanel()" title="待审批的权限申请"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><span class="notify-dot" id="notifyDot"></span></span><span class="ubadge" id="userBadge" onclick="toggleCfg()" title="点击打开配置"></span></div></div></header>
 <main class="ct" id="main"><div id="teamInfoBar" class="team-info-float"></div></main>
 <footer class="ft"><p>动捕专项整体进展梳理 · 更新于 <span id="footerDate"></span></p><p style="opacity:.5">LightSpeed Mocap · Project Dashboard</p></footer>
 <button class="cb" id="cfgBtn" onclick="toggleCfg()"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg></button>
@@ -1618,11 +1625,75 @@ AU.cur=uid;
 localStorage.setItem('mocap_cur',uid);
 _tryAutoToken();
 document.getElementById('loginOv').style.display='none';
-uBadge();render();showToast('欢迎回来，'+user.name+'！IOA认证登录成功');
+uBadge();render();_startNotifyPoll();showToast('欢迎回来，'+user.name+'！IOA认证登录成功');
 }
 function doLogin(){ioaLogin()}
-function logout(){AU.cur=null;localStorage.removeItem('mocap_cur');IOA_CUR_ID=null;localStorage.removeItem('mocap_ioa_id');document.getElementById('loginOv').style.display='flex';document.getElementById('ioaLoginForm').style.display='block';document.getElementById('ioaResult').style.display='none';document.getElementById('loginNameInput').value='';document.getElementById('loginError').style.display='none';setTimeout(()=>{document.getElementById('loginNameInput').focus()},300)}
-function uBadge(){const b=document.getElementById('userBadge');if(!AU.cur){b.textContent='';b.className='ubadge';return}const r=gR(AU.cur);const dn=getDisplayName(AU.cur);b.className='ubadge '+r;b.innerHTML=RI[r]+' '+dn+' <span class="rtag '+r+'">'+RL[r].l+'</span>'}
+function logout(){_stopNotifyPoll();AU.cur=null;localStorage.removeItem('mocap_cur');IOA_CUR_ID=null;localStorage.removeItem('mocap_ioa_id');document.getElementById('loginOv').style.display='flex';document.getElementById('ioaLoginForm').style.display='block';document.getElementById('ioaResult').style.display='none';document.getElementById('loginNameInput').value='';document.getElementById('loginError').style.display='none';setTimeout(()=>{document.getElementById('loginNameInput').focus()},300)}
+function uBadge(){const b=document.getElementById('userBadge');if(!AU.cur){b.textContent='';b.className='ubadge';return}const r=gR(AU.cur);const dn=getDisplayName(AU.cur);b.className='ubadge '+r;b.innerHTML=RI[r]+' '+dn+' <span class="rtag '+r+'">'+RL[r].l+'</span>';_updateNotifyBell()}
+/* ===== 前端通知铃铛系统（超管实时感知新申请） ===== */
+let _notifyPollTimer=null;
+let _lastKnownPendingCount=0;
+function _updateNotifyBell(){
+const bell=document.getElementById('notifyBell');const dot=document.getElementById('notifyDot');
+if(!bell||!dot)return;
+/* 仅超管显示铃铛 */
+if(!isS()){bell.style.display='none';return}
+const pc=AR.filter(r=>r.status==='pending').length;
+bell.style.display='inline-flex';
+if(pc>0){dot.style.display='flex';dot.textContent=pc>9?'9+':pc}
+else{dot.style.display='none';dot.textContent=''}
+}
+/* 点击铃铛：打开配置面板并跳转到消息通知 Tab */
+function _openNotifyPanel(){
+if(!canE()){showToast('您没有编辑权限',1);return}
+const cfgP=document.getElementById('cfgP');
+if(!cfgP.classList.contains('open')){
+document.getElementById('cfgP').classList.add('open');
+document.getElementById('cfgOv').classList.add('open');
+const fab=document.getElementById('cfgApplyFloat');
+const cfgBtn=document.getElementById('cfgBtn');
+_prevSnapshot=_takeSnapshot();renderCfg();
+if(fab)fab.style.display='none';
+if(cfgBtn)cfgBtn.style.display='none';
+}
+stab('notify',null);
+rNotify();
+}
+/* 定时轮询 GitHub 检查新申请（仅超管，60秒一次） */
+async function _pollAccessRequests(){
+if(!isS()||!AU.cur)return;
+try{
+const ghData=await ghLoad();
+if(ghData&&ghData.content&&ghData.content.accessRequests){
+const remoteAR=ghData.content.accessRequests;
+const remotePending=remoteAR.filter(r=>r.status==='pending').length;
+const localPending=AR.filter(r=>r.status==='pending').length;
+/* 只在有新增申请时更新 */
+if(remotePending>localPending||(remotePending>0&&JSON.stringify(remoteAR)!==JSON.stringify(AR))){
+AR=remoteAR;sReq();
+_updateNotifyBell();
+/* 如果配置面板的消息通知 Tab 正打开，也刷新内容 */
+const notifyTab=document.getElementById('tab-notify');
+if(notifyTab&&notifyTab.classList.contains('act'))rNotify();
+/* 新申请到达时 Toast 提示 */
+if(remotePending>_lastKnownPendingCount&&_lastKnownPendingCount>=0){
+showToast('🔔 收到 '+(remotePending-_lastKnownPendingCount)+' 条新的权限申请');
+}
+}
+_lastKnownPendingCount=remotePending;
+}
+}catch(e){console.warn('轮询申请失败',e)}
+}
+function _startNotifyPoll(){
+if(_notifyPollTimer)clearInterval(_notifyPollTimer);
+_lastKnownPendingCount=AR.filter(r=>r.status==='pending').length;
+/* 首次延迟 10 秒后开始，之后每 60 秒轮询一次 */
+setTimeout(()=>{
+_pollAccessRequests();
+_notifyPollTimer=setInterval(_pollAccessRequests,60000);
+},10000);
+}
+function _stopNotifyPoll(){if(_notifyPollTimer){clearInterval(_notifyPollTimer);_notifyPollTimer=null}}
 /* Auto-login IIFE 已移到 D 和 _initData 定义之后，避免 let D 的 TDZ 问题 */
 
 /* ===== SVG ICON SYSTEM — soft matte 3D fluid style ===== */
@@ -1850,7 +1921,7 @@ else{ms.status='p'}
 }
 
 /* Auto-login on page load — 必须在 D 和 _initData 定义之后执行 */
-(async function(){await _initData();let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);/* 安全策略：远程数据未加载时，只信任 AU.users 白名单（不走哈希表路径，避免黑名单被绕过） */const role=_authFromRemote?gR(s):(AU.users[s]?.role||null);if(role){/* 关键修复：恢复会话时，确保隐式用户也在 AU.users 中 */if(!AU.users[s]){AU.users[s]={role:role,added:getBJDate()};const _h=_hashCache[s];if(_h&&!DYNAMIC_DIR[s]){const _ioaE=IOA_USERS_HASH[_h];const _dynE=DYNAMIC_USERS_HASH[_h];const _info=_ioaE?decryptUser(_ioaE,s):(_dynE?decryptUser(_dynE,s):null);if(_info&&_info.name){DYNAMIC_DIR[s]={name:_info.name,dept:_info.dept||'未指定部门',type:_info.type||'fulltime',typeName:_info.typeName||'员工',avatar:'#0066CC'};_rebuildDynHash();_saveDynDir()}}sAuth();console.log('✅ 会话恢复: 隐式用户 '+s+' 已自动注册到 AU.users')}/* Superadmin device check on session restore */if(gR(s)==='superadmin'){const devOk=await verifySuperadminDevice(s);if(!devOk){localStorage.removeItem('mocap_cur');localStorage.removeItem('mocap_ioa_id');await startIOAAuth();return}}AU.cur=s;_tryAutoToken();document.getElementById('loginOv').style.display='none';uBadge();render()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
+(async function(){await _initData();let s=localStorage.getItem('mocap_cur');if(s){await _cacheHash(s);/* 安全策略：远程数据未加载时，只信任 AU.users 白名单（不走哈希表路径，避免黑名单被绕过） */const role=_authFromRemote?gR(s):(AU.users[s]?.role||null);if(role){/* 关键修复：恢复会话时，确保隐式用户也在 AU.users 中 */if(!AU.users[s]){AU.users[s]={role:role,added:getBJDate()};const _h=_hashCache[s];if(_h&&!DYNAMIC_DIR[s]){const _ioaE=IOA_USERS_HASH[_h];const _dynE=DYNAMIC_USERS_HASH[_h];const _info=_ioaE?decryptUser(_ioaE,s):(_dynE?decryptUser(_dynE,s):null);if(_info&&_info.name){DYNAMIC_DIR[s]={name:_info.name,dept:_info.dept||'未指定部门',type:_info.type||'fulltime',typeName:_info.typeName||'员工',avatar:'#0066CC'};_rebuildDynHash();_saveDynDir()}}sAuth();console.log('✅ 会话恢复: 隐式用户 '+s+' 已自动注册到 AU.users')}/* Superadmin device check on session restore */if(gR(s)==='superadmin'){const devOk=await verifySuperadminDevice(s);if(!devOk){localStorage.removeItem('mocap_cur');localStorage.removeItem('mocap_ioa_id');await startIOAAuth();return}}AU.cur=s;_tryAutoToken();document.getElementById('loginOv').style.display='none';uBadge();render();_startNotifyPoll()}else{await startIOAAuth()}}else{await startIOAAuth()}})();
 /* Anti-autofill: browsers may fill inputs AFTER JS runs, so schedule a delayed clear */
 [100,500,1500].forEach(t=>setTimeout(()=>{const inp=document.getElementById('loginNameInput');if(inp&&!inp.matches(':focus')&&document.getElementById('loginOv').style.display!=='none'){inp.value=''}},t));
 
@@ -2573,7 +2644,7 @@ sAuth();
 /* Update request status */
 const origIdx=AR.findIndex(r=>r===req);
 if(origIdx>-1){AR[origIdx].status='approved';AR[origIdx].approvedRole=role;AR[origIdx].processedDate=getBJDate()}
-sReq();rNotify();rPerm();showToast('已通过 '+cnName+'('+uid+') 的权限申请，授予'+RL[role].l);
+sReq();rNotify();rPerm();_updateNotifyBell();showToast('已通过 '+cnName+'('+uid+') 的权限申请，授予'+RL[role].l);
 }
 function rejectReq(idx){
 const pendingReqs=AR.filter(r=>r.status==='pending');
@@ -2582,7 +2653,7 @@ const req=pendingReqs[idx];
 const reason=prompt('请输入拒绝原因（可选）：');
 const origIdx=AR.findIndex(r=>r===req);
 if(origIdx>-1){AR[origIdx].status='rejected';AR[origIdx].rejectReason=reason||'审批人未通过';AR[origIdx].processedDate=getBJDate()}
-sReq();rNotify();rPerm();showToast('已拒绝 '+req.name+' 的权限申请');
+sReq();rNotify();rPerm();_updateNotifyBell();showToast('已拒绝 '+req.name+' 的权限申请');
 }
 function addU(){const ni=document.getElementById('nuName'),rs=document.getElementById('nuRole'),n=ni.value.trim(),r=rs.value;if(!n){showToast('请输入姓名',1);return}if(AU.users[n]){showToast('用户已存在',1);return}if(!isS()&&(r==='superadmin'||r==='admin')){showToast('无权添加此角色',1);return}/* 安全检查：黑名单用户，超管添加时自动移出黑名单 */if(AU.blocked&&AU.blocked[n]){if(isS()){delete AU.blocked[n]}else{showToast(n+' 已被删除，需超管操作才能重新添加',1);return}}AU.users[n]={role:r,added:new Date().toISOString().slice(0,10)};sAuth();rPerm();showToast(n+' 已添加为'+RL[r].l)}
 
