@@ -3300,6 +3300,10 @@
       "v_yfanghou": {
         "role": "viewer",
         "added": "2026-04-28"
+      },
+      "erickukulong": {
+        "role": "viewer",
+        "added": "2026-04-28"
       }
     },
     "blocked": {
@@ -3474,7 +3478,9 @@
       "requestedRole": "viewer",
       "reason": "无",
       "date": "2026-04-28",
-      "status": "pending"
+      "status": "approved",
+      "approvedRole": "viewer",
+      "processedDate": "2026-04-28"
     }
   ],
   "dataHistory": [
@@ -7232,6 +7238,13 @@
       "dept": "光子艺术部",
       "type": "vstaff",
       "typeName": "V岗",
+      "avatar": "#0066CC"
+    },
+    "erickukulong": {
+      "name": "埃里克龙",
+      "dept": "未指定部门",
+      "type": "fulltime",
+      "typeName": "正编",
       "avatar": "#0066CC"
     }
   }
