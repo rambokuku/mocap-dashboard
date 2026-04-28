@@ -3478,9 +3478,7 @@
       "requestedRole": "viewer",
       "reason": "无",
       "date": "2026-04-28",
-      "status": "approved",
-      "approvedRole": "viewer",
-      "processedDate": "2026-04-28"
+      "status": "pending"
     }
   ],
   "dataHistory": [
