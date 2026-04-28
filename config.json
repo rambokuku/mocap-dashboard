@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "动捕专项整体进展梳理",
-    "updateDate": "2026-04-27T16:56",
+    "updateDate": "2026-04-28T14:34",
     "reporter": "rambokou(寇启龙)",
     "animLead": "saxonshao(邵雷)",
     "po": "andrewzli(李哲)",
@@ -102,7 +102,7 @@
           "id": "item_1775711608512",
           "title": "OG 动捕外建动捕合作",
           "dateRange": "04.09 - 08.01",
-          "description": "1. 已确认正式走艺术部自采流程；<br>2. 正在合同细节梳理阶段，等待陈总确认反馈场地细节信息（已和服采、集团风控对齐）；<br>3. 合同梳理完成后，下周启动财、法邮件审批",
+          "description": "1. 已确认正式走艺术部自采流程（已和服采、集团风控对齐）；<br>2. 合同条款已完成梳理，影科侧已提供设备/场地具体信息；<br>3. 合同正在走财、法、税邮件审批流程。",
           "progressLabel": "整体进度",
           "progress": 33,
           "progressColor": "bl",
@@ -215,7 +215,7 @@
           "id": "sw2",
           "title": "动捕排期系统",
           "dateRange": "12.25 - 04.24",
-          "description": "<span class=\"risk\">最新视觉完成 90%</span>，本周上线内网供用户体验测试。<br>后端进入功能点联调和测试debug环节，前端进入功能点联调、UI改造和内网部署环节。",
+          "description": "所有功能点开发完成，目前正在灰度测试。",
           "progressLabel": "整体进度",
           "progress": 100,
           "progressColor": "gn",
