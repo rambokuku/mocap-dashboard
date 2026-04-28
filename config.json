@@ -299,76 +299,6 @@
       ]
     },
     {
-      "id": "mod_1776771317893",
-      "category": "数据精修",
-      "title": "数据精修",
-      "subtitle": "实现动捕数据处理的最后一公里交付",
-      "overallProgress": 9,
-      "status": "inprogress",
-      "items": [
-        {
-          "id": "item_1776771317893",
-          "title": "搭建策略确认",
-          "dateRange": "04.22 - 05.22",
-          "description": "数据精修搭建方案确认：基地 or CP承建方案可行性调研",
-          "progressLabel": "整体进度",
-          "progress": 20,
-          "progressColor": "bl",
-          "ganttLabel": "搭建策略确认",
-          "ganttSubLabel": "",
-          "ganttBars": [
-            {
-              "title": "搭建策略确认",
-              "start": "2026-04-22",
-              "end": "2026-05-22",
-              "status": "i",
-              "_progress": 20
-            }
-          ]
-        },
-        {
-          "id": "item_1776771527748",
-          "title": "精修人员招聘",
-          "dateRange": "05.07 - 07.07",
-          "description": "招聘子岗团队为监修主力，撬动CP实现精修业务的量产，降本增效",
-          "progressLabel": "整体进度",
-          "progress": 0,
-          "progressColor": "pu",
-          "ganttLabel": "精修人员招聘",
-          "ganttSubLabel": "",
-          "ganttBars": [
-            {
-              "title": "精修人员招聘",
-              "start": "2026-05-07",
-              "end": "2026-07-07",
-              "status": "p",
-              "_progress": 0
-            }
-          ]
-        },
-        {
-          "id": "item_1776771631190",
-          "title": "精修团队培训规划",
-          "dateRange": "04.22 - 07.14",
-          "description": "对精修团队进行系统的专业赋能培训",
-          "progressLabel": "整体进度",
-          "progress": 7,
-          "progressColor": "bl",
-          "ganttLabel": "精修团队培训规划",
-          "ganttSubLabel": "",
-          "ganttBars": [
-            {
-              "title": "精修团队培训规划",
-              "start": "2026-04-22",
-              "end": "2026-07-14",
-              "status": "i",
-              "_progress": 7
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "mod_1776443823812",
       "category": "生态合作",
       "title": "生态合作",
@@ -441,6 +371,76 @@
               "end": "2026-04-30",
               "status": "i",
               "_progress": 71
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mod_1776771317893",
+      "category": "数据精修",
+      "title": "数据精修",
+      "subtitle": "实现动捕数据处理的最后一公里交付",
+      "overallProgress": 9,
+      "status": "inprogress",
+      "items": [
+        {
+          "id": "item_1776771317893",
+          "title": "搭建策略确认",
+          "dateRange": "04.22 - 05.22",
+          "description": "数据精修搭建方案确认：基地 or CP承建方案可行性调研",
+          "progressLabel": "整体进度",
+          "progress": 20,
+          "progressColor": "bl",
+          "ganttLabel": "搭建策略确认",
+          "ganttSubLabel": "",
+          "ganttBars": [
+            {
+              "title": "搭建策略确认",
+              "start": "2026-04-22",
+              "end": "2026-05-22",
+              "status": "i",
+              "_progress": 20
+            }
+          ]
+        },
+        {
+          "id": "item_1776771527748",
+          "title": "精修人员招聘",
+          "dateRange": "05.07 - 07.07",
+          "description": "招聘子岗团队为监修主力，撬动CP实现精修业务的量产，降本增效",
+          "progressLabel": "整体进度",
+          "progress": 0,
+          "progressColor": "pu",
+          "ganttLabel": "精修人员招聘",
+          "ganttSubLabel": "",
+          "ganttBars": [
+            {
+              "title": "精修人员招聘",
+              "start": "2026-05-07",
+              "end": "2026-07-07",
+              "status": "p",
+              "_progress": 0
+            }
+          ]
+        },
+        {
+          "id": "item_1776771631190",
+          "title": "精修团队培训规划",
+          "dateRange": "04.22 - 07.14",
+          "description": "对精修团队进行系统的专业赋能培训",
+          "progressLabel": "整体进度",
+          "progress": 7,
+          "progressColor": "bl",
+          "ganttLabel": "精修团队培训规划",
+          "ganttSubLabel": "",
+          "ganttBars": [
+            {
+              "title": "精修团队培训规划",
+              "start": "2026-04-22",
+              "end": "2026-07-14",
+              "status": "i",
+              "_progress": 7
             }
           ]
         }
