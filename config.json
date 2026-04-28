@@ -3419,6 +3419,17 @@
       "status": "rejected",
       "rejectReason": "继续测试",
       "processedDate": "2026-04-27"
+    },
+    {
+      "ioaId": "channinglin",
+      "name": "林倩倩",
+      "dept": "互动娱乐/光子工作室群/技术美术中心/其他",
+      "empType": "subsidiary",
+      "empTypeName": "子公司",
+      "requestedRole": "editor",
+      "reason": "无",
+      "date": "2026-04-28",
+      "status": "pending"
     }
   ],
   "dataHistory": [
