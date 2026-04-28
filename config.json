@@ -7215,6 +7215,13 @@
       "type": "fulltime",
       "typeName": "正编",
       "avatar": "#0066CC"
+    },
+    "v_yyyilin": {
+      "name": "林伊",
+      "dept": "光子艺术部",
+      "type": "vstaff",
+      "typeName": "V岗",
+      "avatar": "#0066CC"
     }
   }
 }
