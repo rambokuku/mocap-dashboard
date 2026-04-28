@@ -1659,7 +1659,7 @@ if(cfgBtn)cfgBtn.style.display='none';
 stab('notify',null);
 rNotify();
 }
-/* 定时轮询 GitHub 检查新申请（仅超管，60秒一次） */
+/* 定时轮询 GitHub 检查新申请（仅超管，5秒一次） */
 async function _pollAccessRequests(){
 if(!isS()||!AU.cur)return;
 try{
@@ -1687,11 +1687,11 @@ _lastKnownPendingCount=remotePending;
 function _startNotifyPoll(){
 if(_notifyPollTimer)clearInterval(_notifyPollTimer);
 _lastKnownPendingCount=AR.filter(r=>r.status==='pending').length;
-/* 首次延迟 10 秒后开始，之后每 60 秒轮询一次 */
+/* 首次延迟 2 秒后开始，之后每 5 秒轮询一次 */
 setTimeout(()=>{
 _pollAccessRequests();
-_notifyPollTimer=setInterval(_pollAccessRequests,60000);
-},10000);
+_notifyPollTimer=setInterval(_pollAccessRequests,5000);
+},2000);
 }
 function _stopNotifyPoll(){if(_notifyPollTimer){clearInterval(_notifyPollTimer);_notifyPollTimer=null}}
 /* Auto-login IIFE 已移到 D 和 _initData 定义之后，避免 let D 的 TDZ 问题 */
