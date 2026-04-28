@@ -552,11 +552,6 @@
         "added": "2026-01-01",
         "displayName": "寇启龙"
       },
-      "channinglin": {
-        "role": "admin",
-        "added": "2026-03-29",
-        "displayName": "channinglin"
-      },
       "v_yyyilin": {
         "role": "admin",
         "added": "2026-03-29",
@@ -3299,6 +3294,10 @@
       "tinayue": {
         "removedBy": "rambokou",
         "removedAt": "2026-04-27"
+      },
+      "channinglin": {
+        "removedBy": "rambokou",
+        "removedAt": "2026-04-28"
       }
     },
     "ghToken": "CgcTPiMVVDEqOQwuEh8VGXhRRkYHOwctNWgxOCQNDipQGlVfS0Nxfg=="
