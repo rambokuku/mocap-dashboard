@@ -3464,6 +3464,17 @@
       "status": "approved",
       "approvedRole": "admin",
       "processedDate": "2026-04-28"
+    },
+    {
+      "ioaId": "erickukulong",
+      "name": "埃里克龙",
+      "dept": "未指定部门",
+      "empType": "fulltime",
+      "empTypeName": "正编",
+      "requestedRole": "viewer",
+      "reason": "无",
+      "date": "2026-04-28",
+      "status": "pending"
     }
   ],
   "dataHistory": [
