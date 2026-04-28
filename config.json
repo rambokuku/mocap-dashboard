@@ -248,57 +248,6 @@
       ]
     },
     {
-      "id": "operations",
-      "category": "operations",
-      "title": "运营推广",
-      "subtitle": "企鹅岛03栋云海中棚动捕官方宣传视频拍摄",
-      "overallProgress": 50,
-      "status": "inprogress",
-      "items": [
-        {
-          "id": "ops1",
-          "title": "宣传视频拍摄",
-          "dateRange": "04.13 - 05.22",
-          "description": "市场部沟通后续的视频拍摄需求，市场部内部汇报后决定更改视频拍摄方案，已卷入sam，支持内部升级拍摄方案，目前荔枝牵头阿坤团队优化脚本中",
-          "progressLabel": "整体进度",
-          "progress": 50,
-          "progressColor": "bl",
-          "ganttLabel": "宣传视频拍摄",
-          "ganttSubLabel": "脚本/拍摄/后期",
-          "ganttBars": [
-            {
-              "title": "脚本优化",
-              "start": "2026-04-13",
-              "end": "2026-04-22",
-              "status": "c",
-              "_progress": 100
-            },
-            {
-              "title": "正式拍摄",
-              "start": "2026-05-11",
-              "end": "2026-05-14",
-              "status": "p",
-              "_progress": 0
-            },
-            {
-              "title": "后期制作",
-              "start": "2026-05-14",
-              "end": "2026-05-22",
-              "status": "p",
-              "_progress": 0
-            },
-            {
-              "title": "CP 确认",
-              "start": "2026-04-20",
-              "end": "2026-04-21",
-              "status": "c",
-              "_progress": 100
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "mod_1776443823812",
       "category": "生态合作",
       "title": "生态合作",
@@ -371,6 +320,57 @@
               "end": "2026-04-30",
               "status": "i",
               "_progress": 71
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "operations",
+      "category": "operations",
+      "title": "运营推广",
+      "subtitle": "企鹅岛03栋云海中棚动捕官方宣传视频拍摄",
+      "overallProgress": 50,
+      "status": "inprogress",
+      "items": [
+        {
+          "id": "ops1",
+          "title": "宣传视频拍摄",
+          "dateRange": "04.13 - 05.22",
+          "description": "市场部沟通后续的视频拍摄需求，市场部内部汇报后决定更改视频拍摄方案，已卷入sam，支持内部升级拍摄方案，目前荔枝牵头阿坤团队优化脚本中",
+          "progressLabel": "整体进度",
+          "progress": 50,
+          "progressColor": "bl",
+          "ganttLabel": "宣传视频拍摄",
+          "ganttSubLabel": "脚本/拍摄/后期",
+          "ganttBars": [
+            {
+              "title": "脚本优化",
+              "start": "2026-04-13",
+              "end": "2026-04-22",
+              "status": "c",
+              "_progress": 100
+            },
+            {
+              "title": "正式拍摄",
+              "start": "2026-05-11",
+              "end": "2026-05-14",
+              "status": "p",
+              "_progress": 0
+            },
+            {
+              "title": "后期制作",
+              "start": "2026-05-14",
+              "end": "2026-05-22",
+              "status": "p",
+              "_progress": 0
+            },
+            {
+              "title": "CP 确认",
+              "start": "2026-04-20",
+              "end": "2026-04-21",
+              "status": "c",
+              "_progress": 100
             }
           ]
         }
