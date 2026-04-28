@@ -3264,6 +3264,10 @@
       "ztsun": {
         "role": "viewer",
         "added": "2026-04-19"
+      },
+      "channinglin": {
+        "role": "admin",
+        "added": "2026-04-28"
       }
     },
     "blocked": {
@@ -3294,10 +3298,6 @@
       "tinayue": {
         "removedBy": "rambokou",
         "removedAt": "2026-04-27"
-      },
-      "channinglin": {
-        "removedBy": "rambokou",
-        "removedAt": "2026-04-28"
       }
     },
     "ghToken": "CgcTPiMVVDEqOQwuEh8VGXhRRkYHOwctNWgxOCQNDipQGlVfS0Nxfg=="
@@ -3429,7 +3429,9 @@
       "requestedRole": "editor",
       "reason": "111哈哈哈哈哈哈和哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈6668888、",
       "date": "2026-04-28",
-      "status": "pending"
+      "status": "approved",
+      "approvedRole": "admin",
+      "processedDate": "2026-04-28"
     }
   ],
   "dataHistory": [
@@ -7118,5 +7120,13 @@
       ]
     }
   },
-  "directory": {}
+  "directory": {
+    "channinglin": {
+      "name": "林倩倩",
+      "dept": "互动娱乐/光子工作室群/技术美术中心/其他",
+      "type": "subsidiary",
+      "typeName": "子公司",
+      "avatar": "#0066CC"
+    }
+  }
 }
