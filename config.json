@@ -3300,10 +3300,6 @@
       "v_yfanghou": {
         "role": "viewer",
         "added": "2026-04-28"
-      },
-      "erickukulong": {
-        "role": "viewer",
-        "added": "2026-04-28"
       }
     },
     "blocked": {
@@ -3334,6 +3330,10 @@
       "tinayue": {
         "removedBy": "rambokou",
         "removedAt": "2026-04-27"
+      },
+      "erickukulong": {
+        "removedBy": "rambokou",
+        "removedAt": "2026-04-28"
       }
     },
     "ghToken": "CgcTPiMVVDEqOQwuEh8VGXhRRkYHOwctNWgxOCQNDipQGlVfS0Nxfg=="
