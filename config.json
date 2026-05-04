@@ -13,7 +13,7 @@
       "category": "hardware",
       "title": "硬件建设",
       "subtitle": "云海动捕中棚建设 · 直播空间搭建",
-      "overallProgress": 78,
+      "overallProgress": 79,
       "status": "inprogress",
       "items": [
         {
@@ -104,7 +104,7 @@
           "dateRange": "04.09 - 08.01",
           "description": "1. 已确认正式走艺术部自采流程（已和服采、集团风控对齐）；<br>2. 合同条款已完成梳理，影科侧已提供设备/场地具体信息；<br>3. 合同正在走财、法、税邮件审批流程。",
           "progressLabel": "整体进度",
-          "progress": 35,
+          "progress": 38,
           "progressColor": "bl",
           "ganttLabel": "OG 动捕外建动捕合作",
           "ganttSubLabel": "",
@@ -128,7 +128,7 @@
               "start": "2026-04-27",
               "end": "2026-05-22",
               "status": "i",
-              "_progress": 8
+              "_progress": 28
             },
             {
               "title": "付款交付",
@@ -160,7 +160,7 @@
       "category": "software",
       "title": "软件开发",
       "subtitle": "动捕流程软件平台 · 动捕排期系统",
-      "overallProgress": 87,
+      "overallProgress": 88,
       "status": "inprogress",
       "items": [
         {
@@ -169,7 +169,7 @@
           "dateRange": "12.25 - 06.30",
           "description": "模块1 Realtime：电子场记记录、工程预设、SDK数据流对接触发、四分屏等功能开发完成，前期bug修复完成。（1月6日-2月28日）<br>模块2 Process：数据过滤筛选、动画快速3D查看预览等功能开发完成，前期bug修复完成。（1月14日-3月31日）<br>模块1&2整体试用中。<br>模块3 Publish：计划5月初启动交互设计，5月底启动开发。",
           "progressLabel": "模块1&2",
-          "progress": 74,
+          "progress": 75,
           "progressColor": "bl",
           "extraProgress": [
             {
@@ -206,8 +206,8 @@
               "title": "模块1 & 模块2 测试",
               "start": "2026-03-31",
               "end": "2026-04-30",
-              "status": "i",
-              "_progress": 97
+              "status": "c",
+              "_progress": 100
             }
           ]
         },
@@ -303,7 +303,7 @@
       "category": "生态合作",
       "title": "生态合作",
       "subtitle": "动捕人力拓展（动作指导、摄制组、威亚师等）",
-      "overallProgress": 64,
+      "overallProgress": 67,
       "status": "inprogress",
       "items": [
         {
@@ -312,7 +312,7 @@
           "dateRange": "03.25 - 05.31",
           "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
           "progressLabel": "整体进度",
-          "progress": 32,
+          "progress": 33,
           "progressColor": "bl",
           "ganttLabel": "发行线演员渠道合作",
           "ganttSubLabel": "",
@@ -321,8 +321,8 @@
               "title": "演员经纪资源梳理",
               "start": "2026-03-25",
               "end": "2026-04-30",
-              "status": "i",
-              "_progress": 97
+              "status": "c",
+              "_progress": 100
             },
             {
               "title": "演员经纪资源对齐",
@@ -346,8 +346,8 @@
           "dateRange": "04.18 - 04.30",
           "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
           "progressLabel": "整体进度",
-          "progress": 95,
-          "progressColor": "bl",
+          "progress": 100,
+          "progressColor": "gn",
           "ganttLabel": "影科演员经纪渠道合作",
           "ganttSubLabel": "",
           "ganttBars": [
@@ -369,8 +369,8 @@
               "title": "合同系统流程",
               "start": "2026-04-23",
               "end": "2026-04-30",
-              "status": "i",
-              "_progress": 86
+              "status": "c",
+              "_progress": 100
             }
           ]
         }
@@ -381,7 +381,7 @@
       "category": "数据精修",
       "title": "数据精修",
       "subtitle": "实现动捕数据处理的最后一公里交付",
-      "overallProgress": 10,
+      "overallProgress": 18,
       "status": "inprogress",
       "items": [
         {
@@ -390,7 +390,7 @@
           "dateRange": "04.22 - 05.22",
           "description": "数据精修搭建方案确认：基地 or CP承建方案可行性调研",
           "progressLabel": "整体进度",
-          "progress": 23,
+          "progress": 40,
           "progressColor": "bl",
           "ganttLabel": "搭建策略确认",
           "ganttSubLabel": "",
@@ -400,7 +400,7 @@
               "start": "2026-04-22",
               "end": "2026-05-22",
               "status": "i",
-              "_progress": 23
+              "_progress": 40
             }
           ]
         },
@@ -430,7 +430,7 @@
           "dateRange": "04.22 - 07.14",
           "description": "对精修团队进行系统的专业赋能培训",
           "progressLabel": "整体进度",
-          "progress": 8,
+          "progress": 14,
           "progressColor": "bl",
           "ganttLabel": "精修团队培训规划",
           "ganttSubLabel": "",
@@ -440,7 +440,7 @@
               "start": "2026-04-22",
               "end": "2026-07-14",
               "status": "i",
-              "_progress": 8
+              "_progress": 14
             }
           ]
         }
@@ -500,13 +500,13 @@
       "date": "2026-04-30",
       "title": "影科演员经纪渠道合作完成",
       "desc": "[生态合作] 合同内容梳理→财、法、税邮件审批→合同系统流程 （进度44%）",
-      "status": "p"
+      "status": "c"
     },
     {
       "date": "2026-05-01",
       "title": "宣传视频拍摄完成",
       "desc": "[运营推广] 脚本优化→正式拍摄→后期制作→CP 确认 （进度50%）",
-      "status": "p"
+      "status": "c"
     },
     {
       "date": "2026-05-22",
