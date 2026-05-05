@@ -13,7 +13,7 @@
       "category": "hardware",
       "title": "硬件建设",
       "subtitle": "云海动捕中棚建设 · 直播空间搭建",
-      "overallProgress": 79,
+      "overallProgress": 80,
       "status": "inprogress",
       "items": [
         {
@@ -104,7 +104,7 @@
           "dateRange": "04.09 - 08.01",
           "description": "1. 已确认正式走艺术部自采流程（已和服采、集团风控对齐）；<br>2. 合同条款已完成梳理，影科侧已提供设备/场地具体信息；<br>3. 合同正在走财、法、税邮件审批流程。",
           "progressLabel": "整体进度",
-          "progress": 38,
+          "progress": 39,
           "progressColor": "bl",
           "ganttLabel": "OG 动捕外建动捕合作",
           "ganttSubLabel": "",
@@ -128,7 +128,7 @@
               "start": "2026-04-27",
               "end": "2026-05-22",
               "status": "i",
-              "_progress": 28
+              "_progress": 32
             },
             {
               "title": "付款交付",
@@ -381,7 +381,7 @@
       "category": "数据精修",
       "title": "数据精修",
       "subtitle": "实现动捕数据处理的最后一公里交付",
-      "overallProgress": 18,
+      "overallProgress": 20,
       "status": "inprogress",
       "items": [
         {
@@ -390,7 +390,7 @@
           "dateRange": "04.22 - 05.22",
           "description": "数据精修搭建方案确认：基地 or CP承建方案可行性调研",
           "progressLabel": "整体进度",
-          "progress": 40,
+          "progress": 43,
           "progressColor": "bl",
           "ganttLabel": "搭建策略确认",
           "ganttSubLabel": "",
@@ -400,7 +400,7 @@
               "start": "2026-04-22",
               "end": "2026-05-22",
               "status": "i",
-              "_progress": 40
+              "_progress": 43
             }
           ]
         },
@@ -430,7 +430,7 @@
           "dateRange": "04.22 - 07.14",
           "description": "对精修团队进行系统的专业赋能培训",
           "progressLabel": "整体进度",
-          "progress": 14,
+          "progress": 16,
           "progressColor": "bl",
           "ganttLabel": "精修团队培训规划",
           "ganttSubLabel": "",
@@ -440,7 +440,7 @@
               "start": "2026-04-22",
               "end": "2026-07-14",
               "status": "i",
-              "_progress": 14
+              "_progress": 16
             }
           ]
         }
