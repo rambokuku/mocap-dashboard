@@ -128,7 +128,7 @@
               "start": "2026-04-27",
               "end": "2026-05-22",
               "status": "i",
-              "_progress": 32
+              "_progress": 36
             },
             {
               "title": "付款交付",
@@ -199,7 +199,7 @@
               "title": "模块3 Publish",
               "start": "2026-05-06",
               "end": "2026-06-30",
-              "status": "p",
+              "status": "i",
               "_progress": 0
             },
             {
@@ -328,7 +328,7 @@
               "title": "演员经纪资源对齐",
               "start": "2026-05-06",
               "end": "2026-05-07",
-              "status": "p",
+              "status": "i",
               "_progress": 0
             },
             {
@@ -381,7 +381,7 @@
       "category": "数据精修",
       "title": "数据精修",
       "subtitle": "实现动捕数据处理的最后一公里交付",
-      "overallProgress": 20,
+      "overallProgress": 21,
       "status": "inprogress",
       "items": [
         {
@@ -390,7 +390,7 @@
           "dateRange": "04.22 - 05.22",
           "description": "数据精修搭建方案确认：基地 or CP承建方案可行性调研",
           "progressLabel": "整体进度",
-          "progress": 43,
+          "progress": 47,
           "progressColor": "bl",
           "ganttLabel": "搭建策略确认",
           "ganttSubLabel": "",
@@ -400,7 +400,7 @@
               "start": "2026-04-22",
               "end": "2026-05-22",
               "status": "i",
-              "_progress": 43
+              "_progress": 47
             }
           ]
         },
@@ -430,7 +430,7 @@
           "dateRange": "04.22 - 07.14",
           "description": "对精修团队进行系统的专业赋能培训",
           "progressLabel": "整体进度",
-          "progress": 16,
+          "progress": 17,
           "progressColor": "bl",
           "ganttLabel": "精修团队培训规划",
           "ganttSubLabel": "",
@@ -440,7 +440,7 @@
               "start": "2026-04-22",
               "end": "2026-07-14",
               "status": "i",
-              "_progress": 16
+              "_progress": 17
             }
           ]
         }
