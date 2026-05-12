@@ -128,7 +128,7 @@
               "start": "2026-04-27",
               "end": "2026-05-22",
               "status": "i",
-              "_progress": 56
+              "_progress": 60
             },
             {
               "title": "付款交付",
@@ -169,7 +169,7 @@
           "dateRange": "12.25 - 06.30",
           "description": "模块1 Realtime：电子场记记录、工程预设、SDK数据流对接触发、四分屏等功能开发完成，前期bug修复完成。（1月6日-2月28日）<br>模块2 Process：数据过滤筛选、动画快速3D查看预览等功能开发完成，前期bug修复完成。（1月14日-3月31日）<br>模块1&2整体试用中。<br>模块3 Publish：计划5月初启动交互设计，5月底启动开发。",
           "progressLabel": "模块1&2",
-          "progress": 77,
+          "progress": 78,
           "progressColor": "bl",
           "extraProgress": [
             {
@@ -200,7 +200,7 @@
               "start": "2026-05-06",
               "end": "2026-06-30",
               "status": "i",
-              "_progress": 9
+              "_progress": 11
             },
             {
               "title": "模块1 & 模块2 测试",
@@ -252,7 +252,7 @@
       "category": "operations",
       "title": "运营推广",
       "subtitle": "企鹅岛03栋云海中棚动捕官方宣传视频拍摄",
-      "overallProgress": 50,
+      "overallProgress": 58,
       "status": "inprogress",
       "items": [
         {
@@ -261,7 +261,7 @@
           "dateRange": "04.13 - 05.22",
           "description": "市场部沟通后续的视频拍摄需求，市场部内部汇报后决定更改视频拍摄方案，已卷入sam，支持内部升级拍摄方案，目前荔枝牵头阿坤团队优化脚本中",
           "progressLabel": "整体进度",
-          "progress": 50,
+          "progress": 58,
           "progressColor": "bl",
           "ganttLabel": "宣传视频拍摄",
           "ganttSubLabel": "脚本/拍摄/后期",
@@ -278,7 +278,7 @@
               "start": "2026-05-11",
               "end": "2026-05-14",
               "status": "i",
-              "_progress": 0
+              "_progress": 33
             },
             {
               "title": "后期制作",
@@ -312,7 +312,7 @@
           "dateRange": "03.25 - 05.31",
           "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
           "progressLabel": "整体进度",
-          "progress": 71,
+          "progress": 72,
           "progressColor": "bl",
           "ganttLabel": "发行线演员渠道合作",
           "ganttSubLabel": "",
@@ -336,7 +336,7 @@
               "start": "2026-05-08",
               "end": "2026-05-31",
               "status": "i",
-              "_progress": 13
+              "_progress": 17
             }
           ]
         },
@@ -381,7 +381,7 @@
       "category": "数据精修",
       "title": "数据精修",
       "subtitle": "实现动捕数据处理的最后一公里交付",
-      "overallProgress": 31,
+      "overallProgress": 33,
       "status": "inprogress",
       "items": [
         {
@@ -390,7 +390,7 @@
           "dateRange": "04.22 - 05.22",
           "description": "数据精修搭建方案确认：基地 or CP承建方案可行性调研",
           "progressLabel": "整体进度",
-          "progress": 63,
+          "progress": 67,
           "progressColor": "bl",
           "ganttLabel": "搭建策略确认",
           "ganttSubLabel": "",
@@ -400,7 +400,7 @@
               "start": "2026-04-22",
               "end": "2026-05-22",
               "status": "i",
-              "_progress": 63
+              "_progress": 67
             }
           ]
         },
@@ -410,7 +410,7 @@
           "dateRange": "05.07 - 07.07",
           "description": "招聘子岗团队为监修主力，撬动CP实现精修业务的量产，降本增效",
           "progressLabel": "整体进度",
-          "progress": 7,
+          "progress": 8,
           "progressColor": "bl",
           "ganttLabel": "精修人员招聘",
           "ganttSubLabel": "",
@@ -420,7 +420,7 @@
               "start": "2026-05-07",
               "end": "2026-07-07",
               "status": "i",
-              "_progress": 7
+              "_progress": 8
             }
           ]
         },
@@ -430,7 +430,7 @@
           "dateRange": "04.22 - 07.14",
           "description": "对精修团队进行系统的专业赋能培训",
           "progressLabel": "整体进度",
-          "progress": 23,
+          "progress": 24,
           "progressColor": "bl",
           "ganttLabel": "精修团队培训规划",
           "ganttSubLabel": "",
@@ -440,7 +440,7 @@
               "start": "2026-04-22",
               "end": "2026-07-14",
               "status": "i",
-              "_progress": 23
+              "_progress": 24
             }
           ]
         }
