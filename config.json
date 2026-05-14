@@ -2,10 +2,10 @@
   "project": {
     "name": "动捕专项整体进展梳理",
     "updateDate": "2026-04-29T14:43",
-    "reporter": "rambokou(寇启龙)",
-    "animLead": "saxonshao(邵雷)",
-    "po": "andrewzli(李哲)",
-    "tl": "yuanfengxie(谢远锋)"
+    "reporter": "rambokou",
+    "animLead": "saxonshao",
+    "po": "andrewzli",
+    "tl": "yuanfengxie"
   },
   "modules": [
     {
@@ -310,7 +310,7 @@
           "id": "item_1776443823812",
           "title": "发行线演员渠道合作",
           "dateRange": "03.25 - 05.31",
-          "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
+          "description": "已与发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
           "progressLabel": "整体进度",
           "progress": 75,
           "progressColor": "bl",
@@ -344,7 +344,7 @@
           "id": "item_1776444240603",
           "title": "影科演员经纪渠道合作",
           "dateRange": "04.18 - 04.30",
-          "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
+          "description": "基于影科为IEG 库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
           "progressLabel": "整体进度",
           "progress": 100,
           "progressColor": "gn",
@@ -451,7 +451,7 @@
     {
       "date": "2025-12-25",
       "title": "软件开发启动",
-      "desc": "软件开发 — 首个任务开始\n（PM:rambokou(寇启龙) / 动画:saxonshao(邵雷) / PO:andrewzli(李哲) / TL:yuanfengxie(谢远锋))",
+      "desc": "软件开发 — 首个任务开始\n（PM:rambokou / 动画:saxonshao / PO:andrewzli / TL:yuanfengxie)",
       "status": "c"
     },
     {
@@ -550,7 +550,7 @@
       "rambokou": {
         "role": "superadmin",
         "added": "2026-01-01",
-        "displayName": "寇启龙"
+        "displayName": "l87qh//Ehsvr"
       },
       "v_yyyilin": {
         "role": "admin",
@@ -575,47 +575,47 @@
       "qqxie": {
         "role": "viewer",
         "added": "2026-03-30",
-        "displayName": "谢晴"
+        "displayName": "mcHaj/zF"
       },
       "nicoleyhguo": {
         "role": "viewer",
         "added": "2026-04-19",
-        "displayName": "郭宇辉"
+        "displayName": "h+rOisLikdbu"
       },
       "alinachen": {
         "role": "viewer",
         "added": "2026-04-19",
-        "displayName": "陈雯"
+        "displayName": "iPXhh/rM"
       },
       "peternzhao": {
         "role": "viewer",
         "added": "2026-04-19",
-        "displayName": "赵宁"
+        "displayName": "mNDBgNzv"
       },
       "alisaxiao": {
         "role": "viewer",
         "added": "2026-04-19",
-        "displayName": "肖丽"
+        "displayName": "ie7/l9nF"
       },
       "alexzjzhou": {
         "role": "viewer",
         "added": "2026-04-19",
-        "displayName": "周杰"
+        "displayName": "hP3Nnufa"
       },
       "coracai": {
         "role": "viewer",
         "added": "2026-04-19",
-        "displayName": "蔡依然"
+        "displayName": "i/vThd38jufZ"
       },
       "lemonwu": {
         "role": "viewer",
         "added": "2026-04-19",
-        "displayName": "吴晓翔"
+        "displayName": "ifXZiffkktPx"
       },
       "miroshi": {
         "role": "viewer",
         "added": "2026-04-19",
-        "displayName": "施锦羚"
+        "displayName": "i//PhufOjtPz"
       },
       "zoeyzshi": {
         "role": "viewer",
@@ -3300,12 +3300,12 @@
         "removedAt": "2026-04-27"
       }
     },
-    "ghToken": "CgcTPiMVVDEqOQwuEh8VGXhRRkYHOwctNWgxOCQNDipQGlVfS0Nxfg=="
+    "ghToken": "BwQDcydXGWN6a1pjARQRWDlNAB9DZ0d2cWcnIDcJH2lFBxhBWkl3ag=="
   },
   "accessRequests": [
     {
       "ioaId": "rambozhang",
-      "name": "寇启迪2",
+      "name": "l87qh//VgN7EVQ==",
       "dept": "未指定部门",
       "empType": "fulltime",
       "empTypeName": "正编",
@@ -3318,7 +3318,7 @@
     },
     {
       "ioaId": "rambokuku",
-      "name": "酷酷龙",
+      "name": "m+Tai+rcnNXs",
       "dept": "未指定部门",
       "empType": "fulltime",
       "empTypeName": "正编",
@@ -3331,7 +3331,7 @@
     },
     {
       "ioaId": "irisdeng",
-      "name": "邓莹婷",
+      "name": "gPD6m+rci87e",
       "dept": "未指定部门",
       "empType": "fulltime",
       "empTypeName": "正编",
@@ -3344,7 +3344,7 @@
     },
     {
       "ioaId": "irisdeng",
-      "name": "邓莹婷",
+      "name": "gPD6m+rci87e",
       "dept": "未指定部门",
       "empType": "fulltime",
       "empTypeName": "正编",
@@ -3357,7 +3357,7 @@
     },
     {
       "ioaId": "ramboli",
-      "name": "噜噜噜",
+      "name": "l/jxh/bwjOv9",
       "dept": "未指定部门",
       "empType": "vgang",
       "empTypeName": "V岗",
@@ -3370,7 +3370,7 @@
     },
     {
       "ioaId": "shireywu",
-      "name": "露露卡拉动",
+      "name": "mvTbm/nLkvjSjuL7gPPf",
       "dept": "技术发展部",
       "empType": "fulltime",
       "empTypeName": "正编",
@@ -3383,7 +3383,7 @@
     },
     {
       "ioaId": "timsgehduc",
-      "name": "测试账号",
+      "name": "ktzmm8jwgNDThvve",
       "dept": "未指定部门",
       "empType": "fulltime",
       "empTypeName": "正编",
@@ -3396,8 +3396,8 @@
     },
     {
       "ioaId": "tinayue",
-      "name": "岳婷",
-      "dept": "互动娱乐/光子工作室群/技术美术中心/其他",
+      "name": "kdvdhNDC",
+      "dept": "互动娱乐/工作室群/技术美术中心/其他",
       "empType": "fulltime",
       "empTypeName": "正编",
       "requestedRole": "viewer",
@@ -3409,8 +3409,8 @@
     },
     {
       "ioaId": "tinayue",
-      "name": "岳婷",
-      "dept": "互动娱乐/光子工作室群/技术美术中心/其他",
+      "name": "kdvdhNDC",
+      "dept": "互动娱乐/工作室群/技术美术中心/其他",
       "empType": "fulltime",
       "empTypeName": "正编",
       "requestedRole": "viewer",
@@ -3422,8 +3422,8 @@
     },
     {
       "ioaId": "channinglin",
-      "name": "林倩倩",
-      "dept": "互动娱乐/光子工作室群/技术美术中心/其他",
+      "name": "hfb2i+7Ai+fF",
+      "dept": "互动娱乐/工作室群/技术美术中心/其他",
       "empType": "subsidiary",
       "empTypeName": "子公司",
       "requestedRole": "editor",
@@ -4155,10 +4155,10 @@
       "project": {
         "name": "动捕专项整体进展梳理",
         "updateDate": "2026-04-18T23:53",
-        "reporter": "rambokou(寇启龙)",
-        "animLead": "saxonshao(邵雷)",
-        "po": "andrewzli(李哲)",
-        "tl": "yuanfengxie(谢远锋)"
+        "reporter": "rambokou",
+        "animLead": "saxonshao",
+        "po": "andrewzli",
+        "tl": "yuanfengxie"
       },
       "modules": [
         {
@@ -4412,7 +4412,7 @@
               "id": "ops1",
               "title": "宣传视频拍摄",
               "dateRange": "04.13 - 05.01",
-              "description": "正在和光子市场部沟通后续的视频拍摄需求，正在CP 筛选阶段（确认CP后明确最终排期）。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月底完成拍摄。",
+              "description": "正在和市场部沟通后续的视频拍摄需求，正在CP 筛选阶段（确认CP后明确最终排期）。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月底完成拍摄。",
               "progressLabel": "整体进度",
               "progress": 25,
               "progressColor": "bl",
@@ -4463,7 +4463,7 @@
               "id": "item_1776443823812",
               "title": "发行线演员渠道合作",
               "dateRange": "03.25 - 05.31",
-              "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
+              "description": "已与发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
               "progressLabel": "整体进度",
               "progress": 22,
               "progressColor": "bl",
@@ -4497,7 +4497,7 @@
               "id": "item_1776444240603",
               "title": "影科演员经纪渠道合作",
               "dateRange": "04.18 - 04.30",
-              "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
+              "description": "基于影科为IEG 库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
               "progressLabel": "整体进度",
               "progress": 0,
               "progressColor": "pu",
@@ -4534,7 +4534,7 @@
         {
           "date": "2025-12-25",
           "title": "软件开发启动",
-          "desc": "软件开发 — 首个任务开始\n（PM:rambokou(寇启龙) / 动画:saxonshao(邵雷) / PO:andrewzli(李哲) / TL:yuanfengxie(谢远锋))",
+          "desc": "软件开发 — 首个任务开始\n（PM:rambokou / 动画:saxonshao / PO:andrewzli / TL:yuanfengxie)",
           "status": "c"
         },
         {
@@ -4609,10 +4609,10 @@
       "project": {
         "name": "动捕专项整体进展梳理",
         "updateDate": "2026-04-19T21:46",
-        "reporter": "rambokou(寇启龙)",
-        "animLead": "saxonshao(邵雷)",
-        "po": "andrewzli(李哲)",
-        "tl": "yuanfengxie(谢远锋)"
+        "reporter": "rambokou",
+        "animLead": "saxonshao",
+        "po": "andrewzli",
+        "tl": "yuanfengxie"
       },
       "modules": [
         {
@@ -4866,7 +4866,7 @@
               "id": "ops1",
               "title": "宣传视频拍摄",
               "dateRange": "04.13 - 05.01",
-              "description": "正在和光子市场部沟通后续的视频拍摄需求，正在CP 筛选阶段（确认CP后明确最终排期）。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月底完成拍摄。",
+              "description": "正在和市场部沟通后续的视频拍摄需求，正在CP 筛选阶段（确认CP后明确最终排期）。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月底完成拍摄。",
               "progressLabel": "整体进度",
               "progress": 25,
               "progressColor": "bl",
@@ -4917,7 +4917,7 @@
               "id": "item_1776443823812",
               "title": "发行线演员渠道合作",
               "dateRange": "03.25 - 05.31",
-              "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
+              "description": "已与发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
               "progressLabel": "整体进度",
               "progress": 23,
               "progressColor": "bl",
@@ -4951,7 +4951,7 @@
               "id": "item_1776444240603",
               "title": "影科演员经纪渠道合作",
               "dateRange": "04.18 - 04.30",
-              "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
+              "description": "基于影科为IEG 库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
               "progressLabel": "整体进度",
               "progress": 17,
               "progressColor": "bl",
@@ -4988,7 +4988,7 @@
         {
           "date": "2025-12-25",
           "title": "软件开发启动",
-          "desc": "软件开发 — 首个任务开始\n（PM:rambokou(寇启龙) / 动画:saxonshao(邵雷) / PO:andrewzli(李哲) / TL:yuanfengxie(谢远锋))",
+          "desc": "软件开发 — 首个任务开始\n（PM:rambokou / 动画:saxonshao / PO:andrewzli / TL:yuanfengxie)",
           "status": "c"
         },
         {
@@ -5063,10 +5063,10 @@
       "project": {
         "name": "动捕专项整体进展梳理",
         "updateDate": "2026-04-20T13:41",
-        "reporter": "rambokou(寇启龙)",
-        "animLead": "saxonshao(邵雷)",
-        "po": "andrewzli(李哲)",
-        "tl": "yuanfengxie(谢远锋)"
+        "reporter": "rambokou",
+        "animLead": "saxonshao",
+        "po": "andrewzli",
+        "tl": "yuanfengxie"
       },
       "modules": [
         {
@@ -5320,7 +5320,7 @@
               "id": "ops1",
               "title": "宣传视频拍摄",
               "dateRange": "04.13 - 05.01",
-              "description": "正在和光子市场部沟通后续的视频拍摄需求，正在CP 筛选阶段（确认CP后明确最终排期）。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月底完成拍摄。",
+              "description": "正在和市场部沟通后续的视频拍摄需求，正在CP 筛选阶段（确认CP后明确最终排期）。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月底完成拍摄。",
               "progressLabel": "整体进度",
               "progress": 25,
               "progressColor": "bl",
@@ -5371,7 +5371,7 @@
               "id": "item_1776443823812",
               "title": "发行线演员渠道合作",
               "dateRange": "03.25 - 05.31",
-              "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
+              "description": "已与发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
               "progressLabel": "整体进度",
               "progress": 24,
               "progressColor": "bl",
@@ -5405,7 +5405,7 @@
               "id": "item_1776444240603",
               "title": "影科演员经纪渠道合作",
               "dateRange": "04.18 - 04.30",
-              "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
+              "description": "基于影科为IEG 库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
               "progressLabel": "整体进度",
               "progress": 33,
               "progressColor": "bl",
@@ -5442,7 +5442,7 @@
         {
           "date": "2025-12-25",
           "title": "软件开发启动",
-          "desc": "软件开发 — 首个任务开始\n（PM:rambokou(寇启龙) / 动画:saxonshao(邵雷) / PO:andrewzli(李哲) / TL:yuanfengxie(谢远锋))",
+          "desc": "软件开发 — 首个任务开始\n（PM:rambokou / 动画:saxonshao / PO:andrewzli / TL:yuanfengxie)",
           "status": "c"
         },
         {
@@ -5517,10 +5517,10 @@
       "project": {
         "name": "动捕专项整体进展梳理",
         "updateDate": "2026-04-21T20:14",
-        "reporter": "rambokou(寇启龙)",
-        "animLead": "saxonshao(邵雷)",
-        "po": "andrewzli(李哲)",
-        "tl": "yuanfengxie(谢远锋)"
+        "reporter": "rambokou",
+        "animLead": "saxonshao",
+        "po": "andrewzli",
+        "tl": "yuanfengxie"
       },
       "modules": [
         {
@@ -5774,7 +5774,7 @@
               "id": "ops1",
               "title": "宣传视频拍摄",
               "dateRange": "04.13 - 05.01",
-              "description": "正在和光子市场部沟通后续的视频拍摄需求，正在CP 筛选阶段（确认CP后明确最终排期）。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月底完成拍摄。",
+              "description": "正在和市场部沟通后续的视频拍摄需求，正在CP 筛选阶段（确认CP后明确最终排期）。<br><span class=\"hl\">初定4月3日启动正式拍摄</span>，预计4 月底完成拍摄。",
               "progressLabel": "整体进度",
               "progress": 50,
               "progressColor": "bl",
@@ -5895,7 +5895,7 @@
               "id": "item_1776443823812",
               "title": "发行线演员渠道合作",
               "dateRange": "03.25 - 05.31",
-              "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
+              "description": "已与发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
               "progressLabel": "整体进度",
               "progress": 25,
               "progressColor": "bl",
@@ -5929,7 +5929,7 @@
               "id": "item_1776444240603",
               "title": "影科演员经纪渠道合作",
               "dateRange": "04.18 - 04.30",
-              "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
+              "description": "基于影科为IEG 库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
               "progressLabel": "整体进度",
               "progress": 44,
               "progressColor": "bl",
@@ -5966,7 +5966,7 @@
         {
           "date": "2025-12-25",
           "title": "软件开发启动",
-          "desc": "软件开发 — 首个任务开始\n（PM:rambokou(寇启龙) / 动画:saxonshao(邵雷) / PO:andrewzli(李哲) / TL:yuanfengxie(谢远锋))",
+          "desc": "软件开发 — 首个任务开始\n（PM:rambokou / 动画:saxonshao / PO:andrewzli / TL:yuanfengxie)",
           "status": "c"
         },
         {
@@ -6041,10 +6041,10 @@
       "project": {
         "name": "动捕专项整体进展梳理",
         "updateDate": "2026-04-23T14:27",
-        "reporter": "rambokou(寇启龙)",
-        "animLead": "saxonshao(邵雷)",
-        "po": "andrewzli(李哲)",
-        "tl": "yuanfengxie(谢远锋)"
+        "reporter": "rambokou",
+        "animLead": "saxonshao",
+        "po": "andrewzli",
+        "tl": "yuanfengxie"
       },
       "modules": [
         {
@@ -6349,7 +6349,7 @@
               "id": "item_1776443823812",
               "title": "发行线演员渠道合作",
               "dateRange": "03.25 - 05.31",
-              "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
+              "description": "已与发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
               "progressLabel": "整体进度",
               "progress": 27,
               "progressColor": "bl",
@@ -6383,7 +6383,7 @@
               "id": "item_1776444240603",
               "title": "影科演员经纪渠道合作",
               "dateRange": "04.18 - 04.30",
-              "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
+              "description": "基于影科为IEG 库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
               "progressLabel": "整体进度",
               "progress": 67,
               "progressColor": "bl",
@@ -6490,7 +6490,7 @@
         {
           "date": "2025-12-25",
           "title": "软件开发启动",
-          "desc": "软件开发 — 首个任务开始\n（PM:rambokou(寇启龙) / 动画:saxonshao(邵雷) / PO:andrewzli(李哲) / TL:yuanfengxie(谢远锋))",
+          "desc": "软件开发 — 首个任务开始\n（PM:rambokou / 动画:saxonshao / PO:andrewzli / TL:yuanfengxie)",
           "status": "c"
         },
         {
@@ -6589,10 +6589,10 @@
       "project": {
         "name": "动捕专项整体进展梳理",
         "updateDate": "2026-04-24T11:36",
-        "reporter": "rambokou(寇启龙)",
-        "animLead": "saxonshao(邵雷)",
-        "po": "andrewzli(李哲)",
-        "tl": "yuanfengxie(谢远锋)"
+        "reporter": "rambokou",
+        "animLead": "saxonshao",
+        "po": "andrewzli",
+        "tl": "yuanfengxie"
       },
       "modules": [
         {
@@ -6897,7 +6897,7 @@
               "id": "item_1776443823812",
               "title": "发行线演员渠道合作",
               "dateRange": "03.25 - 05.31",
-              "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
+              "description": "已与发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
               "progressLabel": "整体进度",
               "progress": 28,
               "progressColor": "bl",
@@ -6931,7 +6931,7 @@
               "id": "item_1776444240603",
               "title": "影科演员经纪渠道合作",
               "dateRange": "04.18 - 04.30",
-              "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
+              "description": "基于影科为IEG 库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
               "progressLabel": "整体进度",
               "progress": 71,
               "progressColor": "bl",
@@ -7038,7 +7038,7 @@
         {
           "date": "2025-12-25",
           "title": "软件开发启动",
-          "desc": "软件开发 — 首个任务开始\n（PM:rambokou(寇启龙) / 动画:saxonshao(邵雷) / PO:andrewzli(李哲) / TL:yuanfengxie(谢远锋))",
+          "desc": "软件开发 — 首个任务开始\n（PM:rambokou / 动画:saxonshao / PO:andrewzli / TL:yuanfengxie)",
           "status": "c"
         },
         {
@@ -7137,10 +7137,10 @@
       "project": {
         "name": "动捕专项整体进展梳理",
         "updateDate": "2026-04-29T14:43",
-        "reporter": "rambokou(寇启龙)",
-        "animLead": "saxonshao(邵雷)",
-        "po": "andrewzli(李哲)",
-        "tl": "yuanfengxie(谢远锋)"
+        "reporter": "rambokou",
+        "animLead": "saxonshao",
+        "po": "andrewzli",
+        "tl": "yuanfengxie"
       },
       "modules": [
         {
@@ -7445,7 +7445,7 @@
               "id": "item_1776443823812",
               "title": "发行线演员渠道合作",
               "dateRange": "03.25 - 05.31",
-              "description": "已与光子发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo(郭宇辉)正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
+              "description": "已与发行合作发展组对接合作高端、知名动作演员合作事宜，单前对接商务nicoleyhguo正在梳理对应演员合作经纪公司资源，后续将拉动OG 团队和发行线对齐潜在合作方，并完成后续引入流程",
               "progressLabel": "整体进度",
               "progress": 32,
               "progressColor": "bl",
@@ -7479,7 +7479,7 @@
               "id": "item_1776444240603",
               "title": "影科演员经纪渠道合作",
               "dateRange": "04.18 - 04.30",
-              "description": "基于影科为IEG 光子库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
+              "description": "基于影科为IEG 库内动捕+演员供应商，后续影科将作为高潜动捕合作演员、动作导演、场务、等动捕角色顺利入库服务项目的关键渠道，后续的合作细节将在OG 动捕服务买断合同中体现（自采流程）",
               "progressLabel": "整体进度",
               "progress": 95,
               "progressColor": "bl",
@@ -7586,7 +7586,7 @@
         {
           "date": "2025-12-25",
           "title": "软件开发启动",
-          "desc": "软件开发 — 首个任务开始\n（PM:rambokou(寇启龙) / 动画:saxonshao(邵雷) / PO:andrewzli(李哲) / TL:yuanfengxie(谢远锋))",
+          "desc": "软件开发 — 首个任务开始\n（PM:rambokou / 动画:saxonshao / PO:andrewzli / TL:yuanfengxie)",
           "status": "c"
         },
         {
